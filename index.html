@@ -1244,6 +1244,110 @@ const D_PERSON_TIPPEN = [
 ["Ich habe % lange zugehört.","ihr","sie (Einzahl)","<b>zuhören</b> + Dativ: ihr."]
 ];
 
+
+/* haben oder sein: viele weitere Sätze, oft als Paar mit und ohne Objekt */
+const D_HILFSVERB = [
+["Wir % um sechs Uhr losgefahren.","s","wir","Bewegung von A weg: sein."],
+["Das Flugzeug % pünktlich gelandet.","s","er","landen ist das Ende einer Bewegung: sein."],
+["Der Pilot % die Maschine sicher gelandet.","h","er","Mit Objekt (die Maschine): haben."],
+["Das Flugzeug % mit Verspätung gestartet.","s","er","starten ohne Objekt ist eine Bewegung: sein."],
+["Sie % den Motor gestartet.","h","er","Mit Objekt (den Motor): haben."],
+["Ich % auf dem Eis ausgerutscht.","s","ich","ausrutschen ist eine Bewegung nach unten: sein."],
+["Er % über den Teppich gestolpert.","s","er","stolpern: sein."],
+["Ich % auf der Treppe hingefallen.","s","ich","hinfallen: sein."],
+["Der Teller % in tausend Stücke zerbrochen.","s","er","zerbrechen ohne Objekt ist ein Zustandswechsel: sein."],
+["Ich % den Teller zerbrochen.","h","ich","zerbrechen mit Objekt: haben."],
+["Das Hemd % beim Waschen zerrissen.","s","er","zerreißen ohne Objekt: sein."],
+["Er % den Brief zerrissen.","h","er","zerreißen mit Objekt: haben."],
+["Die Wäsche % in der Sonne getrocknet.","s","er","trocknen ohne Objekt ist ein Zustandswechsel: sein."],
+["Ich % die Wäsche im Trockner getrocknet.","h","ich","trocknen mit Objekt: haben."],
+["Die Wunde % gut geheilt.","s","er","heilen ohne Objekt: sein."],
+["Das Feuer % im Keller ausgebrochen.","s","er","ausbrechen: sein."],
+["Die Sonne % um sechs aufgegangen.","s","er","aufgehen ist eine Bewegung nach oben: sein."],
+["Die Sonne % den ganzen Tag geschienen.","h","er","scheinen ist ein Zustand: haben."],
+["Die Rosen % den ganzen Sommer geblüht.","h","sie","blühen ist ein Zustand: haben."],
+["Die Rosen % im Herbst verblüht.","s","sie","verblühen ist ein Zustandswechsel: sein."],
+["Das Wasser % schon gekocht.","h","er","kochen ist ein Zustand: haben."],
+["Die Milch % übergekocht.","s","er","überkochen: sein, die Milch bewegt sich aus dem Topf."],
+["Die Kerze % die ganze Nacht gebrannt.","h","er","brennen ist ein Zustand: haben."],
+["Die Kerze % ganz heruntergebrannt.","s","er","herunterbrennen ist ein Zustandswechsel: sein."],
+["Das Brot % leider verschimmelt.","s","er","verschimmeln: sein."],
+["Der Teig % gut aufgegangen.","s","er","aufgehen: sein."],
+["Es % die ganze Nacht geschneit.","h","er","Wetterverben nehmen haben."],
+["Der Unterricht % heute ausgefallen.","s","er","ausfallen: sein."],
+["Ich % den Bus verpasst.","h","ich","verpassen hat ein Objekt: haben."],
+["Der Bus % einfach vorbeigefahren.","s","er","vorbeifahren: sein."],
+["Ich % heute Morgen verschlafen.","h","ich","verschlafen nimmt haben, obwohl einschlafen und aufwachen sein nehmen."],
+["Ich % am Sonntag richtig ausgeschlafen.","h","ich","ausschlafen: haben, wie schlafen."],
+["Das Baby % die ganze Nacht durchgeschlafen.","h","er","durchschlafen: haben."],
+["Wir % erst um zehn erwacht.","s","wir","erwachen ist ein Zustandswechsel wie aufwachen: sein."],
+["Wir % uns im Wald verlaufen.","h","wir","Reflexiv: haben, auch bei laufen."],
+["Wir % uns in der Stadt verfahren.","h","wir","Reflexiv: haben, obwohl fahren ohne uns sein nimmt."],
+["Ich % mich beim Sport verletzt.","h","ich","Reflexiv: haben."],
+["Wir % uns um zehn Minuten verspätet.","h","wir","Reflexiv: haben."],
+["Der Preis % sich verdoppelt.","h","er","Reflexiv: haben, auch wenn sich etwas verändert."],
+["Ihr % euch lange nicht gesehen.","h","ihr","Reflexiv: haben."],
+["Du % dich sehr verändert.","h","du","Reflexiv: haben, auch wenn sich jemand verändert hat."],
+["Ihr % euch bestimmt gefreut.","h","ihr","Reflexiv: haben."],
+["Mir % eine gute Idee eingefallen.","s","er","einfallen nimmt sein, wie fallen."],
+["Das % mir gar nicht aufgefallen.","s","er","auffallen nimmt sein, wie fallen."],
+["Der Name % mir gerade entfallen.","s","er","entfallen: sein."],
+["Das Bild % mir sofort gefallen.","h","er","gefallen im Sinn von mögen nimmt haben. Nicht mit fallen verwechseln."],
+["Das Bild % von der Wand gefallen.","s","er","fallen: sein. gefallen im Sinn von mögen nimmt haben."],
+["Die Schuhe % mir nicht gepasst.","h","sie","passen ist ein Zustand: haben."],
+["Das Haus % meinen Großeltern gehört.","h","er","gehören: haben."],
+["Der Film % drei Stunden gedauert.","h","er","dauern: haben."],
+["Das Konzert % um elf geendet.","h","er","enden nimmt haben, obwohl etwas zu Ende geht."],
+["Der Regen % endlich aufgehört.","h","er","aufhören nimmt haben."],
+["Er % mit dem Rauchen aufgehört.","h","er","aufhören: haben."],
+["Wir % am Wochenende Ski gefahren.","s","wir","Ski fahren ist eine Bewegung: sein."],
+["Die Kinder % Schlittschuh gelaufen.","s","sie","Schlittschuh laufen: sein, wie laufen."],
+["Der Hund % mir bis nach Hause nachgelaufen.","s","er","nachlaufen: sein."],
+["Meine Großeltern % nach Kanada ausgewandert.","s","sie","auswandern ist eine Bewegung in ein anderes Land: sein."],
+["Ihr % zu spät aufgebrochen.","s","ihr","aufbrechen im Sinn von losgehen: sein."],
+["Die Diebe % durch das Fenster entkommen.","s","sie","entkommen: sein."],
+["Der Kranke % schnell genesen.","s","er","genesen ist ein Zustandswechsel: sein."],
+["Sie % letztes Jahr schwer erkrankt.","s","er","erkranken ist ein Zustandswechsel: sein."],
+["Aus dem Streit % eine Freundschaft entstanden.","s","er","entstehen: sein."],
+["Er % in Panik geraten.","s","er","geraten: sein."],
+["Das % noch nie vorgekommen.","s","er","vorkommen: sein."],
+["Ihr % gestern nicht mitgekommen.","s","ihr","mitkommen: sein."],
+["Der Ball % ins Tor gerollt.","s","er","rollen ohne Objekt ist eine Bewegung: sein."],
+["Er % den Ball über den Platz gerollt.","h","er","rollen mit Objekt: haben."],
+["Wie lange % ihr in Wien gewohnt?","h","ihr","wohnen: haben."],
+["Der Fluss % über die Ufer getreten.","s","er","treten als Bewegung: sein."],
+["Er % mir auf den Fuß getreten.","s","er","mir ist Dativ, kein Akkusativobjekt. treten bleibt eine Bewegung: sein."],
+["Er % den Ball ins Tor getreten.","h","er","treten mit Objekt (den Ball): haben."],
+["Das Auto % gegen einen Baum geprallt.","s","er","prallen: sein."],
+["Die Vase % umgekippt.","s","er","umkippen: sein."],
+["Ich % die Vase umgestoßen.","h","ich","umstoßen mit Objekt: haben."],
+["Die Uhr % stehen geblieben.","s","er","stehen bleiben: sein, wie bleiben."]
+];
+
+/* haben oder sein: die passende Form eintippen */
+const D_HILFSVERB_TIPPEN = [
+["Ihr % viel zu spät gekommen.","seid","ihr","kommen: sein. Zu ihr gehört seid."],
+["Du % den Schlüssel schon wieder vergessen.","hast","du","vergessen: haben."],
+["Ihr % euch den ganzen Abend gestritten.","habt","ihr","Reflexiv: haben."],
+["Du % über den Zaun geklettert.","bist","du","klettern: sein."],
+["Wir % dem Weg bis zum See gefolgt.","sind","wir","folgen nimmt sein, obwohl es Dativ hat und keine Richtung nennt."],
+["Ich % ihm im Zug begegnet.","bin","ich","begegnen: sein."],
+["Ihr % zwei Kilo zugenommen.","habt","ihr","zunehmen: haben, obwohl sich etwas verändert."],
+["Du % gestern im Kurs gefehlt.","hast","du","fehlen: haben."],
+["Ich % der Party ferngeblieben.","bin","ich","fernbleiben: sein, wie bleiben."],
+["Ihr % bestimmt viel gelacht.","habt","ihr","lachen: haben."],
+["Du % die ganze Strecke gelaufen.","bist","du","Auch mit Strecke bleibt laufen bei sein."],
+["Ich % mitten in der Nacht aufgewacht.","bin","ich","aufwachen: sein."],
+["Es % dir wohl nicht aufgefallen.","ist","es","auffallen: sein, wie fallen."],
+["Du % dich sehr beeilt.","hast","du","Reflexiv: haben."],
+["Ihr % euch im Wald verlaufen.","habt","ihr","Reflexiv: haben, obwohl laufen sein nimmt."],
+["Der Hund % weggerannt.","ist","er","wegrennen: sein."],
+["Du % dem Kind über die Straße geholfen.","hast","du","helfen: haben."],
+["Ihr % die ganze Zeit geschwiegen.","habt","ihr","schweigen: haben."],
+["Die Blätter % von den Bäumen gefallen.","sind","sie","fallen: sein, im Plural sind."],
+["Du % als Kind viel Schlittschuh gelaufen.","bist","du","Schlittschuh laufen: sein."]
+];
+
 /* =====================================================================
    Karten bauen
    ===================================================================== */
@@ -1253,7 +1357,7 @@ const SEIN ={ich:"bin", du:"bist",er:"ist",wir:"sind",ihr:"seid", sie:"sind"};
 const LUECKE='<span class="luecke"></span>';
 
 const DECKS=[
- {k:"perfekt", name:"Perfekt",           farbe:"#D9A441", text:"Ich habe gewonnen oder ich bin gelaufen? Hilfsverb, Partizip II und die Wortstellung im Satz."},
+ {k:"perfekt", name:"Perfekt",           farbe:"#D9A441", text:"Ich habe gewonnen oder ich bin gelaufen? Vor allem haben oder sein, dazu Partizip II und Wortstellung."},
  {k:"artikel", name:"Der, die, das",     farbe:"#C2503F", text:"Artikel nach Endungen und Bedeutungsgruppen bestimmen, statt nach Gefühl zu raten."},
  {k:"praep",   name:"Präpositionen",     farbe:"#5F9EA0", text:"Wo oder wohin, Dativ oder Akkusativ. Dazu Kleidung anhaben und feste Verben mit Präposition."},
  {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."}
@@ -1287,7 +1391,7 @@ function neueKarte(k){
 D_PERFEKT.forEach(([inf,part,aux,person,satz,drill,hinweis])=>{
   const hForm=HABEN[person], sForm=SEIN[person], richtig=aux==="h"?hForm:sForm;
   neueKarte({
-    deck:"perfekt", typ:"wahl",
+    deck:"perfekt", typ:"wahl", art:"hilfsverb",
     rohfrage:satz,
     frage:esc(satz).replace("%",LUECKE),
     anweisung:"haben oder sein?",
@@ -1357,10 +1461,34 @@ D_REFLEXIV.forEach(([satz,richtig,falsch,erkl])=>{
 });
 
 
+/* ---------- Weitere haben/sein-Karten ---------- */
+D_HILFSVERB.forEach(([satz,aux,person,hinweis])=>{
+  const hForm=HABEN[person], sForm=SEIN[person], richtig=aux==="h"?hForm:sForm;
+  neueKarte({
+    deck:"perfekt", typ:"wahl", art:"hilfsverb",
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"haben oder sein?",
+    optionen:[hForm,sForm], richtig:richtig,
+    erklaerung:hinweis+" &ndash; Vollständig: "+esc(satz.replace("%",richtig))
+  });
+});
+
+D_HILFSVERB_TIPPEN.forEach(([satz,loesung,person,hinweis])=>{
+  neueKarte({
+    deck:"perfekt", typ:"tippen", art:"hilfsverb", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"haben oder sein? Die Form zu <i>"+esc(person)+"</i> eintippen.",
+    loesungen:[loesung],
+    erklaerung:hinweis+" &ndash; Vollständig: "+esc(satz.replace("%",loesung))
+  });
+});
+
 /* ---------- Schwere Karten ---------- */
 D_NEBENSATZ.forEach(([satz,loesung,inf,hinweis])=>{
   neueKarte({
-    deck:"perfekt", typ:"tippen", schwer:true,
+    deck:"perfekt", typ:"tippen", art:"hilfsverb", schwer:true,
     rohfrage:satz,
     frage:esc(satz).replace("%",LUECKE),
     anweisung:"Perfekt von <i>"+esc(inf)+"</i> im Nebensatz, zwei Wörter",
@@ -1384,7 +1512,7 @@ D_PARTIZIP_SCHWER.forEach(([satz,loesung,inf,hinweis])=>{
 D_HILFSVERB_SCHWER.forEach(([satz,aux,person,hinweis])=>{
   const hForm=HABEN[person], sForm=SEIN[person], richtig=aux==="h"?hForm:sForm;
   neueKarte({
-    deck:"perfekt", typ:"wahl", schwer:true,
+    deck:"perfekt", typ:"wahl", art:"hilfsverb", schwer:true,
     rohfrage:satz,
     frage:esc(satz).replace("%",LUECKE),
     anweisung:"haben oder sein?",
@@ -1615,13 +1743,25 @@ function zeigeStart(){
 }
 
 /* ---------- Runde ---------- */
+function leichteZuerst(liste){return liste.sort((a,b)=>(a.schwer?1:0)-(b.schwer?1:0));}
+function ordneNeue(deck,liste){
+  if(deck!=="perfekt") return leichteZuerst(liste);
+  const hilfsverb=leichteZuerst(liste.filter(i=>i.art==="hilfsverb"));
+  const andere=leichteZuerst(liste.filter(i=>i.art!=="hilfsverb"));
+  const aus=[];
+  while(hilfsverb.length||andere.length){
+    aus.push(...hilfsverb.splice(0,2));
+    aus.push(...andere.splice(0,1));
+  }
+  return aus;
+}
 function starteRunde(k){
   const pool=deckItems(k);
   if(!pool.length){meldung("Dieser Stapel ist leer.");return;}
   const jetzt=Date.now();
   const faellige=pool.filter(i=>S.items[i.id]&&S.items[i.id].d<=jetzt)
                      .sort((a,b)=>S.items[a.id].d-S.items[b.id].d);
-  const neue=mische(pool.filter(i=>!S.items[i.id])).sort((a,b)=>(a.schwer?1:0)-(b.schwer?1:0));
+  const neue=ordneNeue(k,mische(pool.filter(i=>!S.items[i.id])));
   const rest=mische(pool.filter(i=>S.items[i.id]&&S.items[i.id].d>jetzt));
   let liste=faellige.concat(neue).slice(0,RUNDENLAENGE);
   if(liste.length<RUNDENLAENGE) liste=liste.concat(rest.slice(0,RUNDENLAENGE-liste.length));
