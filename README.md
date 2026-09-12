@@ -1,6 +1,6 @@
 # Karteikasten
 
-Ein Karteikasten zum Üben der deutschen Grammatik. 380 Karten in vier Stapeln: Perfekt mit haben und sein, der/die/das, Präpositionen und reflexive Verben.
+Ein Karteikasten zum Üben der deutschen Grammatik. 737 Karten in vier Stapeln: Perfekt mit haben und sein, der/die/das, Präpositionen und reflexive Verben. Knapp die Hälfte davon sind schwere Karten: Perfekt im Nebensatz, doppelte Wörter wie der See und die See, Präposition samt Artikel zum Eintippen, Dativ- und Akkusativverben in der dritten Person. Sie kommen in jedem Stapel erst nach den leichten Karten dran und haben zusätzlich einen eigenen Stapel.
 
 Die Karten laufen nach dem Leitner-System durch fünf Fächer. Was sitzt, rutscht nach hinten und kommt später wieder. Was nicht sitzt, landet wieder vorne und wandert zusätzlich in den Fehlerstapel.
 

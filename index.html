@@ -197,6 +197,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 }
 .karte-reiter .punkt{width:7px;height:7px;border-radius:50%;background:var(--reiter,var(--tinte-leise))}
 .karte-reiter .fach-zeiger{margin-left:auto;font-variant-numeric:tabular-nums}
+.schwer-marke{
+  font-family:var(--schrift-ui);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:1px 6px;border:1px solid var(--tinte-leise);border-radius:3px;
+  color:var(--tinte-leise);line-height:1.3;
+}
 
 .frage{
   font-family:var(--schrift-text);
@@ -212,6 +217,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   margin:0 .12em;vertical-align:baseline;
 }
 .frage em{font-style:italic;color:#9A4436}
+.frage .zusatz{display:block;font-size:.55em;font-style:italic;color:var(--tinte-leise);margin-top:2px}
 .anweisung{
   font-size:15px;color:var(--tinte-leise);margin:0 0 20px;
 }
@@ -608,9 +614,9 @@ const D_PERFEKT = [
 ["singen","gesungen","h","wir","Wir % den ganzen Weg gesungen.",1,""],
 ["tanzen","getanzt","h","sie","Sie % die ganze Nacht getanzt.",0,"Ohne Ziel: haben. Mit Ziel ginge sein: Sie ist durch den Saal getanzt."],
 ["schlafen","geschlafen","h","ich","Ich % nur vier Stunden geschlafen.",1,"Schlafen ist ein Zustand, kein Wechsel - deshalb haben. Aber: einschlafen mit sein."],
-["sitzen","gesessen","h","wir","Wir % zwei Stunden im Wartezimmer gesessen.",1,"sitzen, liegen, stehen sind Zustände und nehmen im Standarddeutsch haben."],
-["liegen","gelegen","h","er","Er % den ganzen Sonntag auf dem Sofa gelegen.",1,""],
-["stehen","gestanden","h","ich","Ich % eine Ewigkeit in der Schlange gestanden.",1,""],
+["sitzen","gesessen","h","wir","Wir % zwei Stunden im Wartezimmer gesessen.",1,"sitzen, liegen, stehen sind Zustände und nehmen im Standarddeutsch Deutschlands haben. In Österreich und Süddeutschland ist ich bin gesessen ebenfalls richtig."],
+["liegen","gelegen","h","er","Er % den ganzen Sonntag auf dem Sofa gelegen.",1,"sitzen, liegen, stehen sind Zustände und nehmen im Standarddeutsch Deutschlands haben. In Österreich und Süddeutschland ist ich bin gesessen ebenfalls richtig."],
+["stehen","gestanden","h","ich","Ich % eine Ewigkeit in der Schlange gestanden.",1,"sitzen, liegen, stehen sind Zustände und nehmen im Standarddeutsch Deutschlands haben. In Österreich und Süddeutschland ist ich bin gesessen ebenfalls richtig."],
 ["warten","gewartet","h","du","Du % lange auf mich gewartet.",0,""],
 ["anrufen","angerufen","h","sie","Sie % heute schon dreimal angerufen.",1,""],
 ["vergessen","vergessen","h","ich","Ich % deinen Geburtstag vergessen.",1,"Verben mit ver-, be-, ent-, er-, zer- bekommen kein ge-."],
@@ -688,7 +694,23 @@ metall:"Metalle und Stoffe sind neutrum: das Gold, das Silber, das Holz.",
 jung:"Junge Lebewesen sind neutrum: das Kind, das Baby, das Kalb.",
 nis:"Nomen auf <b>-nis</b> sind meist neutrum: das Ergebnis, das Zeugnis.",
 tum:"Nomen auf <b>-tum</b> sind neutrum: das Eigentum, das Wachstum.",
-ausnes:"Endet auf -er, ist aber <b>neutrum</b>. Merk dir die Dreiergruppe: das Wasser, das Fenster, das Messer."
+ausnes:"Endet auf -er, ist aber <b>neutrum</b>. Merk dir die Dreiergruppe: das Wasser, das Fenster, das Messer.",
+zusammen:"Bei zusammengesetzten Nomen bestimmt das <b>letzte Wort</b> den Artikel: die Haustür wie die Tür, der Handschuh wie der Schuh.",
+homonym:"Dieses Wort gibt es <b>doppelt</b>, mit anderem Artikel und anderer Bedeutung. Hier hilft nur der Zusammenhang.",
+land:"Die meisten Länder stehen ohne Artikel. Ein paar haben einen festen Artikel: <b>die</b> Schweiz, <b>die</b> Türkei, <b>die</b> Ukraine, <b>der</b> Iran, <b>der</b> Irak, <b>der</b> Libanon, <b>der</b> Vatikan.",
+fluss:"Flüsse im deutschen Sprachraum sind meist <b>feminin</b>: die Donau, die Elbe, die Mur. Ausnahmen: der Rhein, der Main, der Inn, der Neckar. Flüsse außerhalb sind oft maskulin: der Nil, der Amazonas.",
+fremd:"Fremdwörter halten sich oft nicht an die Endungsregeln. Den Artikel muss man einzeln lernen.",
+eng:"Englische Wörter bekommen meist den Artikel des deutschen Wortes mit derselben Bedeutung.",
+mut:"<b>der Mut</b>, aber die Anmut, die Demut, die Großmut, die Wehmut sind feminin. Der Hochmut, der Übermut und der Unmut bleiben maskulin.",
+teil:"<b>der Teil</b> für einen Anteil an etwas: der Vorteil, der Nachteil, der Bestandteil. <b>das Teil</b> für ein einzelnes Stück: das Ersatzteil, das Einzelteil. Und immer: das Gegenteil.",
+ausnnis:"Nomen auf -nis sind meist neutrum, aber eine Handvoll ist <b>feminin</b>: die Erlaubnis, die Kenntnis, die Erkenntnis, die Finsternis.",
+ausnwetter:"Wetterwörter sind meist maskulin, aber das Wort <b>Wetter</b> selbst ist neutrum: das Wetter, das Gewitter, das Unwetter.",
+ausnen:"Endet auf -en, ist aber <b>neutrum</b>: das Kissen, das Wesen, das Zeichen, das Becken.",
+ausne:"Endet auf -e, ist aber <b>neutrum</b>: das Ende, das Auge, das Interesse.",
+merkr:"Dafür gibt es keine Regel. <b>Maskulin</b>, einzeln merken.",
+merke:"Dafür gibt es keine Regel. <b>Feminin</b>, einzeln merken.",
+merks:"Dafür gibt es keine Regel. <b>Neutrum</b>, einzeln merken.",
+plural:"Das Wort gibt es nur im <b>Plural</b>, darum steht immer <b>die</b>: die Niederlande, die USA, die Ferien, die Leute, die Eltern."
 };
 
 /* Artikel: [Nomen, r|e|s, Regelschlüssel, Zusatz] */
@@ -859,6 +881,369 @@ const D_REFLEXIV = [
 ["Das tut % wirklich leid.","mir",["mich"],"<b>leidtun</b> steht mit Dativ."]
 ];
 
+
+/* =====================================================================
+   Schwere Karten
+   ===================================================================== */
+
+/* Perfekt im Nebensatz: Partizip und Hilfsverb */
+const D_NEBENSATZ = [
+["Ich weiß nicht, warum er gestern so spät %.","gekommen ist","kommen",""],
+["Sie sagt, dass sie das Buch schon %.","gelesen hat","lesen",""],
+["Weißt du, ob der Zug schon %?","abgefahren ist","abfahren","abfahren ist eine Bewegung von A weg: sein."],
+["Er fragt, wann wir in Wien %.","angekommen sind","ankommen",""],
+["Ich glaube, dass ich meinen Schlüssel %.","verloren habe","verlieren","Kein ge- bei ver-."],
+["Es tut mir leid, dass ich dich nicht %.","angerufen habe","anrufen","Trennbares Verb: an-ge-rufen."],
+["Ich freue mich, dass du uns %.","besucht hast","besuchen","Kein ge- bei be-."],
+["Weil sie so lange %, ist sie jetzt müde.","gearbeitet hat","arbeiten",""],
+["Obwohl er die ganze Nacht %, ist er nicht müde.","gefeiert hat","feiern",""],
+["Ich weiß, dass er in Berlin %.","aufgewachsen ist","aufwachsen","aufwachsen ist ein Zustandswechsel: sein."],
+["Sie erzählt, dass sie zwei Jahre in Spanien %.","gelebt hat","leben",""],
+["Er behauptet, dass er das Fenster nicht %.","geöffnet hat","öffnen",""],
+["Ich bin sicher, dass ich die Tür %.","abgeschlossen habe","abschließen","Trennbar und stark: ab-ge-schlossen."],
+["Weißt du, ob sie den Termin %?","verschoben hat","verschieben","ie wird o, kein ge- bei ver-."],
+["Ich hoffe, dass ihr gut %.","geschlafen habt","schlafen",""],
+["Er ist traurig, weil sein Hund %.","gestorben ist","sterben","sterben ist der klarste Zustandswechsel: sein."],
+["Ich frage mich, ob das wirklich %.","passiert ist","passieren","Verben auf -ieren ohne ge-. passieren nimmt sein."],
+["Sie ist stolz, dass ihr den Test %.","bestanden habt","bestehen","Kein ge- bei be-, starkes Partizip wie bei stehen."],
+["Wir wissen nicht, wohin er %.","gezogen ist","ziehen","ziehen im Sinn von umziehen: sein. Er hat den Wagen gezogen wäre haben."],
+["Ich habe gehört, dass ihr letztes Jahr %.","geheiratet habt","heiraten",""],
+["Sag mir, ob du den Brief schon %.","abgeschickt hast","abschicken",""],
+["Es ist schade, dass ihr so früh %.","gegangen seid","gehen","Ihr: seid. Nicht mit seit verwechseln."]
+];
+
+/* Schwierige Partizipien */
+const D_PARTIZIP_SCHWER = [
+["Der Kellner hat uns den Fisch %.","empfohlen","empfehlen","e wird o, und kein ge- bei emp-."],
+["Wir haben uns noch nicht %.","entschieden","entscheiden","Kein ge- bei ent-."],
+["Hast du den Vertrag schon %?","unterschrieben","unterschreiben","unterschreiben ist untrennbar: kein ge-, keine Trennung."],
+["Sie hat den Brief ins Deutsche %.","übersetzt","übersetzen","In dieser Bedeutung untrennbar: kein ge-."],
+["Ich bin richtig %.","erschrocken","erschrecken","Wer selbst Angst bekommt, ist erschrocken (stark, mit sein). Wer jemand anderen erschreckt, hat ihn erschreckt (schwach, mit haben)."],
+["Ich habe ihn sofort %.","erkannt","erkennen","Gemischtes Verb wie kennen: Vokalwechsel plus -t."],
+["Das Licht hat die ganze Nacht %.","gebrannt","brennen","Gemischtes Verb: Vokalwechsel plus -t."],
+["Das habe ich wirklich nicht %.","gewollt","wollen","Modalverb ohne zweites Verb: normales Partizip gewollt."],
+["Ich habe ihn um Hilfe %.","gebeten","bitten","Nicht mit beten verwechseln, das hat gebetet."],
+["Er hat mir sein Fahrrad %.","geliehen","leihen",""],
+["Jemand hat mein Rad %.","gestohlen","stehlen","e wird o."],
+["Hast du die Blumen %?","gegossen","gießen","ie wird o, ß wird ss."],
+["Ich habe nichts %.","gerochen","riechen",""],
+["Der See ist über Nacht %.","zugefroren","zufrieren","Trennbar und stark: zu-ge-froren."],
+["Ich habe mir in den Finger %.","geschnitten","schneiden","ei wird i, d wird tt."],
+["Die Kinder haben sich wieder %.","gestritten","streiten",""],
+["Er hat mich noch nie %.","angelogen","anlügen","Trennbar: an-ge-logen."],
+["Der Händler hat uns %.","betrogen","betrügen","Kein ge- bei be-, ü wird o."],
+["Die Regel hat schon damals %.","gegolten","gelten",""],
+["Das Bild hat schief an der Wand %.","gehangen","hängen","hängen als Zustand ist stark: gehangen. hängen als Handlung mit Objekt ist schwach: gehängt."],
+["Ich habe das Bild an die Wand %.","gehängt","hängen","hängen als Handlung mit Objekt ist schwach: gehängt. Das Bild hat gehangen wäre der Zustand."],
+["Sie hat uns zum Essen %.","eingeladen","einladen",""],
+["Oma hat einen Kuchen %.","gebacken","backen",""],
+["Sie ist früher jeden Tag %.","geritten","reiten","Bewegung: sein."],
+["Du bist zu früh links %.","abgebogen","abbiegen","Trennbar und stark: ab-ge-bogen."],
+["Der Hund ist beinahe %.","ertrunken","ertrinken","Kein ge- bei er-, i wird u."],
+["Das Buch ist letztes Jahr %.","erschienen","erscheinen",""],
+["Das Konzert hat trotz Regen %.","stattgefunden","stattfinden","Trennbar: statt-ge-funden."],
+["Wo habt ihr euch %?","kennengelernt","kennenlernen","Trennbar: kennen-ge-lernt, in einem Wort."],
+["Ich habe die Datei schon %.","heruntergeladen","herunterladen","Trennbar und stark: herunter-ge-laden."],
+["Der Kuchen ist mir leider %.","misslungen","misslingen","Kein ge- bei miss-, i wird u, und wie gelingen mit sein."],
+["Der Koffer hat 23 Kilo %.","gewogen","wiegen",""],
+["Wir haben uns sehr %.","beeilt","beeilen","Kein ge- bei be-."],
+["Der Arzt hat Fieber %.","gemessen","messen",""],
+["Er hat es mir hoch und heilig %.","geschworen","schwören",""],
+["Sie hat trotz allem nie %.","aufgegeben","aufgeben",""],
+["Hast du mich gerade %?","gerufen","rufen","Im Partizip kein Vokalwechsel, obwohl das Präteritum rief heißt."],
+["Das Kind hat den Ball %.","gefangen","fangen",""],
+["Ich habe mich beim Datum %.","vertan","vertun","Kein ge- bei ver-. Kurz und stark: vertan."],
+["Wer hat das Fenster %?","zerbrochen","zerbrechen","Kein ge- bei zer-."]
+];
+
+/* haben oder sein in schwierigen Fällen */
+const D_HILFSVERB_SCHWER = [
+["Wir % die ganze Nacht getanzt.","h","wir","tanzen ohne Ziel oder Strecke: haben."],
+["Wir % durch den ganzen Saal getanzt.","s","wir","Sobald eine Strecke oder Richtung dabei ist, wird tanzen zur Bewegung: sein."],
+["Er % das Auto in die Garage gefahren.","h","er","Mit Akkusativobjekt (das Auto): haben."],
+["Er % mit dem Auto in die Garage gefahren.","s","er","Kein Objekt, nur Bewegung: sein."],
+["Sie % das Flugzeug selbst geflogen.","h","er","Mit Objekt (das Flugzeug): haben."],
+["Ich % mich ins Bett gelegt.","h","ich","Reflexive Verben nehmen <b>immer haben</b>, auch wenn eine Bewegung dabei ist."],
+["Wir % uns auf den Boden gesetzt.","h","wir","Reflexiv: immer haben."],
+["Der Schnee % in der Sonne geschmolzen.","s","er","Zustandswechsel ohne Objekt: sein."],
+["Die Sonne % den Schnee geschmolzen.","h","er","Mit Objekt (den Schnee): haben. Dasselbe Verb, anderes Hilfsverb."],
+["Die Zeit % schnell vergangen.","s","er","vergehen ist ein Zustandswechsel: sein."],
+["Die Rosen % schon verwelkt.","s","sie","Zustandswechsel: sein."],
+["Es % die ganze Nacht geregnet.","h","er","Wetterverben nehmen haben."],
+["Ich % drei Kilo abgenommen.","h","ich","abnehmen hat ein Objekt (drei Kilo) und nimmt haben, obwohl sich etwas verändert."],
+["Die Preise % stark gesunken.","s","sie","sinken ist eine Bewegung nach unten: sein."],
+["Der Luftballon % geplatzt.","s","er","platzen ist ein Zustandswechsel: sein."],
+["Er % beim Rennen gestürzt.","s","er","stürzen ist eine Bewegung nach unten: sein."],
+["Die alte Fabrik % explodiert.","s","er","explodieren: Zustandswechsel, sein."],
+["Der Baum % im Sturm umgefallen.","s","er","umfallen: sein."],
+["Der Sturm % den Baum umgeworfen.","h","er","umwerfen mit Objekt: haben."],
+["Ich % lange im Bett gelegen.","h","ich","liegen nimmt im Standarddeutsch Deutschlands haben. In Österreich und Süddeutschland sagt man ich bin gelegen, das ist dort ebenfalls richtig."],
+["Wir % gestern zwei Stunden Rad gefahren.","s","wir","Rad fahren ist eine Bewegung, das Rad ist hier kein echtes Objekt: sein."],
+["Der Film % gerade angefangen.","h","er","anfangen nimmt haben, obwohl etwas Neues beginnt."]
+];
+
+/* Satzbau mit Nebensatz, Modalverb und Plusquamperfekt */
+const D_SATZBAU_SCHWER = [
+["Ich weiß, dass er gestern nach Hause gegangen ist.",[],"Im Nebensatz mit dass steht das Hilfsverb ganz am Ende, hinter dem Partizip."],
+["Weißt du, ob sie den Brief schon geschrieben hat?",[],"Nebensatz mit ob: erst das Partizip, dann das Hilfsverb am Ende."],
+["Er hat den ganzen Tag nicht arbeiten können.",["Den ganzen Tag hat er nicht arbeiten können."],"Modalverb im Perfekt: haben + Infinitiv + können. Kein Partizip gekonnt."],
+["Sie hat sich die Haare schneiden lassen.",[],"lassen im Perfekt wie ein Modalverb: haben + schneiden + lassen."],
+["Warum bist du gestern nicht zur Arbeit gekommen?",[],"Fragewort auf Position eins, Hilfsverb auf zwei, Partizip am Ende."],
+["Nachdem er gegessen hatte, ist er sofort eingeschlafen.",[],"Nach nachdem steht das Plusquamperfekt (hatte gegessen), im Hauptsatz das Perfekt."],
+["Ich habe mir gestern ein neues Fahrrad gekauft.",["Gestern habe ich mir ein neues Fahrrad gekauft."],"Das Pronomen (mir) steht vor der Zeitangabe, das neue Objekt weiter hinten."],
+["Hat er dir schon von seiner Reise erzählt?",[],"Ja-Nein-Frage: Hilfsverb ganz vorne, Dativ (dir) vor der Präposition."],
+["Wir haben uns lange nicht mehr gesehen.",["Lange haben wir uns nicht mehr gesehen."],"Das Reflexivpronomen steht direkt nach dem Hilfsverb."],
+["Sie sagt, dass sie den Film schon zweimal gesehen hat.",[],""],
+["Obwohl es geregnet hat, sind wir wandern gegangen.",[],"Nebensatz vorne, dann folgt sofort das Verb des Hauptsatzes: sind."],
+["Ich habe ihm das Buch noch nicht zurückgegeben.",[],"Dativ vor Akkusativ, dann die Verneinung, Partizip am Ende."]
+];
+
+/* Artikel: Komposita, doppelte Wörter, Ausnahmen, Länder, Flüsse */
+const D_ARTIKEL_SCHWER = [
+["Haustür","","e","zusammen","Haus + Tür."],
+["Handschuh","","r","zusammen","Hand + Schuh."],
+["Fahrradschloss","","s","zusammen","Fahrrad + Schloss."],
+["Kinderzimmer","","s","zusammen","Kinder + Zimmer."],
+["Zahnbürste","","e","zusammen","Zahn + Bürste."],
+["Regenschirm","","r","zusammen","Regen + Schirm."],
+["Sonnenbrille","","e","zusammen","Sonne + Brille."],
+["Wörterbuch","","s","zusammen","Wörter + Buch."],
+["Geburtstag","","r","zusammen","Geburt + Tag."],
+["Mittagessen","","s","zusammen","Mittag + Essen."],
+["Handtuch","","s","zusammen","Hand + Tuch."],
+["Blumentopf","","r","zusammen","Blumen + Topf."],
+["Taschentuch","","s","zusammen","Tasche + Tuch."],
+["Türklinke","","e","zusammen","Tür + Klinke."],
+["Küchentisch","","r","zusammen","Küche + Tisch."],
+["Weltmeisterschaft","","e","zusammen","Welt + Meisterschaft, und -schaft ist immer feminin."],
+["Vorteil","","r","teil",""],["Nachteil","","r","teil",""],["Ersatzteil","","s","teil",""],["Gegenteil","","s","teil",""],
+["Mut","","r","mut",""],["Demut","","e","mut",""],["Anmut","","e","mut",""],["Hochmut","","r","mut",""],
+["See","Gewässer im Land, wie der Bodensee","r","homonym","<b>der</b> See liegt im Land, <b>die</b> See ist das Meer."],
+["See","das Meer, wie die Nordsee","e","homonym","<b>die</b> See ist das Meer, <b>der</b> See liegt im Land."],
+["Band","Musikgruppe","e","homonym","<b>die</b> Band spielt Musik, <b>das</b> Band bindet, <b>der</b> Band steht im Regal."],
+["Band","Stoffstreifen zum Binden","s","homonym","<b>das</b> Band bindet, <b>die</b> Band spielt Musik, <b>der</b> Band steht im Regal."],
+["Band","ein Buch aus einer Reihe","r","homonym","<b>der</b> Band steht im Regal, <b>das</b> Band bindet, <b>die</b> Band spielt Musik."],
+["Leiter","zum Hinaufsteigen","e","homonym","<b>die</b> Leiter hat Sprossen, <b>der</b> Leiter leitet eine Abteilung."],
+["Leiter","Chef einer Abteilung","r","homonym","<b>der</b> Leiter leitet, <b>die</b> Leiter hat Sprossen."],
+["Schild","Verkehrsschild","s","homonym","<b>das</b> Schild zeigt etwas an, <b>der</b> Schild schützt den Ritter."],
+["Schild","Schutz eines Ritters","r","homonym","<b>der</b> Schild schützt, <b>das</b> Schild zeigt etwas an."],
+["Kiefer","Nadelbaum","e","homonym","<b>die</b> Kiefer ist der Baum, <b>der</b> Kiefer der Knochen im Gesicht."],
+["Kiefer","Knochen im Gesicht","r","homonym","<b>der</b> Kiefer ist der Knochen, <b>die</b> Kiefer der Baum."],
+["Gehalt","monatlicher Lohn","s","homonym","<b>das</b> Gehalt ist der Lohn, <b>der</b> Gehalt ein Anteil, wie der Alkoholgehalt."],
+["Gehalt","Anteil, wie beim Alkohol","r","homonym","<b>der</b> Gehalt ist ein Anteil, <b>das</b> Gehalt der Lohn."],
+["Steuer","zum Lenken im Auto","s","homonym","<b>das</b> Steuer lenkt, <b>die</b> Steuer zahlt man an den Staat."],
+["Steuer","Geld an den Staat","e","homonym","<b>die</b> Steuer zahlt man, <b>das</b> Steuer lenkt."],
+["Verdienst","Geld für Arbeit","r","homonym","<b>der</b> Verdienst ist das Geld, <b>das</b> Verdienst die Leistung, für die man Anerkennung bekommt."],
+["Verdienst","Leistung, die Anerkennung verdient","s","homonym","<b>das</b> Verdienst ist die Leistung, <b>der</b> Verdienst das Geld."],
+["Erbe","Person, die erbt","r","homonym","<b>der</b> Erbe bekommt <b>das</b> Erbe."],
+["Erbe","das, was vererbt wird","s","homonym","<b>das</b> Erbe bekommt <b>der</b> Erbe."],
+["Golf","Sportart","s","homonym","<b>das</b> Golf spielt man, <b>der</b> Golf ist eine Meeresbucht."],
+["Golf","große Meeresbucht","r","homonym","<b>der</b> Golf ist die Bucht, <b>das</b> Golf der Sport."],
+["Pony","kleines Pferd","s","homonym","<b>das</b> Pony ist das Tier, <b>der</b> Pony die Frisur."],
+["Pony","Frisur mit Haaren in der Stirn","r","homonym","<b>der</b> Pony ist die Frisur, <b>das</b> Pony das Tier."],
+["Junge","Tierkind","s","homonym","<b>das</b> Junge ist ein Tierkind, <b>der</b> Junge ein Bub."],
+["Kunde","Käufer","r","homonym","<b>der</b> Kunde kauft, <b>die</b> Kunde ist eine Nachricht, wie in Erdkunde."],
+["Moment","Augenblick","r","homonym","<b>der</b> Moment ist der Augenblick, <b>das</b> Moment ein Faktor, wie in Drehmoment."],
+["Restaurant","","s","fremd","Endet auf -ant, aber: das Restaurant."],
+["Talent","","s","fremd","Endet auf -ent, aber: das Talent."],
+["Wetter","","s","ausnwetter",""],["Gewitter","","s","ausnwetter",""],
+["Ende","","s","ausne",""],["Auge","","s","ausne",""],["Interesse","","s","ausne",""],
+["Gedanke","","r","ausnr",""],["Glaube","","r","ausnr",""],["Wille","","r","ausnr",""],["Buchstabe","","r","ausnr",""],
+["Kissen","","s","ausnen",""],["Zeichen","","s","ausnen",""],
+["Erlaubnis","","e","ausnnis",""],["Kenntnis","","e","ausnnis",""],["Erkenntnis","","e","ausnnis",""],
+["Nummer","","e","ausner",""],["Mauer","","e","ausner",""],["Schwester","","e","ausner",""],["Tochter","","e","ausner",""],
+["Meeting","","s","eng","Wie das Treffen."],["Job","","r","eng","Wie der Beruf."],["Handy","","s","eng","Wie das Telefon."],
+["Interview","","s","eng","Wie das Gespräch."],["Show","","e","eng","Wie die Sendung."],["Cocktail","","r","eng","Wie der Drink."],
+["Pizza","","e","fremd","Italienisches Wort auf -a: feminin wie im Italienischen."],
+["Espresso","","r","fremd","Italienisches Wort auf -o: maskulin wie im Italienischen. Anders als das Auto und das Kino."],
+["Cappuccino","","r","fremd","Italienisches Wort auf -o: maskulin. Anders als das Foto oder das Radio."],
+["Sofa","","s","fremd","Endet auf -a, ist aber neutrum. Wie das Thema und das Klima."],
+["Hotel","","s","fremd","Wie das Haus."],
+["Knie","","s","merks","Sieht aus wie ein Wort auf -e, ist aber neutrum."],
+["Person","","e","merke","Auch für einen Mann: die Person."],
+["Geisel","","e","merke","Auch für einen Mann: die Geisel."],
+["Mensch","","r","merkr","Auch für eine Frau: der Mensch."],
+["Gast","","r","merkr","Auch für eine Frau: der Gast."],
+["Schweiz","","e","land",""],["Türkei","","e","land",""],["Iran","","r","land",""],["Irak","","r","land",""],
+["Ukraine","","e","land",""],["Slowakei","","e","land",""],["Vatikan","","r","land",""],["Libanon","","r","land",""],
+["Niederlande","","e","plural",""],["USA","","e","plural",""],
+["Donau","","e","fluss",""],["Rhein","","r","fluss",""],["Elbe","","e","fluss",""],["Inn","","r","fluss",""],["Mur","","e","fluss",""],
+["Main","","r","fluss",""],["Nil","","r","fluss",""],["Themse","","e","fluss",""],["Amazonas","","r","fluss",""],["Wolga","","e","fluss",""],
+["Ferien","","e","plural",""],["Leute","","e","plural",""],["Eltern","","e","plural",""]
+];
+
+/* Präposition und Artikel eintippen. Dritte Spalte: vorgegebene Präposition oder leer */
+const D_PRAEP_TIPPEN = [
+["Ich warte seit einer Stunde % Anruf.",["auf den"],"","<b>warten auf</b> + Akkusativ: auf den Anruf."],
+["Sie hat sich schnell % Kälte gewöhnt.",["an die"],"","<b>sich gewöhnen an</b> + Akkusativ."],
+["Wir haben uns % Ergebnis geärgert.",["über das","übers"],"","<b>sich ärgern über</b> + Akkusativ."],
+["Er beschwert sich ständig % Lärm.",["über den"],"","<b>sich beschweren über</b> + Akkusativ."],
+["Ich habe mich % Verspätung entschuldigt.",["für die"],"","<b>sich entschuldigen für</b> + Akkusativ."],
+["Das hängt % Wetter ab.",["vom","von dem"],"","<b>abhängen von</b> + Dativ."],
+["Sie leidet sehr % Hitze.",["unter der"],"","<b>leiden unter</b> + Dativ."],
+["Wir haben uns % Geschenk bedankt.",["für das","fürs"],"","<b>sich bedanken für</b> + Akkusativ."],
+["Ich habe heute keine Lust % Kochen.",["auf das","aufs"],"","<b>Lust haben auf</b> + Akkusativ."],
+["Er ist sehr stolz % Ergebnis.",["auf das","aufs"],"","<b>stolz sein auf</b> + Akkusativ."],
+["Sie hat große Angst % Prüfung.",["vor der"],"","<b>Angst haben vor</b> + Dativ."],
+["Ich habe mich % Stelle beworben.",["um die"],"","<b>sich bewerben um</b> + Akkusativ."],
+["Er hat sich % Nachbarn gestritten.",["mit dem"],"","<b>sich streiten mit</b> + Dativ. Der Nachbar bekommt im Dativ ein -n: mit dem Nachbarn."],
+["Ich habe nie % Antwort gezweifelt.",["an der"],"","<b>zweifeln an</b> + Dativ."],
+["Du musst dich % Regeln halten.",["an die"],"","<b>sich halten an</b> + Akkusativ."],
+["Ich habe mich % Datum geirrt.",["im","in dem"],"","<b>sich irren in</b> + Dativ."],
+["Ich habe % Nachbarin geklingelt.",["bei der"],"","<b>klingeln bei</b> + Dativ."],
+["Er hat sich sehr % Geschenk gefreut.",["über das","übers"],"","<b>sich freuen über</b> für etwas, das schon da ist. <b>sich freuen auf</b> für etwas in der Zukunft."],
+["Ich freue mich schon % Urlaub im Sommer.",["auf den"],"","<b>sich freuen auf</b> für etwas in der Zukunft: Akkusativ."],
+["Sie hat lange % Antwort nachgedacht.",["über die"],"","<b>nachdenken über</b> + Akkusativ."],
+["Ich habe mich % Ergebnis erkundigt.",["nach dem"],"","<b>sich erkundigen nach</b> + Dativ."],
+["Er hat sich % Kollegin verliebt.",["in die"],"","<b>sich verlieben in</b> + Akkusativ."],
+["Das erinnert mich % Kindheit.",["an meine","an die"],"","<b>erinnern an</b> + Akkusativ."],
+["Wir diskutieren % Vorschlag.",["über den"],"","<b>diskutieren über</b> + Akkusativ."],
+["Er hat % Unfall berichtet.",["über den","vom","von dem"],"","<b>berichten über</b> + Akkusativ oder <b>berichten von</b> + Dativ."],
+["Sie schützt sich % Sonne.",["vor der"],"","<b>sich schützen vor</b> + Dativ."],
+["Das Foto hängt % Spiegel.",["über dem"],"über","Wo? Dativ."],
+["Häng das Foto % Spiegel.",["über den"],"über","Wohin? Akkusativ."],
+["Der Teppich liegt % Tisch.",["unter dem"],"unter","Wo? Dativ."],
+["Sie setzt sich % Boden.",["auf den"],"auf","Wohin? Akkusativ."],
+["Er steht schon % Tür.",["an der"],"an","Wo? Dativ, und die Tür ist feminin."],
+["Er geht langsam % Tür.",["an die"],"an","Wohin? Akkusativ."],
+["Ich stelle die Milch % Kühlschrank.",["in den"],"in","Wohin? Akkusativ."],
+["Die Milch steht % Kühlschrank.",["im","in dem"],"in","Wo? Dativ."],
+["Wir fahren am Wochenende % Berge.",["in die"],"in","Wohin? Akkusativ Plural: in die Berge."],
+["Wir wandern gern % Bergen.",["in den"],"in","Wo? Dativ Plural: in den Bergen. Im Dativ Plural bekommt das Nomen ein -n."],
+["Das Kind läuft % Autos.",["zwischen die"],"zwischen","Wohin? Akkusativ Plural."],
+["Das Kind steht % Autos.",["zwischen den"],"zwischen","Wo? Dativ Plural."],
+["Die Katze springt % Zaun.",["über den"],"über","Wohin? Akkusativ."],
+["Der Vogel sitzt % Zaun.",["auf dem"],"auf","Wo? Dativ."],
+["Stell die Schuhe bitte % Tür.",["vor die"],"vor","Wohin? Akkusativ."],
+["Die Schuhe stehen % Tür.",["vor der"],"vor","Wo? Dativ."],
+["Ich hänge die Jacke % Haken.",["an den"],"an","Wohin? Akkusativ, und der Haken ist maskulin."],
+["Das Poster klebt % Wand.",["an der"],"an","Wo? Dativ."],
+["Der Hund kriecht % Bett.",["unter das","unters"],"unter","Wohin? Akkusativ."],
+["Wir gehen heute Abend % Kino.",["ins","in das"],"in","Wohin? Akkusativ. ins ist die Kurzform von in das."],
+["% Reise habe ich viel gelernt.",["Während der"],"während","<b>während</b> + Genitiv: während der Reise."],
+["% Sturms fuhr die Fähre.",["Trotz des"],"trotz","<b>trotz</b> + Genitiv: trotz des Sturms."],
+["% Staus sind wir zu spät gekommen.",["Wegen des"],"wegen","<b>wegen</b> + Genitiv: wegen des Staus."],
+["% Stadt gibt es einen kleinen See.",["Außerhalb der"],"außerhalb","<b>außerhalb</b> + Genitiv."],
+["% Öffnungszeiten erreichen Sie uns telefonisch.",["Innerhalb der"],"innerhalb","<b>innerhalb</b> + Genitiv."],
+["% Autos nehmen wir das Rad.",["Statt des","Anstatt des"],"statt","<b>statt</b> + Genitiv."],
+["Ich komme gerade % Zahnarzt.",["vom","von dem"],"von","<b>von</b> + Dativ: vom Zahnarzt."],
+["Wir treffen uns % Bahnhof.",["am","an dem"],"an","Wo? Dativ: am Bahnhof."],
+["Nach der Arbeit gehe ich noch % Sport.",["zum","zu dem"],"zu","<b>zu</b> + Dativ: zum Sport."],
+["Er wohnt noch % Eltern.",["bei den","bei seinen"],"bei","<b>bei</b> + Dativ Plural: bei den Eltern."],
+["Das Geschenk ist % Kinder.",["für die"],"für","<b>für</b> + Akkusativ Plural."],
+["Wir laufen % Wald.",["durch den"],"durch","<b>durch</b> + Akkusativ."],
+["Der Hund läuft % Haus herum.",["um das","ums"],"um","<b>um</b> + Akkusativ."],
+["Alle waren da % Chef.",["außer dem"],"außer","<b>außer</b> + Dativ."],
+["Die Bank liegt % Post.",["gegenüber der"],"gegenüber","<b>gegenüber</b> + Dativ."]
+];
+
+/* Pronominaladverbien und Fragewörter mit Präposition */
+const D_PRONOMINAL = [
+["Ich habe lange auf den Brief gewartet. Ich habe wirklich lange % gewartet.","darauf",["darüber","daran","dafür"],"<b>warten auf</b>. Für Sachen: da + r + Präposition, wenn die Präposition mit einem Vokal beginnt."],
+["Denkst du noch an das Gespräch? Ja, ich denke oft %.","daran",["darauf","darüber","davon"],"<b>denken an</b>: daran."],
+["Sie spricht nie über ihre Arbeit. Sie spricht einfach nicht %.","darüber",["davon","daran","dafür"],"<b>sprechen über</b>: darüber."],
+["Ich interessiere mich für Astronomie. % interessiere ich mich schon lange.","Dafür",["Darauf","Daran","Davon"],"<b>sich interessieren für</b>: dafür."],
+["Er träumt von einem eigenen Haus. Er träumt schon lange %.","davon",["darüber","daran","dafür"],"<b>träumen von</b>: davon."],
+["Hast du Angst vor der Prüfung? Ja, ich habe große Angst %.","davor",["davon","darüber","dafür"],"<b>Angst haben vor</b>: davor."],
+["% wartest du? Auf den Bus.","Worauf",["Auf wen","Woran","Wofür"],"Frage nach einer <b>Sache</b>: wo + r + Präposition. Nach einer Person fragt man mit Präposition + wen oder wem."],
+["% wartest du? Auf meine Schwester.","Auf wen",["Worauf","Wonach","Woran"],"Frage nach einer <b>Person</b>: Präposition + Fragewort im richtigen Fall. warten auf + Akkusativ: auf wen."],
+["% denkst du gerade? An meinen Vater.","An wen",["Woran","An wem","Worauf"],"Person: an wen. denken an + Akkusativ."],
+["% freust du dich so? Über das Geschenk.","Worüber",["Wovon","Worauf","Wofür"],"Sache: worüber. sich freuen über."],
+["% fährst du zur Arbeit? Mit dem Rad.","Womit",["Mit wem","Wovon","Worauf"],"Sache: womit."],
+["% sprichst du gerade? Mit meiner Chefin.","Mit wem",["Womit","Wovon","Mit wen"],"Person: mit wem. mit steht immer mit Dativ."],
+["Ich erinnere mich gern an die Reise. Ich erinnere mich gern %.","daran",["darauf","davon","darüber"],"<b>sich erinnern an</b>: daran."],
+["Es kommt auf das Wetter an. Es kommt ganz % an.","darauf",["daran","davon","darum"],"<b>ankommen auf</b>: darauf."],
+["Ich kümmere mich um die Kinder. Ich kümmere mich gern %.","darum",["dafür","davon","daran"],"<b>sich kümmern um</b>: darum."],
+["% hast du das Geld ausgegeben? Für ein Konzert.","Wofür",["Worauf","Wozu","Für wen"],"Sache: wofür. Geld ausgeben für."],
+["% hilfst du am Wochenende? Meinem Bruder beim Umzug.","Wem",["Wen","Womit","Wobei"],"helfen + Dativ: wem, ganz ohne Präposition."]
+];
+
+/* Kleidung: tragen in haben umformen */
+const D_KLEIDUNG_TIPPEN = [
+["Er trägt eine Krawatte. Er hat eine Krawatte %.",["um"],"Was um den Hals geht: <b>umhaben</b>."],
+["Sie trägt eine Perücke. Sie hat eine Perücke %.",["auf"],"Was auf dem Kopf sitzt: <b>aufhaben</b>."],
+["Ich trage Handschuhe. Ich habe Handschuhe %.",["an"],"Was am Körper sitzt, auch an den Händen: <b>anhaben</b>."],
+["Er trägt eine Kappe. Er hat eine Kappe %.",["auf"],"Kopfbedeckung: <b>aufhaben</b>."],
+["Sie trägt eine Kette. Sie hat eine Kette %.",["um"],"Um den Hals: <b>umhaben</b>."],
+["Er trägt eine Uhr. Er hat eine Uhr %.",["um"],"Die Armbanduhr geht um das Handgelenk: <b>umhaben</b>."],
+["Es ist kalt. Leg dir bitte einen Schal %.",["um"],"<b>umlegen</b> für Schal und Tuch."],
+["Zieh die nassen Socken %.",["aus"],"<b>ausziehen</b> für alles, was man anhat."],
+["Bitte nimm die Sonnenbrille %, wenn du drinnen bist.",["ab"],"<b>abnehmen</b> oder <b>absetzen</b> für alles, was man aufhat."]
+];
+
+/* Reflexivpronomen eintippen */
+const D_REFLEXIV_TIPPEN = [
+["Stell % vor, wir gewinnen die Reise!",["dir"],"<b>sich etwas vorstellen</b> im Sinn von denken: Dativ. Stell dich vor wäre: Sag deinen Namen."],
+["Ich habe % ein neues Handy gekauft.",["mir"],"Zweites Objekt (ein Handy): Dativ."],
+["Ich habe % gestern beim Fußball verletzt.",["mich"],"Kein zweites Objekt: Akkusativ."],
+["Ich habe % am Knie verletzt.",["mich"],"<b>am Knie</b> ist kein Objekt, sondern eine Ortsangabe. Deshalb bleibt es beim Akkusativ."],
+["Ich habe % das Knie verletzt.",["mir"],"<b>das Knie</b> ist hier das Akkusativobjekt. Das Reflexivpronomen weicht in den Dativ aus."],
+["Ich habe % den Arm gebrochen.",["mir"],"Körperteil als Objekt: Dativ."],
+["Ich habe % vorgenommen, mehr zu lesen.",["mir"],"<b>sich etwas vornehmen</b>: Dativ. Das Objekt ist hier der ganze zu-Satz."],
+["Ich bilde % das nicht nur ein.",["mir"],"<b>sich etwas einbilden</b>: Dativ."],
+["Nimm % ruhig noch ein Stück Kuchen.",["dir"],"<b>sich etwas nehmen</b>: Dativ."],
+["Ich gönne % heute eine Pause.",["mir"],"<b>sich etwas gönnen</b>: Dativ."],
+["Das traue ich % nicht zu.",["mir"],"<b>sich etwas zutrauen</b>: Dativ."],
+["Ich habe % die Haare schneiden lassen.",["mir"],"Körperteil als Objekt: Dativ."],
+["Ich hole % schnell einen Kaffee.",["mir"],"<b>sich etwas holen</b>: Dativ."],
+["Ich lasse % damit Zeit.",["mir"],"<b>sich Zeit lassen</b>: Dativ."],
+["Ich habe % das Rauchen abgewöhnt.",["mir"],"<b>sich etwas abgewöhnen</b>: Dativ, weil das Rauchen das Objekt ist."],
+["Ich habe % an das Klima gewöhnt.",["mich"],"<b>sich gewöhnen an</b>: Akkusativ. Kein zweites Objekt, nur eine Präposition."],
+["Davon verspreche ich % nicht viel.",["mir"],"<b>sich etwas versprechen</b> heißt erwarten: Dativ."],
+["Beruhig % wieder, es ist nichts passiert.",["dich"],"<b>sich beruhigen</b>: Akkusativ."],
+["Ich fühle % heute nicht gut.",["mich"],"<b>sich fühlen</b>: Akkusativ."],
+["Ich habe % in der Zeit vertan.",["mich"],"<b>sich vertun</b>: Akkusativ."],
+["Ich habe % beim Datum geirrt.",["mich"],"<b>sich irren</b>: Akkusativ."],
+["Ich erhole % gerade von der Grippe.",["mich"],"<b>sich erholen</b>: Akkusativ."],
+["Ich erlaube % einen kleinen Scherz.",["mir"],"<b>sich etwas erlauben</b>: Dativ."],
+["Wir haben % lange nicht gesehen.",["uns"],"Gegenseitig: <b>uns</b>. Bei wir und ihr sind Dativ und Akkusativ gleich."],
+["Habt ihr % schon vorgestellt?",["euch"],"Bei <b>ihr</b> heißt das Reflexivpronomen immer euch, egal welcher Fall."],
+["Sie hat % die Nase geputzt.",["sich"],"In der dritten Person heißt es immer <b>sich</b>, auch im Dativ."],
+["Er wäscht % gerade die Haare.",["sich"],"Dritte Person: sich, egal ob Dativ oder Akkusativ."],
+["Die beiden lieben % sehr.",["sich","einander"],"Gegenseitig in der dritten Person: sich oder einander."],
+["Ihr könnt % auf mich verlassen.",["euch"],"<b>sich verlassen auf</b>. Bei ihr: euch."],
+["Wir treffen % um acht vor dem Kino.",["uns"],"<b>sich treffen</b>: uns."],
+["Kannst du % das leisten?",["dir"],"<b>sich etwas leisten</b>: Dativ."],
+["Zieh % bitte etwas Warmes an.",["dir"],"Zweites Objekt (etwas Warmes): Dativ."],
+["Zieh % bitte warm an.",["dich"],"Kein zweites Objekt: Akkusativ. warm ist nur ein Adverb."],
+["Ich habe % über das Ergebnis gewundert.",["mich"],"<b>sich wundern über</b>: Akkusativ."],
+["Ich habe % einen Termin notiert.",["mir"],"<b>sich etwas notieren</b>: Dativ."]
+];
+
+/* Dativ- und Akkusativverben mit er, sie und sie im Plural */
+const D_PERSON_TIPPEN = [
+["Ich habe % gestern angerufen.","ihn","er","<b>anrufen</b> + Akkusativ: ihn. Anders als telefonieren mit, das Dativ nimmt."],
+["Ich habe % zum Geburtstag gratuliert.","ihr","sie (Einzahl)","<b>gratulieren</b> + Dativ: ihr."],
+["Wir sind % im Park begegnet.","ihnen","sie (Mehrzahl)","<b>begegnen</b> + Dativ: ihnen."],
+["Kannst du % bitte helfen?","ihm","er","<b>helfen</b> + Dativ: ihm."],
+["Ich habe % nach dem Weg gefragt.","sie","sie (Einzahl)","<b>fragen</b> + Akkusativ: sie."],
+["Der Film hat % nicht gefallen.","ihm","er","<b>gefallen</b> + Dativ: ihm."],
+["Ich folge % auf Instagram.","ihnen","sie (Mehrzahl)","<b>folgen</b> + Dativ: ihnen."],
+["Das Auto gehört %.","ihr","sie (Einzahl)","<b>gehören</b> + Dativ: ihr."],
+["Ich habe % kein Wort geglaubt.","ihm","er","<b>glauben</b> + Dativ bei Personen: ihm."],
+["Ich habe % beim Umzug unterstützt.","ihn","er","<b>unterstützen</b> + Akkusativ: ihn. Anders als helfen, das Dativ nimmt."],
+["Ich habe % widersprochen.","ihr","sie (Einzahl)","<b>widersprechen</b> + Dativ: ihr."],
+["Ich habe % zufällig in der Stadt getroffen.","ihn","er","<b>treffen</b> + Akkusativ: ihn."],
+["Das Kleid steht % sehr gut.","ihr","sie (Einzahl)","<b>stehen</b> im Sinn von passen + Dativ: ihr."],
+["Wir haben % zum Essen eingeladen.","sie","sie (Mehrzahl)","<b>einladen</b> + Akkusativ: sie."],
+["Ich bin % sehr dankbar.","ihm","er","<b>dankbar sein</b> + Dativ: ihm."],
+["Die Schuhe passen % nicht.","ihm","er","<b>passen</b> + Dativ: ihm."],
+["Ich kann % nicht ausstehen.","sie","sie (Einzahl)","<b>ausstehen</b> + Akkusativ: sie."],
+["Es ist % völlig egal.","ihm","er","<b>egal sein</b> + Dativ: ihm."],
+["Ich bin % auf der Straße ausgewichen.","ihnen","sie (Mehrzahl)","<b>ausweichen</b> + Dativ: ihnen."],
+["Ich habe % vor dem Hund gewarnt.","ihn","er","<b>warnen</b> + Akkusativ: ihn."],
+["Ich habe % geraten, früher zu gehen.","ihm","er","<b>raten</b> + Dativ: ihm."],
+["Ich habe % gebeten, früher zu gehen.","ihn","er","<b>bitten</b> + Akkusativ: ihn. raten nimmt Dativ, bitten Akkusativ."],
+["Ich habe % beim Lernen gestört.","sie","sie (Einzahl)","<b>stören</b> + Akkusativ: sie."],
+["Ich habe % versprochen, pünktlich zu sein.","ihm","er","<b>versprechen</b> + Dativ bei der Person: ihm."],
+["Ich habe % zum Abschied umarmt.","sie","sie (Einzahl)","<b>umarmen</b> + Akkusativ: sie."],
+["Der Lehrer hat % die Aufgabe erklärt.","ihnen","sie (Mehrzahl)","<b>erklären</b>: die Person im Dativ, die Sache im Akkusativ."],
+["Ich habe % den Weg gezeigt.","ihr","sie (Einzahl)","<b>zeigen</b>: Person im Dativ, Sache im Akkusativ."],
+["Ich habe % auf dem Foto sofort erkannt.","ihn","er","<b>erkennen</b> + Akkusativ: ihn."],
+["Das Essen hat % gut geschmeckt.","ihnen","sie (Mehrzahl)","<b>schmecken</b> + Dativ: ihnen."],
+["Ich habe % lange zugehört.","ihr","sie (Einzahl)","<b>zuhören</b> + Dativ: ihr."]
+];
+
 /* =====================================================================
    Karten bauen
    ===================================================================== */
@@ -874,6 +1259,15 @@ const DECKS=[
  {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."}
 ];
 const DECK_NACH_K={};DECKS.forEach(d=>DECK_NACH_K[d.k]=d);
+const SONDERDECKS={
+ gemischt:{k:"gemischt",name:"Alles gemischt",farbe:"#98A3AF",
+   text:"Karten aus allen vier Stapeln durcheinander. Das ist die ehrlichste Übung."},
+ schwer:{k:"schwer",name:"Schwere Karten",farbe:"#8C7AA9",
+   text:"Nebensätze, doppelte Wörter, Fremdwörter und Fälle, die man nicht raten kann. Nur zum Eintippen, kaum zum Ankreuzen."},
+ fehler:{k:"fehler",name:"Fehlerstapel",farbe:"#E98776",
+   text:"Alles, was du zuletzt falsch hattest. Liegt vorne im Kasten, bis es sitzt."}
+};
+function deckName(k){return (DECK_NACH_K[k]||SONDERDECKS[k]).name;}
 
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function hash(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36);}
@@ -962,6 +1356,121 @@ D_REFLEXIV.forEach(([satz,richtig,falsch,erkl])=>{
   });
 });
 
+
+/* ---------- Schwere Karten ---------- */
+D_NEBENSATZ.forEach(([satz,loesung,inf,hinweis])=>{
+  neueKarte({
+    deck:"perfekt", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Perfekt von <i>"+esc(inf)+"</i> im Nebensatz, zwei Wörter",
+    loesungen:[loesung],
+    erklaerung:"Im Nebensatz steht das Hilfsverb ganz am Ende, direkt hinter dem Partizip."
+      +(hinweis?" "+hinweis:"")+" &ndash; Vollständig: "+esc(satz.replace("%",loesung))
+  });
+});
+
+D_PARTIZIP_SCHWER.forEach(([satz,loesung,inf,hinweis])=>{
+  neueKarte({
+    deck:"perfekt", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Partizip II von <i>"+esc(inf)+"</i>",
+    loesungen:[loesung],
+    erklaerung:(hinweis?hinweis+" &ndash; ":"")+"Vollständig: "+esc(satz.replace("%",loesung))
+  });
+});
+
+D_HILFSVERB_SCHWER.forEach(([satz,aux,person,hinweis])=>{
+  const hForm=HABEN[person], sForm=SEIN[person], richtig=aux==="h"?hForm:sForm;
+  neueKarte({
+    deck:"perfekt", typ:"wahl", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"haben oder sein?",
+    optionen:[hForm,sForm], richtig:richtig,
+    erklaerung:hinweis+" &ndash; Vollständig: "+esc(satz.replace("%",richtig))
+  });
+});
+
+D_SATZBAU_SCHWER.forEach(([loesung,alt,hinweis])=>{
+  neueKarte({
+    deck:"perfekt", typ:"bau", schwer:true,
+    rohfrage:loesung,
+    frage:"", anweisung:"Bring die Wörter in die richtige Reihenfolge.",
+    woerter:loesung.replace(/[.?]$/,"").split(" "),
+    schluss:loesung.slice(-1),
+    loesungen:[loesung].concat(alt||[]),
+    erklaerung:hinweis||""
+  });
+});
+
+D_ARTIKEL_SCHWER.forEach(([nomen,hinweis,g,regel,extra])=>{
+  neueKarte({
+    deck:"artikel", typ:"wahl", geschlecht:true, schwer:true,
+    rohfrage:nomen+(hinweis?"|"+hinweis:""),
+    frage:LUECKE+" "+esc(nomen)+(hinweis?'<span class="zusatz">'+esc(hinweis)+'</span>':""),
+    anweisung:"Welcher Artikel?",
+    optionen:["der","die","das"], richtig:ARTIKELWORT[g],
+    erklaerung:REGELN[regel]+(extra?" "+extra:"")
+  });
+});
+
+D_PRAEP_TIPPEN.forEach(([satz,loesungen,praep,erkl])=>{
+  neueKarte({
+    deck:"praep", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:praep?"Mit <i>"+esc(praep)+"</i>. Welcher Fall? Präposition und Artikel eintippen.":"Welche Präposition, welcher Artikel? Beides eintippen.",
+    loesungen:loesungen,
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",loesungen[0]))
+  });
+});
+
+D_PRONOMINAL.forEach(([satz,richtig,falsch,erkl])=>{
+  neueKarte({
+    deck:"praep", typ:"wahl", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Was passt in die Lücke?",
+    optionen:[richtig].concat(falsch), richtig:richtig,
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",richtig))
+  });
+});
+
+D_KLEIDUNG_TIPPEN.forEach(([satz,loesungen,erkl])=>{
+  neueKarte({
+    deck:"praep", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Welches Wort fehlt? Eintippen.",
+    loesungen:loesungen,
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",loesungen[0]))
+  });
+});
+
+D_REFLEXIV_TIPPEN.forEach(([satz,loesungen,erkl])=>{
+  neueKarte({
+    deck:"reflexiv", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Welches Pronomen fehlt? Eintippen.",
+    loesungen:loesungen,
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",loesungen[0]))
+  });
+});
+
+D_PERSON_TIPPEN.forEach(([satz,loesung,person,erkl])=>{
+  neueKarte({
+    deck:"reflexiv", typ:"tippen", schwer:true,
+    rohfrage:satz+"|"+person,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Setze <i>"+esc(person)+"</i> im richtigen Fall ein.",
+    loesungen:[loesung],
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",loesung))
+  });
+});
+
 const ITEM_NACH_ID={};ITEMS.forEach(i=>ITEM_NACH_ID[i.id]=i);
 
 /* =====================================================================
@@ -1009,7 +1518,8 @@ const ABZEICHEN=[
  {k:"sauber", name:"Ohne Fehler",       text:"Eine ganze Runde ohne einen einzigen Fehler.",test:()=>S.perfekteRunden>=1},
  {k:"fach5",  name:"Hinten im Kasten",  text:"25 Karten liegen in Fach 5.",                 test:()=>zaehleFach(5)>=25},
  {k:"alle",   name:"Alle vier Stapel",  text:"Aus jedem Stapel eine Karte gezogen.",        test:()=>DECKS.every(d=>ITEMS.some(i=>i.deck===d.k&&S.items[i.id]))},
- {k:"hundert",name:"Hundert Karten",    text:"100 verschiedene Karten schon einmal gezogen.",test:()=>Object.keys(S.items).length>=100}
+ {k:"hundert",name:"Hundert Karten",    text:"100 verschiedene Karten schon einmal gezogen.",test:()=>Object.keys(S.items).length>=100},
+ {k:"schwer", name:"Harte Nuss",         text:"25 schwere Karten liegen in Fach 4 oder 5.",   test:()=>ITEMS.filter(i=>i.schwer&&S.items[i.id]&&S.items[i.id].b>=4).length>=25}
 ];
 
 /* =====================================================================
@@ -1045,6 +1555,7 @@ function meldung(text){
 /* ---------- Startseite ---------- */
 function deckItems(k){
   if(k==="gemischt")return ITEMS;
+  if(k==="schwer")return ITEMS.filter(i=>i.schwer);
   if(k==="fehler")return S.fehler.map(id=>ITEM_NACH_ID[id]).filter(Boolean);
   return ITEMS.filter(i=>i.deck===k);
 }
@@ -1080,10 +1591,8 @@ function zeigeStart(){
       '</div><div class="fach-schild"><b>'+n+'</b><span>Fach '+(idx+1)+'</span></div></div>';
   }).join("");
 
-  const alle=DECKS.concat([{k:"gemischt",name:"Alles gemischt",farbe:"#98A3AF",
-      text:"Karten aus allen vier Stapeln durcheinander. Das ist die ehrlichste Übung."}]);
-  if(S.fehler.length) alle.push({k:"fehler",name:"Fehlerstapel",farbe:"#E98776",
-      text:"Alles, was du zuletzt falsch hattest. Liegt vorne im Kasten, bis es sitzt."});
+  const alle=DECKS.concat([SONDERDECKS.gemischt,SONDERDECKS.schwer]);
+  if(S.fehler.length) alle.push(SONDERDECKS.fehler);
 
   $("stapel-liste").innerHTML=alle.map(d=>{
     const z=deckZahlen(d.k);
@@ -1112,7 +1621,7 @@ function starteRunde(k){
   const jetzt=Date.now();
   const faellige=pool.filter(i=>S.items[i.id]&&S.items[i.id].d<=jetzt)
                      .sort((a,b)=>S.items[a.id].d-S.items[b.id].d);
-  const neue=mische(pool.filter(i=>!S.items[i.id]));
+  const neue=mische(pool.filter(i=>!S.items[i.id])).sort((a,b)=>(a.schwer?1:0)-(b.schwer?1:0));
   const rest=mische(pool.filter(i=>S.items[i.id]&&S.items[i.id].d>jetzt));
   let liste=faellige.concat(neue).slice(0,RUNDENLAENGE);
   if(liste.length<RUNDENLAENGE) liste=liste.concat(rest.slice(0,RUNDENLAENGE-liste.length));
@@ -1134,6 +1643,7 @@ function zeigeKarte(mitAnimation){
   const f=fach(k.id);
   let kopf='<div class="karte-reiter" style="--reiter:'+d.farbe+'">'+
     '<span class="punkt"></span><span>'+esc(d.name)+'</span>'+
+    (k.schwer?'<span class="schwer-marke">schwer</span>':'')+
     '<span class="fach-zeiger">'+(f===0?"neue Karte":"Fach "+f)+'</span></div>';
 
   let koerper="";
@@ -1231,7 +1741,7 @@ function antworte(k,wert){
 
   if(ok){
     lauf.richtig++;lauf.serie++;S.totalRichtig++;
-    S.xp+=10+(z.b===5&&fachVorher<5?15:0);
+    S.xp+=(k.schwer?15:10)+(z.b===5&&fachVorher<5?15:0);
     if(lauf.serie>S.besteSerie)S.besteSerie=lauf.serie;
     const w=S.fehler.indexOf(k.id);if(w>-1)S.fehler.splice(w,1);
   }else{
@@ -1312,8 +1822,7 @@ function zeigeBilanz(){
   const quote=gesamt?Math.round(lauf.richtig/gesamt*100):0;
   $("runde-balken").style.width="100%";
   $("runde-zaehler").textContent="fertig";
-  const name=lauf.deck==="gemischt"?"Alles gemischt":
-             lauf.deck==="fehler"?"Fehlerstapel":DECK_NACH_K[lauf.deck].name;
+  const name=deckName(lauf.deck);
   karte.className="karte rein";
   karte.innerHTML=
     '<div class="karte-reiter"><span>Runde beendet</span>'+
@@ -1336,7 +1845,7 @@ function zeigeBilanz(){
 
 /* ---------- Fortschritt ---------- */
 function zeigeFortschritt(){
-  $("f-themen").innerHTML=DECKS.map(d=>{
+  $("f-themen").innerHTML=DECKS.concat([SONDERDECKS.schwer]).map(d=>{
     const z=deckZahlen(d.k);
     return '<div class="thema" style="--reiter:'+d.farbe+'">'+
       '<div class="thema-name"><span class="punkt"></span>'+esc(d.name)+'</div>'+
