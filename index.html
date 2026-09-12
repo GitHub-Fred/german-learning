@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karteikasten - Deutsche Grammatik üben</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Perfekt mit haben und sein, der/die/das, Präpositionen und reflexive Verben üben. Mit Karteikasten-System und Fortschritt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --schiefer:#1B2027;
+  --schiefer-2:#232B34;
+  --schiefer-3:#2E3946;
+  --linie:#3A4654;
+  --kreide:#E9E5DC;
+  --kreide-leise:#94A0AD;
+  --papier:#F4EFE3;
+  --papier-2:#E6DDC9;
+  --papier-3:#D6CAB0;
+  --tinte:#22262B;
+  --tinte-leise:#6E6355;
+  --rand:#C2503F;
+  --messing:#D9A441;
+  --der:#3E7BD6;
+  --die:#C8437A;
+  --das:#2E9E76;
+  --schrift-ui:"Barlow Condensed","Roboto Condensed","Arial Narrow",sans-serif;
+  --schrift-text:"Source Serif 4","Iowan Old Style","Georgia",serif;
+  --rail:58px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--schiefer);
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, #273140 0%, transparent 60%),
+    repeating-linear-gradient(107deg, rgba(255,255,255,.012) 0 2px, transparent 2px 7px);
+  color:var(--kreide);
+  font-family:var(--schrift-ui);
+  font-size:17px;
+  line-height:1.45;
+  min-height:100vh;
+  min-height:100dvh;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-weight:600;letter-spacing:.005em;margin:0}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--messing);outline-offset:3px;border-radius:2px}
+.nur-screenreader{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Oberleiste ---------- */
+.leiste{
+  position:sticky;top:0;z-index:30;
+  height:var(--rail);
+  display:flex;align-items:center;gap:18px;
+  padding:0 22px;
+  background:rgba(27,32,39,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--linie);
+}
+.marke{
+  font-size:22px;font-weight:600;letter-spacing:.02em;
+  display:flex;align-items:baseline;gap:9px;margin-right:auto;
+}
+.marke b{font-weight:600}
+.marke span{font-size:14px;color:var(--kreide-leise);font-weight:400}
+.werte{display:flex;align-items:center;gap:6px}
+.wert{
+  display:flex;align-items:baseline;gap:5px;
+  padding:4px 10px;border-radius:2px;
+  font-size:15px;color:var(--kreide-leise);
+  white-space:nowrap;
+}
+.wert b{font-size:19px;font-weight:600;color:var(--kreide);font-variant-numeric:tabular-nums}
+.wert.flamme b{color:var(--messing)}
+.zurueck{
+  font-size:16px;color:var(--kreide-leise);padding:6px 10px;border:1px solid var(--linie);border-radius:2px;
+}
+.zurueck:hover{color:var(--kreide);border-color:var(--kreide-leise)}
+
+/* ---------- Grundraster ---------- */
+.buehne{max-width:1020px;margin:0 auto;padding:34px 22px 90px}
+[hidden]{display:none !important}
+
+/* ---------- Startseite ---------- */
+.aufmacher{margin-bottom:38px;max-width:56ch}
+.aufmacher h1{font-size:clamp(34px,5.5vw,52px);line-height:1.04;letter-spacing:-.01em}
+.aufmacher p{
+  font-family:var(--schrift-text);font-size:18px;line-height:1.6;
+  color:var(--kreide-leise);margin:14px 0 0;
+}
+
+/* Der Kasten mit fünf Fächern */
+.kasten{
+  border:1px solid var(--linie);
+  border-radius:3px;
+  background:linear-gradient(180deg,var(--schiefer-2),#1D232B);
+  padding:20px 20px 16px;
+  margin-bottom:34px;
+}
+.kasten-kopf{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.kasten-kopf h2{font-size:21px}
+.kasten-kopf p{margin:0;font-size:16px;color:var(--kreide-leise)}
+.kasten-kopf em{font-style:normal;color:var(--messing);font-weight:600}
+.faecher{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:end}
+.fach{display:flex;flex-direction:column;gap:8px}
+.stapel{
+  height:96px;
+  display:flex;flex-direction:column;justify-content:flex-end;gap:3px;
+  padding:5px 4px;
+  background:#1A1F26;
+  border:1px solid var(--linie);
+  border-top:none;
+  border-radius:0 0 2px 2px;
+  overflow:hidden;
+}
+.blatt{height:4px;border-radius:1px;background:var(--papier-3);opacity:.85}
+.blatt:first-child{opacity:1;height:5px}
+.fach:nth-child(1) .blatt{background:#8C93A0}
+.fach:nth-child(2) .blatt{background:#A7A79C}
+.fach:nth-child(3) .blatt{background:#C3BCA4}
+.fach:nth-child(4) .blatt{background:#DCCFAC}
+.fach:nth-child(5) .blatt{background:var(--messing)}
+.fach-schild{display:flex;align-items:baseline;gap:7px;font-size:15px;color:var(--kreide-leise)}
+.fach-schild b{font-size:18px;color:var(--kreide);font-variant-numeric:tabular-nums}
+.fach-leer{font-size:14px;color:#5E6975;text-align:center;padding-bottom:6px}
+
+/* Stapel / Decks */
+.stapel-liste{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px}
+.deck{
+  position:relative;
+  display:flex;flex-direction:column;
+  text-align:left;
+  padding:18px 18px 16px;
+  background:var(--schiefer-2);
+  border:1px solid var(--linie);
+  border-left:4px solid var(--reiter,var(--kreide-leise));
+  border-radius:3px;
+  transition:background .12s,border-color .12s;
+}
+.deck:hover{background:var(--schiefer-3)}
+.deck-kopf{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.deck h3{font-size:20px}
+.deck-faellig{
+  font-size:14px;font-weight:600;color:var(--schiefer);
+  background:var(--messing);border-radius:2px;padding:1px 7px;
+  font-variant-numeric:tabular-nums;
+}
+.deck-faellig.ruhig{background:none;color:var(--kreide-leise);padding:1px 0;font-weight:400}
+.deck p{
+  margin:7px 0 16px;font-family:var(--schrift-text);font-size:15px;line-height:1.55;
+  color:var(--kreide-leise);
+}
+.deck-fuss{display:flex;align-items:center;gap:11px;margin-top:auto;font-size:15px;color:var(--kreide-leise)}
+.balken{flex:1;height:5px;background:#161B21;border-radius:3px;overflow:hidden}
+.balken i{display:block;height:100%;background:var(--reiter,var(--messing));border-radius:3px;transition:width .4s ease}
+.deck-fuss b{font-variant-numeric:tabular-nums;color:var(--kreide);font-weight:600;min-width:4ch;text-align:right}
+
+/* ---------- Runde: Karte ---------- */
+.runde{max-width:760px;margin:0 auto}
+.runde-kopf{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.runde-kopf .balken{height:6px}
+.runde-zaehler{font-size:16px;color:var(--kreide-leise);font-variant-numeric:tabular-nums;white-space:nowrap}
+.kartenfeld{position:relative;padding:6px 0 8px}
+.kartenfeld::before,.kartenfeld::after{
+  content:"";position:absolute;left:14px;right:14px;
+  background:var(--papier-2);border-radius:3px;
+}
+.kartenfeld::before{top:0;bottom:0;transform:rotate(1.15deg);opacity:.45;
+  box-shadow:0 8px 20px rgba(8,11,15,.45)}
+.kartenfeld::after{top:0;bottom:0;transform:rotate(-.7deg);opacity:.7;
+  box-shadow:0 8px 20px rgba(8,11,15,.4)}
+
+.karte{
+  position:relative;z-index:2;
+  background:
+    linear-gradient(180deg,#F7F3E9,var(--papier) 22%,#EFE9DA);
+  color:var(--tinte);
+  border-radius:3px;
+  padding:30px 32px 28px 40px;
+  box-shadow:0 1px 0 #FCFAF4 inset, 0 14px 34px rgba(8,11,15,.55), 0 3px 8px rgba(8,11,15,.4);
+  min-height:268px;
+  display:flex;flex-direction:column;
+}
+.karte::before{
+  content:"";position:absolute;top:0;bottom:0;left:24px;width:1px;
+  background:var(--rand);opacity:.55;
+}
+.karte-reiter{
+  display:flex;align-items:center;gap:9px;
+  font-size:14px;color:var(--tinte-leise);
+  margin-bottom:16px;
+}
+.karte-reiter .punkt{width:7px;height:7px;border-radius:50%;background:var(--reiter,var(--tinte-leise))}
+.karte-reiter .fach-zeiger{margin-left:auto;font-variant-numeric:tabular-nums}
+
+.frage{
+  font-family:var(--schrift-text);
+  font-size:clamp(22px,3.3vw,30px);
+  line-height:1.42;
+  margin:0 0 6px;
+  font-weight:400;
+  color:var(--tinte);
+}
+.frage .luecke{
+  display:inline-block;min-width:3.4em;
+  border-bottom:2px solid var(--rand);
+  margin:0 .12em;vertical-align:baseline;
+}
+.frage em{font-style:italic;color:#9A4436}
+.anweisung{
+  font-size:15px;color:var(--tinte-leise);margin:0 0 20px;
+}
+
+/* Antworten */
+.antworten{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.antworten.zweispaltig{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.wahl{
+  position:relative;
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;
+  font-family:var(--schrift-text);font-size:19px;
+  color:var(--tinte);
+  background:#FBF8F0;
+  border:1.5px solid var(--papier-3);
+  border-radius:2px;
+  text-align:left;
+  transition:background .11s,border-color .11s,transform .11s;
+}
+.wahl:hover:not(:disabled){background:#fff;border-color:var(--tinte-leise)}
+.wahl:disabled{cursor:default}
+.wahl kbd{
+  font-family:var(--schrift-ui);font-size:13px;
+  color:var(--tinte-leise);background:var(--papier-2);
+  border-radius:2px;padding:1px 6px;min-width:19px;text-align:center;
+}
+.wahl.geschlecht{border-left-width:5px;border-left-color:var(--g)}
+.wahl.gewaehlt{border-color:var(--tinte);background:#fff}
+.wahl.richtig{border-color:var(--das);background:#E7F4EE}
+.wahl.falsch{border-color:var(--rand);background:#F9E9E5}
+.wahl .marker{margin-left:auto;font-size:15px;font-weight:600;font-family:var(--schrift-ui)}
+.antworten .wahl.geschlecht{border-left-color:var(--g)}
+.wahl.richtig .marker{color:#1F7A57}
+.wahl.falsch .marker{color:#A63A29}
+
+/* Eingabefeld */
+.eingabe-zeile{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.eingabe{
+  flex:1;min-width:190px;
+  font-family:var(--schrift-text);font-size:21px;
+  color:var(--tinte);
+  background:#FBF8F0;
+  border:1.5px solid var(--papier-3);
+  border-bottom:2px solid var(--tinte-leise);
+  border-radius:2px;
+  padding:11px 14px;
+}
+.eingabe::placeholder{color:#A9A091}
+.eingabe:focus{outline:none;border-color:var(--tinte);background:#fff}
+.eingabe.richtig{border-color:var(--das);background:#E7F4EE}
+.eingabe.falsch{border-color:var(--rand);background:#F9E9E5}
+.umlaute{display:flex;gap:6px;margin-top:12px}
+.umlaute button{
+  font-family:var(--schrift-text);font-size:17px;
+  padding:5px 11px;border:1px solid var(--papier-3);border-radius:2px;
+  background:#FBF8F0;color:var(--tinte-leise);
+}
+.umlaute button:hover{color:var(--tinte);border-color:var(--tinte-leise)}
+
+/* Satzbau */
+.bauplatz{
+  min-height:62px;
+  display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;
+  padding:12px;margin-bottom:14px;
+  border:1.5px dashed var(--papier-3);border-radius:2px;
+  background:rgba(255,255,255,.4);
+}
+.bauplatz:empty::before{
+  content:"Wörter hier anordnen";color:#A9A091;font-size:15px;font-family:var(--schrift-ui);
+}
+.vorrat{display:flex;flex-wrap:wrap;gap:8px}
+.wortchip{
+  font-family:var(--schrift-text);font-size:19px;
+  padding:7px 13px;
+  background:#FBF8F0;border:1.5px solid var(--papier-3);border-radius:2px;
+  color:var(--tinte);
+  transition:background .1s,border-color .1s,opacity .1s;
+}
+.wortchip:hover:not(:disabled){background:#fff;border-color:var(--tinte-leise)}
+.wortchip:disabled{opacity:.32;cursor:default}
+.bauplatz .wortchip{background:#fff;border-color:var(--tinte-leise)}
+
+/* Rückmeldung */
+.rueckmeldung{
+  margin-top:16px;padding-top:16px;
+  border-top:1px solid var(--papier-3);
+}
+.rueckmeldung h3{
+  font-size:20px;letter-spacing:.01em;margin-bottom:6px;
+  display:flex;align-items:center;gap:9px;
+}
+.rueckmeldung.ja h3{color:#1F7A57}
+.rueckmeldung.nein h3{color:#A63A29}
+.rueckmeldung p{
+  margin:0;font-family:var(--schrift-text);font-size:16px;line-height:1.6;color:#4A4237;
+}
+.rueckmeldung p+p{margin-top:7px}
+.rueckmeldung .loesung{font-size:19px;color:var(--tinte)}
+.rueckmeldung .loesung b{font-weight:600;box-shadow:inset 0 -.4em 0 rgba(217,164,65,.35)}
+.regel{
+  margin-top:12px;padding:11px 14px;
+  background:rgba(217,164,65,.14);
+  border-left:3px solid var(--messing);
+  border-radius:0 2px 2px 0;
+  font-family:var(--schrift-text);font-size:15.5px;line-height:1.55;color:#4A4237;
+}
+.regel b{font-weight:600;color:var(--tinte)}
+
+.karte-fuss{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:22px;
+}
+.knopf{
+  padding:11px 22px;border-radius:2px;
+  font-size:18px;font-weight:500;letter-spacing:.01em;
+  background:var(--tinte);color:var(--papier);
+  transition:background .12s;
+}
+.knopf:hover{background:#3A4048}
+.knopf.hell{background:var(--messing);color:#221B0C}
+.knopf.hell:hover{background:#E8B554}
+.knopf.leise{background:none;color:var(--tinte-leise);border:1px solid var(--papier-3)}
+.knopf.leise:hover{background:#FBF8F0;color:var(--tinte)}
+.knopf.gross{font-size:19px;padding:13px 26px}
+.tastenhinweis{font-size:14px;color:var(--tinte-leise);margin-left:auto}
+.tastenhinweis kbd{background:var(--papier-2);border-radius:2px;padding:1px 6px;font-family:var(--schrift-ui)}
+@media (max-width:560px){.tastenhinweis{display:none}}
+
+/* Rundenbilanz */
+.bilanz{text-align:left}
+.bilanz .zahl{
+  font-size:clamp(54px,11vw,86px);line-height:.95;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--tinte);
+}
+.bilanz .zahl small{font-size:.34em;color:var(--tinte-leise);font-weight:400;margin-left:6px}
+.bilanz-zeilen{margin:20px 0 0;padding:0;list-style:none;font-size:16px}
+.bilanz-zeilen li{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:8px 0;border-bottom:1px solid var(--papier-2);color:var(--tinte-leise);
+}
+.bilanz-zeilen b{color:var(--tinte);font-variant-numeric:tabular-nums;font-weight:600}
+
+/* ---------- Fortschritt ---------- */
+.abschnitt{margin-bottom:38px}
+.abschnitt>h2{
+  font-size:22px;margin-bottom:4px;
+}
+.abschnitt>p.unter{
+  margin:0 0 18px;font-size:16px;color:var(--kreide-leise);font-family:var(--schrift-text);
+}
+.thema-liste{display:flex;flex-direction:column;gap:2px}
+.thema{
+  display:grid;grid-template-columns:1fr 2fr auto;align-items:center;gap:16px;
+  padding:14px 2px;border-bottom:1px solid var(--linie);
+}
+.thema-name{font-size:18px;display:flex;align-items:center;gap:9px}
+.thema-name .punkt{width:8px;height:8px;border-radius:50%;background:var(--reiter)}
+.thema-zahl{font-size:15px;color:var(--kreide-leise);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.thema-zahl b{color:var(--kreide);font-size:18px;font-weight:600}
+@media (max-width:640px){
+  .thema{grid-template-columns:1fr auto;gap:8px 12px}
+  .thema .balken{grid-column:1/-1;order:3}
+}
+
+.kalender{display:flex;gap:4px;flex-wrap:wrap;max-width:540px}
+.woche{display:flex;flex-direction:column;gap:4px}
+.tag{
+  width:15px;height:15px;border-radius:2px;
+  background:#20262E;border:1px solid #2B333D;
+}
+.tag.s1{background:#5C4A24;border-color:#6B5729}
+.tag.s2{background:#9C7B2F;border-color:#AD8934}
+.tag.s3{background:var(--messing);border-color:#E4B355}
+.tag.heute{box-shadow:0 0 0 2px var(--kreide)}
+.kalender-legende{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;color:var(--kreide-leise)}
+.kalender-legende .tag{width:12px;height:12px}
+
+.abzeichen{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.abzeichen article{
+  padding:14px 16px;border:1px solid var(--linie);border-radius:3px;
+  background:var(--schiefer-2);opacity:.4;
+}
+.abzeichen article.hat{opacity:1;border-color:var(--messing);background:rgba(217,164,65,.09)}
+.abzeichen h3{font-size:17px;margin-bottom:3px}
+.abzeichen article.hat h3{color:var(--messing)}
+.abzeichen p{margin:0;font-size:15px;color:var(--kreide-leise);font-family:var(--schrift-text);line-height:1.5}
+
+.werkzeuge{display:flex;gap:10px;flex-wrap:wrap}
+.dunkelknopf{
+  padding:10px 18px;border:1px solid var(--linie);border-radius:2px;
+  font-size:17px;color:var(--kreide-leise);background:var(--schiefer-2);
+  transition:color .12s,border-color .12s;
+}
+.dunkelknopf:hover{color:var(--kreide);border-color:var(--kreide-leise)}
+.dunkelknopf.warnung:hover{color:#E98776;border-color:#8C4437}
+.hinweiszeile{margin:12px 0 0;font-size:15px;color:var(--kreide-leise);font-family:var(--schrift-text)}
+.hinweiszeile[data-ton="gut"]{color:var(--messing)}
+
+/* Aufsteiger-Meldung */
+.meldung{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%);
+  z-index:50;
+  display:flex;align-items:center;gap:12px;
+  padding:12px 20px;
+  background:var(--messing);color:#221B0C;
+  border-radius:3px;font-size:17px;font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  animation:auftauchen .28s cubic-bezier(.2,.9,.3,1.2);
+  max-width:calc(100vw - 32px);
+}
+@keyframes auftauchen{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
+
+/* Bewegung der Karte */
+@keyframes karte-rein{
+  from{opacity:0;transform:translateY(16px) rotate(-.8deg)}
+  to{opacity:1;transform:none}
+}
+@keyframes karte-raus{
+  to{opacity:0;transform:translateX(-46px) rotate(-2.2deg)}
+}
+.karte.rein{animation:karte-rein .26s cubic-bezier(.2,.85,.3,1)}
+.karte.raus{animation:karte-raus .17s ease-in forwards}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+@media (max-width:620px){
+  :root{--rail:52px}
+  .buehne{padding:24px 15px 80px}
+  .karte{padding:24px 20px 24px 30px}
+  .karte::before{left:17px}
+  .marke span{display:none}
+  .wert{padding:4px 6px;font-size:14px}
+  .faecher{gap:6px}
+  .stapel{height:74px}
+  .fach-schild{font-size:13px;flex-direction:column;align-items:flex-start;gap:0}
+}
+</style>
+</head>
+<body>
+
+<header class="leiste">
+  <div class="marke"><b>Karteikasten</b><span>Deutsche Grammatik</span></div>
+  <div class="werte" id="werte">
+    <button class="zurueck" id="knopf-zurueck" hidden>Runde beenden</button>
+    <div class="wert flamme" title="Tage in Folge geübt"><b id="w-streak">0</b><span id="w-streak-wort">Tage</span></div>
+    <div class="wert" title="Gesammelte Punkte"><b id="w-xp">0</b>Punkte</div>
+    <button class="wert" id="knopf-fortschritt" title="Fortschritt ansehen">Stufe <b id="w-stufe">1</b></button>
+  </div>
+</header>
+
+<main class="buehne">
+
+<!-- ============ Startseite ============ -->
+<section id="s-start">
+  <div class="aufmacher">
+    <h1 id="gruss">Vier Stapel, ein Kasten.</h1>
+    <p id="gruss-text">Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.</p>
+  </div>
+
+  <div class="kasten">
+    <div class="kasten-kopf">
+      <h2>Dein Kasten</h2>
+      <p id="kasten-lage">Noch keine Karte gezogen.</p>
+    </div>
+    <div class="faecher" id="faecher"></div>
+  </div>
+
+  <h2 class="nur-screenreader">Stapel wählen</h2>
+  <div class="stapel-liste" id="stapel-liste"></div>
+</section>
+
+<!-- ============ Runde ============ -->
+<section id="s-runde" hidden>
+  <div class="runde">
+    <div class="runde-kopf">
+      <div class="balken"><i id="runde-balken" style="width:0%"></i></div>
+      <div class="runde-zaehler" id="runde-zaehler">1 von 16</div>
+    </div>
+    <div class="kartenfeld">
+      <article class="karte" id="karte" aria-live="polite"></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Fortschritt ============ -->
+<section id="s-fortschritt" hidden>
+  <div class="aufmacher">
+    <h1>Fortschritt</h1>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Stapel</h2>
+    <p class="unter">Beherrscht heißt: die Karte liegt in Fach 4 oder 5.</p>
+    <div class="thema-liste" id="f-themen"></div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Die letzten acht Wochen</h2>
+    <p class="unter">Ein Kästchen pro Tag. Je heller, desto mehr Karten.</p>
+    <div class="kalender" id="f-kalender"></div>
+    <div class="kalender-legende">
+      <span>wenig</span>
+      <span class="tag"></span><span class="tag s1"></span><span class="tag s2"></span><span class="tag s3"></span>
+      <span>viel</span>
+    </div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Abzeichen</h2>
+    <p class="unter" id="f-abzeichen-zahl"></p>
+    <div class="abzeichen" id="f-abzeichen"></div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Daten</h2>
+    <p class="unter">Dein Fortschritt liegt nur in diesem Browser. Sichere ihn als Datei, wenn du den Rechner wechselst.</p>
+    <div class="werkzeuge">
+      <button class="dunkelknopf" id="k-export">Fortschritt sichern</button>
+      <button class="dunkelknopf" id="k-import">Fortschritt laden</button>
+      <button class="dunkelknopf warnung" id="k-reset">Alles zurücksetzen</button>
+      <input type="file" id="datei-eingabe" accept="application/json" hidden>
+    </div>
+    <p class="hinweiszeile" id="daten-hinweis" hidden></p>
+  </div>
+</section>
+
+</main>
+<script>
+"use strict";
+
+/* =====================================================================
+   Inhalt
+   ===================================================================== */
+
+/* Perfekt: [Infinitiv, Partizip II, h|s, Person, Satz mit % für das Hilfsverb,
+             1 = auch das Partizip abfragen, Hinweis] */
+const D_PERFEKT = [
+["gehen","gegangen","s","ich","Ich % gestern früh nach Hause gegangen.",1,"gehen zeigt eine Bewegung von A nach B - deshalb sein."],
+["laufen","gelaufen","s","ich","Ich % heute zehn Kilometer gelaufen.",1,"Bewegung mit Ziel oder Strecke: sein."],
+["fahren","gefahren","s","wir","Wir % mit dem Zug nach Hamburg gefahren.",1,"Ohne Objekt: sein."],
+["fahren","gefahren","h","er","Er % den neuen Wagen zum ersten Mal gefahren.",0,"Mit Akkusativobjekt (den Wagen) wird fahren zu haben. Dasselbe gilt für fliegen und schwimmen."],
+["fliegen","geflogen","s","sie","Sie % im Juli nach Kanada geflogen.",1,""],
+["kommen","gekommen","s","du","Du % viel zu spät gekommen.",1,""],
+["ankommen","angekommen","s","er","Der Zug % pünktlich angekommen.",1,""],
+["reisen","gereist","s","wir","Wir % im Sommer durch Italien gereist.",0,""],
+["schwimmen","geschwommen","s","ich","Ich % jeden Morgen im See geschwommen.",1,""],
+["steigen","gestiegen","s","er","Der Preis % schon wieder gestiegen.",1,"Auch ohne echte Bewegung: steigen heißt Zustandswechsel."],
+["einsteigen","eingestiegen","s","wir","Wir % vorne eingestiegen.",0,""],
+["aussteigen","ausgestiegen","s","ihr","Ihr % eine Station zu früh ausgestiegen.",0,""],
+["umsteigen","umgestiegen","s","ich","Ich % in München umgestiegen.",0,""],
+["springen","gesprungen","s","er","Er % vom Zehnmeterbrett gesprungen.",1,""],
+["rennen","gerannt","s","ich","Ich % bis zur Haltestelle gerannt.",1,"Gemischtes Verb: Vokalwechsel plus -t am Ende."],
+["wandern","gewandert","s","wir","Wir % am Wochenende in den Bergen gewandert.",0,""],
+["klettern","geklettert","s","sie","Die Kinder % auf den Baum geklettert.",0,""],
+["fallen","gefallen","s","er","Das Glas % vom Tisch gefallen.",1,""],
+["aufstehen","aufgestanden","s","ich","Ich % heute um sechs aufgestanden.",1,"Zustandswechsel: vom Liegen zum Stehen."],
+["einschlafen","eingeschlafen","s","er","Er % vor dem Fernseher eingeschlafen.",1,"Zustandswechsel - aber schlafen allein nimmt haben."],
+["aufwachen","aufgewacht","s","ich","Ich % mitten in der Nacht aufgewacht.",0,""],
+["wachsen","gewachsen","s","du","Du % im letzten Jahr enorm gewachsen.",1,""],
+["sterben","gestorben","s","er","Sein Großvater % im Winter gestorben.",1,""],
+["werden","geworden","s","sie","Sie % Ärztin geworden.",1,"werden heißt Zustandswechsel und nimmt immer sein."],
+["bleiben","geblieben","s","wir","Wir % noch eine Stunde geblieben.",1,"bleiben ist keine Bewegung, nimmt aber trotzdem sein. Merk dir sein, bleiben, werden als Dreiergruppe."],
+["sein","gewesen","s","ich","Ich % noch nie in Wien gewesen.",1,"sein, bleiben, werden: alle drei mit sein."],
+["passieren","passiert","s","er","Auf der Autobahn % ein Unfall passiert.",0,"passieren, geschehen, gelingen: Dinge, die von selbst geschehen, nehmen sein."],
+["geschehen","geschehen","s","er","Hier % etwas Merkwürdiges geschehen.",1,""],
+["gelingen","gelungen","s","er","Der Kuchen % dir wirklich gut gelungen.",1,""],
+["begegnen","begegnet","s","ich","Ich % ihm zufällig in der Stadt begegnet.",0,"begegnen nimmt sein und dazu den Dativ: jemandem begegnen."],
+["folgen","gefolgt","s","wir","Wir % dem Wegweiser gefolgt.",0,"folgen nimmt sein und den Dativ."],
+["umziehen","umgezogen","s","sie","Sie % letzte Woche nach Berlin umgezogen.",1,""],
+["verschwinden","verschwunden","s","er","Mein Schlüssel % spurlos verschwunden.",1,""],
+["abfahren","abgefahren","s","er","Der Bus % ohne uns abgefahren.",0,""],
+["zurückkommen","zurückgekommen","s","ihr","Ihr % viel zu spät zurückgekommen.",0,""],
+["spazieren gehen","spazieren gegangen","s","wir","Wir % nach dem Essen spazieren gegangen.",0,""],
+["einziehen","eingezogen","s","ich","Ich % im Mai in die neue Wohnung eingezogen.",0,""],
+["aufwachsen","aufgewachsen","s","er","Er % auf dem Land aufgewachsen.",1,""],
+["gewinnen","gewonnen","h","wir","Wir % das Spiel gewonnen.",1,"Es gibt ein Objekt (das Spiel), also haben."],
+["verlieren","verloren","h","ich","Ich % meinen Schlüssel verloren.",1,""],
+["essen","gegessen","h","du","Du % schon wieder nichts gegessen.",1,"Doppeltes ge-: ge-gessen."],
+["trinken","getrunken","h","wir","Wir % den ganzen Abend Tee getrunken.",1,""],
+["lesen","gelesen","h","ich","Ich % das Buch in zwei Tagen gelesen.",1,""],
+["schreiben","geschrieben","h","er","Er % ihr einen langen Brief geschrieben.",1,""],
+["sehen","gesehen","h","ihr","Ihr % den Film schon gesehen.",1,""],
+["sprechen","gesprochen","h","ich","Ich % gestern mit deiner Chefin gesprochen.",1,""],
+["denken","gedacht","h","ich","Ich % den ganzen Tag an dich gedacht.",1,"Gemischt: denken, bringen, kennen, wissen enden auf -t, wechseln aber den Stamm."],
+["bringen","gebracht","h","sie","Sie % uns den Kuchen gebracht.",1,""],
+["kennen","gekannt","h","ich","Ich % ihn schon lange gekannt.",1,""],
+["wissen","gewusst","h","du","Du % das die ganze Zeit gewusst.",1,""],
+["finden","gefunden","h","wir","Wir % endlich eine Wohnung gefunden.",1,""],
+["nehmen","genommen","h","er","Er % den falschen Bus genommen.",1,""],
+["geben","gegeben","h","ich","Ich % ihm meine Nummer gegeben.",1,""],
+["helfen","geholfen","h","ihr","Ihr % mir sehr geholfen.",1,""],
+["treffen","getroffen","h","ich","Ich % sie zufällig im Café getroffen.",1,""],
+["singen","gesungen","h","wir","Wir % den ganzen Weg gesungen.",1,""],
+["tanzen","getanzt","h","sie","Sie % die ganze Nacht getanzt.",0,"Ohne Ziel: haben. Mit Ziel ginge sein: Sie ist durch den Saal getanzt."],
+["schlafen","geschlafen","h","ich","Ich % nur vier Stunden geschlafen.",1,"Schlafen ist ein Zustand, kein Wechsel - deshalb haben. Aber: einschlafen mit sein."],
+["sitzen","gesessen","h","wir","Wir % zwei Stunden im Wartezimmer gesessen.",1,"sitzen, liegen, stehen sind Zustände und nehmen im Standarddeutsch haben."],
+["liegen","gelegen","h","er","Er % den ganzen Sonntag auf dem Sofa gelegen.",1,""],
+["stehen","gestanden","h","ich","Ich % eine Ewigkeit in der Schlange gestanden.",1,""],
+["warten","gewartet","h","du","Du % lange auf mich gewartet.",0,""],
+["anrufen","angerufen","h","sie","Sie % heute schon dreimal angerufen.",1,""],
+["vergessen","vergessen","h","ich","Ich % deinen Geburtstag vergessen.",1,"Verben mit ver-, be-, ent-, er-, zer- bekommen kein ge-."],
+["verstehen","verstanden","h","ihr","Ihr % die Aufgabe nicht verstanden.",1,""],
+["beginnen","begonnen","h","er","Der Kurs % pünktlich begonnen.",1,""],
+["anfangen","angefangen","h","wir","Wir % gestern mit dem Projekt angefangen.",1,""],
+["studieren","studiert","h","sie","Sie % in Leipzig Medizin studiert.",0,"Verben auf -ieren bekommen kein ge-."],
+["telefonieren","telefoniert","h","ich","Ich % eine Stunde mit ihr telefoniert.",0,"Kein ge- bei -ieren."],
+["bezahlen","bezahlt","h","ich","Ich % die Rechnung schon bezahlt.",0,""],
+["besuchen","besucht","h","wir","Wir % am Sonntag meine Eltern besucht.",0,""],
+["tragen","getragen","h","er","Er % den schweren Koffer allein getragen.",1,""],
+["waschen","gewaschen","h","ich","Ich % das Auto am Samstag gewaschen.",1,""],
+["aufräumen","aufgeräumt","h","du","Du % dein Zimmer nie aufgeräumt.",0,"Bei trennbaren Verben steht ge- in der Mitte: auf-ge-räumt."],
+["einkaufen","eingekauft","h","ich","Ich % heute Morgen schon eingekauft.",0,""],
+["fernsehen","ferngesehen","h","wir","Wir % den ganzen Abend ferngesehen.",0,""],
+["arbeiten","gearbeitet","h","sie","Sie % zehn Jahre in derselben Firma gearbeitet.",0,""],
+["verlassen","verlassen","h","er","Er % das Haus um sieben verlassen.",1,""],
+["ziehen","gezogen","h","ich","Ich % fest an der Tür gezogen.",1,""],
+["schließen","geschlossen","h","du","Du % das Fenster nicht geschlossen.",1,""],
+["mitnehmen","mitgenommen","h","sie","Sie % den Regenschirm nicht mitgenommen.",1,""],
+["verkaufen","verkauft","h","wir","Wir % das alte Auto verkauft.",0,""],
+["erklären","erklärt","h","er","Er % mir den Weg zweimal erklärt.",0,""]
+];
+
+/* Satzbau-Aufgaben: [richtige Lösung, weitere gültige Lösungen, Hinweis] */
+const D_SATZBAU = [
+["Ich habe gestern einen Film gesehen.",["Gestern habe ich einen Film gesehen."],"Das Partizip steht ganz am Ende, das Hilfsverb an Position zwei."],
+["Wir sind am Wochenende nach München gefahren.",["Am Wochenende sind wir nach München gefahren."],"Zeit vor Ort: am Wochenende, dann nach München."],
+["Er ist heute Morgen sehr früh aufgestanden.",["Heute Morgen ist er sehr früh aufgestanden."],""],
+["Sie hat mir das Buch zum Geburtstag geschenkt.",[],"Dativ vor Akkusativ: mir vor das Buch."],
+["Hast du den Schlüssel schon gefunden?",[],"In der Frage steht das Hilfsverb ganz vorne."],
+["Ich bin noch nie in Italien gewesen.",[],""],
+["Wir haben das Spiel leider verloren.",["Leider haben wir das Spiel verloren."],""],
+["Bist du mit dem Fahrrad gekommen?",[],""]
+];
+
+/* Regeln für der/die/das */
+const REGELN = {
+tag:"Wochentage, Monate und Jahreszeiten sind <b>maskulin</b>: der Montag, der Januar, der Sommer.",
+wetter:"Himmelsrichtungen und Wetterwörter sind <b>maskulin</b>: der Norden, der Regen, der Wind.",
+er:"Nomen auf <b>-er</b>, die eine Person oder ein Gerät bezeichnen, sind maskulin: der Lehrer, der Computer.",
+el:"Viele Geräte und Gegenstände auf <b>-el</b> sind maskulin: der Löffel, der Schlüssel.",
+ling:"Nomen auf <b>-ling</b> sind maskulin: der Frühling, der Schmetterling.",
+ismus:"Nomen auf <b>-ismus</b> sind maskulin: der Kapitalismus, der Tourismus.",
+or:"Nomen auf <b>-or</b> sind maskulin: der Motor, der Doktor.",
+ant:"Personenbezeichnungen auf <b>-ant, -ent, -ist</b> sind maskulin: der Student, der Polizist.",
+en:"Nomen auf <b>-en</b>, die nicht aus einem Verb kommen, sind meist maskulin: der Garten, der Wagen.",
+ig:"Nomen auf <b>-ig</b> und <b>-ich</b> sind maskulin: der Honig, der Teppich.",
+stamm:"Nomen, die einfach der Verbstamm ohne Endung sind, sind maskulin: der Sprung, der Schlaf, der Beginn.",
+alkohol:"Alkoholische Getränke sind maskulin: der Wein, der Schnaps. Eine Ausnahme: <b>das Bier</b>.",
+ausnr:"Endet auf -e, ist aber trotzdem <b>maskulin</b>. Das musst du einzeln merken.",
+ung:"Nomen auf <b>-ung</b> sind feminin. Ohne Ausnahme.",
+heit:"Nomen auf <b>-heit</b> und <b>-keit</b> sind feminin: die Freiheit, die Möglichkeit.",
+schaft:"Nomen auf <b>-schaft</b> sind feminin: die Freundschaft, die Mannschaft.",
+ion:"Nomen auf <b>-ion</b> sind feminin: die Nation, die Information.",
+taet:"Nomen auf <b>-tät</b> sind feminin: die Universität, die Qualität.",
+ik:"Nomen auf <b>-ik</b> sind feminin: die Musik, die Politik.",
+ur:"Nomen auf <b>-ur</b> sind feminin: die Natur, die Kultur.",
+enz:"Nomen auf <b>-anz</b> und <b>-enz</b> sind feminin: die Distanz, die Konferenz.",
+ei:"Nomen auf <b>-ei</b> sind feminin: die Bäckerei, die Polizei.",
+in:"Die Endung <b>-in</b> macht die weibliche Form: die Lehrerin, die Ärztin.",
+e:"Nomen auf <b>-e</b> sind zu etwa 90 % feminin: die Blume, die Lampe, die Straße.",
+baum:"Bäume und Blumen sind feminin: die Tanne, die Eiche, die Rose. Aber: der Baum.",
+ausner:"Endet auf -er, ist aber <b>feminin</b>. Eine Ausnahme zum Muster.",
+merk:"Hier hilft kein Muster - dieses Wort lernst du einzeln.",
+chen:"<b>-chen</b> und <b>-lein</b> machen jedes Wort zum Neutrum, auch Menschen: das Mädchen.",
+ment:"Nomen auf <b>-ment</b> sind neutrum: das Dokument, das Instrument.",
+um:"Nomen auf <b>-um</b> sind neutrum: das Museum, das Zentrum, das Datum.",
+ma:"Nomen auf <b>-ma</b> sind neutrum: das Thema, das Klima.",
+o:"Fremdwörter auf <b>-o</b> sind neutrum: das Auto, das Kino, das Büro.",
+ge:"Sammelbegriffe mit der Vorsilbe <b>Ge-</b> sind neutrum: das Gemüse, das Gebäude.",
+verbnomen:"Ein Verb, das als Nomen benutzt wird, ist immer neutrum: das Essen, das Leben, das Lernen.",
+farbe:"Farben und Sprachen als Nomen sind neutrum: das Blau, das Deutsch.",
+metall:"Metalle und Stoffe sind neutrum: das Gold, das Silber, das Holz.",
+jung:"Junge Lebewesen sind neutrum: das Kind, das Baby, das Kalb.",
+nis:"Nomen auf <b>-nis</b> sind meist neutrum: das Ergebnis, das Zeugnis.",
+tum:"Nomen auf <b>-tum</b> sind neutrum: das Eigentum, das Wachstum.",
+ausnes:"Endet auf -er, ist aber <b>neutrum</b>. Merk dir die Dreiergruppe: das Wasser, das Fenster, das Messer."
+};
+
+/* Artikel: [Nomen, r|e|s, Regelschlüssel, Zusatz] */
+const D_ARTIKEL = [
+["Montag","r","tag",""],["Januar","r","tag",""],["Sommer","r","tag",""],["Dienstag","r","tag",""],["Winter","r","tag",""],
+["Norden","r","wetter",""],["Regen","r","wetter",""],["Wind","r","wetter",""],["Schnee","r","wetter",""],["Nebel","r","wetter",""],["Süden","r","wetter",""],
+["Computer","r","er",""],["Fernseher","r","er",""],["Lehrer","r","er",""],["Kühlschrank","r","merk",""],
+["Löffel","r","el",""],["Schlüssel","r","el",""],["Apfel","r","el",""],
+["Frühling","r","ling",""],["Schmetterling","r","ling",""],
+["Kapitalismus","r","ismus",""],["Motor","r","or",""],["Doktor","r","or",""],
+["Student","r","ant",""],["Polizist","r","ant",""],["Elefant","r","ant",""],
+["Garten","r","en",""],["Wagen","r","en",""],
+["Honig","r","ig",""],["Teppich","r","ig",""],
+["Sprung","r","stamm",""],["Schlaf","r","stamm",""],["Beginn","r","stamm",""],["Besuch","r","stamm",""],["Verkauf","r","stamm",""],
+["Wein","r","alkohol",""],
+["Käse","r","ausnr","Stell dir die Dreiergruppe vor: der Käse, der Name, der Junge."],
+["Junge","r","ausnr",""],["Name","r","ausnr",""],
+["Zeitung","e","ung",""],["Wohnung","e","ung",""],["Rechnung","e","ung",""],["Meinung","e","ung",""],["Übung","e","ung",""],["Erfahrung","e","ung",""],
+["Freiheit","e","heit",""],["Krankheit","e","heit",""],["Gesundheit","e","heit",""],["Möglichkeit","e","heit",""],["Schwierigkeit","e","heit",""],
+["Freundschaft","e","schaft",""],["Mannschaft","e","schaft",""],["Wissenschaft","e","schaft",""],
+["Nation","e","ion",""],["Information","e","ion",""],["Situation","e","ion",""],["Wohnungsbesichtigung","e","ung","Bei zusammengesetzten Wörtern zählt immer das letzte Wort."],
+["Universität","e","taet",""],["Qualität","e","taet",""],
+["Musik","e","ik",""],["Politik","e","ik",""],
+["Natur","e","ur",""],["Kultur","e","ur",""],
+["Distanz","e","enz",""],["Konferenz","e","enz",""],
+["Bäckerei","e","ei",""],["Polizei","e","ei",""],
+["Lehrerin","e","in",""],
+["Blume","e","e",""],["Lampe","e","e",""],["Straße","e","e",""],["Sprache","e","e",""],["Frage","e","e",""],["Katze","e","e",""],["Hilfe","e","e",""],
+["Tanne","e","baum",""],["Eiche","e","baum",""],["Rose","e","baum",""],
+["Butter","e","ausner",""],
+["Zeit","e","merk",""],["Arbeit","e","merk",""],["Antwort","e","merk",""],
+["Mädchen","s","chen","Nicht die - die Endung ist stärker als die Bedeutung."],
+["Brötchen","s","chen",""],["Märchen","s","chen",""],["Fräulein","s","chen",""],
+["Dokument","s","ment",""],["Instrument","s","ment",""],
+["Museum","s","um",""],["Zentrum","s","um",""],["Datum","s","um",""],
+["Thema","s","ma",""],["Klima","s","ma",""],
+["Auto","s","o",""],["Büro","s","o",""],["Kino","s","o",""],["Foto","s","o",""],["Radio","s","o",""],
+["Gebäude","s","ge",""],["Gespräch","s","ge",""],["Gemüse","s","ge",""],["Geschenk","s","ge",""],
+["Essen","s","verbnomen",""],["Leben","s","verbnomen",""],["Lernen","s","verbnomen",""],
+["Blau","s","farbe",""],["Deutsch","s","farbe",""],
+["Gold","s","metall",""],["Silber","s","metall",""],
+["Kind","s","jung",""],["Baby","s","jung",""],
+["Ergebnis","s","nis",""],["Zeugnis","s","nis",""],["Eigentum","s","tum",""],
+["Wasser","s","ausnes",""],["Fenster","s","ausnes",""],["Messer","s","ausnes",""],
+["Bier","s","alkohol","Die einzige Ausnahme bei den alkoholischen Getränken."]
+];
+
+/* Präpositionen: [Satz mit % als Lücke, richtig, Ablenker, Erklärung] */
+const D_PRAEP = [
+["Die Brille sitzt % Nase.","auf der",["auf die","auf den"],"Wo? Nichts bewegt sich - also <b>Dativ</b>."],
+["Ich setze die Brille % Nase.","auf die",["auf der","auf dem"],"Wohin? Es gibt eine Bewegung zum Ziel - also <b>Akkusativ</b>."],
+["Das Buch liegt % Tisch.","auf dem",["auf den","auf das"],"Wo? Dativ. liegen beschreibt einen Zustand."],
+["Ich lege das Buch % Tisch.","auf den",["auf dem","auf der"],"Wohin? Akkusativ. legen beschreibt eine Bewegung."],
+["Die Lampe hängt % Decke.","an der",["an die","an das"],"Wo? Dativ."],
+["Wir hängen das Bild % Wand.","an die",["an der","an dem"],"Wohin? Akkusativ."],
+["Die Kinder spielen % Garten.","im",["in den","in dem Garten hinein"],"Wo? Dativ. <b>im</b> ist die Kurzform von in dem."],
+["Die Kinder laufen % Garten.","in den",["im","in der"],"Wohin? Akkusativ."],
+["Der Mantel hängt % Schrank.","im",["in den","in die"],"Wo? Dativ."],
+["Häng den Mantel bitte % Schrank.","in den",["im","in dem"],"Wohin? Akkusativ."],
+["Die Katze schläft % Sofa.","unter dem",["unter das","unter den"],"Wo? Dativ."],
+["Die Katze kriecht % Sofa.","unter das",["unter dem","unter der"],"Wohin? Akkusativ."],
+["Das Auto steht % Haus.","vor dem",["vor das","vor den"],"Wo? Dativ."],
+["Er stellt das Auto % Haus.","vor das",["vor dem","vor der"],"Wohin? Akkusativ."],
+["Der Stuhl steht % Fenster.","neben dem",["neben das","neben den"],"Wo? Dativ."],
+["Stell den Stuhl bitte % Fenster.","neben das",["neben dem","neben der"],"Wohin? Akkusativ."],
+["Das Bild hängt % Sofa und dem Regal.","zwischen dem",["zwischen das","zwischen den"],"Wo? Dativ."],
+["Das Flugzeug fliegt % Wolken.","über den",["über die","über der"],"Wo? Dativ - im Plural heißt der Dativ <b>den Wolken</b>."],
+["Die Vögel fliegen % Grenze.","über die",["über der","über dem"],"Wohin? Akkusativ."],
+["Der Hund läuft % Haus.","hinter das",["hinter dem","hinter der"],"Wohin? Akkusativ."],
+["Ich % das Buch auf den Tisch.","lege",["liege","legte mich"],"<b>legen</b> braucht ein Objekt und den Akkusativ. <b>liegen</b> beschreibt nur den Zustand."],
+["Das Buch % auf dem Tisch.","liegt",["legt","legt sich"],"Zustand ohne Objekt: liegen mit Dativ."],
+["Ich % die Vase auf das Regal.","stelle",["stehe","stand"],"<b>stellen</b> ist die Handlung, <b>stehen</b> der Zustand."],
+["Die Vase % auf dem Regal.","steht",["stellt","stellt sich"],""],
+["Ich % mich auf den Stuhl.","setze",["sitze","saß"],"<b>sich setzen</b> ist die Bewegung, <b>sitzen</b> der Zustand."],
+["Ich % schon eine Stunde auf dem Stuhl.","sitze",["setze","setze mich"],""],
+["Ich fahre % dem Bus zur Arbeit.","mit",["für","ohne"],"<b>mit</b> steht immer mit Dativ."],
+["Wir kommen gerade % der Arbeit.","von",["aus","für"],"<b>von</b> steht immer mit Dativ."],
+["Nach der Schule gehe ich % meiner Oma.","zu",["nach","bei"],"<b>zu</b> + Dativ: zu Personen geht man zu, nicht nach."],
+["Ich wohne noch % meinen Eltern.","bei",["mit","zu"],"<b>bei</b> + Dativ heißt: im Haus von jemandem."],
+["Ich lerne % einem Jahr Deutsch.","seit",["vor","für"],"<b>seit</b> + Dativ: etwas hat angefangen und läuft noch."],
+["Er kommt % Spanien.","aus",["von","nach"],"Herkunft aus einem Land: <b>aus</b> + Dativ."],
+["% dem Essen trinken wir noch Kaffee.","Nach",["Seit","Bei"],"<b>nach</b> + Dativ."],
+["Wir gehen % den Park.","durch",["in","über"],"<b>durch</b> steht immer mit Akkusativ."],
+["Das Geschenk ist % dich.","für",["zu","mit"],"<b>für</b> steht immer mit Akkusativ."],
+["Ich bin % diesen Vorschlag.","gegen",["für den","von"],"<b>gegen</b> steht immer mit Akkusativ."],
+["Ich trinke den Kaffee % Zucker.","ohne",["außer","von"],"<b>ohne</b> steht immer mit Akkusativ - und ohne Artikel."],
+["Wir sitzen % den Tisch.","um",["an","bei"],"<b>um</b> steht immer mit Akkusativ."],
+["Ich bleibe % nächsten Montag.","bis",["seit","ab"],"<b>bis</b> steht mit Akkusativ."],
+["% des Regens bleiben wir zu Hause.","Wegen",["Trotz","Während"],"<b>wegen</b> + Genitiv nennt den Grund."],
+["% der Pause haben wir telefoniert.","Während",["Wegen","Trotz"],"<b>während</b> + Genitiv nennt den Zeitraum."],
+["% des schlechten Wetters sind wir gewandert.","Trotz",["Wegen","Während"],"<b>trotz</b> + Genitiv: es passiert, obwohl etwas dagegen spricht."],
+["Ich habe heute meine neue Brille %.","auf",["an","um"],"Was auf Kopf oder Nase sitzt, hat man <b>auf</b>: die Brille, den Hut, die Mütze."],
+["Er hat einen dicken Mantel %.","an",["auf","um"],"Kleidung am Körper: <b>anhaben</b>."],
+["Sie hat einen Schal %.","um",["an","auf"],"Was man um den Hals legt: <b>umhaben</b>. Auch: eine Kette umhaben."],
+["Zieh dir bitte die Schuhe %.","an",["auf","um"],"<b>anziehen</b> für Kleidung, <b>aufsetzen</b> für Hut und Brille."],
+["Mir ist zu warm, ich ziehe die Jacke %.","aus",["ab","auf"],"<b>ausziehen</b> ist das Gegenteil von anziehen."],
+["Setz bitte den Helm %.","auf",["an","um"],"<b>aufsetzen</b> für alles, was auf den Kopf kommt."],
+["Nimm im Haus bitte die Mütze %.","ab",["aus","an"],"<b>abnehmen</b> oder <b>absetzen</b> für Hut, Mütze und Brille."],
+["Ich warte schon zwanzig Minuten % Bus.","auf den",["auf dem","für den"],"<b>warten auf</b> + Akkusativ."],
+["Ich freue mich schon % Wochenende.","auf das",["auf dem","über das"],"<b>sich freuen auf</b> + Akkusativ für etwas in der Zukunft. <b>sich freuen über</b> für etwas, das schon passiert ist."],
+["Wir haben lange % Problem gesprochen.","über das",["über dem","von das"],"<b>sprechen über</b> + Akkusativ."],
+["Ich denke oft % meine Großmutter.","an",["über","auf"],"<b>denken an</b> + Akkusativ."],
+["Sie interessiert sich sehr % Geschichte.","für",["an","auf"],"<b>sich interessieren für</b> + Akkusativ."],
+["Ich habe Angst % großen Hunden.","vor",["von","für"],"<b>Angst haben vor</b> + Dativ."],
+["Er hilft mir % den Hausaufgaben.","bei",["mit","an"],"<b>helfen bei</b> + Dativ."],
+["Wir nehmen % dem Kurs teil.","an",["auf","in"],"<b>teilnehmen an</b> + Dativ."],
+["Erinnerst du dich % den Abend?","an",["auf","über"],"<b>sich erinnern an</b> + Akkusativ."],
+["Der Teig besteht % Mehl, Butter und Eiern.","aus",["von","mit"],"<b>bestehen aus</b> + Dativ."],
+["Kümmerst du dich % die Katze?","um",["für","auf"],"<b>sich kümmern um</b> + Akkusativ."],
+["Ich träume % einem Haus am Meer.","von",["über","auf"],"<b>träumen von</b> + Dativ."],
+["Sie ärgert sich % Lärm.","über den",["über dem","von dem"],"<b>sich ärgern über</b> + Akkusativ."],
+["Ich gehöre % Mannschaft.","zur",["zu der Mannschaft hin","für die"],"<b>gehören zu</b> + Dativ. <b>zur</b> ist die Kurzform von zu der."]
+];
+
+/* Reflexive Verben und Dativ-/Akkusativverben */
+const D_REFLEXIV = [
+["Ich freue % auf das Wochenende.","mich",["mir"],"<b>sich freuen</b> hat kein weiteres Objekt - also Akkusativ."],
+["Beeil % bitte, der Zug fährt gleich!","dich",["dir"],"<b>sich beeilen</b> steht immer im Akkusativ."],
+["Ich muss % noch umziehen.","mich",["mir"],"Kein zweites Objekt: Akkusativ."],
+["Setz % bitte.","dich",["dir"],"<b>sich setzen</b>: Akkusativ."],
+["Ich ruhe % eine Stunde aus.","mich",["mir"],"<b>sich ausruhen</b>: Akkusativ."],
+["Hast du % schon entschuldigt?","dich",["dir"],"<b>sich entschuldigen</b>: Akkusativ."],
+["Ich kann % heute nicht konzentrieren.","mich",["mir"],"<b>sich konzentrieren</b>: Akkusativ."],
+["Ich wasche % jeden Morgen.","mich",["mir"],"Ohne zweites Objekt steht das Reflexivpronomen im <b>Akkusativ</b>."],
+["Ich wasche % die Hände.","mir",["mich"],"<b>die Hände</b> ist schon der Akkusativ. Dann rutscht das Reflexivpronomen in den <b>Dativ</b>."],
+["Putzt du % die Zähne?","dir",["dich"],"Zweites Objekt vorhanden (die Zähne) - also Dativ."],
+["Ich kämme % die Haare.","mir",["mich"],"Zweites Objekt vorhanden - also Dativ."],
+["Ich ziehe % schnell an.","mich",["mir"],"Kein zweites Objekt - Akkusativ."],
+["Ich ziehe % die Jacke an.","mir",["mich"],"Zweites Objekt (die Jacke) - Dativ."],
+["Das kann ich % gut vorstellen.","mir",["mich"],"<b>sich etwas vorstellen</b> heißt: es sich denken. Immer Dativ."],
+["Darf ich % kurz vorstellen? Ich heiße Anna.","mich",["mir"],"<b>sich vorstellen</b> heißt hier: seinen Namen sagen. Dann Akkusativ."],
+["Ich merke % deine Nummer.","mir",["mich"],"<b>sich etwas merken</b>: Dativ."],
+["Ich wünsche % ein ruhiges Wochenende.","mir",["mich"],"<b>sich etwas wünschen</b>: Dativ."],
+["Ich sehe % den Film heute Abend an.","mir",["mich"],"<b>sich etwas ansehen</b>: Dativ."],
+["Ich überlege % das noch einmal.","mir",["mich"],"<b>sich etwas überlegen</b>: Dativ."],
+["So ein Auto kann ich % nicht leisten.","mir",["mich"],"<b>sich etwas leisten</b>: Dativ."],
+["Ich mache % Sorgen um dich.","mir",["mich"],"<b>sich Sorgen machen</b>: Dativ. Sorgen ist schon das Akkusativobjekt."],
+["Ich habe % beim Sport wehgetan.","mir",["mich"],"<b>sich wehtun</b>: Dativ."],
+["Erinnerst du % noch an den Sommer?","dich",["dir"],"<b>sich erinnern an</b>: Akkusativ."],
+["Ich habe % erkältet.","mich",["mir"],"<b>sich erkälten</b>: Akkusativ."],
+["Ich habe % sofort in sie verliebt.","mich",["mir"],"<b>sich verlieben</b>: Akkusativ."],
+["Ich langweile % hier ein bisschen.","mich",["mir"],"<b>sich langweilen</b>: Akkusativ."],
+["Entspann % doch mal!","dich",["dir"],"<b>sich entspannen</b>: Akkusativ."],
+["Ich bedanke % für das Geschenk.","mich",["mir"],"<b>sich bedanken für</b>: Akkusativ."],
+["Ich ärgere % über den Regen.","mich",["mir"],"<b>sich ärgern über</b>: Akkusativ."],
+["Ich schäme % ein bisschen.","mich",["mir"],"<b>sich schämen</b>: Akkusativ."],
+["Sie unterhalten % über den Film.","sich",["ihnen","sie"],"In der dritten Person heißt das Reflexivpronomen immer <b>sich</b> - nie ihm, ihr oder ihnen."],
+["Ich helfe % gern.","dir",["dich"],"<b>helfen</b> steht immer mit Dativ. Merk dir: ich helfe dir, aber ich liebe dich."],
+["Ich liebe %.","dich",["dir"],"<b>lieben</b> steht mit Akkusativ."],
+["Ich danke % für alles.","dir",["dich"],"<b>danken</b> steht mit Dativ."],
+["Ich gratuliere % zum Geburtstag.","dir",["dich"],"<b>gratulieren</b> steht mit Dativ."],
+["Antworte % bitte bis morgen.","mir",["mich"],"<b>antworten</b> steht mit Dativ - aber <b>fragen</b> mit Akkusativ."],
+["Das Buch gehört %.","mir",["mich"],"<b>gehören</b> steht mit Dativ."],
+["Die Jacke passt % sehr gut.","dir",["dich"],"<b>passen</b> steht mit Dativ."],
+["Der Kuchen schmeckt % nicht.","mir",["mich"],"<b>schmecken</b> steht mit Dativ."],
+["Das Bild gefällt % sehr.","mir",["mich"],"<b>gefallen</b> steht mit Dativ."],
+["Ich glaube % kein Wort.","dir",["dich"],"<b>glauben</b> steht mit Dativ, wenn es um eine Person geht."],
+["Hör % bitte kurz zu.","mir",["mich"],"<b>zuhören</b> steht mit Dativ."],
+["Ich vertraue % vollkommen.","dir",["dich"],"<b>vertrauen</b> steht mit Dativ."],
+["Du fehlst %.","mir",["mich"],"<b>fehlen</b> steht mit Dativ."],
+["Ich sehe % morgen.","dich",["dir"],"<b>sehen</b> steht mit Akkusativ."],
+["Ich kenne % seit Jahren.","dich",["dir"],"<b>kennen</b> steht mit Akkusativ."],
+["Ich brauche % heute wirklich.","dich",["dir"],"<b>brauchen</b> steht mit Akkusativ."],
+["Ich frage % gleich etwas.","dich",["dir"],"<b>fragen</b> steht mit Akkusativ - anders als antworten."],
+["Ich besuche % am Wochenende.","dich",["dir"],"<b>besuchen</b> steht mit Akkusativ."],
+["Ich rufe % später an.","dich",["dir"],"<b>anrufen</b> steht mit Akkusativ - ohne Präposition."],
+["Ich verstehe % nicht.","dich",["dir"],"<b>verstehen</b> steht mit Akkusativ."],
+["Das tut % wirklich leid.","mir",["mich"],"<b>leidtun</b> steht mit Dativ."]
+];
+
+/* =====================================================================
+   Karten bauen
+   ===================================================================== */
+
+const HABEN={ich:"habe",du:"hast",er:"hat",wir:"haben",ihr:"habt",sie:"haben"};
+const SEIN ={ich:"bin", du:"bist",er:"ist",wir:"sind",ihr:"seid", sie:"sind"};
+const LUECKE='<span class="luecke"></span>';
+
+const DECKS=[
+ {k:"perfekt", name:"Perfekt",           farbe:"#D9A441", text:"Ich habe gewonnen oder ich bin gelaufen? Hilfsverb, Partizip II und die Wortstellung im Satz."},
+ {k:"artikel", name:"Der, die, das",     farbe:"#C2503F", text:"Artikel nach Endungen und Bedeutungsgruppen bestimmen, statt nach Gefühl zu raten."},
+ {k:"praep",   name:"Präpositionen",     farbe:"#5F9EA0", text:"Wo oder wohin, Dativ oder Akkusativ. Dazu Kleidung anhaben und feste Verben mit Präposition."},
+ {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."}
+];
+const DECK_NACH_K={};DECKS.forEach(d=>DECK_NACH_K[d.k]=d);
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function hash(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36);}
+function mische(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function norm(s){
+  return String(s).toLowerCase().trim()
+    .replace(/[.,!?;]+$/,"").replace(/\s+/g," ")
+    .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss");
+}
+
+const ITEMS=[];
+function neueKarte(k){
+  k.id=k.deck+"-"+hash(k.typ+"|"+(k.rohfrage||"")+"|"+(k.richtig||(k.loesungen&&k.loesungen[0])||""));
+  ITEMS.push(k);
+}
+
+D_PERFEKT.forEach(([inf,part,aux,person,satz,drill,hinweis])=>{
+  const hForm=HABEN[person], sForm=SEIN[person], richtig=aux==="h"?hForm:sForm;
+  neueKarte({
+    deck:"perfekt", typ:"wahl",
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"haben oder sein?",
+    optionen:[hForm,sForm], richtig:richtig,
+    erklaerung:(hinweis||(aux==="h"
+      ? "Die meisten Verben nehmen <b>haben</b>."
+      : "Bewegung mit Ziel oder Zustandswechsel: <b>sein</b>."))
+      +" &ndash; Vollständig: "+esc(satz.replace("%",richtig))
+  });
+  if(drill){
+    const mitAux=satz.replace("%",richtig);
+    neueKarte({
+      deck:"perfekt", typ:"tippen",
+      rohfrage:mitAux+"|p",
+      frage:esc(mitAux).replace(esc(part),LUECKE),
+      anweisung:"Partizip II von <i>"+esc(inf)+"</i>",
+      loesungen:[part],
+      erklaerung:(hinweis?hinweis+" &ndash; ":"")+"Vollständig: "+esc(mitAux)
+    });
+  }
+});
+
+D_SATZBAU.forEach(([loesung,alt,hinweis])=>{
+  neueKarte({
+    deck:"perfekt", typ:"bau",
+    rohfrage:loesung,
+    frage:"", anweisung:"Bring die Wörter in die richtige Reihenfolge.",
+    woerter:loesung.replace(/[.?]$/,"").split(" "),
+    schluss:loesung.slice(-1),
+    loesungen:[loesung].concat(alt||[]),
+    erklaerung:hinweis||""
+  });
+});
+
+const ARTIKELWORT={r:"der",e:"die",s:"das"};
+D_ARTIKEL.forEach(([nomen,g,regel,extra])=>{
+  neueKarte({
+    deck:"artikel", typ:"wahl", geschlecht:true,
+    rohfrage:nomen,
+    frage:LUECKE+" "+esc(nomen),
+    anweisung:"Welcher Artikel?",
+    optionen:["der","die","das"], richtig:ARTIKELWORT[g],
+    erklaerung:REGELN[regel]+(extra?" "+esc(extra):"")
+  });
+});
+
+D_PRAEP.forEach(([satz,richtig,falsch,erkl])=>{
+  neueKarte({
+    deck:"praep", typ:"wahl",
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Was passt in die Lücke?",
+    optionen:[richtig].concat(falsch), richtig:richtig,
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",richtig))
+  });
+});
+
+D_REFLEXIV.forEach(([satz,richtig,falsch,erkl])=>{
+  neueKarte({
+    deck:"reflexiv", typ:"wahl",
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Welches Pronomen passt?",
+    optionen:[richtig].concat(falsch), richtig:richtig,
+    erklaerung:erkl+" &ndash; "+esc(satz.replace("%",richtig))
+  });
+});
+
+const ITEM_NACH_ID={};ITEMS.forEach(i=>ITEM_NACH_ID[i.id]=i);
+
+/* =====================================================================
+   Fortschritt speichern
+   ===================================================================== */
+
+const SCHLUESSEL="dgl.v1";
+const INTERVALLE=[0,1,2,4,8,21];          // Tage pro Fach
+const TAG=86400000;
+const RUNDENLAENGE=16;
+
+const LEER={v:1,xp:0,items:{},fehler:[],tage:{},streak:0,letzterTag:"",abzeichen:[],
+            totalRichtig:0,totalFalsch:0,runden:0,perfekteRunden:0,besteSerie:0};
+let S=laden();
+
+function laden(){
+  try{
+    const roh=localStorage.getItem(SCHLUESSEL);
+    if(!roh) return Object.assign({},LEER);
+    const d=JSON.parse(roh);
+    return Object.assign({},LEER,d,{items:d.items||{},tage:d.tage||{},
+      fehler:d.fehler||[],abzeichen:d.abzeichen||[]});
+  }catch(e){return Object.assign({},LEER);}
+}
+function sichern(){
+  try{localStorage.setItem(SCHLUESSEL,JSON.stringify(S));}
+  catch(e){meldung("Der Fortschritt konnte nicht gespeichert werden. Der Speicher des Browsers ist voll oder gesperrt.");}
+}
+function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+
+function stufeFuer(xp){let l=1;while(xp>=100*l*(l+1)/2)l++;return l;}
+function stufenGrenze(l){return 100*(l-1)*l/2;}
+function fach(id){const z=S.items[id];return z?z.b:0;}
+function faellig(id){const z=S.items[id];return !z||z.d<=Date.now();}
+function zaehleFach(n){let c=0;for(const id in S.items)if(S.items[id].b===n)c++;return c;}
+
+const ABZEICHEN=[
+ {k:"start",  name:"Erste Runde",       text:"Eine Runde zu Ende gespielt.",                test:()=>S.runden>=1},
+ {k:"r50",    name:"Fünfzig richtig",   text:"50 Karten richtig beantwortet.",              test:()=>S.totalRichtig>=50},
+ {k:"r250",   name:"Zweihundertfünfzig",text:"250 Karten richtig beantwortet.",             test:()=>S.totalRichtig>=250},
+ {k:"serie10",name:"Zehn am Stück",     text:"Zehn richtige Antworten hintereinander.",     test:()=>S.besteSerie>=10},
+ {k:"s3",     name:"Drei Tage",         text:"An drei Tagen hintereinander geübt.",         test:()=>S.streak>=3},
+ {k:"s7",     name:"Eine Woche",        text:"An sieben Tagen hintereinander geübt.",       test:()=>S.streak>=7},
+ {k:"s30",    name:"Ein Monat",         text:"An dreißig Tagen hintereinander geübt.",      test:()=>S.streak>=30},
+ {k:"sauber", name:"Ohne Fehler",       text:"Eine ganze Runde ohne einen einzigen Fehler.",test:()=>S.perfekteRunden>=1},
+ {k:"fach5",  name:"Hinten im Kasten",  text:"25 Karten liegen in Fach 5.",                 test:()=>zaehleFach(5)>=25},
+ {k:"alle",   name:"Alle vier Stapel",  text:"Aus jedem Stapel eine Karte gezogen.",        test:()=>DECKS.every(d=>ITEMS.some(i=>i.deck===d.k&&S.items[i.id]))},
+ {k:"hundert",name:"Hundert Karten",    text:"100 verschiedene Karten schon einmal gezogen.",test:()=>Object.keys(S.items).length>=100}
+];
+
+/* =====================================================================
+   Oberfläche
+   ===================================================================== */
+
+const $=id=>document.getElementById(id);
+const sStart=$("s-start"), sRunde=$("s-runde"), sFortschritt=$("s-fortschritt");
+const karte=$("karte");
+let lauf=null, bildschirm="start";
+
+function zeige(name){
+  bildschirm=name;
+  sStart.hidden=name!=="start";
+  sRunde.hidden=name!=="runde";
+  sFortschritt.hidden=name!=="fortschritt";
+  $("knopf-zurueck").hidden=name!=="runde";
+  window.scrollTo(0,0);
+}
+function kopfleiste(){
+  $("w-streak").textContent=S.streak;
+  $("w-streak-wort").textContent=S.streak===1?"Tag":"Tage";
+  $("w-xp").textContent=S.xp;
+  $("w-stufe").textContent=stufeFuer(S.xp);
+}
+function meldung(text){
+  const el=document.createElement("div");
+  el.className="meldung";el.setAttribute("role","status");el.textContent=text;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),3400);
+}
+
+/* ---------- Startseite ---------- */
+function deckItems(k){
+  if(k==="gemischt")return ITEMS;
+  if(k==="fehler")return S.fehler.map(id=>ITEM_NACH_ID[id]).filter(Boolean);
+  return ITEMS.filter(i=>i.deck===k);
+}
+function deckZahlen(k){
+  const li=deckItems(k);
+  let f=0,beherrscht=0,neu=0;
+  li.forEach(i=>{const z=S.items[i.id];
+    if(!z){neu++;f++;}else{if(z.d<=Date.now())f++;if(z.b>=4)beherrscht++;}});
+  return {gesamt:li.length,faellig:f,beherrscht:beherrscht,neu:neu,
+          quote:li.length?Math.round(beherrscht/li.length*100):0};
+}
+
+function zeigeStart(){
+  const g=deckZahlen("gemischt");
+  $("gruss").textContent = g.faellig===0
+    ? "Für heute ist alles durch."
+    : (S.runden===0 ? "Vier Stapel, ein Kasten." : "Weiter geht's.");
+  $("gruss-text").textContent = g.faellig===0
+    ? "Alle Karten liegen weiter hinten im Kasten und kommen später wieder. Du kannst trotzdem jederzeit eine Extrarunde ziehen."
+    : "Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.";
+
+  const geuebt=Object.keys(S.items).length;
+  $("kasten-lage").innerHTML = geuebt===0
+    ? "Noch keine Karte gezogen. Der Kasten hat "+ITEMS.length+" Karten."
+    : "<em>"+g.faellig+"</em> fällig, "+g.beherrscht+" von "+ITEMS.length+" sitzen schon.";
+
+  const zahlen=[1,2,3,4,5].map(zaehleFach);
+  const max=Math.max(1,...zahlen);
+  $("faecher").innerHTML=zahlen.map((n,idx)=>{
+    const blaetter=n===0?0:Math.max(1,Math.ceil(n/max*12));
+    return '<div class="fach"><div class="stapel">'+
+      (n===0?'<div class="fach-leer">leer</div>':'<div class="blatt"></div>'.repeat(blaetter))+
+      '</div><div class="fach-schild"><b>'+n+'</b><span>Fach '+(idx+1)+'</span></div></div>';
+  }).join("");
+
+  const alle=DECKS.concat([{k:"gemischt",name:"Alles gemischt",farbe:"#98A3AF",
+      text:"Karten aus allen vier Stapeln durcheinander. Das ist die ehrlichste Übung."}]);
+  if(S.fehler.length) alle.push({k:"fehler",name:"Fehlerstapel",farbe:"#E98776",
+      text:"Alles, was du zuletzt falsch hattest. Liegt vorne im Kasten, bis es sitzt."});
+
+  $("stapel-liste").innerHTML=alle.map(d=>{
+    const z=deckZahlen(d.k);
+    const wort=z.faellig===0 ? "nichts fällig"
+             : z.neu===z.faellig ? z.faellig+" neu"
+             : z.faellig+" fällig";
+    const badge=z.faellig>0
+      ? '<span class="deck-faellig">'+wort+'</span>'
+      : '<span class="deck-faellig ruhig">'+wort+'</span>';
+    return '<button class="deck" data-deck="'+d.k+'" style="--reiter:'+d.farbe+'">'+
+      '<div class="deck-kopf"><h3>'+esc(d.name)+'</h3>'+badge+'</div>'+
+      '<p>'+esc(d.text)+'</p>'+
+      '<div class="deck-fuss"><span>'+z.gesamt+' Karten</span>'+
+      '<div class="balken"><i style="width:'+z.quote+'%"></i></div><b>'+z.quote+'%</b></div></button>';
+  }).join("");
+  $("stapel-liste").querySelectorAll(".deck").forEach(b=>{
+    b.addEventListener("click",()=>starteRunde(b.dataset.deck));
+  });
+  kopfleiste();
+}
+
+/* ---------- Runde ---------- */
+function starteRunde(k){
+  const pool=deckItems(k);
+  if(!pool.length){meldung("Dieser Stapel ist leer.");return;}
+  const jetzt=Date.now();
+  const faellige=pool.filter(i=>S.items[i.id]&&S.items[i.id].d<=jetzt)
+                     .sort((a,b)=>S.items[a.id].d-S.items[b.id].d);
+  const neue=mische(pool.filter(i=>!S.items[i.id]));
+  const rest=mische(pool.filter(i=>S.items[i.id]&&S.items[i.id].d>jetzt));
+  let liste=faellige.concat(neue).slice(0,RUNDENLAENGE);
+  if(liste.length<RUNDENLAENGE) liste=liste.concat(rest.slice(0,RUNDENLAENGE-liste.length));
+  lauf={deck:k,liste:mische(liste),pos:0,richtig:0,falsch:0,serie:0,
+        wiederholt:{},beantwortet:false,gewaehlt:null,gebaut:[],vorrat:[]};
+  zeige("runde");
+  zeigeKarte(false);
+}
+
+function zeigeKarte(mitAnimation){
+  const k=lauf.liste[lauf.pos];
+  if(!k){zeigeBilanz();return;}
+  lauf.beantwortet=false;lauf.gewaehlt=null;lauf.wechselt=false;
+  const gesamt=lauf.liste.length;
+  $("runde-balken").style.width=Math.round(lauf.pos/gesamt*100)+"%";
+  $("runde-zaehler").textContent=(lauf.pos+1)+" von "+gesamt;
+
+  const d=DECK_NACH_K[k.deck];
+  const f=fach(k.id);
+  let kopf='<div class="karte-reiter" style="--reiter:'+d.farbe+'">'+
+    '<span class="punkt"></span><span>'+esc(d.name)+'</span>'+
+    '<span class="fach-zeiger">'+(f===0?"neue Karte":"Fach "+f)+'</span></div>';
+
+  let koerper="";
+  if(k.typ==="bau"){
+    lauf.gebaut=[];lauf.vorrat=mische(k.woerter.map((w,i)=>({w:w,i:i})));
+    koerper='<p class="anweisung">'+k.anweisung+'</p>'+
+            '<div class="bauplatz" id="bauplatz"></div>'+
+            '<div class="vorrat" id="vorrat"></div>'+
+            '<div class="karte-fuss"><button class="knopf" id="k-pruefen">Prüfen</button>'+
+            '<span class="tastenhinweis"><kbd>Enter</kbd> prüfen</span></div>';
+  }else if(k.typ==="tippen"){
+    koerper='<p class="frage">'+k.frage+'</p><p class="anweisung">'+k.anweisung+'</p>'+
+      '<div class="eingabe-zeile"><input class="eingabe" id="eingabe" autocomplete="off" '+
+      'autocapitalize="off" spellcheck="false" placeholder="Antwort eintippen"></div>'+
+      '<div class="umlaute">'+["ä","ö","ü","ß"].map(c=>'<button data-c="'+c+'">'+c+'</button>').join("")+'</div>'+
+      '<div class="karte-fuss"><button class="knopf" id="k-pruefen">Prüfen</button>'+
+      '<button class="knopf leise" id="k-weissnicht">Weiß ich nicht</button>'+
+      '<span class="tastenhinweis"><kbd>Enter</kbd> prüfen</span></div>';
+  }else{
+    const opt=mische(k.optionen);
+    const stil=k.geschlecht?' zweispaltig':'';
+    koerper='<p class="frage">'+k.frage+'</p><p class="anweisung">'+k.anweisung+'</p>'+
+      '<div class="antworten'+stil+'" id="antworten">'+
+      opt.map((o,n)=>{
+        const farbe=k.geschlecht?({der:"var(--der)",die:"var(--die)",das:"var(--das)"}[o]):null;
+        return '<button class="wahl'+(farbe?" geschlecht":"")+'" data-wert="'+esc(o)+'"'+
+          (farbe?' style="--g:'+farbe+'"':'')+'><kbd>'+(n+1)+'</kbd>'+esc(o)+'</button>';
+      }).join("")+'</div>'+
+      '<div class="karte-fuss"><span class="tastenhinweis">Taste <kbd>1</kbd> bis <kbd>'+opt.length+'</kbd></span></div>';
+  }
+
+  karte.className="karte"+(mitAnimation?" rein":"");
+  karte.innerHTML=kopf+koerper;
+  verdrahteKarte(k);
+}
+
+function verdrahteKarte(k){
+  if(k.typ==="wahl"){
+    karte.querySelectorAll(".wahl").forEach(b=>
+      b.addEventListener("click",()=>antworte(k,b.dataset.wert)));
+  }else if(k.typ==="tippen"){
+    const e=$("eingabe");e.focus();
+    $("k-pruefen").addEventListener("click",()=>antworte(k,e.value));
+    $("k-weissnicht").addEventListener("click",()=>antworte(k,""));
+    karte.querySelectorAll(".umlaute button").forEach(b=>b.addEventListener("click",()=>{
+      const p=e.selectionStart||e.value.length;
+      e.value=e.value.slice(0,p)+b.dataset.c+e.value.slice(e.selectionEnd||p);
+      e.focus();e.setSelectionRange(p+1,p+1);
+    }));
+  }else{
+    zeichneBau();
+    $("k-pruefen").addEventListener("click",()=>
+      antworte(k,lauf.gebaut.map(x=>x.w).join(" ")+k.schluss));
+  }
+}
+
+function zeichneBau(){
+  const bp=$("bauplatz"), vr=$("vorrat");
+  bp.innerHTML=lauf.gebaut.map((x,n)=>'<button class="wortchip" data-weg="'+n+'">'+esc(x.w)+'</button>').join("");
+  vr.innerHTML=lauf.vorrat.map((x,n)=>'<button class="wortchip"'+(x.benutzt?" disabled":"")+' data-hin="'+n+'">'+esc(x.w)+'</button>').join("");
+  bp.querySelectorAll("[data-weg]").forEach(b=>b.addEventListener("click",()=>{
+    const x=lauf.gebaut.splice(+b.dataset.weg,1)[0];
+    lauf.vorrat.find(v=>v.i===x.i).benutzt=false;zeichneBau();
+  }));
+  vr.querySelectorAll("[data-hin]").forEach(b=>b.addEventListener("click",()=>{
+    const x=lauf.vorrat[+b.dataset.hin];if(x.benutzt)return;
+    x.benutzt=true;lauf.gebaut.push({w:x.w,i:x.i});zeichneBau();
+  }));
+}
+
+/* ---------- Antwort bewerten ---------- */
+function tagBuchen(){
+  const heute=ymd(new Date());
+  S.tage[heute]=(S.tage[heute]||0)+1;
+  if(S.letzterTag!==heute){
+    const gestern=ymd(new Date(Date.now()-TAG));
+    S.streak = S.letzterTag===gestern ? S.streak+1 : 1;
+    S.letzterTag=heute;
+  }
+}
+
+function antworte(k,wert){
+  if(lauf.beantwortet)return;
+  lauf.beantwortet=true;
+  const eingabe=String(wert==null?"":wert);
+  const ok = k.typ==="wahl" ? eingabe===k.richtig
+           : k.loesungen.some(l=>norm(l)===norm(eingabe));
+  const stufeVorher=stufeFuer(S.xp);
+
+  const z=S.items[k.id]||{b:0,d:0,r:0,f:0};
+  const fachVorher=z.b;
+  if(ok){z.b=Math.min(5,z.b+1);z.r=(z.r||0)+1;z.d=Date.now()+INTERVALLE[z.b]*TAG;}
+  else   {z.b=1;z.f=(z.f||0)+1;z.d=Date.now();}
+  S.items[k.id]=z;
+
+  if(ok){
+    lauf.richtig++;lauf.serie++;S.totalRichtig++;
+    S.xp+=10+(z.b===5&&fachVorher<5?15:0);
+    if(lauf.serie>S.besteSerie)S.besteSerie=lauf.serie;
+    const w=S.fehler.indexOf(k.id);if(w>-1)S.fehler.splice(w,1);
+  }else{
+    lauf.falsch++;lauf.serie=0;S.totalFalsch++;
+    if(S.fehler.indexOf(k.id)<0)S.fehler.unshift(k.id);
+    if(S.fehler.length>200)S.fehler.length=200;
+    if(!lauf.wiederholt[k.id]){lauf.wiederholt[k.id]=1;lauf.liste.push(k);}
+  }
+  tagBuchen();
+  sichern();
+  kopfleiste();
+
+  zeichneRueckmeldung(k,ok,eingabe,fachVorher,z.b);
+
+  if(stufeFuer(S.xp)>stufeVorher) meldung("Stufe "+stufeFuer(S.xp)+" erreicht");
+  ABZEICHEN.forEach(a=>{
+    if(S.abzeichen.indexOf(a.k)<0&&a.test()){S.abzeichen.push(a.k);sichern();
+      setTimeout(()=>meldung("Abzeichen: "+a.name),600);}
+  });
+}
+
+function zeichneRueckmeldung(k,ok,eingabe,vorher,nachher){
+  if(k.typ==="wahl"){
+    karte.querySelectorAll(".wahl").forEach(b=>{
+      b.disabled=true;
+      if(b.dataset.wert===k.richtig){b.classList.add("richtig");
+        b.insertAdjacentHTML("beforeend",'<span class="marker">richtig</span>');}
+      else if(!ok&&b.dataset.wert===eingabe){b.classList.add("falsch");
+        b.insertAdjacentHTML("beforeend",'<span class="marker">gewählt</span>');}
+    });
+  }else if(k.typ==="tippen"){
+    const e=$("eingabe");e.disabled=true;e.classList.add(ok?"richtig":"falsch");
+    if(!eingabe)e.value="";
+  }else{
+    karte.querySelectorAll(".wortchip").forEach(b=>b.disabled=true);
+  }
+  const fussAlt=karte.querySelector(".karte-fuss");if(fussAlt)fussAlt.remove();
+  const umlaute=karte.querySelector(".umlaute");if(umlaute)umlaute.remove();
+
+  const loesung=k.typ==="wahl"?k.richtig:k.loesungen[0];
+  const bewegung = ok
+    ? (nachher===5&&vorher===5 ? "Bleibt hinten in Fach 5."
+       : "Rutscht in Fach "+nachher+".")
+    : (vorher===0 ? "Landet in Fach 1 und kommt gleich noch einmal."
+                  : "Geht zurück in Fach 1 und kommt gleich noch einmal.");
+
+  karte.insertAdjacentHTML("beforeend",
+    '<div class="rueckmeldung '+(ok?"ja":"nein")+'">'+
+      '<h3>'+(ok?"Richtig":"Noch nicht")+'</h3>'+
+      (ok?"":'<p class="loesung">Richtig ist: <b>'+esc(loesung)+'</b></p>')+
+      '<p>'+bewegung+'</p>'+
+      (k.erklaerung?'<div class="regel">'+k.erklaerung+'</div>':'')+
+      '<div class="karte-fuss"><button class="knopf hell" id="k-weiter">Weiter</button>'+
+      '<span class="tastenhinweis"><kbd>Enter</kbd> weiter</span></div>'+
+    '</div>');
+  $("k-weiter").focus();
+  $("k-weiter").addEventListener("click",weiter);
+}
+
+function weiter(){
+  if(lauf.wechselt||lauf.fertig)return;
+  lauf.wechselt=true;
+  lauf.pos++;
+  if(lauf.pos>=lauf.liste.length){lauf.wechselt=false;zeigeBilanz();return;}
+  karte.classList.add("raus");
+  setTimeout(()=>zeigeKarte(true),150);
+}
+
+function rundeVorbei(){
+  return !lauf||lauf.pos>=lauf.liste.length;
+}
+
+function zeigeBilanz(){
+  S.runden++;
+  if(lauf.falsch===0)S.perfekteRunden++;
+  sichern();
+  const gesamt=lauf.richtig+lauf.falsch;
+  const quote=gesamt?Math.round(lauf.richtig/gesamt*100):0;
+  $("runde-balken").style.width="100%";
+  $("runde-zaehler").textContent="fertig";
+  const name=lauf.deck==="gemischt"?"Alles gemischt":
+             lauf.deck==="fehler"?"Fehlerstapel":DECK_NACH_K[lauf.deck].name;
+  karte.className="karte rein";
+  karte.innerHTML=
+    '<div class="karte-reiter"><span>Runde beendet</span>'+
+    '<span class="fach-zeiger">'+esc(name)+'</span></div>'+
+    '<div class="bilanz"><div class="zahl">'+quote+'<small>%</small></div>'+
+    '<ul class="bilanz-zeilen">'+
+      '<li>Richtig<b>'+lauf.richtig+'</b></li>'+
+      '<li>Falsch<b>'+lauf.falsch+'</b></li>'+
+      '<li>Längste Serie in dieser Runde<b>'+S.besteSerie+'</b></li>'+
+      '<li>Punkte insgesamt<b>'+S.xp+'</b></li>'+
+    '</ul></div>'+
+    '<div class="karte-fuss">'+
+      '<button class="knopf hell gross" id="k-nochmal">Noch eine Runde</button>'+
+      '<button class="knopf leise" id="k-kasten">Zum Kasten</button></div>';
+  $("k-nochmal").addEventListener("click",()=>starteRunde(lauf.deck));
+  $("k-kasten").addEventListener("click",()=>{zeigeStart();zeige("start");});
+  $("k-nochmal").focus();
+  lauf.beantwortet=true;lauf.fertig=true;
+}
+
+/* ---------- Fortschritt ---------- */
+function zeigeFortschritt(){
+  $("f-themen").innerHTML=DECKS.map(d=>{
+    const z=deckZahlen(d.k);
+    return '<div class="thema" style="--reiter:'+d.farbe+'">'+
+      '<div class="thema-name"><span class="punkt"></span>'+esc(d.name)+'</div>'+
+      '<div class="balken"><i style="width:'+z.quote+'%"></i></div>'+
+      '<div class="thema-zahl"><b>'+z.beherrscht+'</b> von '+z.gesamt+'</div></div>';
+  }).join("");
+
+  const heute=new Date();heute.setHours(12,0,0,0);
+  const zellen=[];
+  for(let i=55;i>=0;i--){
+    const d=new Date(heute.getTime()-i*TAG);
+    const n=S.tage[ymd(d)]||0;
+    const s=n===0?"":n<5?"s1":n<15?"s2":"s3";
+    zellen.push('<div class="tag '+s+(i===0?" heute":"")+'" title="'+ymd(d)+": "+n+' Karten"></div>');
+  }
+  let kal="";
+  for(let w=0;w<8;w++) kal+='<div class="woche">'+zellen.slice(w*7,w*7+7).join("")+'</div>';
+  $("f-kalender").innerHTML=kal;
+
+  const hat=ABZEICHEN.filter(a=>S.abzeichen.indexOf(a.k)>-1).length;
+  $("f-abzeichen-zahl").textContent=hat+" von "+ABZEICHEN.length+" gesammelt.";
+  $("f-abzeichen").innerHTML=ABZEICHEN.map(a=>
+    '<article class="'+(S.abzeichen.indexOf(a.k)>-1?"hat":"")+'"><h3>'+esc(a.name)+'</h3>'+
+    '<p>'+esc(a.text)+'</p></article>').join("");
+  kopfleiste();
+}
+
+function datenHinweis(text,gut){
+  const el=$("daten-hinweis");el.textContent=text;el.hidden=false;
+  el.dataset.ton=gut?"gut":"";
+}
+$("k-export").addEventListener("click",()=>{
+  const blob=new Blob([JSON.stringify(S)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="karteikasten-"+ymd(new Date())+".json";
+  a.click();URL.revokeObjectURL(a.href);
+  datenHinweis("Datei gespeichert.",true);
+});
+$("k-import").addEventListener("click",()=>$("datei-eingabe").click());
+$("datei-eingabe").addEventListener("change",ev=>{
+  const f=ev.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(!d||typeof d!=="object"||!d.items)throw 0;
+      S=Object.assign({},LEER,d,{items:d.items||{},tage:d.tage||{},
+        fehler:d.fehler||[],abzeichen:d.abzeichen||[]});
+      sichern();zeigeFortschritt();zeigeStart();
+      datenHinweis("Fortschritt geladen.",true);
+    }catch(e){datenHinweis("Diese Datei passt nicht. Erwartet wird eine Datei aus 'Fortschritt sichern'.");}
+  };
+  r.readAsText(f);ev.target.value="";
+});
+$("k-reset").addEventListener("click",()=>{
+  if(!confirm("Wirklich alles löschen? Punkte, Fächer und Serie sind danach weg."))return;
+  S=Object.assign({},LEER,{items:{},tage:{},fehler:[],abzeichen:[]});
+  sichern();zeigeFortschritt();zeigeStart();
+  datenHinweis("Alles zurückgesetzt.");
+});
+$("knopf-fortschritt").addEventListener("click",()=>{zeigeFortschritt();zeige("fortschritt");});
+$("knopf-zurueck").addEventListener("click",()=>{zeigeStart();zeige("start");});
+
+/* ---------- Tastatur ---------- */
+document.addEventListener("keydown",ev=>{
+  if(ev.metaKey||ev.ctrlKey||ev.altKey)return;
+  if(bildschirm==="fortschritt"&&ev.key==="Escape"){zeigeStart();zeige("start");return;}
+  if(bildschirm!=="runde"||!lauf)return;
+  if(ev.key==="Escape"&&!lauf.fertig){zeigeStart();zeige("start");return;}
+  const k=lauf.liste[lauf.pos];
+  if(lauf.fertig)return;
+  if(lauf.beantwortet){
+    if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();weiter();}
+    return;
+  }
+  if(k.typ==="wahl"&&/^[1-9]$/.test(ev.key)){
+    const b=karte.querySelectorAll(".wahl")[+ev.key-1];
+    if(b){ev.preventDefault();antworte(k,b.dataset.wert);}
+  }else if(ev.key==="Enter"){
+    ev.preventDefault();
+    if(k.typ==="tippen")antworte(k,$("eingabe").value);
+    else if(k.typ==="bau"&&lauf.gebaut.length)antworte(k,lauf.gebaut.map(x=>x.w).join(" ")+k.schluss);
+  }
+});
+
+/* ---------- Start ---------- */
+zeigeStart();
+zeige("start");
+</script>
+</body>
+</html>
