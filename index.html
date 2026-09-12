@@ -217,6 +217,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   margin:0 .12em;vertical-align:baseline;
 }
 .frage em{font-style:italic;color:#9A4436}
+.frage .plus{color:var(--tinte-leise);margin:0 .25em;font-weight:300}
 .frage .zusatz{display:block;font-size:.55em;font-style:italic;color:var(--tinte-leise);margin-top:2px}
 .anweisung{
   font-size:15px;color:var(--tinte-leise);margin:0 0 20px;
@@ -1357,7 +1358,7 @@ const SEIN ={ich:"bin", du:"bist",er:"ist",wir:"sind",ihr:"seid", sie:"sind"};
 const LUECKE='<span class="luecke"></span>';
 
 const DECKS=[
- {k:"perfekt", name:"Perfekt",           farbe:"#D9A441", text:"Ich habe gewonnen oder ich bin gelaufen? Vor allem haben oder sein, dazu Partizip II und Wortstellung."},
+ {k:"perfekt", name:"Perfekt",           farbe:"#D9A441", text:"Ich habe geschlafen, ich bin gelaufen: haben oder sein, Perfekt bilden. Dazu Partizip II und Wortstellung."},
  {k:"artikel", name:"Der, die, das",     farbe:"#C2503F", text:"Artikel nach Endungen und Bedeutungsgruppen bestimmen, statt nach Gefühl zu raten."},
  {k:"praep",   name:"Präpositionen",     farbe:"#5F9EA0", text:"Wo oder wohin, Dativ oder Akkusativ. Dazu Kleidung anhaben und feste Verben mit Präposition."},
  {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."}
@@ -1410,6 +1411,19 @@ D_PERFEKT.forEach(([inf,part,aux,person,satz,drill,hinweis])=>{
       anweisung:"Partizip II von <i>"+esc(inf)+"</i>",
       loesungen:[part],
       erklaerung:(hinweis?hinweis+" &ndash; ":"")+"Vollständig: "+esc(mitAux)
+    });
+    const pronomen=person==="sie"?"sie (Mehrzahl)":person;
+    const form=person+" "+richtig+" "+part;
+    neueKarte({
+      deck:"perfekt", typ:"tippen", art:"hilfsverb",
+      rohfrage:inf+"|"+person+"|bilden",
+      frage:esc(pronomen)+' <span class="plus">+</span> <i>'+esc(inf)+'</i>',
+      anweisung:"Ins Perfekt setzen: Pronomen, haben oder sein, Partizip II.",
+      loesungen:[form, richtig+" "+part],
+      erklaerung:(hinweis||(aux==="h"
+        ? "Die meisten Verben nehmen <b>haben</b>."
+        : "Bewegung mit Ziel oder Zustandswechsel: <b>sein</b>."))
+        +" &ndash; Vollständig: "+esc(form)
     });
   }
 });
