@@ -445,8 +445,42 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
 }
+/* ---------- Notizen ---------- */
+.notiz-block{margin-top:12px}
+.notiz-label{display:block;font-size:14px;color:var(--tinte-leise);margin-bottom:5px}
+.notiz{
+  display:block;width:100%;
+  font-family:var(--schrift-text);font-size:17px;line-height:1.45;
+  color:var(--tinte);background:#FBF8F0;
+  border:1.5px solid var(--papier-3);border-radius:2px;
+  padding:9px 12px;resize:vertical;
+}
+.notiz::placeholder{color:#A9A091}
+.notiz:focus{outline:none;border-color:var(--tinte);background:#fff}
+.notiz.dunkel{background:var(--schiefer);color:var(--kreide);border-color:var(--linie)}
+.notiz.dunkel::placeholder{color:var(--kreide-leise);opacity:.75}
+.notiz.dunkel:focus{border-color:var(--kreide-leise);background:var(--schiefer)}
+.notiz-liste{display:flex;flex-direction:column;gap:10px}
+.notiz-eintrag{
+  padding:12px 14px;border:1px solid var(--linie);border-left:4px solid var(--reiter);
+  border-radius:3px;background:var(--schiefer-2);
+}
+.notiz-eintrag .thema-name{margin-bottom:8px}
+.notiz-frage{font-family:var(--schrift-text);font-size:17px;line-height:1.45;margin-bottom:8px}
+.notiz-frage .plus,.notiz-frage .zusatz{color:var(--kreide-leise)}
+.notiz-frage .zusatz{display:inline;font-size:inherit;margin-left:.3em}
+.notiz-titel{font-size:17px;margin:20px 0 8px}
+
+@media (pointer:coarse){
+  .knopf:focus-visible{outline:none}
+}
+
 @media (max-width:620px){
   :root{--rail:52px}
+  .leiste{height:auto;min-height:var(--rail);flex-wrap:wrap;gap:4px 12px;padding:6px 12px}
+  .marke{font-size:20px}
+  .werte{margin-left:auto;gap:2px}
+  .zurueck{white-space:nowrap;font-size:14px;padding:5px 8px}
   .buehne{padding:24px 15px 80px}
   .karte{padding:24px 20px 24px 30px}
   .karte::before{left:17px}
@@ -531,6 +565,15 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <h2>Abzeichen</h2>
     <p class="unter" id="f-abzeichen-zahl"></p>
     <div class="abzeichen" id="f-abzeichen"></div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Notizen</h2>
+    <p class="unter">Zu jedem Stapel eine Notiz. Darunter alle Karten, zu denen du dir etwas aufgeschrieben hast.</p>
+    <div class="notiz-liste" id="f-thema-notizen"></div>
+    <h3 class="notiz-titel">Karten mit Notizen</h3>
+    <p class="unter" id="f-karten-notizen-leer" hidden>Noch keine. Nach einer Antwort kannst du auf der Karte eine Notiz schreiben.</p>
+    <div class="notiz-liste" id="f-karten-notizen"></div>
   </div>
 
   <div class="abschnitt">
@@ -1816,7 +1859,7 @@ const INTERVALLE=[0,1,2,4,8,21];          // Tage pro Fach
 const TAG=86400000;
 const RUNDENLAENGE=16;
 
-const LEER={v:1,xp:0,items:{},fehler:[],tage:{},streak:0,letzterTag:"",abzeichen:[],
+const LEER={v:1,xp:0,items:{},fehler:[],tage:{},streak:0,letzterTag:"",abzeichen:[],notizen:{},themaNotizen:{},
             totalRichtig:0,totalFalsch:0,runden:0,perfekteRunden:0,besteSerie:0};
 let S=laden();
 
@@ -1826,7 +1869,7 @@ function laden(){
     if(!roh) return Object.assign({},LEER);
     const d=JSON.parse(roh);
     return Object.assign({},LEER,d,{items:d.items||{},tage:d.tage||{},
-      fehler:d.fehler||[],abzeichen:d.abzeichen||[]});
+      fehler:d.fehler||[],abzeichen:d.abzeichen||[],notizen:d.notizen||{},themaNotizen:d.themaNotizen||{}});
   }catch(e){return Object.assign({},LEER);}
 }
 function sichern(){
@@ -2127,6 +2170,24 @@ const JUBEL=[
 ];
 function jubel(){return JUBEL[Math.floor(Math.random()*JUBEL.length)];}
 
+function notizSetzen(sammlung,schluessel,text){
+  if(text.trim())S[sammlung][schluessel]=text;else delete S[sammlung][schluessel];
+  sichern();
+}
+function notizFeld(k){
+  return '<label class="notiz-label" for="notiz-feld">Deine Notiz</label>'+
+    '<textarea class="notiz" id="notiz-feld" rows="2" placeholder="Was du dir zu dieser Karte merken willst">'+esc(S.notizen[k.id]||"")+'</textarea>';
+}
+function notizFeldVerbinden(k){
+  $("notiz-feld").addEventListener("input",ev=>notizSetzen("notizen",k.id,ev.target.value));
+}
+function kartenText(k){
+  const loesung="<b>"+esc(k.typ==="wahl"?k.richtig:k.loesungen[0])+"</b>";
+  if(!k.frage)return loesung;
+  if(k.frage.indexOf(LUECKE)>-1)return k.frage.replace(LUECKE,loesung);
+  return k.frage+": "+loesung;
+}
+
 function zeichneRueckmeldung(k,ok,eingabe,vorher,nachher){
   if(k.typ==="wahl"){
     karte.querySelectorAll(".wahl").forEach(b=>{
@@ -2158,11 +2219,20 @@ function zeichneRueckmeldung(k,ok,eingabe,vorher,nachher){
       (ok?"":'<p class="loesung">Richtig ist: <b>'+esc(loesung)+'</b></p>')+
       '<p>'+bewegung+'</p>'+
       (k.erklaerung?'<div class="regel">'+k.erklaerung+'</div>':'')+
+      '<div class="notiz-block" id="notiz-block">'+(S.notizen[k.id]?notizFeld(k):'')+'</div>'+
       '<div class="karte-fuss"><button class="knopf hell" id="k-weiter">Weiter</button>'+
+      (S.notizen[k.id]?'':'<button class="knopf leise" id="k-notiz">Notiz</button>')+
       '<span class="tastenhinweis"><kbd>Enter</kbd> weiter</span></div>'+
     '</div>');
   $("k-weiter").focus();
   $("k-weiter").addEventListener("click",weiter);
+  if(S.notizen[k.id])notizFeldVerbinden(k);
+  else $("k-notiz").addEventListener("click",()=>{
+    $("notiz-block").innerHTML=notizFeld(k);
+    notizFeldVerbinden(k);
+    $("k-notiz").remove();
+    $("notiz-feld").focus();
+  });
 }
 
 function weiter(){
@@ -2229,6 +2299,19 @@ function zeigeFortschritt(){
   for(let w=0;w<8;w++) kal+='<div class="woche">'+zellen.slice(w*7,w*7+7).join("")+'</div>';
   $("f-kalender").innerHTML=kal;
 
+  $("f-thema-notizen").innerHTML=DECKS.map(d=>
+    '<article class="notiz-eintrag" style="--reiter:'+d.farbe+'">'+
+      '<div class="thema-name"><span class="punkt"></span>'+esc(d.name)+'</div>'+
+      '<textarea class="notiz dunkel" data-thema="'+d.k+'" rows="2" placeholder="Notiz zu diesem Stapel">'+esc(S.themaNotizen[d.k]||"")+'</textarea>'+
+    '</article>').join("");
+  const mitNotiz=ITEMS.filter(i=>S.notizen[i.id]);
+  $("f-karten-notizen-leer").hidden=mitNotiz.length>0;
+  $("f-karten-notizen").innerHTML=mitNotiz.map(i=>
+    '<article class="notiz-eintrag" style="--reiter:'+DECK_NACH_K[i.deck].farbe+'">'+
+      '<div class="notiz-frage">'+kartenText(i)+'</div>'+
+      '<textarea class="notiz dunkel" data-karte="'+i.id+'" rows="2">'+esc(S.notizen[i.id])+'</textarea>'+
+    '</article>').join("");
+
   const hat=ABZEICHEN.filter(a=>S.abzeichen.indexOf(a.k)>-1).length;
   $("f-abzeichen-zahl").textContent=hat+" von "+ABZEICHEN.length+" gesammelt.";
   $("f-abzeichen").innerHTML=ABZEICHEN.map(a=>
@@ -2275,7 +2358,7 @@ $("datei-eingabe").addEventListener("change",ev=>{
       const d=JSON.parse(r.result);
       if(!d||typeof d!=="object"||!d.items)throw 0;
       S=Object.assign({},LEER,d,{items:d.items||{},tage:d.tage||{},
-        fehler:d.fehler||[],abzeichen:d.abzeichen||[]});
+        fehler:d.fehler||[],abzeichen:d.abzeichen||[],notizen:d.notizen||{},themaNotizen:d.themaNotizen||{}});
       sichern();zeigeFortschritt();zeigeStart();
       datenHinweis("Fortschritt geladen.",true);
     }catch(e){datenHinweis("Diese Datei passt nicht. Erwartet wird eine Datei aus 'Fortschritt sichern'.");}
@@ -2284,16 +2367,25 @@ $("datei-eingabe").addEventListener("change",ev=>{
 });
 $("k-reset").addEventListener("click",()=>{
   if(!confirm("Wirklich alles löschen? Punkte, Fächer und Serie sind danach weg."))return;
-  S=Object.assign({},LEER,{items:{},tage:{},fehler:[],abzeichen:[]});
+  S=Object.assign({},LEER,{items:{},tage:{},fehler:[],abzeichen:[],notizen:{},themaNotizen:{}});
   sichern();zeigeFortschritt();zeigeStart();
   datenHinweis("Alles zurückgesetzt.");
 });
 $("knopf-fortschritt").addEventListener("click",()=>{zeigeFortschritt();zeige("fortschritt");});
+sFortschritt.addEventListener("input",ev=>{
+  const t=ev.target;
+  if(t.dataset.thema)notizSetzen("themaNotizen",t.dataset.thema,t.value);
+  else if(t.dataset.karte)notizSetzen("notizen",t.dataset.karte,t.value);
+});
+sFortschritt.addEventListener("change",ev=>{
+  if(ev.target.dataset.karte&&!ev.target.value.trim())zeigeFortschritt();
+});
 $("knopf-zurueck").addEventListener("click",()=>{zeigeStart();zeige("start");});
 
 /* ---------- Tastatur ---------- */
 document.addEventListener("keydown",ev=>{
   if(ev.metaKey||ev.ctrlKey||ev.altKey)return;
+  if(ev.target.tagName==="TEXTAREA")return;
   if(bildschirm==="fortschritt"&&ev.key==="Escape"){zeigeStart();zeige("start");return;}
   if(bildschirm!=="runde"||!lauf)return;
   if(ev.key==="Escape"&&!lauf.fertig){zeigeStart();zeige("start");return;}
