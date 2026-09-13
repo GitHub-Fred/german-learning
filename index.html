@@ -475,7 +475,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 <!-- ============ Startseite ============ -->
 <section id="s-start">
   <div class="aufmacher">
-    <h1 id="gruss">Vier Stapel, ein Kasten.</h1>
+    <h1 id="gruss">Fünf Stapel, ein Kasten.</h1>
     <p id="gruss-text">Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.</p>
   </div>
 
@@ -1350,25 +1350,147 @@ const D_HILFSVERB_TIPPEN = [
 ];
 
 /* =====================================================================
+   Wurde, worden, geworden
+   ===================================================================== */
+
+/* worden oder geworden: [Satz mit %, Lösung, Hinweis] */
+const D_WORDEN = [
+["Die Kaffees sind schon bestellt %.","worden","bestellt worden: jemand hat die Kaffees bestellt. Passiv."],
+["Die Kissen sind mit der Zeit grau %.","geworden","grau geworden: die Kissen haben sich verändert. Niemand hat etwas gemacht."],
+["Der Kaffee ist frisch gemahlen %.","worden","gemahlen worden: jemand hat den Kaffee gemahlen. Passiv."],
+["Es ist plötzlich kalt %.","geworden","kalt geworden: das Wetter hat sich verändert."],
+["Das Auto ist gestern repariert %.","worden","repariert worden: jemand hat das Auto repariert."],
+["Sie ist letztes Jahr Ärztin %.","geworden","Ärztin geworden: sie ist zu etwas geworden. Auf Englisch: became."],
+["Ich bin gestern interviewt %.","worden","interviewt worden: jemand hat mich interviewt. Passiv."],
+["Ich bin nach dem Essen müde %.","geworden","müde geworden: mein Zustand hat sich verändert."],
+["Der Brief ist heute Morgen abgeschickt %.","worden","abgeschickt worden: jemand hat den Brief abgeschickt."],
+["Die Kinder sind groß %.","geworden","groß geworden: die Kinder haben sich verändert."],
+["Das Fenster ist von den Nachbarn geöffnet %.","worden","Das von zeigt den Täter: geöffnet worden, Passiv."],
+["Er ist vor der Prüfung sehr nervös %.","geworden","nervös geworden: sein Zustand hat sich verändert."],
+["Die Rechnung ist schon bezahlt %.","worden","bezahlt worden: jemand hat die Rechnung bezahlt."],
+["Das Wetter ist am Nachmittag besser %.","geworden","besser geworden: Veränderung, kein Täter."],
+["Der Dieb ist am Bahnhof festgenommen %.","worden","festgenommen worden: die Polizei hat ihn festgenommen. Passiv."],
+["Aus dem Praktikanten ist ein Chef %.","geworden","ein Chef geworden: er ist zu etwas geworden. Niemand hat ihn gemacht."],
+["Ich bin gestern zum Chef befördert %.","worden","befördert worden: die Firma hat mich befördert. Passiv. Vergleiche: ich bin Chef geworden."],
+["Die Wohnung ist letzte Woche renoviert %.","worden","renoviert worden: jemand hat die Wohnung renoviert."],
+["Die Milch ist über Nacht sauer %.","geworden","sauer geworden: die Milch hat sich verändert."],
+["Das Buch ist in zwanzig Sprachen übersetzt %.","worden","übersetzt worden: jemand hat das Buch übersetzt."],
+["Wir sind über die Jahre gute Freunde %.","geworden","Freunde geworden: wir sind zu etwas geworden."],
+["Die Straße ist wegen des Unfalls gesperrt %.","worden","gesperrt worden: jemand hat die Straße gesperrt."],
+["Es ist spät %.","geworden","spät geworden: die Zeit hat sich verändert. Kein Täter."],
+["Der Kuchen ist von meiner Oma gebacken %.","worden","Das von zeigt den Täter: gebacken worden, Passiv."],
+["Die Suppe ist inzwischen kalt %.","geworden","kalt geworden: Veränderung. Passiv wäre: die Suppe ist gekocht worden."],
+["Er ist im Mai Vater %.","geworden","Vater geworden: er ist zu etwas geworden."]
+];
+
+/* Welche Form: [Satz mit %, Kern, p = Passiv | w = Veränderung, Person, Hinweis] */
+const D_WERDEN_FORM = [
+["Der Kaffee %.","gemahlen","p","er",""],
+["Die Kissen %.","grau","w","sie",""],
+["Ich %.","interviewt","p","ich",""],
+["Ich %.","müde","w","ich",""],
+["Das Auto %.","repariert","p","er",""],
+["Er %.","Arzt","w","er","Er ist zu etwas geworden, niemand hat ihn gemacht."],
+["Die Kaffees %.","bestellt","p","sie",""],
+["Es %.","kalt","w","er",""],
+["Der Brief %.","geschrieben","p","er",""],
+["Wir %.","nervös","w","wir",""],
+["Die Tür %.","geschlossen","p","er",""],
+["Sie %.","Mutter","w","er",""],
+["Du %.","eingeladen","p","du",""],
+["Du %.","krank","w","du",""],
+["Die Wohnung %.","renoviert","p","er",""],
+["Die Kinder %.","groß","w","sie",""]
+];
+
+/* wurde: Passiv oder Veränderung? [Satz, p | w, Schlüsselwort, Englisch] */
+const D_WURDE_SINN = [
+["Ich wurde gefragt.","p","gefragt","I was asked."],
+["Ich wurde gesund.","w","gesund","I got well."],
+["Er wurde alt.","w","alt","He grew old."],
+["Er wurde gewählt.","p","gewählt","He was elected."],
+["Sie wurde berühmt.","w","berühmt","She became famous."],
+["Sie wurde befördert.","p","befördert","She was promoted."],
+["Er wurde Chef.","w","Chef","He became the boss."],
+["Er wurde entlassen.","p","entlassen","He was fired."],
+["Das Essen wurde kalt.","w","kalt","The food got cold."],
+["Das Essen wurde serviert.","p","serviert","The food was served."],
+["Die Kinder wurden laut.","w","laut","The children got loud."],
+["Die Kinder wurden abgeholt.","p","abgeholt","The children were picked up."],
+["Es wurde dunkel.","w","dunkel","It got dark."],
+["Es wurde beschlossen.","p","beschlossen","It was decided."],
+["Er wurde rot.","w","rot","He turned red."],
+["Ich wurde gesehen.","p","gesehen","I was seen."]
+];
+
+/* Präteritum ins Perfekt und zurück: [Ausgangssatz, Lösung, Hinweis] */
+const D_ZEIT_WECHSEL = [
+["Der Kaffee wurde gemahlen.","Der Kaffee ist gemahlen worden.","Passiv: wurde gemahlen wird zu ist gemahlen worden."],
+["Die Kissen wurden grau.","Die Kissen sind grau geworden.","Veränderung: wurden grau wird zu sind grau geworden."],
+["Ich wurde interviewt.","Ich bin interviewt worden.","Passiv: worden, nicht geworden."],
+["Ich wurde müde.","Ich bin müde geworden.","Veränderung: geworden."],
+["Das Auto wurde repariert.","Das Auto ist repariert worden.","Passiv: worden."],
+["Er wurde Arzt.","Er ist Arzt geworden.","Veränderung: geworden."],
+["Die Kaffees wurden bestellt.","Die Kaffees sind bestellt worden.","Passiv: worden."],
+["Es wurde kalt.","Es ist kalt geworden.","Veränderung: geworden."],
+["Der Brief wurde gestern geschrieben.","Der Brief ist gestern geschrieben worden.","Passiv: worden steht ganz am Ende, hinter dem Partizip."],
+["Wir wurden nervös.","Wir sind nervös geworden.","Veränderung: geworden."],
+["Die Tür wurde geschlossen.","Die Tür ist geschlossen worden.","Passiv: worden."],
+["Du wurdest eingeladen.","Du bist eingeladen worden.","Passiv: worden."],
+["Sie wurde Mutter.","Sie ist Mutter geworden.","Veränderung: geworden."],
+["Die Straße wurde gesperrt.","Die Straße ist gesperrt worden.","Passiv: worden."],
+["Die Kinder wurden groß.","Die Kinder sind groß geworden.","Veränderung: geworden."],
+["Ihr wurdet gefragt.","Ihr seid gefragt worden.","Passiv: worden."],
+["Das Wetter wurde besser.","Das Wetter ist besser geworden.","Veränderung: geworden."],
+["Der Dieb wurde festgenommen.","Der Dieb ist festgenommen worden.","Passiv: worden."],
+["Der Kaffee ist gemahlen worden.","Der Kaffee wurde gemahlen.","Im Präteritum fällt worden weg: wurde plus Partizip."],
+["Die Kissen sind grau geworden.","Die Kissen wurden grau.","Im Präteritum fällt geworden weg: wurden plus Adjektiv."],
+["Ich bin befördert worden.","Ich wurde befördert.","Passiv im Präteritum: wurde plus Partizip."],
+["Er ist Chef geworden.","Er wurde Chef.","Veränderung im Präteritum: wurde plus Nomen."],
+["Wir sind abgeholt worden.","Wir wurden abgeholt.","Passiv im Präteritum: wurden plus Partizip."],
+["Es ist dunkel geworden.","Es wurde dunkel.","Veränderung im Präteritum: wurde plus Adjektiv."],
+["Du bist gewählt worden.","Du wurdest gewählt.","Passiv im Präteritum: wurdest plus Partizip."],
+["Ihr seid krank geworden.","Ihr wurdet krank.","Veränderung im Präteritum: wurdet plus Adjektiv."]
+];
+
+/* Englisch ins Deutsche: [Englisch, Zeit, Lösung, Hinweis] */
+const D_ENGLISCH = [
+["I was interviewed.","Präteritum","Ich wurde interviewt.","was interviewed: Passiv, wurde plus Partizip."],
+["I have been interviewed.","Perfekt","Ich bin interviewt worden.","have been interviewed: Passiv im Perfekt, ist plus Partizip plus worden."],
+["I became tired.","Präteritum","Ich wurde müde.","became: wurde plus Adjektiv."],
+["I have become tired.","Perfekt","Ich bin müde geworden.","have become: ist plus Adjektiv plus geworden."],
+["He became a doctor.","Präteritum","Er wurde Arzt.","became: wurde plus Nomen. Im Deutschen ohne Artikel."],
+["He has become a doctor.","Perfekt","Er ist Arzt geworden.","has become: ist plus Nomen plus geworden."],
+["The car was repaired.","Präteritum","Das Auto wurde repariert.","was repaired: Passiv, wurde plus Partizip."],
+["The car has been repaired.","Perfekt","Das Auto ist repariert worden.","has been repaired: Passiv im Perfekt, worden."],
+["The coffee was ground.","Präteritum","Der Kaffee wurde gemahlen.","was ground: Passiv, wurde plus Partizip."],
+["The cushions have turned grey.","Perfekt","Die Kissen sind grau geworden.","have turned grey: Veränderung, geworden."],
+["It got cold.","Präteritum","Es wurde kalt.","got cold: Veränderung, wurde plus Adjektiv."],
+["The coffees have been ordered.","Perfekt","Die Kaffees sind bestellt worden.","have been ordered: Passiv im Perfekt, worden."]
+];
+
+/* =====================================================================
    Karten bauen
    ===================================================================== */
 
 const HABEN={ich:"habe",du:"hast",er:"hat",wir:"haben",ihr:"habt",sie:"haben"};
 const SEIN ={ich:"bin", du:"bist",er:"ist",wir:"sind",ihr:"seid", sie:"sind"};
+const WURDE={ich:"wurde",du:"wurdest",er:"wurde",wir:"wurden",ihr:"wurdet",sie:"wurden"};
 const LUECKE='<span class="luecke"></span>';
 
 const DECKS=[
  {k:"perfekt", name:"Perfekt",           farbe:"#D9A441", text:"Ich habe geschlafen, ich bin gelaufen: haben oder sein, Perfekt bilden. Dazu Partizip II und Wortstellung."},
  {k:"artikel", name:"Der, die, das",     farbe:"#C2503F", text:"Artikel nach Endungen und Bedeutungsgruppen bestimmen, statt nach Gefühl zu raten."},
  {k:"praep",   name:"Präpositionen",     farbe:"#5F9EA0", text:"Wo oder wohin, Dativ oder Akkusativ. Dazu Kleidung anhaben und feste Verben mit Präposition."},
- {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."}
+ {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."},
+ {k:"werden",  name:"Wurde, worden, geworden", farbe:"#4A6FA5", text:"Wurde gemacht, ist gemacht worden oder ist grau geworden? Passiv im Präteritum und Perfekt, und wann wurde einfach became heißt."}
 ];
 const DECK_NACH_K={};DECKS.forEach(d=>DECK_NACH_K[d.k]=d);
 const SONDERDECKS={
  gemischt:{k:"gemischt",name:"Alles gemischt",farbe:"#98A3AF",
-   text:"Karten aus allen vier Stapeln durcheinander. Das ist die ehrlichste Übung."},
+   text:"Karten aus allen fünf Stapeln durcheinander. Das ist die ehrlichste Übung."},
  schwer:{k:"schwer",name:"Schwere Karten",farbe:"#8C7AA9",
-   text:"Nebensätze, doppelte Wörter, Fremdwörter und Fälle, die man nicht raten kann. Nur zum Eintippen, kaum zum Ankreuzen."},
+   text:"Nebensätze, Passivsätze zum Umformen, doppelte Wörter, Fremdwörter und Fälle, die man nicht raten kann. Nur zum Eintippen, kaum zum Ankreuzen."},
  fehler:{k:"fehler",name:"Fehlerstapel",farbe:"#E98776",
    text:"Alles, was du zuletzt falsch hattest. Liegt vorne im Kasten, bis es sitzt."}
 };
@@ -1613,6 +1735,76 @@ D_PERSON_TIPPEN.forEach(([satz,loesung,person,erkl])=>{
   });
 });
 
+/* ---------- Wurde, worden, geworden ---------- */
+D_WORDEN.forEach(([satz,richtig,hinweis])=>{
+  neueKarte({
+    deck:"werden", typ:"wahl",
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"worden oder geworden?",
+    optionen:["worden","geworden"], richtig:richtig,
+    erklaerung:esc(hinweis)+" &ndash; Vollständig: "+esc(satz.replace("%",richtig))
+  });
+});
+
+const ZEITNAME={praet:"Präteritum",perf:"Perfekt"};
+D_WERDEN_FORM.forEach(([satz,kern,art,person,hinweis])=>{
+  const wurde=WURDE[person]+" "+kern, ist=SEIN[person]+" "+kern;
+  const ende=art==="p"?" worden":" geworden", falschesEnde=art==="p"?" geworden":" worden";
+  const praet=wurde, perf=ist+ende;
+  const regel=art==="p"
+    ? "Passiv, jemand macht etwas: Präteritum <b>wurde</b> + Partizip, Perfekt <b>ist</b> + Partizip + <b>worden</b>."
+    : "Veränderung, jemand oder etwas wird zu etwas: Präteritum <b>wurde</b> + Adjektiv oder Nomen, Perfekt <b>ist</b> + Adjektiv oder Nomen + <b>geworden</b>.";
+  [["praet",praet,[perf,wurde+ende]],["perf",perf,[praet,ist+falschesEnde]]].forEach(([zeit,richtig,falsch])=>{
+    neueKarte({
+      deck:"werden", typ:"wahl",
+      rohfrage:satz+"|"+kern+"|"+zeit,
+      frage:esc(satz).replace("%",LUECKE),
+      anweisung:"Im <b>"+ZEITNAME[zeit]+"</b>, mit <i>"+esc(kern)+"</i>. Welche Form?",
+      optionen:[richtig].concat(falsch), richtig:richtig,
+      erklaerung:regel+(hinweis?" "+esc(hinweis):"")+" &ndash; Vollständig: "+esc(satz.replace("%",richtig))
+    });
+  });
+});
+
+const SINN={p:"Passiv: jemand macht etwas",w:"Veränderung: jemand wird zu etwas"};
+D_WURDE_SINN.forEach(([satz,art,wort,englisch])=>{
+  neueKarte({
+    deck:"werden", typ:"wahl",
+    rohfrage:satz,
+    frage:esc(satz),
+    anweisung:"Was heißt <i>wurde</i> hier?",
+    optionen:[SINN.p,SINN.w], richtig:SINN[art],
+    erklaerung:(art==="p"
+      ? "wurde + Partizip (<b>"+esc(wort)+"</b>): Passiv. Jemand hat etwas gemacht."
+      : "wurde + Adjektiv oder Nomen (<b>"+esc(wort)+"</b>): Veränderung, auf Englisch became oder got.")
+      +" &ndash; Auf Englisch: "+esc(englisch)
+  });
+});
+
+D_ZEIT_WECHSEL.forEach(([satz,loesung,hinweis])=>{
+  const insPerfekt=/\bwurde/.test(satz);
+  neueKarte({
+    deck:"werden", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz),
+    anweisung:insPerfekt?"Derselbe Satz im <b>Perfekt</b>.":"Derselbe Satz im <b>Präteritum</b>.",
+    loesungen:[loesung],
+    erklaerung:esc(hinweis)+" &ndash; Vollständig: "+esc(loesung)
+  });
+});
+
+D_ENGLISCH.forEach(([englisch,zeit,loesung,hinweis])=>{
+  neueKarte({
+    deck:"werden", typ:"tippen", schwer:true,
+    rohfrage:englisch+"|"+zeit,
+    frage:esc(englisch),
+    anweisung:"Auf Deutsch, im <b>"+zeit+"</b>.",
+    loesungen:[loesung],
+    erklaerung:esc(hinweis)+" &ndash; Vollständig: "+esc(loesung)
+  });
+});
+
 const ITEM_NACH_ID={};ITEMS.forEach(i=>ITEM_NACH_ID[i.id]=i);
 
 /* =====================================================================
@@ -1659,7 +1851,7 @@ const ABZEICHEN=[
  {k:"s30",    name:"Ein Monat",         text:"An dreißig Tagen hintereinander geübt.",      test:()=>S.streak>=30},
  {k:"sauber", name:"Ohne Fehler",       text:"Eine ganze Runde ohne einen einzigen Fehler.",test:()=>S.perfekteRunden>=1},
  {k:"fach5",  name:"Hinten im Kasten",  text:"25 Karten liegen in Fach 5.",                 test:()=>zaehleFach(5)>=25},
- {k:"alle",   name:"Alle vier Stapel",  text:"Aus jedem Stapel eine Karte gezogen.",        test:()=>DECKS.every(d=>ITEMS.some(i=>i.deck===d.k&&S.items[i.id]))},
+ {k:"alle",   name:"Alle fünf Stapel",  text:"Aus jedem Stapel eine Karte gezogen.",        test:()=>DECKS.every(d=>ITEMS.some(i=>i.deck===d.k&&S.items[i.id]))},
  {k:"hundert",name:"Hundert Karten",    text:"100 verschiedene Karten schon einmal gezogen.",test:()=>Object.keys(S.items).length>=100},
  {k:"schwer", name:"Harte Nuss",         text:"25 schwere Karten liegen in Fach 4 oder 5.",   test:()=>ITEMS.filter(i=>i.schwer&&S.items[i.id]&&S.items[i.id].b>=4).length>=25}
 ];
@@ -1714,7 +1906,7 @@ function zeigeStart(){
   const g=deckZahlen("gemischt");
   $("gruss").textContent = g.faellig===0
     ? "Für heute ist alles durch."
-    : (S.runden===0 ? "Vier Stapel, ein Kasten." : "Weiter geht's.");
+    : (S.runden===0 ? "Fünf Stapel, ein Kasten." : "Weiter geht's.");
   $("gruss-text").textContent = g.faellig===0
     ? "Alle Karten liegen weiter hinten im Kasten und kommen später wieder. Du kannst trotzdem jederzeit eine Extrarunde ziehen."
     : "Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.";
