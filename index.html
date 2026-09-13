@@ -535,12 +535,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
   <div class="abschnitt">
     <h2>Daten</h2>
-    <p class="unter">Dein Fortschritt liegt nur in diesem Browser. Sichere ihn als Datei, wenn du den Rechner wechselst.</p>
+    <p class="unter">Dein Fortschritt liegt nur in diesem Browser. Sichere ihn als Datei, wenn du das Gerät wechselst. Am Handy öffnet sich dafür das Teilen-Menü: dort „In Dateien sichern“ wählen oder die Datei direkt an jemanden schicken.</p>
     <div class="werkzeuge">
       <button class="dunkelknopf" id="k-export">Fortschritt sichern</button>
       <button class="dunkelknopf" id="k-import">Fortschritt laden</button>
       <button class="dunkelknopf warnung" id="k-reset">Alles zurücksetzen</button>
-      <input type="file" id="datei-eingabe" accept="application/json" hidden>
+      <input type="file" id="datei-eingabe" accept=".json,application/json" hidden>
     </div>
     <p class="hinweiszeile" id="daten-hinweis" hidden></p>
   </div>
@@ -2223,12 +2223,29 @@ function datenHinweis(text,gut){
   const el=$("daten-hinweis");el.textContent=text;el.hidden=false;
   el.dataset.ton=gut?"gut":"";
 }
-$("k-export").addEventListener("click",()=>{
-  const blob=new Blob([JSON.stringify(S)],{type:"application/json"});
+function fortschrittDatei(){
+  return new File([JSON.stringify(S)],"karteikasten-"+ymd(new Date())+".json",{type:"application/json"});
+}
+function teilenMoeglich(datei){
+  return navigator.maxTouchPoints>0&&!!navigator.canShare&&navigator.canShare({files:[datei]});
+}
+$("k-export").addEventListener("click",async()=>{
+  const datei=fortschrittDatei();
+  if(teilenMoeglich(datei)){
+    try{
+      await navigator.share({files:[datei],title:"Karteikasten Fortschritt"});
+      datenHinweis("Datei geteilt.",true);
+    }catch(e){
+      if(e.name==="AbortError")$("daten-hinweis").hidden=true;
+      else datenHinweis("Teilen hat nicht geklappt. Bitte noch einmal versuchen.");
+    }
+    return;
+  }
   const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="karteikasten-"+ymd(new Date())+".json";
-  a.click();URL.revokeObjectURL(a.href);
+  a.href=URL.createObjectURL(datei);
+  a.download=datei.name;
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   datenHinweis("Datei gespeichert.",true);
 });
 $("k-import").addEventListener("click",()=>$("datei-eingabe").click());
