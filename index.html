@@ -1870,7 +1870,8 @@ function zeige(name){
   sStart.hidden=name!=="start";
   sRunde.hidden=name!=="runde";
   sFortschritt.hidden=name!=="fortschritt";
-  $("knopf-zurueck").hidden=name!=="runde";
+  $("knopf-zurueck").hidden=name==="start";
+  $("knopf-zurueck").textContent=name==="runde"?"Runde beenden":"Zum Kasten";
   window.scrollTo(0,0);
 }
 function kopfleiste(){
@@ -2109,6 +2110,23 @@ function antworte(k,wert){
   });
 }
 
+const JUBEL=[
+"Wow Elli, du bist die Beste!","Großartig, Elli!","Elli, das war perfekt!","Super gemacht, Elli!",
+"Elli, du bist ein Grammatik-Star!","Genau so, Elli!","Elli, das sitzt!","Fantastisch, Elli!",
+"Elli, du bist unschlagbar!","Volltreffer, Elli!","Elli, das hast du drauf!","Wahnsinn, Elli!",
+"Elli, du rockst das!","Bravo, Elli!","Elli, du wirst immer besser!","Klasse, Elli!",
+"Elli, das war ein Meisterstück!","Spitze, Elli!","Elli, du bist auf Zack!","Hervorragend, Elli!",
+"Elli, nichts kann dich stoppen!","Sensationell, Elli!","Elli, du hast es einfach!","Toll gemacht, Elli!",
+"Elli, das war blitzschnell richtig!","Weiter so, Elli!","Elli, du bist eine Naturbegabung!","Wunderbar, Elli!",
+"Elli, das war wieder ein Treffer!","Stark, Elli!","Elli, du bist ein Ass!","Ausgezeichnet, Elli!",
+"Elli, du bist heute nicht zu bremsen!","Perfekt, Elli!","Elli, das war erstklassig!","Mega, Elli!",
+"Elli, du bist auf dem Weg nach oben!","Brillant, Elli!","Elli, so macht man das!","Grandios, Elli!",
+"Elli, du bist ein echtes Vorbild!","Hut ab, Elli!","Elli, das kann sich sehen lassen!","Glänzend, Elli!",
+"Elli, du bist ein Sprachtalent!","Richtig gut, Elli!","Elli, du bist ein Champion!","Bestens, Elli!",
+"Elli, das war zum Applaudieren!","Elli, du bist einfach großartig!"
+];
+function jubel(){return JUBEL[Math.floor(Math.random()*JUBEL.length)];}
+
 function zeichneRueckmeldung(k,ok,eingabe,vorher,nachher){
   if(k.typ==="wahl"){
     karte.querySelectorAll(".wahl").forEach(b=>{
@@ -2136,7 +2154,7 @@ function zeichneRueckmeldung(k,ok,eingabe,vorher,nachher){
 
   karte.insertAdjacentHTML("beforeend",
     '<div class="rueckmeldung '+(ok?"ja":"nein")+'">'+
-      '<h3>'+(ok?"Richtig":"Noch nicht")+'</h3>'+
+      '<h3>'+(ok?esc(jubel()):"Noch nicht")+'</h3>'+
       (ok?"":'<p class="loesung">Richtig ist: <b>'+esc(loesung)+'</b></p>')+
       '<p>'+bewegung+'</p>'+
       (k.erklaerung?'<div class="regel">'+k.erklaerung+'</div>':'')+
