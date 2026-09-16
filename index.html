@@ -512,7 +512,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 <!-- ============ Startseite ============ -->
 <section id="s-start">
   <div class="aufmacher">
-    <h1 id="gruss">Fünf Stapel, ein Kasten.</h1>
+    <h1 id="gruss">Sechs Stapel, ein Kasten.</h1>
     <p id="gruss-text">Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.</p>
   </div>
 
@@ -1516,6 +1516,207 @@ const D_ENGLISCH = [
 ];
 
 /* =====================================================================
+   Mehrzahl
+   ===================================================================== */
+
+const MEHRZAHL_REGELN = {
+ e:     "Viele männliche Nomen mit einer Silbe bekommen <b>-e</b>: der Tisch, die Tische.",
+ ue:    "Männliche Nomen mit einer Silbe bekommen oft <b>Umlaut und -e</b>: der Baum, die Bäume.",
+ er:    "Viele sächliche Nomen mit einer Silbe bekommen <b>-er</b>, mit Umlaut, wenn es geht: das Kind, die Kinder; das Buch, die Bücher.",
+ n:     "Weibliche Nomen bekommen fast immer <b>-n</b> oder <b>-en</b>: die Blume, die Blumen; die Frau, die Frauen.",
+ nen:   "Nomen auf -in bekommen <b>-nen</b>: die Lehrerin, die Lehrerinnen.",
+ s:     "Fremdwörter und Wörter auf -a, -i, -o, -u, -y bekommen <b>-s</b>: das Auto, die Autos.",
+ nichts:"Männliche und sächliche Nomen auf -el, -en, -er, -chen, -lein ändern sich nicht. Nur der Artikel wird die: der Lehrer, die Lehrer.",
+ umlaut:"Männliche und sächliche Nomen auf -el, -en, -er bekommen keine Endung, manche aber einen <b>Umlaut</b>: der Vater, die Väter.",
+ en:    "Männliche Nomen auf -e und viele Personen- und Fremdwörter bekommen <b>-en</b>: der Student, die Studenten; der Name, die Namen.",
+ ss:    "Nach einem kurzen Vokal wird das s in der Mehrzahl verdoppelt: der Bus, die Busse; das Ergebnis, die Ergebnisse.",
+ latein:"Fremdwörter auf -um, -a und -o bekommen oft <b>-en</b> oder <b>-a</b> statt ihrer Endung: das Museum, die Museen; das Praktikum, die Praktika; die Firma, die Firmen."
+};
+
+/* Mehrzahl ankreuzen: [Einzahl mit Artikel, Mehrzahl, [falsch, falsch], Regel, Zusatz] */
+const D_MEHRZAHL = [
+["der Tisch","Tische",["Tischen","Tischer"],"e"],
+["der Hund","Hunde",["Hunden","Hünde"],"e"],
+["der Tag","Tage",["Täge","Tagen"],"e"],
+["der Freund","Freunde",["Freunden","Freunds"],"e"],
+["das Jahr","Jahre",["Jahren","Jahrer"],"e"],
+["der Baum","Bäume",["Baume","Baumen"],"ue"],
+["der Stuhl","Stühle",["Stuhle","Stuhlen"],"ue"],
+["der Zug","Züge",["Zuge","Zugs"],"ue"],
+["die Hand","Hände",["Handen","Hande"],"ue","Eines der wenigen weiblichen Nomen mit Umlaut und -e. Auch: die Stadt, die Städte; die Nacht, die Nächte."],
+["die Stadt","Städte",["Stadten","Stadte"],"ue"],
+["das Kind","Kinder",["Kinde","Kinds"],"er"],
+["das Buch","Bücher",["Buche","Buchen"],"er"],
+["das Haus","Häuser",["Hause","Hausen"],"er"],
+["der Mann","Männer",["Manne","Mannen"],"er","Ein männliches Nomen mit -er, wie der Wald, die Wälder."],
+["das Bild","Bilder",["Bilde","Bilds"],"er"],
+["das Glas","Gläser",["Glase","Glasen"],"er"],
+["die Frau","Frauen",["Fraue","Fraus"],"n"],
+["die Blume","Blumen",["Blume","Blümen"],"n"],
+["die Lampe","Lampen",["Lampe","Lampes"],"n"],
+["die Zeitung","Zeitungen",["Zeitunge","Zeitungs"],"n","Alle Nomen auf -ung, -heit, -keit und -schaft sind weiblich und bekommen -en."],
+["die Wohnung","Wohnungen",["Wohnunge","Wohnungs"],"n"],
+["die Tür","Türen",["Türe","Türs"],"n"],
+["die Lehrerin","Lehrerinnen",["Lehrerinen","Lehrerins"],"nen"],
+["die Freundin","Freundinnen",["Freundinen","Freundins"],"nen"],
+["das Auto","Autos",["Auten","Autoen"],"s"],
+["das Handy","Handys",["Handies","Handyen"],"s","Im Deutschen wird das y nicht zu ie: die Handys, die Hobbys, die Partys."],
+["das Hotel","Hotels",["Hoteln","Hotele"],"s"],
+["der Park","Parks",["Parke","Pärke"],"s"],
+["das Café","Cafés",["Cafée","Cafén"],"s"],
+["der Lehrer","Lehrer",["Lehrers","Lehrern"],"nichts"],
+["das Fenster","Fenster",["Fensters","Fenstern"],"nichts"],
+["der Schlüssel","Schlüssel",["Schlüsseln","Schlüssels"],"nichts"],
+["das Mädchen","Mädchen",["Mädchens","Mädchenen"],"nichts"],
+["der Wagen","Wagen",["Wägen","Wagens"],"nichts"],
+["der Vater","Väter",["Vater","Vatern"],"umlaut"],
+["die Mutter","Mütter",["Muttern","Mutter"],"umlaut","Die Mutter ist eine Ausnahme unter den weiblichen Nomen: kein -n, nur Umlaut. Auch: die Tochter, die Töchter."],
+["der Apfel","Äpfel",["Apfeln","Apfel"],"umlaut"],
+["der Bruder","Brüder",["Bruder","Brudern"],"umlaut"],
+["der Vogel","Vögel",["Vogeln","Vogel"],"umlaut"],
+["der Student","Studenten",["Students","Studente"],"en"],
+["der Name","Namen",["Names","Näme"],"en"],
+["der Mensch","Menschen",["Mensche","Menschs"],"en"],
+["der Junge","Jungen",["Junges","Jünge"],"en","Umgangssprachlich hört man auch die Jungs. Geschrieben heißt es die Jungen."],
+["das Ergebnis","Ergebnisse",["Ergebnise","Ergebnissen"],"ss"],
+["das Museum","Museen",["Museums","Museume"],"latein"],
+["das Thema","Themen",["Themas","Thema"],"latein"],
+["die Firma","Firmen",["Firmas","Firmaen"],"latein"],
+["das Datum","Daten",["Datums","Datume"],"latein"]
+];
+
+/* Mehrzahl eintippen: [Einzahl mit Artikel, Lösungen, Regel, Zusatz] */
+const D_MEHRZAHL_TIPPEN = [
+["der Wald",["Wälder"],"er","Ein männliches Nomen mit -er und Umlaut, wie der Mann, die Männer."],
+["das Wort",["Wörter","Worte"],"er","Die Wörter sind einzelne Vokabeln. Die Worte sind ein Ausspruch: die Worte des Präsidenten."],
+["der Arzt",["Ärzte"],"ue"],
+["der Zahn",["Zähne"],"ue"],
+["die Nacht",["Nächte"],"ue","Weiblich, trotzdem Umlaut und -e, wie die Hand und die Stadt."],
+["der Kopf",["Köpfe"],"ue"],
+["der Sohn",["Söhne"],"ue"],
+["die Tochter",["Töchter"],"umlaut","Wie die Mutter: kein -n, nur Umlaut."],
+["der Garten",["Gärten"],"umlaut"],
+["der Boden",["Böden"],"umlaut"],
+["das Ei",["Eier"],"er"],
+["das Dorf",["Dörfer"],"er"],
+["das Land",["Länder"],"er"],
+["das Schloss",["Schlösser"],"er","Wie das Haus: -er und Umlaut."],
+["der Bus",["Busse"],"ss"],
+["das Zeugnis",["Zeugnisse"],"ss"],
+["die Kenntnis",["Kenntnisse"],"ss"],
+["der Kaktus",["Kakteen","Kaktusse"],"latein","Die Kakteen ist üblich, die Kaktusse ist auch erlaubt."],
+["das Praktikum",["Praktika"],"latein"],
+["das Zentrum",["Zentren"],"latein"],
+["die Pizza",["Pizzen","Pizzas"],"latein","Beides ist richtig: die Pizzen und die Pizzas."],
+["das Konto",["Konten","Kontos"],"latein","Beides ist richtig: die Konten und die Kontos."],
+["das Kino",["Kinos"],"s"],
+["das Hobby",["Hobbys"],"s","Nicht Hobbies. Im Deutschen bleibt das y."],
+["der Chef",["Chefs"],"s"],
+["das Sofa",["Sofas"],"s"],
+["das Herz",["Herzen"],"en"],
+["der Kollege",["Kollegen"],"en"],
+["der Nachbar",["Nachbarn"],"en","Nur -n, weil das Wort schon auf -r endet: der Nachbar, die Nachbarn. Genauso der Bauer, die Bauern."],
+["der Herr",["Herren"],"en","In der Mehrzahl -en, im Singular nur -n: dem Herrn, aber die Herren."],
+["der Löffel",["Löffel"],"nichts"],
+["der Onkel",["Onkel"],"nichts"],
+["das Zimmer",["Zimmer"],"nichts"],
+["der Sessel",["Sessel"],"nichts"],
+["die Schwester",["Schwestern"],"n","Weibliche Nomen auf -er bekommen nur -n: die Schwester, die Schwestern. Die Tochter ist die Ausnahme mit Umlaut."],
+["die Bäckerin",["Bäckerinnen"],"nen"]
+];
+
+/* Verb in der Mehrzahl: [Satz mit %, Infinitiv, richtig, [falsch, falsch], Hinweis] */
+const D_MEHRZAHL_VERB = [
+["Die Kinder % im Garten.","spielen","spielen",["spielt","spielst"],"Die Kinder sind mehrere: -en, wie der Infinitiv."],
+["Die Eltern % zu Hause.","bleiben","bleiben",["bleibt","bleibst"],"Die Eltern gibt es nur in der Mehrzahl. Das Verb bekommt -en."],
+["Die Leute % laut.","reden","reden",["redet","redest"],"Die Leute ist immer Mehrzahl, auch wenn people auf Englisch manchmal wie Einzahl klingt."],
+["Die Geschwister % sich oft.","streiten","streiten",["streitet","streitest"],"Die Geschwister: Mehrzahl."],
+["Die Ferien % zu Ende.","sein","sind",["ist","seid"],"Die Ferien gibt es nur in der Mehrzahl, wie die Eltern und die Leute."],
+["Wir % heute lange.","arbeiten","arbeiten",["arbeitet","arbeite"],"wir: -en."],
+["Ihr % heute lange.","arbeiten","arbeitet",["arbeiten","arbeitest"],"ihr: -t. Nach d oder t kommt ein e dazwischen: ihr arbeitet, ihr findet."],
+["Ihr % gut Deutsch.","sprechen","sprecht",["sprechen","sprichst"],"ihr: -t ohne Vokalwechsel. Das i gibt es nur bei du und er: du sprichst, er spricht."],
+["Sie % jeden Tag die Zeitung.","lesen","lesen",["lest","liest"],"Sie, ob Mehrzahl oder höflich: -en, wie der Infinitiv."],
+["Ihr % zu viel Fernsehen.","sehen","seht",["sehen","sieht"],"ihr seht. Das ie gibt es nur bei du und er."],
+["Die Hunde % im Garten.","schlafen","schlafen",["schlaft","schläft"],"Mehrzahl: -en, kein Umlaut. Den Umlaut gibt es nur bei du und er: er schläft."],
+["Ihr % zu lange.","schlafen","schlaft",["schlafen","schläfst"],"ihr schlaft, ohne Umlaut."],
+["Meine Freunde % aus Wien.","kommen","kommen",["kommt","kommst"],"Meine Freunde: Mehrzahl."],
+["Wir % morgen nach Berlin.","fahren","fahren",["fahrt","fährt"],"wir: -en, kein Umlaut."],
+["Ihr % morgen nach Berlin.","fahren","fahrt",["fahren","fährt"],"ihr fahrt, ohne Umlaut. Nur er fährt hat den Umlaut."],
+["Die Kinder % Hunger.","haben","haben",["habt","hat"],"Mehrzahl von hat ist haben."],
+["Ihr % Hunger.","haben","habt",["haben","hast"],"ihr habt. Das b bleibt, anders als bei du hast und er hat."],
+["Die Kinder % müde.","sein","sind",["seid","ist"],"Mehrzahl von ist: sind."],
+["Ihr % müde.","sein","seid",["sind","bist"],"ihr seid. Nur diese Form endet auf -d."],
+["Wir % müde.","sein","sind",["seid","bin"],"wir sind, wie sie sind."],
+["Die Leute % nett.","sein","sind",["seid","ist"],"Die Leute ist Mehrzahl: sind."],
+["Die Kinder % schwimmen.","können","können",["könnt","kann"],"Modalverben haben in der Mehrzahl Umlaut und -en, wie im Infinitiv."],
+["Ihr % gut schwimmen.","können","könnt",["können","kannst"],"ihr könnt: der Umlaut bleibt, die Endung ist -t."],
+["Wir % jetzt gehen.","müssen","müssen",["müsst","muss"],"wir müssen, wie im Infinitiv."],
+["Ihr % jetzt gehen.","müssen","müsst",["müssen","musst"],"ihr müsst, mit Umlaut. Du musst ohne Umlaut."],
+["Die Schüler % nach Hause.","wollen","wollen",["wollt","will"],"Mehrzahl von will: wollen."],
+["Ihr % nach Hause?","wollen","wollt",["wollen","willst"],"ihr wollt."],
+["Die Kinder % hier nicht spielen.","dürfen","dürfen",["dürft","darf"],"Mehrzahl von darf: dürfen."],
+["Wir % die Antwort nicht.","wissen","wissen",["wisst","weiß"],"wissen geht wie ein Modalverb: ich weiß, aber wir wissen."],
+["Ihr % die Antwort.","wissen","wisst",["wissen","weißt"],"ihr wisst."],
+["Die Blätter % gelb.","werden","werden",["werdet","wird"],"Mehrzahl von wird: werden."],
+["Ihr % nass.","werden","werdet",["werden","wirst"],"ihr werdet, mit e vor dem t."],
+["Ihr % Anna und Tom.","heißen","heißt",["heißen","heiß"],"Nach ß oder s kommt bei ihr kein zweites t: ihr heißt. Die Form sieht aus wie du heißt."],
+["Die Gäste % um acht.","essen","essen",["esst","isst"],"Mehrzahl: essen. Nur er isst hat den Vokalwechsel."],
+["Ihr % zu schnell.","essen","esst",["essen","isst"],"ihr esst. Kein Vokalwechsel bei ihr."],
+["Die Schüler % die Aufgabe.","verstehen","verstehen",["versteht","verstehst"],"Die Schüler: Mehrzahl."],
+["Ihr % die Tür.","öffnen","öffnet",["öffnen","öffnest"],"Nach fn kommt bei ihr ein e vor dem t: ihr öffnet."],
+["Wir % uns auf das Wochenende.","freuen","freuen",["freut","freue"],"wir freuen uns."],
+["Ihr % euch zu früh.","freuen","freut",["freuen","freust"],"ihr freut euch."],
+["Entschuldigung, % Sie mir helfen?","können","können",["könnt","kann"],"Das höfliche Sie nimmt immer die Mehrzahlform, auch wenn nur eine Person gemeint ist."],
+["% Sie aus Österreich?","kommen","Kommen",["Kommt","Kommst"],"Höfliches Sie: kommen."],
+["Wie viele Kinder % Sie?","haben","haben",["habt","hast"],"Höfliches Sie: haben."],
+["Woher % ihr?","kommen","kommt",["kommen","kommst"],"ihr kommt."],
+["Wo % ihr?","sein","seid",["sind","bist"],"ihr seid."],
+["Die Familie % im Urlaub.","sein","ist",["sind","seid"],"Die Familie ist ein Wort in der Einzahl, auch wenn viele Menschen dazugehören. Anders als die Eltern."],
+["Die Polizei % schon da.","sein","ist",["sind","seid"],"Die Polizei: Einzahl, wie die Familie und die Gruppe."],
+["Die Gruppe % um neun.","kommen","kommt",["kommen","kommst"],"Die Gruppe ist Einzahl."],
+["Jeder % das.","wissen","weiß",["wissen","wisst"],"Jeder, niemand, man: Einzahl, wie er."],
+["Niemand % das.","verstehen","versteht",["verstehen","verstehst"],"Niemand ist Einzahl, wie er."],
+["Man % hier nicht rauchen.","dürfen","darf",["dürfen","dürft"],"Man ist Einzahl, wie er."],
+["Alle % da.","sein","sind",["ist","seid"],"Alle ist Mehrzahl."],
+["Viele Leute % das nicht.","wissen","wissen",["weiß","wisst"],"Viele Leute: Mehrzahl."],
+["Anna und Tom % ins Kino.","gehen","gehen",["geht","gehst"],"Zwei Personen mit und: Mehrzahl."],
+["Du und ich, wir % ein Team.","sein","sind",["seid","bist"],"Du und ich zusammen sind wir."],
+["Peter und du, ihr % dran.","sein","seid",["sind","bist"],"Er und du zusammen sind ihr."]
+];
+
+/* Satz in die Mehrzahl: [Einzahl-Satz, Lösung, Hinweis] */
+const D_MEHRZAHL_SATZ = [
+["Das Kind spielt im Garten.","Die Kinder spielen im Garten.","Das Kind, die Kinder. Spielt wird zu spielen."],
+["Der Hund schläft.","Die Hunde schlafen.","Der Umlaut aus schläft fällt in der Mehrzahl weg: schlafen."],
+["Die Frau liest ein Buch.","Die Frauen lesen ein Buch.","Die Frau, die Frauen. Liest wird zu lesen."],
+["Der Apfel ist rot.","Die Äpfel sind rot.","Der Apfel, die Äpfel. Ist wird zu sind."],
+["Das Buch liegt auf dem Tisch.","Die Bücher liegen auf dem Tisch.","Das Buch, die Bücher."],
+["Mein Bruder wohnt in Wien.","Meine Brüder wohnen in Wien.","Mein wird zu meine, der Bruder zu die Brüder."],
+["Das Mädchen hat Hunger.","Die Mädchen haben Hunger.","Das Mädchen ändert sich nicht, nur der Artikel: die Mädchen. Hat wird zu haben."],
+["Der Lehrer erklärt die Regel.","Die Lehrer erklären die Regel.","Der Lehrer, die Lehrer. Nur der Artikel und das Verb ändern sich."],
+["Ein Vogel sitzt auf dem Dach.","Vögel sitzen auf dem Dach.","Ein hat keine Mehrzahl. Es fällt einfach weg: Vögel sitzen."],
+["Ein Kind weint.","Kinder weinen.","Ein fällt in der Mehrzahl weg."],
+["Die Stadt ist groß.","Die Städte sind groß.","Die Stadt, die Städte."],
+["Der Zug fährt um acht.","Die Züge fahren um acht.","Fährt wird zu fahren, ohne Umlaut."],
+["Das Auto steht vor dem Haus.","Die Autos stehen vor dem Haus.","Das Auto, die Autos."],
+["Die Lehrerin kommt aus Graz.","Die Lehrerinnen kommen aus Graz.","Die Lehrerin, die Lehrerinnen."],
+["Der Student muss viel lernen.","Die Studenten müssen viel lernen.","Muss wird zu müssen, mit Umlaut."],
+["Das Kind kann schon lesen.","Die Kinder können schon lesen.","Kann wird zu können."],
+["Ich bin müde.","Wir sind müde.","Ich in der Mehrzahl ist wir. Wir sind."],
+["Du bist müde.","Ihr seid müde.","Du in der Mehrzahl ist ihr. Ihr seid."],
+["Du hast recht.","Ihr habt recht.","Ihr habt."],
+["Er weiß es.","Sie wissen es.","Er in der Mehrzahl ist sie. Weiß wird zu wissen."],
+["Ich arbeite viel.","Wir arbeiten viel.","Wir arbeiten."],
+["Du isst zu schnell.","Ihr esst zu schnell.","Der Vokalwechsel aus du isst fällt bei ihr weg: ihr esst."],
+["Das Haus ist alt.","Die Häuser sind alt.","Das Haus, die Häuser."],
+["Der Vater kocht.","Die Väter kochen.","Der Vater, die Väter."],
+["Die Mutter arbeitet.","Die Mütter arbeiten.","Die Mutter, die Mütter."],
+["Der Mann trägt eine Brille.","Die Männer tragen eine Brille.","Trägt wird zu tragen, ohne Umlaut."],
+["Das Museum ist geschlossen.","Die Museen sind geschlossen.","Das Museum, die Museen."],
+["Der Kollege will nach Hause.","Die Kollegen wollen nach Hause.","Will wird zu wollen."]
+];
+
+/* =====================================================================
    Karten bauen
    ===================================================================== */
 
@@ -1529,14 +1730,15 @@ const DECKS=[
  {k:"artikel", name:"Der, die, das",     farbe:"#C2503F", text:"Artikel nach Endungen und Bedeutungsgruppen bestimmen, statt nach Gefühl zu raten."},
  {k:"praep",   name:"Präpositionen",     farbe:"#5F9EA0", text:"Wo oder wohin, Dativ oder Akkusativ. Dazu Kleidung anhaben und feste Verben mit Präposition."},
  {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."},
- {k:"werden",  name:"Wurde, worden, geworden", farbe:"#4A6FA5", text:"Wurde gemacht, ist gemacht worden oder ist grau geworden? Passiv im Präteritum und Perfekt, und wann wurde einfach became heißt."}
+ {k:"werden",  name:"Wurde, worden, geworden", farbe:"#4A6FA5", text:"Wurde gemacht, ist gemacht worden oder ist grau geworden? Passiv im Präteritum und Perfekt, und wann wurde einfach became heißt."},
+ {k:"mehrzahl",name:"Mehrzahl",          farbe:"#B26E8E", text:"Der Baum, die Bäume, das Kind, die Kinder. Dazu das Verb in der Mehrzahl: die Kinder spielen, ihr spielt, und warum die Familie trotzdem ist heißt."}
 ];
 const DECK_NACH_K={};DECKS.forEach(d=>DECK_NACH_K[d.k]=d);
 const SONDERDECKS={
  gemischt:{k:"gemischt",name:"Alles gemischt",farbe:"#98A3AF",
-   text:"Karten aus allen fünf Stapeln durcheinander. Das ist die ehrlichste Übung."},
+   text:"Karten aus allen sechs Stapeln durcheinander. Das ist die ehrlichste Übung."},
  schwer:{k:"schwer",name:"Schwere Karten",farbe:"#8C7AA9",
-   text:"Nebensätze, Passivsätze zum Umformen, doppelte Wörter, Fremdwörter und Fälle, die man nicht raten kann. Nur zum Eintippen, kaum zum Ankreuzen."},
+   text:"Nebensätze, Passivsätze zum Umformen, Sätze in die Mehrzahl setzen, doppelte Wörter, Fremdwörter und Fälle, die man nicht raten kann. Nur zum Eintippen, kaum zum Ankreuzen."},
  fehler:{k:"fehler",name:"Fehlerstapel",farbe:"#E98776",
    text:"Alles, was du zuletzt falsch hattest. Liegt vorne im Kasten, bis es sitzt."}
 };
@@ -1851,6 +2053,51 @@ D_ENGLISCH.forEach(([englisch,zeit,loesung,hinweis])=>{
   });
 });
 
+/* ---------- Mehrzahl ---------- */
+D_MEHRZAHL.forEach(([einzahl,mehrzahl,falsch,regel,extra])=>{
+  neueKarte({
+    deck:"mehrzahl", typ:"wahl",
+    rohfrage:einzahl,
+    frage:esc(einzahl)+", die "+LUECKE,
+    anweisung:"Wie heißt die Mehrzahl?",
+    optionen:[mehrzahl].concat(falsch), richtig:mehrzahl,
+    erklaerung:MEHRZAHL_REGELN[regel]+(extra?" "+esc(extra):"")+" &ndash; "+esc(einzahl)+", die "+esc(mehrzahl)
+  });
+});
+
+D_MEHRZAHL_TIPPEN.forEach(([einzahl,loesungen,regel,extra])=>{
+  neueKarte({
+    deck:"mehrzahl", typ:"tippen", schwer:true,
+    rohfrage:einzahl,
+    frage:esc(einzahl)+", die "+LUECKE,
+    anweisung:"Mehrzahl eintippen, mit oder ohne <i>die</i>.",
+    loesungen:loesungen.concat(loesungen.map(l=>"die "+l)),
+    erklaerung:MEHRZAHL_REGELN[regel]+(extra?" "+esc(extra):"")+" &ndash; "+esc(einzahl)+", die "+esc(loesungen[0])
+  });
+});
+
+D_MEHRZAHL_VERB.forEach(([satz,inf,richtig,falsch,hinweis])=>{
+  neueKarte({
+    deck:"mehrzahl", typ:"wahl",
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Welche Form von <i>"+esc(inf)+"</i>?",
+    optionen:[richtig].concat(falsch), richtig:richtig,
+    erklaerung:esc(hinweis)+" &ndash; Vollständig: "+esc(satz.replace("%",richtig))
+  });
+});
+
+D_MEHRZAHL_SATZ.forEach(([satz,loesung,hinweis])=>{
+  neueKarte({
+    deck:"mehrzahl", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz),
+    anweisung:"Derselbe Satz in der <b>Mehrzahl</b>. Nur das Subjekt wird mehr, der Rest bleibt.",
+    loesungen:[loesung],
+    erklaerung:esc(hinweis)+" &ndash; Vollständig: "+esc(loesung)
+  });
+});
+
 const ITEM_NACH_ID={};ITEMS.forEach(i=>ITEM_NACH_ID[i.id]=i);
 
 /* =====================================================================
@@ -1897,7 +2144,7 @@ const ABZEICHEN=[
  {k:"s30",    name:"Ein Monat",         text:"An dreißig Tagen hintereinander geübt.",      test:()=>S.streak>=30},
  {k:"sauber", name:"Ohne Fehler",       text:"Eine ganze Runde ohne einen einzigen Fehler.",test:()=>S.perfekteRunden>=1},
  {k:"fach5",  name:"Hinten im Kasten",  text:"25 Karten liegen in Fach 5.",                 test:()=>zaehleFach(5)>=25},
- {k:"alle",   name:"Alle fünf Stapel",  text:"Aus jedem Stapel eine Karte gezogen.",        test:()=>DECKS.every(d=>ITEMS.some(i=>i.deck===d.k&&S.items[i.id]))},
+ {k:"alle",   name:"Alle sechs Stapel", text:"Aus jedem Stapel eine Karte gezogen.",        test:()=>DECKS.every(d=>ITEMS.some(i=>i.deck===d.k&&S.items[i.id]))},
  {k:"hundert",name:"Hundert Karten",    text:"100 verschiedene Karten schon einmal gezogen.",test:()=>Object.keys(S.items).length>=100},
  {k:"schwer", name:"Harte Nuss",         text:"25 schwere Karten liegen in Fach 4 oder 5.",   test:()=>ITEMS.filter(i=>i.schwer&&S.items[i.id]&&S.items[i.id].b>=4).length>=25}
 ];
@@ -1953,7 +2200,7 @@ function zeigeStart(){
   const g=deckZahlen("gemischt");
   $("gruss").textContent = g.faellig===0
     ? "Für heute ist alles durch."
-    : (S.runden===0 ? "Fünf Stapel, ein Kasten." : "Weiter geht's.");
+    : (S.runden===0 ? "Sechs Stapel, ein Kasten." : "Weiter geht's.");
   $("gruss-text").textContent = g.faellig===0
     ? "Alle Karten liegen weiter hinten im Kasten und kommen später wieder. Du kannst trotzdem jederzeit eine Extrarunde ziehen."
     : "Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.";
