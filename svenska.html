@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kortlådan - Öva svensk grammatik</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="En eller ett, bestämd form, plural, ordföljd, prepositioner, verbformer och tempus. Med kortlåda och framsteg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="karteikasten.css">
+</head>
+<body>
+
+<header class="leiste">
+  <div class="marke"><b>Kortlådan</b><span>Svensk grammatik</span><a class="sprache" href="index.html">Deutsch</a></div>
+  <div class="werte" id="werte">
+    <button class="zurueck" id="knopf-zurueck" hidden>Avsluta omgången</button>
+    <div class="wert flamme" title="Dagar i rad"><b id="w-streak">0</b><span id="w-streak-wort">dagar</span></div>
+    <div class="wert" title="Samlade poäng"><b id="w-xp">0</b>poäng</div>
+    <button class="wert" id="knopf-fortschritt" title="Se dina framsteg">Nivå <b id="w-stufe">1</b></button>
+  </div>
+</header>
+
+<main class="buehne">
+
+<!-- ============ Startseite ============ -->
+<section id="s-start">
+  <div class="aufmacher">
+    <h1 id="gruss">Sjutton högar, en låda.</h1>
+    <p id="gruss-text">Varje kort du kan flyttar ett fack bakåt och kommer tillbaka senare. Varje kort du inte kan hamnar längst fram igen.</p>
+  </div>
+
+  <div class="kasten">
+    <div class="kasten-kopf">
+      <h2>Din låda</h2>
+      <p id="kasten-lage">Inget kort draget än.</p>
+    </div>
+    <div class="faecher" id="faecher"></div>
+  </div>
+
+  <h2 class="nur-screenreader">Välj en hög</h2>
+  <div class="stapel-liste" id="stapel-liste"></div>
+</section>
+
+<!-- ============ Runde ============ -->
+<section id="s-runde" hidden>
+  <div class="runde">
+    <div class="runde-kopf">
+      <div class="balken"><i id="runde-balken" style="width:0%"></i></div>
+      <div class="runde-zaehler" id="runde-zaehler">1 av 16</div>
+    </div>
+    <div class="kartenfeld">
+      <article class="karte" id="karte" aria-live="polite"></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Fortschritt ============ -->
+<section id="s-fortschritt" hidden>
+  <div class="aufmacher">
+    <h1>Framsteg</h1>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Högar</h2>
+    <p class="unter">Sitter betyder: kortet ligger i fack 4 eller 5.</p>
+    <div class="thema-liste" id="f-themen"></div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>De senaste åtta veckorna</h2>
+    <p class="unter">En ruta per dag. Ju ljusare, desto fler kort.</p>
+    <div class="kalender" id="f-kalender"></div>
+    <div class="kalender-legende">
+      <span>lite</span>
+      <span class="tag"></span><span class="tag s1"></span><span class="tag s2"></span><span class="tag s3"></span>
+      <span>mycket</span>
+    </div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Märken</h2>
+    <p class="unter" id="f-abzeichen-zahl"></p>
+    <div class="abzeichen" id="f-abzeichen"></div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Anteckningar</h2>
+    <p class="unter">En anteckning för varje hög. Under dem alla kort som du har skrivit något om.</p>
+    <div class="notiz-liste" id="f-thema-notizen"></div>
+    <h3 class="notiz-titel">Kort med anteckningar</h3>
+    <p class="unter" id="f-karten-notizen-leer" hidden>Inga än. När du har svarat kan du skriva en anteckning på kortet.</p>
+    <div class="notiz-liste" id="f-karten-notizen"></div>
+  </div>
+
+  <div class="abschnitt">
+    <h2>Data</h2>
+    <p class="unter">Dina framsteg finns bara i den här webbläsaren. Spara dem som fil om du byter enhet. På mobilen öppnas delningsmenyn: välj „Spara i Filer“ där eller skicka filen direkt till någon.</p>
+    <div class="werkzeuge">
+      <button class="dunkelknopf" id="k-export">Spara framsteg</button>
+      <button class="dunkelknopf" id="k-import">Ladda framsteg</button>
+      <button class="dunkelknopf warnung" id="k-reset">Återställ allt</button>
+      <input type="file" id="datei-eingabe" accept=".json,application/json" hidden>
+    </div>
+    <p class="hinweiszeile" id="daten-hinweis" hidden></p>
+  </div>
+</section>
+
+</main>
+<script src="karteikasten.js"></script>
+<script src="svenska/enett.js"></script>
+<script src="svenska/bestamd.js"></script>
+<script src="svenska/plural.js"></script>
+<script src="svenska/adjektiv.js"></script>
+<script src="svenska/pronomen.js"></script>
+<script src="svenska/sin.js"></script>
+<script src="svenska/ordfoljd.js"></script>
+<script src="svenska/prep.js"></script>
+<script src="svenska/tid.js"></script>
+<script src="svenska/verb.js"></script>
+<script src="svenska/tempus.js"></script>
+<script src="svenska/ligga.js"></script>
+<script src="svenska/reflexiv.js"></script>
+<script src="svenska/sverb.js"></script>
+<script src="svenska/partikel.js"></script>
+<script src="svenska/att.js"></script>
+<script src="svenska/vanner.js"></script>
+<script>
+"use strict";
+
+const DECKS=[
+ {k:"enett",   name:"En eller ett",      farbe:"#C2503F", text:"En bil, ett hus. Och orden som följer med: ingen bil, inget hus, vilken bok, vilket rum."},
+ {k:"bestamd", name:"Bestämd form",      farbe:"#D9A441", text:"Bilen, huset, bilarna, husen. Och dubbel bestämning: det stora huset, den nya bilen."},
+ {k:"plural",  name:"Plural",            farbe:"#B26E8E", text:"Flickor, bilar, bilder, äpplen, hus. De fem grupperna och de oregelbundna: män, böcker, fötter."},
+ {k:"adjektiv",name:"Adjektiv",          farbe:"#7D9A54", text:"En stor bil, ett stort hus, stora bilar. Och komparation: större, störst, bättre, bäst."},
+ {k:"pronomen",name:"Pronomen",          farbe:"#5F9EA0", text:"Jag eller mig, de eller dem, han eller honom. Och den, det eller de när du syftar tillbaka på något."},
+ {k:"sin",     name:"Sin eller hans",    farbe:"#A0674B", text:"Han tar sin bil, sin egen. Han tar hans bil, någon annans. Sin, sitt, sina mot hans, hennes, deras."},
+ {k:"ordfoljd",name:"Ordföljd",          farbe:"#4A6FA5", text:"Verbet på plats två i huvudsatsen: Idag åker jag. Inte före verbet i bisatsen: att han inte kommer."},
+ {k:"prep",    name:"Prepositioner",     farbe:"#3F8F7A", text:"På jobbet, i köket, till stan. Och verb som alltid har sin preposition: tänka på, vänta på, prata om."},
+ {k:"tid",     name:"Tidsuttryck",       farbe:"#9F7FC9", text:"För två år sedan, i två år, om två år. På måndag eller i måndags?"},
+ {k:"verb",    name:"Verbformer",        farbe:"#C98B3A", text:"Arbetade, köpte, bodde, skrev. Verbgrupperna ett till fyra, de starka verben och imperativ."},
+ {k:"tempus",  name:"Tempus",            farbe:"#6E86B8", text:"Igår åt jag, jag har bott här i tre år, jag hade redan ätit. Vilken tidsform passar?"},
+ {k:"ligga",   name:"Ligga eller lägga", farbe:"#9A8F4E", text:"Boken ligger på bordet, jag lägger boken på bordet. Samma sak med sitta och sätta, stå och ställa."},
+ {k:"reflexiv",name:"Reflexiva verb",    farbe:"#6F9A7E", text:"Jag tvättar mig, hon känner sig trött. Och verb som är reflexiva på tyska men inte på svenska."},
+ {k:"sverb",   name:"S-verb och passiv", farbe:"#B45F6A", text:"Dörren öppnas, dörren öppnades. Och verb som bara finns med s: hoppas, minnas, trivas, vi ses."},
+ {k:"partikel",name:"Partikelverb",      farbe:"#5C8FB5", text:"Tycka om, hälsa på, ge upp. Den betonade partikeln ändrar betydelsen."},
+ {k:"att",     name:"Att eller inte",    farbe:"#A7825F", text:"Jag vill åka, men jag lovar att åka. När infinitiven behöver att och när den klarar sig utan."},
+ {k:"vanner",  name:"Falska vänner",     farbe:"#8E9F5A", text:"Rolig betyder inte ruhig och glass är inte Glas. Ord som ser tyska ut men betyder något annat."}
+];
+const SONDERDECKS={
+ gemischt:{k:"gemischt",name:"Allt blandat",farbe:"#98A3AF",
+   text:"Kort från alla sjutton högar huller om buller. Det är den ärligaste övningen."},
+ schwer:{k:"schwer",name:"Svåra kort",farbe:"#8C7AA9",
+   text:"Starka verb, dubbel bestämning, sin eller hans, bisatser och allt annat som inte går att gissa. Mest att skriva själv."},
+ fehler:{k:"fehler",name:"Felhögen",farbe:"#E98776",
+   text:"Allt du hade fel nyligen. Ligger längst fram i lådan tills det sitter."}
+};
+
+const JUBEL=[
+"Snyggt, Manfred!","Bra jobbat, Manfred!","Manfred, det där satt!","Helt rätt, Manfred!",
+"Perfekt, Manfred!","Manfred, du är grym!","Klockrent, Manfred!","Toppen, Manfred!",
+"Manfred, du kan det här!","Strålande, Manfred!","Manfred, mitt i prick!","Superbra, Manfred!",
+"Manfred, du låter som en svensk!","Fantastiskt, Manfred!","Manfred, du blir bättre och bättre!","Kanon, Manfred!",
+"Manfred, nu sitter det!","Suveränt, Manfred!","Manfred, ingen kan stoppa dig!","Utmärkt, Manfred!",
+"Manfred, det där var elegant!","Härligt, Manfred!","Manfred, du är på gång!","Bravo, Manfred!",
+"Manfred, grammatiken lyder dig!","Snyggt jobbat, Manfred!","Manfred, du är ett språkgeni!","Mycket bra, Manfred!",
+"Manfred, så ska det se ut!","Imponerande, Manfred!","Manfred, du har koll!","Fullträff, Manfred!",
+"Manfred, det gick blixtsnabbt!","Riktigt bra, Manfred!","Manfred, B2 här kommer du!","Lysande, Manfred!",
+"Manfred, du är i form idag!","Fint, Manfred!","Manfred, du flyger fram!","Otroligt, Manfred!",
+"Manfred, du har verkligen fattat det!","Mästerligt, Manfred!","Manfred, heja heja!","Precis så, Manfred!",
+"Manfred, du briljerar!","Grymt, Manfred!","Manfred, full pott!","Underbart, Manfred!",
+"Manfred, du är en stjärna!","Klart godkänt, Manfred!"
+];
+
+starteKarteikasten({
+  app:"sv", schluessel:"svl.v1", dateiname:"kortladan",
+  decks:DECKS, sonderdecks:SONDERDECKS, jubel:JUBEL,
+  zeichen:["å","ä","ö"],
+  geschlechtFarben:{en:"var(--der)",ett:"var(--das)"},
+  // Å, ä und ö bleiben eigene Buchstaben: far und får sind verschiedene Wörter.
+  norm:s=>String(s).toLowerCase().trim()
+    .replace(/[.,!?;]+$/,"").replace(/\s+/g," "),
+  abzeichen:{
+    start:  ["Första omgången",   "En omgång spelad till slut."],
+    r50:    ["Femtio rätt",       "50 kort rätt besvarade."],
+    r250:   ["Tvåhundrafemtio",   "250 kort rätt besvarade."],
+    serie10:["Tio i rad",         "Tio rätta svar i följd."],
+    s3:     ["Tre dagar",         "Övat tre dagar i rad."],
+    s7:     ["En vecka",          "Övat sju dagar i rad."],
+    s30:    ["En månad",          "Övat trettio dagar i rad."],
+    sauber: ["Utan fel",          "En hel omgång utan ett enda fel."],
+    fach5:  ["Längst bak i lådan","25 kort ligger i fack 5."],
+    alle:   ["Alla sjutton högar","Dragit ett kort ur varje hög."],
+    hundert:["Hundra kort",       "100 olika kort dragna minst en gång."],
+    schwer: ["Hård nöt",          "25 svåra kort ligger i fack 4 eller 5."]
+  },
+  texte:{
+    speicherFehler:"Framstegen kunde inte sparas. Webbläsarens minne är fullt eller spärrat.",
+    rundeBeenden:"Avsluta omgången", zumKasten:"Till lådan",
+    tag:"dag", tage:"dagar",
+    grussFertig:"Allt är klart för idag.",
+    grussErsteRunde:"Sjutton högar, en låda.",
+    grussWeiter:"Nu kör vi vidare.",
+    grussTextFertig:"Alla kort ligger längre bak i lådan och kommer tillbaka senare. Du kan ändå ta en extra omgång när du vill.",
+    grussText:"Varje kort du kan flyttar ett fack bakåt och kommer tillbaka senare. Varje kort du inte kan hamnar längst fram igen.",
+    kastenNeu:n=>"Inget kort draget än. Lådan har "+n+" kort.",
+    kastenLage:(tur,sitter,gesamt)=>"<em>"+tur+"</em> på tur, "+sitter+" av "+gesamt+" sitter redan.",
+    leer:"tomt", fach:"Fack", von:"av",
+    nichtsFaellig:"inget på tur", neu:n=>n+" nya", faellig:n=>n+" på tur", karten:n=>n+" kort",
+    stapelLeer:"Den här högen är tom.",
+    schwer:"svår", neueKarte:"nytt kort",
+    pruefen:"Rätta", tastePruefen:"rätta", eintippen:"Skriv ditt svar", weissNicht:"Vet inte",
+    tasten:n=>"Tangent <kbd>1</kbd> till <kbd>"+n+"</kbd>",
+    bauplatzLeer:"Lägg orden här",
+    stufeErreicht:n=>"Nivå "+n+" nådd", abzeichenMeldung:"Märke: ",
+    deineNotiz:"Din anteckning", notizPlatzhalter:"Det du vill komma ihåg om det här kortet",
+    markerRichtig:"rätt", markerGewaehlt:"ditt val",
+    bleibtHinten:"Stannar längst bak i fack 5.", rutscht:n=>"Flyttar till fack "+n+".",
+    landetVorne:"Hamnar i fack 1 och kommer strax igen.",
+    gehtZurueck:"Går tillbaka till fack 1 och kommer strax igen.",
+    nochNicht:"Inte än", richtigIst:"Rätt svar:",
+    weiter:"Nästa", notiz:"Anteckning", tasteWeiter:"nästa",
+    fertig:"klart", rundeBeendet:"Omgången är slut",
+    bilanzRichtig:"Rätt", bilanzFalsch:"Fel", laengsteSerie:"Längsta serie i omgången",
+    punkteInsgesamt:"Poäng totalt", nochEineRunde:"En omgång till",
+    stapelNotiz:"Anteckning om den här högen", gesammelt:(a,b)=>a+" av "+b+" samlade.",
+    teilenTitel:"Kortlådan framsteg", geteilt:"Filen delades.",
+    teilenFehler:"Det gick inte att dela. Försök igen.",
+    gespeichert:"Filen sparades.", geladen:"Framstegen laddades.",
+    dateiPasstNicht:"Den här filen passar inte. Det ska vara en fil från Spara framsteg.",
+    falscheSprache:"Den här filen kommer från den tyska kortlådan. Ladda den där.",
+    resetFrage:"Vill du verkligen radera allt? Poäng, fack och serie försvinner.",
+    zurueckgesetzt:"Allt är återställt."
+  }
+});
+</script>
+</body>
+</html>

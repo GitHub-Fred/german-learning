@@ -1,0 +1,146 @@
+(()=>{"use strict";
+const R={
+  land:"Länder och städer tar <b>i</b>: i Sverige, i Stockholm.",
+  oe:"Öar tar oftast <b>på</b>: på Gotland, på Öland.",
+  inne:"<b>i</b> när något är inne i ett rum eller ett utrymme: i köket, i bilen.",
+  yta:"<b>på</b> när något är ovanpå en yta: på bordet, på väggen, på gatan.",
+  plats:"Många platser där man gör något tar <b>på</b>: på bio, på jobbet, på posten, på sjukhuset.",
+  landet:"<b>på landet</b> betyder utanför staden, på landsbygden.",
+  skog:"Man är <b>i</b> skogen, mitt bland träden.",
+  hos:"<b>hos</b> + person svarar på frågan <i>var?</i>: hemma hos någon.",
+  till:"<b>till</b> visar vart man åker eller går.",
+  fran:"<b>från</b> visar varifrån något kommer.",
+  in_i:"<b>in i</b> är en rörelse till insidan av något.",
+  ut_ur:"<b>ut ur</b> och <b>upp ur</b> är en rörelse från insidan av något."
+};
+const text=r=>R[r]||r;
+
+// [mening, rätt, fel, regel, svår]
+const D_WAHL=[
+["Jag bor % Sverige.","i",["på","till"],"land"],
+["Min syster bor % Stockholm.","i",["på","till"],"land"],
+["Vi har ett sommarhus % Gotland.","på",["i","till"],"oe"],
+["Ska vi gå % bio i kväll?","på",["i","hos"],"plats"],
+["Vi äter ofta % restaurang.","på",["i","hos"],"plats"],
+["Mamma lagar mat % köket.","i",["på","hos"],"inne"],
+["Han är % toaletten just nu.","på",["i","hos"],"plats"],
+["Hon läser medicin % universitetet i Lund.","på",["i","till"],"plats"],
+["Jag ska hämta ett paket % posten.","på",["i","om"],"plats"],
+["Vi har en lägenhet i stan och ett sommarhus % landet.","på",["hos","till"],"landet"],
+["Barnen leker % gatan.","på",["i","hos"],"yta"],
+["Boken ligger % stolen.","på",["i","hos"],"yta"],
+["Vi träffades % en fest.","på",["i","hos"],"Man är <b>på</b> en fest, en konsert eller ett möte."],
+["Jag är % jobbet till fem.","på",["i","hos"],"plats"],
+["Vi plockar svamp % skogen.","i",["på","hos"],"skog"],
+["Tavlan hänger % väggen.","på",["i","hos"],"yta"],
+["Det är varmt % bilen.","i",["på","hos"],"inne"],
+["Han sjunger alltid % duschen.","i",["på","hos"],"inne"],
+["Det finns en marknad % torget.","på",["i","hos"],"Man är <b>på</b> torget, en öppen plats."],
+["Vi bor % en liten ö.","på",["i","hos"],"oe"],
+["Vi dricker kaffe % balkongen.","på",["i","hos"],"Man sitter <b>på</b> balkongen."],
+["Vi är % mormor i helgen.","hos",["till","på"],"hos"],
+["Vi åker % mormor på lördag.","till",["hos","på"],"<b>till</b> visar vart man åker. <b>hos</b> svarar på frågan <i>var?</i>"],
+["Vi flyger % Oslo på lördag.","till",["i","hos"],"till"],
+["Jag kommer % Tyskland.","från",["ur","av"],"fran"],
+["Det började regna, så vi sprang in % huset.","i",["på","ur"],"in_i"],
+["Hon tog ut mjölken % kylskåpet.","ur",["i","på"],"ut_ur"],
+["Han gick ut % rummet utan att säga något.","ur",["på","av"],"ut_ur"],
+["Vi åker hem % jobbet klockan fem.","från",["av","ur"],"fran"],
+["Jag ska gå % tandläkaren i morgon.","till",["i","ur"],"till"],
+["Jag tänker ofta % dig.","på",["om","över"],"Det heter <b>tänka på</b> någon eller något."],
+["Tror du % spöken?","på",["om","i"],"Det heter <b>tro på</b> något."],
+["Vi väntar % bussen.","på",["efter","till"],"Det heter <b>vänta på</b> någon eller något."],
+["Vi tittar % en film i kväll.","på",["om","åt"],"Det heter <b>titta på</b> något."],
+["Hon lyssnar % musik hela dagen.","på",["om","med"],"Det heter <b>lyssna på</b> något."],
+["Vi pratade länge % vädret.","om",["för","av"],"Man <b>pratar om</b> något."],
+["Jag måste prata % dig om en sak.","med",["åt","på"],"Man <b>pratar med</b> en person och <b>om</b> en sak."],
+["Jag drömmer % ett hus vid havet.","om",["på","av"],"Det heter <b>drömma om</b> något."],
+["Jag tycker % glass.","om",["på","av"],"Det heter <b>tycka om</b> något."],
+["Min dotter är rädd % hundar.","för",["av","på"],"Det heter <b>vara rädd för</b> något."],
+["Är du intresserad % konst?","av",["för","på"],"Det heter <b>vara intresserad av</b> något."],
+["Det beror % vädret.","på",["om","med"],"Det heter <b>bero på</b> något."],
+["Hon ska gifta sig % Erik i sommar.","med",["på","åt"],"Det heter <b>gifta sig med</b> någon."],
+["Filmen handlar % en flicka och hennes hund.","om",["på","av"],"Det heter <b>handla om</b> något."],
+["Tack % hjälpen!","för",["om","på"],"Man <b>tackar för</b> något."],
+["Jag letar % mina nycklar.","efter",["för","om"],"Det heter <b>leta efter</b> något."],
+["Vi hälsar % mormor på söndag.","på",["om","med"],"<b>hälsa på</b> någon betyder att besöka någon."],
+["Du har inte svarat % min fråga.","på",["om","till"],"Det heter <b>svara på</b> något."],
+["Vi hoppas % fint väder i helgen.","på",["om","för"],"Det heter <b>hoppas på</b> något."],
+["Vem tar hand % hunden?","om",["på","för"],"Det heter <b>ta hand om</b> någon."],
+["Jag bryr mig inte % vad andra tycker.","om",["på","för"],"Det heter <b>bry sig om</b> något."],
+["Mamma är orolig % dig.","för",["på","av"],"Det heter <b>vara orolig för</b> någon."],
+["Var rädd % dig!","om",["för","på"],"<b>vara rädd om</b> betyder att vara försiktig med något. <b>rädd för</b> betyder att man är rädd.",1],
+["Alla skrattade % hans skämt.","åt",["på","om"],"Det heter <b>skratta åt</b> något.",1],
+["Grattis % det nya jobbet!","till",["på","om"],"Det heter <b>grattis till</b> något. Men: grattis på födelsedagen.",1],
+["Vi har inte råd % en ny bil.","med",["på","av"],"Det heter <b>ha råd med</b> något.",1],
+["Han är bra % att laga mat.","på",["i","av"],"Det heter <b>vara bra på</b> något.",1],
+["Jag är trött % regnet nu.","på",["om","med"],"<b>vara trött på</b> något betyder att man inte orkar med det längre.",1],
+["Vatten består % väte och syre.","av",["med","på"],"Det heter <b>bestå av</b> något.",1]
+];
+
+// [mening, lösningar, förklaring, grupp]
+const D_TIPPEN=[
+["Jag är inte van % kylan än.",["vid"],"Det heter <b>vara van vid</b> något."],
+["Vi är så stolta % dig!",["över"],"Det heter <b>vara stolt över</b> någon eller något."],
+["Mamma är arg % mig.",["på"],"Man är <b>arg på</b> en person."],
+["Är du nöjd % resultatet?",["med"],"Det heter <b>vara nöjd med</b> något."],
+["Hon är beroende % kaffe.",["av"],"Det heter <b>vara beroende av</b> något."],
+["Han blev kär % henne direkt.",["i"],"Det heter <b>bli kär i</b> någon."],
+["Man vänjer sig % allt.",["vid"],"Det heter <b>vänja sig vid</b> något."],
+["Jag ser fram % helgen.",["emot","mot"],"Det heter <b>se fram emot</b> något."],
+["Jag tycker synd % honom.",["om"],"Det heter <b>tycka synd om</b> någon."],
+["Hon lider % migrän.",["av"],"Det heter <b>lida av</b> något."],
+["Är du säker % det?",["på"],"Det heter <b>vara säker på</b> något."],
+["Jag är så glad % din skull.",["för"],"Det heter <b>glad för någons skull</b>."],
+["Vi blev glada % nyheten.",["över","för","åt"],"Man är <b>glad över</b> något. Man kan också säga <b>glad för</b> och <b>glad åt</b>."],
+["Barnen längtar % julafton.",["till","efter"],"Man kan säga både <b>längta till</b> och <b>längta efter</b>."],
+["Vad tänker du %?",["på"],"Det heter <b>tänka på</b> något."],
+["Tror du % Gud?",["på"],"Det heter <b>tro på</b> något."],
+["Boken handlar % en familj i Norrland.",["om"],"Det heter <b>handla om</b> något."],
+["Det beror % dig.",["på"],"Det heter <b>bero på</b> någon eller något."],
+["Vill du gifta dig % mig?",["med"],"Det heter <b>gifta sig med</b> någon."],
+["Är du intresserad % fotboll?",["av"],"Det heter <b>vara intresserad av</b> något."],
+["Jag är rädd % mörkret.",["för"],"Det heter <b>vara rädd för</b> något."],
+["Jag lyssnar gärna % poddar.",["på","till"],"Det heter <b>lyssna på</b> något. <b>lyssna till</b> är lite mer formellt."],
+["Jag drömde % dig i natt.",["om"],"Det heter <b>drömma om</b> någon."],
+["Hon är gift % en läkare.",["med"],"Det heter <b>vara gift med</b> någon."],
+["Vi är överens % det.",["om"],"Det heter <b>vara överens om</b> något."],
+["Jag är tacksam % hjälpen.",["för"],"Det heter <b>vara tacksam för</b> något."],
+["Han är känd % sina deckare.",["för"],"Det heter <b>vara känd för</b> något."],
+["Jag är sugen % glass.",["på"],"Det heter <b>vara sugen på</b> något."],
+["Är du medlem % klubben?",["i","av"],"Det heter <b>vara medlem i</b> något. Man kan också säga <b>medlem av</b>."],
+["Hon är ansvarig % projektet.",["för"],"Det heter <b>vara ansvarig för</b> något."],
+["Vi har en stuga % Öland.",["på"],"oe","plats"],
+["Min pappa ligger % sjukhuset.",["på"],"plats","plats"],
+["Vi bor % Malmö.",["i"],"land","plats"],
+["Kan du köpa frimärken % posten?",["på"],"plats","plats"],
+["De flyttade från stan och bor nu % landet.",["på"],"landet","plats"],
+["Jag har aldrig varit % Frankrike.",["i"],"land","plats"],
+["Vi flyttade hit % Polen för tio år sedan.",["från"],"fran"],
+["Hon sprang in % köket.",["i"],"in_i"],
+["Han tog upp telefonen % fickan.",["ur"],"ut_ur"],
+["Vi är % farmor och farfar i helgen.",["hos"],"hos"]
+];
+
+D_WAHL.forEach(([satz,richtig,falsch,regel,schwer])=>{
+  neueKarte({
+    deck:"prep", typ:"wahl", schwer:!!schwer,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:"Vilken preposition passar?",
+    optionen:[richtig].concat(falsch), richtig:richtig,
+    erklaerung:text(regel)+" &ndash; "+esc(satz.replace("%",richtig))
+  });
+});
+
+D_TIPPEN.forEach(([satz,loesungen,regel,grupp])=>{
+  neueKarte({
+    deck:"prep", typ:"tippen", schwer:true,
+    rohfrage:satz,
+    frage:esc(satz).replace("%",LUECKE),
+    anweisung:grupp==="plats"?"Skriv <i>i</i> eller <i>på</i>.":"Skriv prepositionen.",
+    loesungen:loesungen,
+    erklaerung:text(regel)+" &ndash; "+esc(satz.replace("%",loesungen[0]))
+  });
+});
+})();
