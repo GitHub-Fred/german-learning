@@ -11,6 +11,9 @@ function mische(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.
 function leichteZuerst(liste){return liste.sort((a,b)=>(a.schwer?1:0)-(b.schwer?1:0));}
 const LUECKE='<span class="luecke"></span>';
 
+if("serviceWorker" in navigator&&location.protocol.startsWith("http"))
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+
 const ITEMS=[];
 function neueKarte(k){
   k.id=k.deck+"-"+hash(k.typ+"|"+(k.rohfrage||"")+"|"+(k.richtig||(k.loesungen&&k.loesungen[0])||""));
