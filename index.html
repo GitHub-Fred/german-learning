@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Karteikasten - Deutsche Grammatik üben</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Perfekt mit haben und sein, der/die/das, Präpositionen und reflexive Verben üben. Mit Karteikasten-System und Fortschritt.">
+<meta name="description" content="Perfekt mit haben und sein, der/die/das, Präpositionen, reflexive Verben und Satzstellung üben. Mit Karteikasten-System und Fortschritt.">
 <link rel="manifest" href="manifest-deutsch.webmanifest">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <meta name="theme-color" content="#1B2027">
@@ -28,7 +28,7 @@
 <!-- ============ Startseite ============ -->
 <section id="s-start">
   <div class="aufmacher">
-    <h1 id="gruss">Sechs Stapel, ein Kasten.</h1>
+    <h1 id="gruss">Sieben Stapel, ein Kasten.</h1>
     <p id="gruss-text">Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.</p>
   </div>
 
@@ -1234,6 +1234,167 @@ const D_MEHRZAHL_SATZ = [
 ];
 
 /* =====================================================================
+   Satzstellung: vom Schwedischen und Englischen ins Deutsche
+   ===================================================================== */
+
+const STELLUNG_REGELN = {
+ klammer:"Satzklammer: <b>haben</b> oder <b>sein</b> steht auf Position zwei, das Partizip ganz am <b>Ende</b>. Alles andere steht dazwischen. Auf Schwedisch und Englisch kommt das Partizip direkt danach: <i>jag har sett filmen</i>, I have seen the film.",
+ modal:"Das Modalverb steht auf Position zwei, der Infinitiv ganz am <b>Ende</b>. Auf Schwedisch bleiben beide zusammen: <i>jag kan inte komma i morgon</i>. Auf Deutsch: Ich kann morgen nicht <b>kommen</b>.",
+ futur:"<b>werden</b> steht auf Position zwei, der Infinitiv ganz am <b>Ende</b>: Ich werde morgen <b>arbeiten</b>. Auf Schwedisch bleiben <i>ska jobba</i> zusammen.",
+ trennbar:"Trennbare Verben: die Vorsilbe (an, auf, aus, ein, mit ...) wandert ans <b>Satzende</b>. Auf Schwedisch bleibt die Partikel beim Verb: <i>ringa upp</i>, <i>stiga upp</i>. Mit einem Modalverb bleibt das Verb ganz und steht am Ende: Kannst du den Fernseher <b>ausmachen</b>?",
+ nebensatz:"Nach <b>dass, weil, wenn, ob, obwohl, als</b> steht das konjugierte Verb ganz am <b>Ende</b>. Auf Schwedisch und Englisch bleibt es direkt nach dem Subjekt: <i>att du inte har tid</i>, aber: dass du keine Zeit <b>hast</b>.",
+ nebensatz_mehr:"Im Nebensatz mit zwei Verben steht das konjugierte Verb ganz hinten, <b>nach</b> dem Infinitiv oder Partizip: dass er arbeiten <b>muss</b>, dass sie es vergessen <b>hat</b>. Das schwedische BIFF hilft hier nicht: auf Deutsch rutscht das Verb einfach ans Ende.",
+ indirekt:"Eine indirekte Frage (Ich weiß nicht, wo ... / Weißt du, wann ...) ist ein Nebensatz: das Verb steht am <b>Ende</b>. Wie auf Schwedisch wird nichts umgestellt, aber auf Deutsch wandert das Verb ganz nach hinten.",
+ nebensatz_vorne:"Steht der Nebensatz vorne, zählt er als Position eins. Danach kommt sofort das <b>Verb</b>, dann das Subjekt: Wenn es regnet, <b>bleiben wir</b> zu Hause. Genau wie auf Schwedisch: <i>Om det regnar, stannar vi hemma.</i> Nur auf Englisch nicht: If it rains, we stay.",
+ inversion:"Das Verb steht immer auf Position <b>zwei</b>. Steht etwas anderes als das Subjekt vorne, kommt das Verb direkt danach, dann das Subjekt. Das kennst du aus dem Schwedischen: <i>I dag åker jag.</i> Nur auf Englisch heißt es Today I go.",
+ adverb:"<b>oft, immer, nie</b> stehen nach dem Verb: Ich trinke <b>oft</b> Kaffee. Wie auf Schwedisch: <i>jag dricker ofta kaffe</i>. Auf Englisch steht das Wort vor dem Verb: I often drink.",
+ nicht:"<b>nicht</b> steht möglichst weit hinten: nach dem Objekt und nach der Zeit, aber vor dem zweiten Verbteil und vor dem Ziel. Auf Schwedisch steht <i>inte</i> direkt nach dem Verb: <i>jag hittar inte min nyckel</i>, aber: Ich finde meinen Schlüssel <b>nicht</b>.",
+ pronomen:"Pronomen stehen früh, direkt nach dem Verb. Bei zwei Pronomen kommt der Akkusativ zuerst: Ich gebe <b>es ihm</b>. Ein <i>till</i> oder to braucht man nicht, der Dativ reicht.",
+ zu:"Infinitiv mit <b>zu</b>: zu und das Verb stehen ganz am <b>Ende</b>, alles andere davor: Ich versuche, Deutsch <b>zu lernen</b>. Bei trennbaren Verben steht zu in der Mitte: an<b>zu</b>rufen. Auf Schwedisch kommt <i>att lära sig</i> direkt nach dem Verb.",
+ frage:"In der Frage steht das konjugierte Verb ganz vorne oder direkt nach dem Fragewort. Der zweite Verbteil steht am <b>Ende</b>: Hast du mein Handy <b>gesehen</b>? Auf Schwedisch bleibt <i>sett</i> beim Verb: <i>Har du sett min telefon?</i>",
+ konj:"<b>und, aber, oder, denn</b> zählen nicht mit. Danach kommt ein ganz normaler Hauptsatz: Subjekt, Verb. Nur <b>weil</b> schickt das Verb ans Ende: weil ich krank <b>bin</b>, aber: denn ich <b>bin</b> krank.",
+ tekamolo:"<b>TeKaMoLo</b>: Temporal (wann?), Kausal (warum?), Modal (wie?), Lokal (wo, wohin?). Auf Schwedisch und Englisch ist es fast umgekehrt, dort steht die Zeit am Schluss: <i>Jag åker till Berlin med tåget i morgon.</i> Auf Deutsch kommt die Zeit früh: morgen mit dem Zug nach Berlin."
+};
+
+/* Ankreuzen: [Schwedisch, Englisch, Deutsch richtig, [falsch], Regel, schwer] */
+const D_STELLUNG = [
+["Jag har sett filmen.","I have seen the film.","Ich habe den Film gesehen.",["Ich habe gesehen den Film."],"klammer"],
+["Vi har köpt en ny bil.","We have bought a new car.","Wir haben ein neues Auto gekauft.",["Wir haben gekauft ein neues Auto."],"klammer"],
+["Han har glömt sin nyckel.","He has forgotten his key.","Er hat seinen Schlüssel vergessen.",["Er hat vergessen seinen Schlüssel."],"klammer"],
+["Hon har bott i Berlin i två år.","She has lived in Berlin for two years.","Sie hat zwei Jahre in Berlin gewohnt.",["Sie hat gewohnt in Berlin zwei Jahre.","Sie hat in Berlin gewohnt zwei Jahre."],"klammer"],
+["Vi har väntat på dig i en timme.","We have waited for you for an hour.","Wir haben eine Stunde auf dich gewartet.",["Wir haben gewartet auf dich eine Stunde.","Wir haben auf dich gewartet eine Stunde."],"klammer"],
+["Jag har aldrig varit i Wien.","I have never been to Vienna.","Ich bin noch nie in Wien gewesen.",["Ich bin noch nie gewesen in Wien.","Ich bin gewesen noch nie in Wien."],"klammer"],
+
+["Jag kan inte komma i morgon.","I can't come tomorrow.","Ich kann morgen nicht kommen.",["Ich kann nicht kommen morgen.","Ich kann kommen nicht morgen."],"modal"],
+["Du måste läsa den här boken.","You must read this book.","Du musst dieses Buch lesen.",["Du musst lesen dieses Buch."],"modal"],
+["Kan du hjälpa mig?","Can you help me?","Kannst du mir helfen?",["Kannst du helfen mir?"],"modal"],
+["Kan du visa mig vägen?","Can you show me the way?","Kannst du mir den Weg zeigen?",["Kannst du zeigen mir den Weg?","Kannst du mir zeigen den Weg?"],"modal"],
+["Vi vill åka till Italien i sommar.","We want to go to Italy this summer.","Wir wollen diesen Sommer nach Italien fahren.",["Wir wollen fahren nach Italien diesen Sommer.","Wir wollen nach Italien fahren diesen Sommer."],"modal",1],
+["Jag ska jobba i morgon.","I will work tomorrow.","Ich werde morgen arbeiten.",["Ich werde arbeiten morgen."],"futur"],
+["Det kommer att regna i morgon.","It will rain tomorrow.","Es wird morgen regnen.",["Es wird regnen morgen."],"futur"],
+
+["Jag ringer dig i kväll.","I'll call you tonight.","Ich rufe dich heute Abend an.",["Ich rufe an dich heute Abend.","Ich anrufe dich heute Abend."],"trennbar"],
+["Tåget kommer fram klockan åtta.","The train arrives at eight.","Der Zug kommt um acht Uhr an.",["Der Zug kommt an um acht Uhr.","Der Zug ankommt um acht Uhr."],"trennbar"],
+["Jag stiger upp klockan sex varje dag.","I get up at six every day.","Ich stehe jeden Tag um sechs Uhr auf.",["Ich stehe auf um sechs Uhr jeden Tag.","Ich aufstehe jeden Tag um sechs Uhr."],"trennbar"],
+["Vi handlar på lördag.","We'll do the shopping on Saturday.","Wir kaufen am Samstag ein.",["Wir kaufen ein am Samstag.","Wir einkaufen am Samstag."],"trennbar"],
+["Kan du stänga av tv:n?","Can you turn off the TV?","Kannst du den Fernseher ausmachen?",["Kannst du ausmachen den Fernseher?","Kannst du machen den Fernseher aus?"],"trennbar",1],
+
+["Jag vet att du inte har tid.","I know that you don't have time.","Ich weiß, dass du keine Zeit hast.",["Ich weiß, dass du hast keine Zeit."],"nebensatz"],
+["Hon stannar hemma eftersom hon är sjuk.","She stays at home because she is ill.","Sie bleibt zu Hause, weil sie krank ist.",["Sie bleibt zu Hause, weil sie ist krank."],"nebensatz"],
+["Jag tror att han bor i Hamburg.","I think he lives in Hamburg.","Ich glaube, dass er in Hamburg wohnt.",["Ich glaube, dass er wohnt in Hamburg."],"nebensatz"],
+["Ring mig när du kommer hem.","Call me when you get home.","Ruf mich an, wenn du nach Hause kommst.",["Ruf mich an, wenn du kommst nach Hause."],"nebensatz"],
+["Jag är glad att du är här.","I'm happy that you are here.","Ich freue mich, dass du hier bist.",["Ich freue mich, dass du bist hier."],"nebensatz"],
+["Jag frågar om hon kommer i morgon.","I'm asking if she's coming tomorrow.","Ich frage, ob sie morgen kommt.",["Ich frage, ob sie kommt morgen."],"nebensatz"],
+["Vi går ut fast det regnar mycket.","We go out although it's raining a lot.","Wir gehen raus, obwohl es stark regnet.",["Wir gehen raus, obwohl es regnet stark."],"nebensatz"],
+["Det är synd att du inte kan komma.","It's a pity that you can't come.","Es ist schade, dass du nicht kommen kannst.",["Es ist schade, dass du kannst nicht kommen.","Es ist schade, dass du nicht kannst kommen."],"nebensatz_mehr"],
+["Jag tror att hon har glömt det.","I think she has forgotten it.","Ich glaube, dass sie es vergessen hat.",["Ich glaube, dass sie hat es vergessen.","Ich glaube, dass sie hat vergessen es."],"nebensatz_mehr"],
+["Han säger att han måste jobba i helgen.","He says that he has to work at the weekend.","Er sagt, dass er am Wochenende arbeiten muss.",["Er sagt, dass er muss arbeiten am Wochenende.","Er sagt, dass er muss am Wochenende arbeiten."],"nebensatz_mehr",1],
+["Jag lär mig tyska eftersom jag vill bo i Tyskland.","I'm learning German because I want to live in Germany.","Ich lerne Deutsch, weil ich in Deutschland wohnen will.",["Ich lerne Deutsch, weil ich will wohnen in Deutschland.","Ich lerne Deutsch, weil ich will in Deutschland wohnen."],"nebensatz_mehr",1],
+
+["Vet du var hon bor?","Do you know where she lives?","Weißt du, wo sie wohnt?",["Weißt du, wo wohnt sie?"],"indirekt"],
+["Jag vet inte varför tåget är försenat.","I don't know why the train is late.","Ich weiß nicht, warum der Zug Verspätung hat.",["Ich weiß nicht, warum der Zug hat Verspätung.","Ich weiß nicht, warum hat der Zug Verspätung."],"indirekt"],
+["Kan du säga mig när filmen börjar?","Can you tell me when the film starts?","Kannst du mir sagen, wann der Film anfängt?",["Kannst du mir sagen, wann der Film fängt an?","Kannst du mir sagen, wann fängt der Film an?"],"indirekt",1],
+["Jag undrar om de har kommit hem.","I wonder if they have come home.","Ich frage mich, ob sie nach Hause gekommen sind.",["Ich frage mich, ob sie sind nach Hause gekommen.","Ich frage mich, ob sie sind gekommen nach Hause."],"indirekt",1],
+
+["Om det regnar, stannar vi hemma.","If it rains, we'll stay at home.","Wenn es regnet, bleiben wir zu Hause.",["Wenn es regnet, wir bleiben zu Hause.","Wenn regnet es, bleiben wir zu Hause."],"nebensatz_vorne"],
+["När jag kom hem, åt jag middag.","When I got home, I had dinner.","Als ich nach Hause kam, habe ich zu Abend gegessen.",["Als ich nach Hause kam, ich habe zu Abend gegessen.","Als ich kam nach Hause, habe ich zu Abend gegessen."],"nebensatz_vorne"],
+["Eftersom jag är trött, går jag och lägger mig.","Because I'm tired, I'm going to bed.","Weil ich müde bin, gehe ich ins Bett.",["Weil ich müde bin, ich gehe ins Bett.","Weil ich bin müde, gehe ich ins Bett."],"nebensatz_vorne"],
+["Fast det var kallt, badade vi.","Although it was cold, we went swimming.","Obwohl es kalt war, sind wir schwimmen gegangen.",["Obwohl es kalt war, wir sind schwimmen gegangen.","Obwohl es war kalt, sind wir schwimmen gegangen."],"nebensatz_vorne",1],
+["Om du har tid, kan vi träffas i morgon.","If you have time, we can meet tomorrow.","Wenn du Zeit hast, können wir uns morgen treffen.",["Wenn du Zeit hast, wir können uns morgen treffen.","Wenn du hast Zeit, können wir uns morgen treffen.","Wenn du Zeit hast, können wir treffen uns morgen."],"nebensatz_vorne",1],
+
+["I dag åker jag till Berlin.","Today I'm going to Berlin.","Heute fahre ich nach Berlin.",["Heute ich fahre nach Berlin."],"inversion"],
+["I morgon har jag ingen tid.","Tomorrow I don't have any time.","Morgen habe ich keine Zeit.",["Morgen ich habe keine Zeit."],"inversion"],
+["På sommaren badar vi i sjön.","In summer we swim in the lake.","Im Sommer baden wir im See.",["Im Sommer wir baden im See."],"inversion"],
+["Tyvärr kan jag inte komma.","Unfortunately I can't come.","Leider kann ich nicht kommen.",["Leider ich kann nicht kommen.","Leider kann ich kommen nicht."],"inversion"],
+["Därför stannade jag hemma.","That's why I stayed at home.","Deshalb bin ich zu Hause geblieben.",["Deshalb ich bin zu Hause geblieben.","Deshalb bin ich geblieben zu Hause."],"inversion"],
+["Den filmen har jag redan sett.","That film I have already seen.","Den Film habe ich schon gesehen.",["Den Film ich habe schon gesehen.","Den Film habe ich gesehen schon."],"inversion",1],
+
+["Jag dricker ofta kaffe.","I often drink coffee.","Ich trinke oft Kaffee.",["Ich oft trinke Kaffee."],"adverb"],
+["Han kommer alltid för sent.","He always comes too late.","Er kommt immer zu spät.",["Er immer kommt zu spät."],"adverb"],
+["Vi äter aldrig kött.","We never eat meat.","Wir essen nie Fleisch.",["Wir nie essen Fleisch."],"adverb"],
+
+["Jag hittar inte min nyckel.","I can't find my key.","Ich finde meinen Schlüssel nicht.",["Ich finde nicht meinen Schlüssel."],"nicht"],
+["Vi har inte sett filmen.","We haven't seen the film.","Wir haben den Film nicht gesehen.",["Wir haben nicht gesehen den Film.","Wir nicht haben den Film gesehen."],"nicht"],
+["Hon vill inte åka hem.","She doesn't want to go home.","Sie will nicht nach Hause fahren.",["Sie will nach Hause nicht fahren.","Sie will nicht fahren nach Hause."],"nicht"],
+["Jag kan inte hjälpa dig i dag.","I can't help you today.","Ich kann dir heute nicht helfen.",["Ich kann nicht helfen dir heute.","Ich kann dir nicht helfen heute."],"nicht",1],
+
+["Jag ger det till honom.","I give it to him.","Ich gebe es ihm.",["Ich gebe ihm es.","Ich gebe es zu ihm."],"pronomen",1],
+["Jag har köpt en present till henne.","I have bought a present for her.","Ich habe ihr ein Geschenk gekauft.",["Ich habe gekauft ihr ein Geschenk.","Ich habe ein Geschenk gekauft zu ihr."],"pronomen"],
+
+["Jag försöker lära mig tyska.","I'm trying to learn German.","Ich versuche, Deutsch zu lernen.",["Ich versuche zu lernen Deutsch.","Ich versuche, zu Deutsch lernen."],"zu"],
+["Det är svårt att hitta en lägenhet.","It's hard to find a flat.","Es ist schwer, eine Wohnung zu finden.",["Es ist schwer, zu finden eine Wohnung."],"zu"],
+["Jag har glömt att ringa honom.","I forgot to call him.","Ich habe vergessen, ihn anzurufen.",["Ich habe vergessen, anzurufen ihn.","Ich habe vergessen, zu anrufen ihn."],"zu",1],
+
+["Har du sett min telefon?","Have you seen my phone?","Hast du mein Handy gesehen?",["Hast du gesehen mein Handy?"],"frage"],
+["Varför har du inte ringt?","Why haven't you called?","Warum hast du nicht angerufen?",["Warum hast du angerufen nicht?","Warum du hast nicht angerufen?"],"frage"],
+["Vad vill du äta i kväll?","What do you want to eat tonight?","Was willst du heute Abend essen?",["Was willst du essen heute Abend?","Was du willst heute Abend essen?"],"frage"],
+
+["Jag stannar hemma, för jag är sjuk.","I'm staying at home, because I'm ill.","Ich bleibe zu Hause, denn ich bin krank.",["Ich bleibe zu Hause, denn ich krank bin.","Ich bleibe zu Hause, denn bin ich krank."],"konj"],
+["Jag är trött, men jag måste jobba.","I'm tired, but I have to work.","Ich bin müde, aber ich muss arbeiten.",["Ich bin müde, aber muss ich arbeiten.","Ich bin müde, aber ich arbeiten muss."],"konj"],
+
+["Jag åker till Berlin med tåget i morgon.","I'm going to Berlin by train tomorrow.","Ich fahre morgen mit dem Zug nach Berlin.",["Ich fahre nach Berlin mit dem Zug morgen.","Ich fahre mit dem Zug nach Berlin morgen."],"tekamolo"],
+["Hon jobbar på ett kafé på helgerna.","She works in a café at weekends.","Sie arbeitet am Wochenende in einem Café.",["Sie arbeitet in einem Café am Wochenende."],"tekamolo"],
+["Vi träffades i Stockholm förra året.","We met in Stockholm last year.","Wir haben uns letztes Jahr in Stockholm kennengelernt.",["Wir haben uns in Stockholm letztes Jahr kennengelernt.","Wir haben kennengelernt uns in Stockholm letztes Jahr."],"tekamolo"],
+["Han cyklar till jobbet varje dag.","He cycles to work every day.","Er fährt jeden Tag mit dem Fahrrad zur Arbeit.",["Er fährt zur Arbeit mit dem Fahrrad jeden Tag.","Er fährt mit dem Fahrrad zur Arbeit jeden Tag."],"tekamolo"],
+["Vi åkte till Italien med bil i somras.","We drove to Italy last summer.","Wir sind letzten Sommer mit dem Auto nach Italien gefahren.",["Wir sind nach Italien mit dem Auto letzten Sommer gefahren.","Wir sind mit dem Auto nach Italien letzten Sommer gefahren."],"tekamolo"],
+["Jag stannade hemma i går på grund av regnet.","I stayed at home yesterday because of the rain.","Ich bin gestern wegen des Regens zu Hause geblieben.",["Ich bin zu Hause wegen des Regens gestern geblieben.","Ich bin gestern zu Hause wegen des Regens geblieben."],"tekamolo",1],
+["Hon gick snabbt hem efter jobbet.","She quickly went home after work.","Sie ist nach der Arbeit schnell nach Hause gegangen.",["Sie ist schnell nach Hause nach der Arbeit gegangen.","Sie ist nach Hause schnell nach der Arbeit gegangen."],"tekamolo",1]
+];
+
+const TEKAMOLO = {
+ te:["Te: wann?","<b>Te</b>, temporal: antwortet auf wann, wie lange, seit wann."],
+ ka:["Ka: warum?","<b>Ka</b>, kausal: antwortet auf warum. Oft mit wegen, aus, vor oder trotz."],
+ mo:["Mo: wie?","<b>Mo</b>, modal: antwortet auf wie, womit, mit wem."],
+ lo:["Lo: wo, wohin?","<b>Lo</b>, lokal: antwortet auf wo, wohin, woher."]
+};
+
+/* TeKaMoLo erkennen: [Satz, Satzteil, te|ka|mo|lo] */
+const D_TEKAMOLO = [
+["Ich fahre morgen mit dem Zug nach Berlin.","morgen","te"],
+["Ich fahre morgen mit dem Zug nach Berlin.","mit dem Zug","mo"],
+["Ich fahre morgen mit dem Zug nach Berlin.","nach Berlin","lo"],
+["Wir sind wegen des Regens zu Hause geblieben.","wegen des Regens","ka"],
+["Wir sind wegen des Regens zu Hause geblieben.","zu Hause","lo"],
+["Sie arbeitet seit drei Jahren in einer Bäckerei.","seit drei Jahren","te"],
+["Er ist vor Freude durch die Wohnung getanzt.","vor Freude","ka"],
+["Er ist vor Freude durch die Wohnung getanzt.","durch die Wohnung","lo"],
+["Ich habe den Brief gestern sehr schnell geschrieben.","sehr schnell","mo"],
+["Wir treffen uns nach dem Kurs im Café.","nach dem Kurs","te"],
+["Wir treffen uns nach dem Kurs im Café.","im Café","lo"],
+["Sie ist aus Neugier allein in den Keller gegangen.","aus Neugier","ka"],
+["Sie ist aus Neugier allein in den Keller gegangen.","allein","mo"],
+["Ich lerne jeden Abend mit großer Freude Deutsch.","mit großer Freude","mo"],
+["Am Wochenende fahren wir mit dem Rad an den See.","Am Wochenende","te"],
+["Am Wochenende fahren wir mit dem Rad an den See.","mit dem Rad","mo"],
+["Wegen der Kälte bleiben die Kinder im Haus.","Wegen der Kälte","ka"],
+["Elli kommt aus Schweden.","aus Schweden","lo"]
+];
+
+/* Satz bauen: [Schwedisch, Englisch, Deutsch mit | zwischen den Bausteinen, Regel, schwer, weitere Lösungen] */
+const D_STELLUNG_BAU = [
+["Jag åker till Berlin med tåget i morgon.","I'm going to Berlin by train tomorrow.","Ich|fahre|morgen|mit dem Zug|nach Berlin.","tekamolo"],
+["Hon åker buss till jobbet varje morgon.","She takes the bus to work every morning.","Sie|fährt|jeden Morgen|mit dem Bus|zur Arbeit.","tekamolo"],
+["Vi stannade hemma i går på grund av regnet.","We stayed at home yesterday because of the rain.","Wir|sind|gestern|wegen des Regens|zu Hause|geblieben.","tekamolo",1],
+["Vi träffades i Stockholm förra året.","We met in Stockholm last year.","Wir|haben|uns|letztes Jahr|in Stockholm|kennengelernt.","tekamolo",1],
+["Hon gick snabbt hem efter jobbet.","She quickly went home after work.","Sie|ist|nach der Arbeit|schnell|nach Hause|gegangen.","tekamolo",1],
+["Jag har inte sett filmen än.","I haven't seen the film yet.","Ich|habe|den Film|noch nicht|gesehen.","klammer"],
+["Jag kan inte komma i kväll.","I can't come tonight.","Ich|kann|heute Abend|nicht|kommen.","modal"],
+["Kan du hjälpa mig med flytten i morgon?","Can you help me with the move tomorrow?","Kannst|du|mir|morgen|beim Umzug|helfen?","modal"],
+["Jag ringer dig i kväll.","I'll call you tonight.","Ich|rufe|dich|heute Abend|an.","trennbar"],
+["Jag stiger upp klockan sex varje dag.","I get up at six every day.","Ich|stehe|jeden Tag|um sechs Uhr|auf.","trennbar"],
+["Har du sett min nyckel?","Have you seen my key?","Hast|du|meinen Schlüssel|gesehen?","frage"],
+["Han gav mig boken i går.","He gave me the book yesterday.","Er|hat|mir|gestern|das Buch|gegeben.","pronomen",0,["Er hat mir das Buch gestern gegeben."]],
+["Jag vet att du inte har tid i morgon.","I know you don't have time tomorrow.","Ich weiß,|dass|du|morgen|keine Zeit|hast.","nebensatz"],
+["Jag vet inte varför tåget är försenat.","I don't know why the train is late.","Ich weiß nicht,|warum|der Zug|Verspätung|hat.","indirekt"],
+["Om det regnar, stannar vi hemma.","If it rains, we'll stay at home.","Wenn|es|regnet,|bleiben|wir|zu Hause.","nebensatz_vorne"],
+["Han säger att han måste jobba i helgen.","He says he has to work at the weekend.","Er sagt,|dass|er|am Wochenende|arbeiten|muss.","nebensatz_mehr",1],
+["Jag lär mig tyska eftersom jag vill bo i Tyskland.","I'm learning German because I want to live in Germany.","Ich|lerne|Deutsch,|weil|ich|in Deutschland|wohnen|will.","nebensatz_mehr",1],
+["Jag försöker lära mig tyska varje dag.","I try to learn German every day.","Ich|versuche,|jeden Tag|Deutsch|zu|lernen.","zu",1],
+["Eftersom jag är trött, går jag och lägger mig tidigt.","Because I'm tired, I'm going to bed early.","Weil|ich|müde|bin,|gehe|ich|früh|ins Bett.","nebensatz_vorne",1],
+["Fast det var kallt, badade vi i sjön.","Although it was cold, we swam in the lake.","Obwohl|es|kalt|war,|sind|wir|im See|geschwommen.","nebensatz_vorne",1]
+];
+
+/* =====================================================================
    Karten bauen
    ===================================================================== */
 
@@ -1247,11 +1408,12 @@ const DECKS=[
  {k:"praep",   name:"Präpositionen",     farbe:"#5F9EA0", text:"Wo oder wohin, Dativ oder Akkusativ. Dazu Kleidung anhaben und feste Verben mit Präposition."},
  {k:"reflexiv",name:"Reflexive Verben",  farbe:"#7D9A54", text:"Mich oder mir, dich oder dir. Und warum es ich helfe dir heißt, aber ich liebe dich."},
  {k:"werden",  name:"Wurde, worden, geworden", farbe:"#4A6FA5", text:"Wurde gemacht, ist gemacht worden oder ist grau geworden? Passiv im Präteritum und Perfekt, und wann wurde einfach became heißt."},
- {k:"mehrzahl",name:"Mehrzahl",          farbe:"#B26E8E", text:"Der Baum, die Bäume, das Kind, die Kinder. Dazu das Verb in der Mehrzahl: die Kinder spielen, ihr spielt, und warum die Familie trotzdem ist heißt."}
+ {k:"mehrzahl",name:"Mehrzahl",          farbe:"#B26E8E", text:"Der Baum, die Bäume, das Kind, die Kinder. Dazu das Verb in der Mehrzahl: die Kinder spielen, ihr spielt, und warum die Familie trotzdem ist heißt."},
+ {k:"stellung",name:"Satzstellung",      farbe:"#D07A3C", text:"Vom Schwedischen und Englischen ins Deutsche: das Verb ans Ende, die Satzklammer, nicht an die richtige Stelle. Dazu TeKaMoLo: morgen mit dem Zug nach Berlin."}
 ];
 const SONDERDECKS={
  gemischt:{k:"gemischt",name:"Alles gemischt",farbe:"#98A3AF",
-   text:"Karten aus allen sechs Stapeln durcheinander. Das ist die ehrlichste Übung."},
+   text:"Karten aus allen sieben Stapeln durcheinander. Das ist die ehrlichste Übung."},
  schwer:{k:"schwer",name:"Schwere Karten",farbe:"#8C7AA9",
    text:"Nebensätze, Passivsätze zum Umformen, Sätze in die Mehrzahl setzen, doppelte Wörter, Fremdwörter und Fälle, die man nicht raten kann. Nur zum Eintippen, kaum zum Ankreuzen."},
  fehler:{k:"fehler",name:"Fehlerstapel",farbe:"#E98776",
@@ -1596,6 +1758,47 @@ D_MEHRZAHL_SATZ.forEach(([satz,loesung,hinweis])=>{
     erklaerung:esc(hinweis)+" &ndash; Vollständig: "+esc(loesung)
   });
 });
+
+/* ---------- Satzstellung ---------- */
+const vorlage=(sv,en)=>esc(sv)+'<span class="zusatz">'+esc(en)+'</span>';
+
+D_STELLUNG.forEach(([sv,en,richtig,falsch,regel,schwer])=>{
+  neueKarte({
+    deck:"stellung", typ:"wahl", schwer:!!schwer,
+    rohfrage:sv,
+    frage:vorlage(sv,en),
+    anweisung:"So heißt es auf Schwedisch und Englisch. Wie heißt der Satz auf Deutsch?",
+    optionen:[richtig].concat(falsch), richtig:richtig,
+    erklaerung:STELLUNG_REGELN[regel]
+  });
+});
+
+D_TEKAMOLO.forEach(([satz,teil,art])=>{
+  neueKarte({
+    deck:"stellung", typ:"wahl",
+    rohfrage:satz+"|"+teil,
+    frage:esc(satz).replace(esc(teil),"<em>"+esc(teil)+"</em>"),
+    anweisung:"Was ist <i>"+esc(teil)+"</i>: Te, Ka, Mo oder Lo?",
+    optionen:["te","ka","mo","lo"].map(a=>TEKAMOLO[a][0]), richtig:TEKAMOLO[art][0],
+    erklaerung:TEKAMOLO[art][1]+" Im Satz gilt die Reihenfolge Te, Ka, Mo, Lo."
+  });
+});
+
+D_STELLUNG_BAU.forEach(([sv,en,deutsch,regel,schwer,alt])=>{
+  const woerter=deutsch.replace(/[.?!]$/,"").split("|");
+  const loesung=deutsch.split("|").join(" ");
+  neueKarte({
+    deck:"stellung", typ:"bau", schwer:!!schwer,
+    rohfrage:sv,
+    frage:vorlage(sv,en),
+    anweisung:"Bau den Satz auf Deutsch. Fang mit <i>"+esc(woerter[0])+"</i> an.",
+    woerter:woerter,
+    schluss:deutsch.slice(-1),
+    loesungen:[loesung].concat(alt||[]),
+    erklaerung:STELLUNG_REGELN[regel]+" &ndash; "+esc(loesung)
+  });
+});
+
 const JUBEL=[
 "Wow Elli, du bist die Beste!","Großartig, Elli!","Elli, das war perfekt!","Super gemacht, Elli!",
 "Elli, du bist ein Grammatik-Star!","Genau so, Elli!","Elli, das sitzt!","Fantastisch, Elli!",
@@ -1609,7 +1812,28 @@ const JUBEL=[
 "Elli, du bist auf dem Weg nach oben!","Brillant, Elli!","Elli, so macht man das!","Grandios, Elli!",
 "Elli, du bist ein echtes Vorbild!","Hut ab, Elli!","Elli, das kann sich sehen lassen!","Glänzend, Elli!",
 "Elli, du bist ein Sprachtalent!","Richtig gut, Elli!","Elli, du bist ein Champion!","Bestens, Elli!",
-"Elli, das war zum Applaudieren!","Elli, du bist einfach großartig!"
+"Elli, das war zum Applaudieren!","Elli, du bist einfach großartig!",
+"Elli, Goethe wäre stolz auf dich!","Elli, du sprichst bald besser Deutsch als die Deutschen!",
+"Elli, du hast den Dreh raus!","Elli, das war Deutsch wie aus dem Bilderbuch!",
+"Elli, so klingt eine Muttersprachlerin!","Elli, das war ein Satz zum Einrahmen!",
+"Elli, du hast Grammatik im Blut!","Elli, das war Weltklasse!",
+"Elli, du bist eine Grammatik-Königin!","Elli, dein Fleiß zahlt sich aus!",
+"Elli, ganz Deutschland applaudiert!","Elli, du bist der Hammer!",
+"Elli, das war erste Sahne!","Elli, du bist eine Wucht!",
+"Elli, du verdienst eine Goldmedaille!","Elli, du bist heute in Topform!",
+"Elli, kein Satz ist vor dir sicher!","Elli, du bist einfach genial!",
+"Elli, du kannst richtig stolz auf dich sein!","Elli, du wächst über dich hinaus!",
+"Elli, jede Karte macht dich stärker!","Elli, dein Deutsch wird jeden Tag schöner!",
+"Elli, du baust Sätze wie eine Architektin!","Elli, das Verb am Ende? Für dich ein Klacks!",
+"Elli, du machst das mit links!","Elli, das war souverän!",
+"Elli, du bist ein Phänomen!","Elli, jetzt bist du richtig in Fahrt!",
+"Elli, mit dir macht Deutsch richtig Spaß!","Elli, du hast es voll im Griff!",
+"Elli, das war ein Treffer mitten ins Schwarze!","Elli, du lernst schneller als jeder Schnellzug!",
+"Elli, du bist auf dem besten Weg zum Deutsch-Profi!","Elli, das war ganz große Klasse!",
+"Elli, jeder Fehler vorher hat sich gelohnt!","Elli, dein Kopf läuft auf Hochtouren!",
+"Elli, du bist unaufhaltsam!","Elli, an dir kann sich jeder ein Beispiel nehmen!",
+"Elli, das hätte keine Lehrerin besser gemacht!","Elli, du bist ein Wunder an Ausdauer!",
+"Snyggt, Elli!","Elli, du är grym!","Kanon, Elli!","Heja Elli!","Elli, du är bäst!"
 ];
 
 /* =====================================================================
@@ -1646,7 +1870,7 @@ starteKarteikasten({
     s30:    ["Ein Monat",         "An dreißig Tagen hintereinander geübt."],
     sauber: ["Ohne Fehler",       "Eine ganze Runde ohne einen einzigen Fehler."],
     fach5:  ["Hinten im Kasten",  "25 Karten liegen in Fach 5."],
-    alle:   ["Alle sechs Stapel", "Aus jedem Stapel eine Karte gezogen."],
+    alle:   ["Alle sieben Stapel","Aus jedem Stapel eine Karte gezogen."],
     hundert:["Hundert Karten",    "100 verschiedene Karten schon einmal gezogen."],
     schwer: ["Harte Nuss",        "25 schwere Karten liegen in Fach 4 oder 5."]
   },
@@ -1655,7 +1879,7 @@ starteKarteikasten({
     rundeBeenden:"Runde beenden", zumKasten:"Zum Kasten",
     tag:"Tag", tage:"Tage",
     grussFertig:"Für heute ist alles durch.",
-    grussErsteRunde:"Sechs Stapel, ein Kasten.",
+    grussErsteRunde:"Sieben Stapel, ein Kasten.",
     grussWeiter:"Weiter geht's.",
     grussTextFertig:"Alle Karten liegen weiter hinten im Kasten und kommen später wieder. Du kannst trotzdem jederzeit eine Extrarunde ziehen.",
     grussText:"Jede Karte, die du kannst, rutscht ein Fach weiter nach hinten und kommt später wieder. Jede Karte, die du nicht kannst, landet wieder vorne.",

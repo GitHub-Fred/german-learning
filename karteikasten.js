@@ -198,7 +198,8 @@ function zeigeKarte(mitAnimation){
   let koerper="";
   if(k.typ==="bau"){
     lauf.gebaut=[];lauf.vorrat=mische(k.woerter.map((w,i)=>({w:w,i:i})));
-    koerper='<p class="anweisung">'+k.anweisung+'</p>'+
+    koerper=(k.frage?'<p class="frage">'+k.frage+'</p>':'')+
+            '<p class="anweisung">'+k.anweisung+'</p>'+
             '<div class="bauplatz" id="bauplatz" data-leer="'+esc(T.bauplatzLeer)+'"></div>'+
             '<div class="vorrat" id="vorrat"></div>'+
             '<div class="karte-fuss"><button class="knopf" id="k-pruefen">'+T.pruefen+'</button>'+
