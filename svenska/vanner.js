@@ -158,3 +158,77 @@ V_TIPPEN.forEach(([satz,loesungen,tysk,erkl])=>{
 });
 
 })();
+
+REGELSEITEN.vanner=`
+<h2>Ord som lurar</h2>
+<p><b>Falska vänner</b> är ord som ser ut eller låter som ett ord i ett annat språk, men som betyder något annat. Svenska och tyska är släkt, och därför finns det många sådana ord. Här är de viktigaste, ordnade efter ordklass.</p>
+<div class="merke"><p>Om ett svenskt ord ser exakt ut som ett tyskt, kontrollera betydelsen. Oftast stämmer den, men inte alltid.</p></div>
+
+<h2>Adjektiv</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Svenska</th><th>betyder</th><th>Tyska ordet</th><th>heter på svenska</th></tr></thead>
+<tbody>
+<tr><td>rolig</td><td>som får en att skratta (<i>lustig</i>)</td><td><i>ruhig</i></td><td>lugn</td></tr>
+<tr><td>snäll</td><td>vänlig (<i>nett, lieb</i>)</td><td><i>schnell</i></td><td>snabb</td></tr>
+<tr><td>blöt</td><td>våt (<i>nass</i>)</td><td><i>blöd</i></td><td>dum</td></tr>
+<tr><td>ful</td><td>inte snygg (<i>hässlich</i>)</td><td><i>faul</i></td><td>lat, slö; om mat: rutten</td></tr>
+<tr><td>skön</td><td>bekväm, behaglig (<i>bequem, angenehm</i>)</td><td><i>schön</i></td><td>vacker, fin</td></tr>
+<tr><td>enkel</td><td>lätt, inte krånglig (<i>einfach</i>)</td><td><i>Enkel</i></td><td>barnbarn</td></tr>
+<tr><td>hemsk</td><td>väldigt otäck eller dålig (<i>schrecklich</i>)</td><td><i>heimisch</i></td><td>inhemsk; <i>sich heimisch fühlen</i>: känna sig hemma</td></tr>
+<tr><td>rar</td><td>söt och snäll (<i>lieb, süß</i>)</td><td><i>rar</i></td><td>sällsynt</td></tr>
+<tr><td>konstig</td><td>märklig, underlig (<i>seltsam</i>)</td><td><i>künstlich</i></td><td>konstgjord</td></tr>
+<tr><td>gift</td><td>har en make eller maka (<i>verheiratet</i>)</td><td><i>Gift</i></td><td>ett gift; adjektiv: giftig</td></tr>
+<tr><td>hel</td><td>inte trasig, komplett (<i>ganz</i>)</td><td><i>hell</i></td><td>ljus</td></tr>
+</tbody></table></div>
+<p class="beispiel">Filmen var så rolig att vi skrattade hela tiden.<br>Det är lugnt och skönt på landet.<br>Vilken skön stol! Här kan jag sitta hela dagen.</p>
+<p>Tänk på att adjektivet böjs: <i>Rummet är stort och <b>ljust</b>. Tåget är väldigt <b>snabbt</b>.</i></p>
+
+<h2>Substantiv</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Svenska</th><th>betyder</th><th>Tyska ordet</th><th>heter på svenska</th></tr></thead>
+<tbody>
+<tr><td>glass</td><td><i>Eis</i> (att äta)</td><td><i>Glas</i></td><td>glas (ett s)</td></tr>
+<tr><td>semester</td><td><i>Urlaub</i></td><td><i>Semester</i></td><td>termin</td></tr>
+<tr><td>öl</td><td><i>Bier</i></td><td><i>Öl</i></td><td>olja</td></tr>
+<tr><td>kläder</td><td><i>Kleidung</i></td><td><i>Kleid</i></td><td>klänning</td></tr>
+<tr><td>rock</td><td><i>Mantel</i>, lång jacka (till exempel läkarrock)</td><td><i>Rock</i></td><td>kjol</td></tr>
+<tr><td>slips</td><td><i>Krawatte</i></td><td><i>Slip</i></td><td>trosor, kalsonger</td></tr>
+<tr><td>kram</td><td><i>Umarmung</i></td><td><i>Kram</i></td><td>grejer, skräp</td></tr>
+<tr><td>fart</td><td><i>Geschwindigkeit</i></td><td><i>Fahrt</i></td><td>resa, tur</td></tr>
+<tr><td>rum</td><td><i>Zimmer, Raum</i></td><td><i>Rum</i></td><td>rom</td></tr>
+<tr><td>ost</td><td><i>Käse</i></td><td><i>Osten</i></td><td>öster, öst</td></tr>
+<tr><td>hav</td><td><i>Meer</i></td><td><i>Hafen</i></td><td>hamn</td></tr>
+<tr><td>tur</td><td><i>Glück</i></td><td><i>Tür</i></td><td>dörr</td></tr>
+<tr><td>bär</td><td><i>Beere</i></td><td><i>Bär</i></td><td>björn</td></tr>
+</tbody></table></div>
+<p>Glöm inte stavningen: <b>ett glas</b> vatten (ett s) men <b>en glass</b> (två s). Och <b>två öl</b>: <i>öl</i> har samma form i plural.</p>
+<p class="beispiel">I juli har jag fyra veckors semester. Kursen börjar nästa termin.<br>Hon har en kort kjol och en vit blus. Läkaren har en vit rock.</p>
+
+<h2>Verb</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Svenska</th><th>betyder</th><th>Tyska ordet</th><th>heter på svenska</th></tr></thead>
+<tbody>
+<tr><td>bli</td><td><i>werden</i></td><td><i>bleiben</i></td><td>stanna</td></tr>
+<tr><td>springa</td><td><i>laufen, rennen</i></td><td><i>springen</i></td><td>hoppa</td></tr>
+<tr><td>lova</td><td><i>versprechen</i></td><td><i>loben</i></td><td>berömma</td></tr>
+<tr><td>leka</td><td><i>spielen</i> (barn)</td><td><i>lecken</i></td><td>slicka</td></tr>
+</tbody></table></div>
+<p class="beispiel">Kan du inte stanna en stund till? (<i>bleiben</i>)<br>Det blir kallt i kväll. (<i>Es wird kalt.</i>)<br>Katten hoppar upp på bordet. (<i>springt</i>)</p>
+
+<h2>Små ord</h2>
+<ul>
+<li><b>fast</b> betyder <i>aber, obwohl</i> eller att något sitter hårt (<i>fest</i>). Tyskans <i>fast</i> heter <b>nästan</b>: <i>Jag är nästan klar.</i></li>
+</ul>
+
+<h2>Fler att se upp med</h2>
+<p>Några andra vanliga falska vänner, som inte finns på korten:</p>
+<ul>
+<li><b>frisk</b> betyder <i>gesund</i>. Tyskans <i>frisch</i> heter <b>färsk</b>: <i>färskt bröd</i>.</li>
+<li><b>glad</b> betyder <i>froh</i>. Tyskans <i>glatt</i> heter <b>slät</b> eller, om vägen, <b>hal</b>.</li>
+<li><b>släkt</b> betyder <i>Verwandtschaft</i>. Tyskans <i>schlecht</i> heter <b>dålig</b>.</li>
+<li><b>affär</b> betyder oftast <i>Geschäft, Laden</i>.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<p>De vanligaste fällorna: <b>rolig</b> (lustig), <b>snäll</b> (nett), <b>skön</b> (bequem), <b>glass</b> (Eis), <b>semester</b> (Urlaub), <b>gift</b> (verheiratet), <b>bli</b> (werden), <b>springa</b> (laufen), <b>fast</b> (aber). Lär dig dem som par: svenska ordet och det tyska ordet det <i>inte</i> betyder.</p>
+`;

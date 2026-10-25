@@ -10,7 +10,7 @@ const DATEIEN=[
   "svenska/enett.js","svenska/bestamd.js","svenska/plural.js","svenska/adjektiv.js","svenska/pronomen.js",
   "svenska/sin.js","svenska/ordfoljd.js","svenska/prep.js","svenska/tid.js","svenska/verb.js",
   "svenska/tempus.js","svenska/ligga.js","svenska/reflexiv.js","svenska/sverb.js","svenska/partikel.js",
-  "svenska/att.js","svenska/vanner.js"
+  "svenska/att.js","svenska/vanner.js","deutsch/regeln.js"
 ];
 
 self.addEventListener("install",e=>{

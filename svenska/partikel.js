@@ -209,3 +209,99 @@ P_BAU.forEach(([loesung,alt,regel])=>{
 });
 
 })();
+
+REGELSEITEN.partikel=`
+<h2>Vad är ett partikelverb?</h2>
+<p>Ett <b>partikelverb</b> består av ett verb och ett litet ord, en <b>partikel</b>. Partikeln är ofta ett ord som ser ut som en preposition eller ett adverb: <i>av, på, om, upp, ut, med, till, fram, ihåg, igen, sönder, slut</i>.</p>
+<p>Tillsammans får verbet och partikeln en <b>ny betydelse</b>, som man ofta inte kan gissa:</p>
+<p class="beispiel">tycka (meinen) + om = <b>tycka om</b> (mögen)<br>ge (geben) + upp = <b>ge upp</b> (aufgeben)<br>komma (kommen) + ihåg = <b>komma ihåg</b> (sich erinnern)</p>
+<p>Tyskan har något liknande: de delbara verben, som <i>aufgeben, ausmachen, mitnehmen</i>. Många svenska partikelverb motsvarar dem direkt.</p>
+
+<h2>Betoningen avgör</h2>
+<p>I ett partikelverb är det <b>partikeln som har betoningen</b>, inte verbet. Det är så man hör skillnaden mellan ett partikelverb och ett verb med en vanlig preposition.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Mening</th><th>Betoning</th><th>Betydelse</th></tr></thead>
+<tbody>
+<tr><td>Vi hälsade på mormor.</td><td>hälsade <b>PÅ</b></td><td>Vi besökte mormor.</td></tr>
+<tr><td>Han hälsade på grannen.</td><td><b>HÄLSADE</b> på</td><td>Han sa hej till grannen.</td></tr>
+<tr><td>Jag tycker om glass.</td><td>tycker <b>OM</b></td><td>Jag gillar glass.</td></tr>
+<tr><td>Vad tycker du om filmen?</td><td><b>TYCKER</b> om</td><td>Vad är din åsikt om filmen?</td></tr>
+</tbody></table></div>
+<p>I skrift ser meningarna likadana ut. Då måste sammanhanget visa vilken betydelse det är.</p>
+
+<h2>Vanliga partikelverb</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Svenska</th><th>Betydelse</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>sätta på</td><td>starta en maskin</td><td><i>einschalten, anmachen</i></td></tr>
+<tr><td>stänga av</td><td>få en maskin att sluta gå</td><td><i>ausschalten, ausmachen</i></td></tr>
+<tr><td>tycka om</td><td>gilla</td><td><i>mögen</i></td></tr>
+<tr><td>tycka till</td><td>säga vad man tycker</td><td><i>seine Meinung sagen</i></td></tr>
+<tr><td>hälsa på</td><td>besöka</td><td><i>besuchen</i></td></tr>
+<tr><td>ta med (sig)</td><td>ha något med sig</td><td><i>mitnehmen</i></td></tr>
+<tr><td>ge upp</td><td>sluta försöka</td><td><i>aufgeben</i></td></tr>
+<tr><td>hålla med</td><td>tycka samma sak</td><td><i>zustimmen, recht geben</i></td></tr>
+<tr><td>komma ihåg</td><td>minnas</td><td><i>sich erinnern</i></td></tr>
+<tr><td>känna igen</td><td>veta vem eller vad något är</td><td><i>wiedererkennen</i></td></tr>
+<tr><td>se ut</td><td>hur något verkar</td><td><i>aussehen</i></td></tr>
+<tr><td>se upp</td><td>vara försiktig</td><td><i>aufpassen</i></td></tr>
+<tr><td>komma fram</td><td>komma till målet</td><td><i>ankommen</i></td></tr>
+<tr><td>gå ut</td><td>gå hemifrån för att ha roligt</td><td><i>ausgehen</i></td></tr>
+<tr><td>köra om</td><td>köra förbi</td><td><i>überholen</i></td></tr>
+<tr><td>ringa upp</td><td>ringa till någon</td><td><i>anrufen, zurückrufen</i></td></tr>
+<tr><td>hitta på</td><td>själv komma på något</td><td><i>sich ausdenken</i></td></tr>
+<tr><td>ta hand om</td><td>sköta, passa</td><td><i>sich kümmern um</i></td></tr>
+<tr><td>bli av med</td><td>förlora, bli fri från</td><td><i>loswerden, verlieren</i></td></tr>
+<tr><td>gå sönder</td><td>bli trasig (inget objekt)</td><td><i>kaputtgehen</i></td></tr>
+<tr><td>slå sönder</td><td>göra trasig (med objekt)</td><td><i>kaputtmachen</i></td></tr>
+<tr><td>ta slut</td><td>inte finnas kvar</td><td><i>ausgehen, alle sein</i></td></tr>
+<tr><td>klä på sig / klä av sig</td><td>sätta på / ta av kläderna</td><td><i>sich anziehen / ausziehen</i></td></tr>
+<tr><td>ta på sig / ta av sig</td><td>ett plagg på / av kroppen</td><td><i>anziehen / ausziehen</i></td></tr>
+<tr><td>Lägg av!</td><td>Sluta! (vardagligt)</td><td><i>Hör auf!</i></td></tr>
+</tbody></table></div>
+
+<h2>Ordföljd</h2>
+<p>Den största skillnaden mot tyskan: på tyska hamnar partikeln ofta i slutet av satsen (<i>Ich mache den Fernseher aus</i>). På svenska står partikeln <b>direkt efter verbet</b>, före objektet.</p>
+<p class="beispiel">Stäng av tv:n! (<i>Mach den Fernseher aus!</i>)<br>Jag håller med dig.</p>
+<p>Det gäller också när objektet är ett litet pronomen som <i>den, det, honom</i>: <i>Jag tycker om den.</i> Inte: <i>Jag tycker den om.</i></p>
+<h3>Med inte och i frågor</h3>
+<ul>
+<li>I huvudsatsen står <i>inte</i> efter verbet och före partikeln: <i>Jag kommer inte ihåg det. Hon gav inte upp.</i></li>
+<li>I en fråga kommer subjektet direkt efter verbet, sedan partikeln och sist objektet: <i>Tycker du om den? Känner du igen honom? När kommer vi fram?</i></li>
+<li>I en bisats står <i>inte</i> före verbet (BIFF), och partikeln kommer efter verbet: <i>Det är synd att du inte kände igen mig.</i></li>
+</ul>
+<h3>Se ut</h3>
+<p>Med <b>se ut</b> står adjektivet mellan verbet och partikeln: <i>Hon ser trött ut. Varför ser du så trött ut? Hur ser lägenheten ut?</i></p>
+<h3>Med reflexivt pronomen</h3>
+<p>Vid <i>ta med sig, ta på sig, klä på sig</i> kommer pronomenet efter partikeln: <i>Ta på dig jackan! Glöm inte att ta med dig paraplyet!</i></p>
+<div class="merke"><p>Verb + partikel står ihop: <b>stäng av</b> den, <b>tycker om</b> honom. Bara subjektet (i frågor och vid omvänd ordföljd), <i>inte</i> och adjektivet vid <i>se ut</i> får stå emellan.</p></div>
+
+<h2>Partikelverb i olika former</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Form</th><th>Partikeln</th><th>Exempel</th></tr></thead>
+<tbody>
+<tr><td>Supinum (perfekt)</td><td>efter verbet, separat</td><td>Hon har aldrig gett upp.<br>Jag har inte kommit ihåg det.</td></tr>
+<tr><td>Perfekt particip</td><td>först, ihopskriven</td><td>Tv:n är avstängd.<br>Historien var påhittad.</td></tr>
+<tr><td>S-passiv</td><td>oftast efter verbet</td><td>Tv:n stängdes av klockan tio.</td></tr>
+</tbody></table></div>
+<p>Participet böjs som ett adjektiv: <i>avstängd</i> (en-ord), <i>avstängt</i> (ett-ord), <i>avstängda</i> (plural): <i>Ljudet är avstängt. Alla fönster var sönderslagna.</i> Fler exempel: <i>omkörd, igenkänd, påhittad</i>.</p>
+<p>Detta liknar tyskan: <i>ausgeschaltet</i> har också partikeln först.</p>
+<p>Vissa partikelverb finns också som ihopskrivna verb, men då med en annan eller mer formell betydelse: <i>bryta av</i> en gren (<i>abbrechen</i>), men <i>avbryta</i> ett möte (<i>unterbrechen</i>).</p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Partikeln i slutet:</b> <i>Stäng tv:n av!</i> Rätt: <b>Stäng av tv:n!</b></li>
+<li><b>Glömd partikel:</b> <i>Jag tycker glass</i> betyder inget. Rätt: <b>Jag tycker om glass.</b></li>
+<li><b>Fel betoning:</b> om du betonar verbet i <i>hälsa på</i>, förstår svensken att du bara sa hej.</li>
+<li><b>Adjektivet efter ut:</b> <i>Hon ser ut trött.</i> Rätt: <b>Hon ser trött ut.</b></li>
+<li><b>gå sönder och slå sönder:</b> Telefonen <b>gick</b> sönder (av sig själv). Han <b>slog</b> sönder en tallrik.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>Partikelverb = verb + betonad partikel. Betydelsen ändras.</li>
+<li>Partikeln står direkt efter verbet, före objektet, även före pronomen.</li>
+<li>inte före partikeln, adjektivet före <i>ut</i> i <i>se ut</i>.</li>
+<li>Supinum: <i>har gett upp</i>. Particip: <i>avstängd</i>. S-passiv: <i>stängdes av</i>.</li>
+</ul>
+`;

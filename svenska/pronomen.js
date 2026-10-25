@@ -117,3 +117,96 @@ D_TIPPEN.forEach(([satz,grund,loesungen,r])=>{
 });
 
 })();
+
+REGELSEITEN.pronomen=`
+<h2>Personliga pronomen</h2>
+<p>Ett <b>pronomen</b> är ett litet ord som står i stället för ett substantiv eller ett namn: <i>Erik är trött. <b>Han</b> har jobbat länge.</i></p>
+<p>Personliga pronomen har olika former beroende på vilken roll de har i meningen:</p>
+<ul>
+<li><b>Subjektsform</b>: pronomenet är <b>subjekt</b>, alltså den som gör något eller den som meningen handlar om. <i><b>Jag</b> läser.</i></li>
+<li><b>Objektsform</b>: pronomenet är <b>objekt</b>, alltså den som något händer med. <i>Erik ser <b>mig</b>.</i></li>
+<li><b>Ägarform</b>: pronomenet visar vem som äger något. <i>Det är <b>min</b> bok.</i></li>
+</ul>
+<div class="tabelle"><table>
+<thead><tr><th>Subjekt</th><th>Objekt</th><th>Ägare</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>jag</td><td>mig</td><td>min, mitt, mina</td><td><i>ich, mich/mir</i></td></tr>
+<tr><td>du</td><td>dig</td><td>din, ditt, dina</td><td><i>du, dich/dir</i></td></tr>
+<tr><td>han</td><td>honom</td><td>hans</td><td><i>er, ihn/ihm</i></td></tr>
+<tr><td>hon</td><td>henne</td><td>hennes</td><td><i>sie, sie/ihr</i></td></tr>
+<tr><td>hen</td><td>hen (henom)</td><td>hens</td><td>-</td></tr>
+<tr><td>den</td><td>den</td><td>dess</td><td><i>er, sie, es</i> (Dinge)</td></tr>
+<tr><td>det</td><td>det</td><td>dess</td><td><i>es</i></td></tr>
+<tr><td>vi</td><td>oss</td><td>vår, vårt, våra</td><td><i>wir, uns</i></td></tr>
+<tr><td>ni</td><td>er</td><td>er, ert, era</td><td><i>ihr, euch</i></td></tr>
+<tr><td>de</td><td>dem</td><td>deras</td><td><i>sie, sie/ihnen</i></td></tr>
+</tbody></table></div>
+<p><b>Uttal:</b> <i>mig</i> och <i>dig</i> uttalas oftast <i>mej</i> och <i>dej</i>. <i>De</i> och <i>dem</i> uttalas båda <i>dom</i> i talspråk. I informell text ser man ibland <i>dom</i>, men i vanligt skriftspråk skriver man <b>de</b> och <b>dem</b>.</p>
+<p><b>hen</b> är ett könsneutralt pronomen. Man använder det om en person när man inte vet eller inte vill säga om det är en man eller en kvinna. Det står i ordböckerna sedan 2015 och är vanligt i dag, men inte alla använder det.</p>
+<p><b>du och ni:</b> I Sverige säger nästan alla <b>du</b> till varandra, även till chefen eller till främlingar. <i>ni</i> används framför allt i plural. Tyskans <i>Sie</i> blir alltså oftast <b>du</b>.</p>
+
+<h2>Subjektsform eller objektsform?</h2>
+<p>Tyskan har två former för objekt: <i>mich</i> och <i>mir</i>, <i>ihn</i> och <i>ihm</i>. Svenskan har bara <b>en</b> objektsform. Den används för båda.</p>
+<p class="beispiel">Kan du hjälpa mig? (<i>Kannst du mir helfen?</i>)<br>Jag gav dem nycklarna. (<i>Ich gab ihnen die Schlüssel.</i>)<br>Anna är sjuk. Vi ska besöka henne i morgon.</p>
+<h3>Efter preposition</h3>
+<p>Efter en <b>preposition</b> (ett litet ord som <i>med, till, på, om, hos, bredvid</i>) står alltid objektsform.</p>
+<p class="beispiel">Jag pratade med honom igår.<br>Jag har en present till dig.<br>Ska vi ses hos er eller hos oss?<br>Vi pratade om dem hela kvällen.</p>
+<h3>I bisatser</h3>
+<p>En <b>bisats</b> är en del av meningen som börjar med ett ord som <i>att, om, var, vad, när</i>. Bisatsen har ett eget subjekt. Är pronomenet subjekt i bisatsen, står det i <b>subjektsform</b>, även om det kommer direkt efter <i>att</i> eller <i>om</i>.</p>
+<p class="beispiel">Jag vet inte var de bor.<br>Jag frågade om de ville följa med.<br>Tror du att hon kommer?</p>
+<div class="merke"><p>Gör pronomenet något i sin egen sats? Då är det subjekt: <b>jag, han, de</b>. Händer något med det, eller står det efter en preposition? Då är det objekt: <b>mig, honom, dem</b>.</p></div>
+<h3>Efter än</h3>
+<p>Efter <b>än</b> (tyska <i>als</i>) går båda formerna bra: <i>Hon är äldre än jag</i> eller <i>äldre än mig</i>. I formell text väljer man oftast subjektsform.</p>
+
+<h2>Den, det och de för saker</h2>
+<p>På tyska väljer man pronomen efter genus: <i>der Schlüssel - er, die Tasche - sie</i>. På svenska gör man nästan samma sak, men med två genus:</p>
+<ul>
+<li>en-ord: <b>den</b>. <i>Var är nyckeln? Jag hittar inte den.</i></li>
+<li>ett-ord: <b>det</b>. <i>Huset är gammalt, men vi tycker om det.</i></li>
+<li>plural: <b>de</b> som subjekt, <b>dem</b> som objekt. <i>Tomaterna? De ligger i kylskåpet. Var köpte du dem?</i></li>
+</ul>
+<p><b>han</b> och <b>hon</b> används bara om personer (och ibland om djur man känner). En nyckel eller en bil är alltid <b>den</b>, aldrig <i>han</i>.</p>
+<p class="beispiel">Har ni sett min katt? Nej, vi har inte sett den.<br>Var är mina glasögon? Jag hittar inte dem.</p>
+
+<h3>Det om en hel mening</h3>
+<p><b>det</b> kan syfta på en hel mening eller en situation, som tyskans <i>das</i> eller <i>es</i>.</p>
+<p class="beispiel">Hon har flyttat till Spanien. Visste du det?</p>
+<h3>Det när man presenterar något</h3>
+<p>När man visar eller presenterar något säger man <b>det är</b>, även om det gäller en person eller ett en-ord. Det är som tyskans <i>Das ist ...</i>.</p>
+<p class="beispiel">Vem är det där? Det är min syster.<br>Vad är det där? Det är en ekorre.</p>
+
+<h2>De som och dem som</h2>
+<p>Före <b>som</b> (tyska <i>die</i>, <i>welche</i>) väljer man form efter rollen i <b>huvudsatsen</b>:</p>
+<p class="beispiel">De som vill kan gå hem nu. (<i>de</i> är subjekt till <i>kan</i>)<br>Jag känner dem som bor i huset bredvid. (<i>dem</i> är objekt till <i>känner</i>)</p>
+
+<h2>Man, en, ens</h2>
+<p><b>man</b> betyder människor i allmänhet, precis som tyskans <i>man</i>. Men svenskans <i>man</i> har också en objektsform och en ägarform:</p>
+<div class="tabelle"><table>
+<thead><tr><th>Form</th><th>Svenska</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>subjekt</td><td><b>man</b>: Man vet aldrig.</td><td><i>man</i></td></tr>
+<tr><td>objekt</td><td><b>en</b>: Det gör en glad.</td><td><i>einen, einem</i></td></tr>
+<tr><td>ägare</td><td><b>ens</b>: när ens vänner ringer</td><td><i>seine</i></td></tr>
+</tbody></table></div>
+<p class="beispiel">Det är skönt när någon hjälper en.<br>Man blir arg när grannarna väcker en mitt i natten.<br>Det är tråkigt när ens cykel blir stulen.</p>
+<p>Använd inte <i>han</i> eller <i>honom</i> för att syfta tillbaka på <i>man</i>.</p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Subjektsform efter preposition:</b> <i>med han</i>. Rätt: <b>med honom</b>.</li>
+<li><b>Fel form efter verb som tar dativ på tyska:</b> <i>helfen</i>, <i>danken</i> och <i>geben</i> tar bara vanligt objekt på svenska: <b>hjälpa mig, tacka dig, ge dem</b>.</li>
+<li><b>Objektsform i bisatsen:</b> <i>Jag vet inte var dem bor</i>. Rätt: <b>var de bor</b>.</li>
+<li><b>Han eller hon om saker:</b> <i>Nyckeln? Jag har inte sett honom.</i> Rätt: <b>den</b>.</li>
+<li><b>Den i stället för det vid presentation:</b> <i>Den är min syster</i>. Rätt: <b>Det är min syster</b>.</li>
+<li><b>Ni som artig form:</b> säg <b>du</b> till en person.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>Subjekt: jag, du, han, hon, vi, ni, de. Objekt: mig, dig, honom, henne, oss, er, dem.</li>
+<li>Objektsform efter verb och preposition. Subjektsform som subjekt, även i bisats.</li>
+<li>Saker: den (en-ord), det (ett-ord), de/dem (plural).</li>
+<li>Det är ... för att presentera. Det om en hel mening.</li>
+<li>man, en, ens.</li>
+</ul>
+`;

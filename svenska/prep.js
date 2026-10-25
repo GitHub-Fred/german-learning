@@ -144,3 +144,121 @@ D_TIPPEN.forEach(([satz,loesungen,regel,grupp])=>{
   });
 });
 })();
+
+REGELSEITEN.prep=`
+<h2>Små ord med stor betydelse</h2>
+<p>En <b>preposition</b> är ett litet ord som visar hur saker hänger ihop, till exempel i rummet: <i>i, på, till, från, hos, med, om</i>. Prepositioner är svåra i alla språk, för de följer inte alltid logiska regler. Svenska och tyska liknar varandra ofta, men inte alltid. Den här sidan visar reglerna för platser och de viktigaste verben och adjektiven med fast preposition.</p>
+
+<h2>Var? I eller på</h2>
+<h3>i: inne i något</h3>
+<p>Man använder <b>i</b> när något är inne i ett rum eller ett utrymme, ungefär som tyskans <i>in</i>.</p>
+<p class="beispiel">i köket, i bilen, i duschen, i skogen</p>
+<p>Länder, landskap och städer tar alltid <b>i</b>: <i>i Sverige, i Tyskland, i Skåne, i Stockholm, i Malmö</i>.</p>
+<h3>på: ovanpå en yta</h3>
+<p>Man använder <b>på</b> när något ligger eller står på en yta, som tyskans <i>auf</i> eller <i>an</i>.</p>
+<p class="beispiel">på bordet, på stolen, på väggen, på gatan, på torget, på balkongen</p>
+<p><b>Öar</b> tar oftast <b>på</b>: <i>på Gotland, på Öland, på en liten ö</i>. Det gäller även några ö-länder: <i>på Island</i>.</p>
+<h3>på: platser där man gör något</h3>
+<p>Här skiljer sig svenskan mest från tyskan. Många platser där man arbetar, handlar eller gör något särskilt tar <b>på</b>, även om man är inne i en byggnad:</p>
+<p class="beispiel">på jobbet, på bio, på restaurang, på posten, på sjukhuset, på universitetet, på toaletten, på kontoret, på banken</p>
+<p>Händelser tar också <b>på</b>: <i>på en fest, på en konsert, på ett möte</i>.</p>
+<p><b>på landet</b> betyder utanför staden, på landsbygden. <i>i landet</i> betyder inne i ett land.</p>
+<div class="merke"><p>Inne i ett rum eller ett land: <b>i</b>. På en yta, en ö, ett jobb eller en händelse: <b>på</b>. Lär dig de vanliga platserna tillsammans med prepositionen: <i>på jobbet, på bio, i köket</i>.</p></div>
+
+<h2>Vart och varifrån?</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Fråga</th><th>Svenska</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>Vart?</td><td><b>till</b>: till Oslo, till tandläkaren, till mormor</td><td><i>nach, zu</i></td></tr>
+<tr><td>Var? (hos en person)</td><td><b>hos</b>: hos mormor, hemma hos Lisa</td><td><i>bei</i></td></tr>
+<tr><td>Varifrån?</td><td><b>från</b>: från Tyskland, från jobbet</td><td><i>aus, von</i></td></tr>
+<tr><td>In i något</td><td><b>in i</b>: in i huset</td><td><i>in ... hinein</i></td></tr>
+<tr><td>Ut ur något</td><td><b>ut ur, upp ur</b>: ut ur rummet, upp ur fickan</td><td><i>aus ... heraus</i></td></tr>
+</tbody></table></div>
+<p class="beispiel">Vi åker till mormor på lördag. Vi är hos mormor i helgen.<br>Jag kommer från Tyskland.<br>Hon tog ut mjölken ur kylskåpet.</p>
+<p>Tyskans <i>aus</i> blir alltså två ord: <b>från</b> när det gäller ursprung (<i>aus Deutschland</i>) och <b>ur</b> när något kommer ut från insidan av något (<i>aus dem Kühlschrank</i>).</p>
+<p>Svenskan skiljer också mellan rörelse och plats i små ord: <b>hem</b> (vart?) och <b>hemma</b> (var?), precis som <i>nach Hause</i> och <i>zu Hause</i>. Likadant: <i>ut/ute, in/inne, upp/uppe, ner/nere</i>.</p>
+<p class="beispiel">Jag går hem. Jag är hemma.<br>Barnen springer ut. Barnen leker ute.</p>
+
+<h2>Verb med fast preposition</h2>
+<p>Många verb har alltid samma preposition. Den måste man lära sig tillsammans med verbet. Ofta är den annorlunda än på tyska, och ibland har tyskan ingen preposition alls.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Svenska</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>tänka <b>på</b></td><td><i>denken an</i></td></tr>
+<tr><td>tro <b>på</b></td><td><i>glauben an</i></td></tr>
+<tr><td>vänta <b>på</b></td><td><i>warten auf</i></td></tr>
+<tr><td>svara <b>på</b></td><td><i>antworten auf</i></td></tr>
+<tr><td>hoppas <b>på</b></td><td><i>hoffen auf</i></td></tr>
+<tr><td>bero <b>på</b></td><td><i>abhängen von</i></td></tr>
+<tr><td>titta <b>på</b></td><td><i>anschauen</i></td></tr>
+<tr><td>lyssna <b>på</b></td><td><i>zuhören, hören</i></td></tr>
+<tr><td>hälsa <b>på</b></td><td><i>besuchen</i></td></tr>
+<tr><td>prata <b>om</b> något, prata <b>med</b> någon</td><td><i>sprechen über, sprechen mit</i></td></tr>
+<tr><td>drömma <b>om</b></td><td><i>träumen von</i></td></tr>
+<tr><td>handla <b>om</b></td><td><i>handeln von</i></td></tr>
+<tr><td>tycka <b>om</b></td><td><i>mögen</i></td></tr>
+<tr><td>ta hand <b>om</b></td><td><i>sich kümmern um</i></td></tr>
+<tr><td>bry sig <b>om</b></td><td><i>sich kümmern um, sich scheren um</i></td></tr>
+<tr><td>tycka synd <b>om</b></td><td><i>Mitleid haben mit</i></td></tr>
+<tr><td>tacka <b>för</b></td><td><i>danken für</i></td></tr>
+<tr><td>leta <b>efter</b></td><td><i>suchen</i></td></tr>
+<tr><td>längta <b>till</b> / <b>efter</b></td><td><i>sich sehnen nach</i></td></tr>
+<tr><td>gifta sig <b>med</b></td><td><i>heiraten</i></td></tr>
+<tr><td>ha råd <b>med</b></td><td><i>sich leisten können</i></td></tr>
+<tr><td>skratta <b>åt</b></td><td><i>lachen über</i></td></tr>
+<tr><td>bestå <b>av</b></td><td><i>bestehen aus</i></td></tr>
+<tr><td>lida <b>av</b></td><td><i>leiden an</i></td></tr>
+<tr><td>vänja sig <b>vid</b></td><td><i>sich gewöhnen an</i></td></tr>
+<tr><td>se fram <b>emot</b></td><td><i>sich freuen auf</i></td></tr>
+</tbody></table></div>
+<p>Lägg märke till: <b>tycka om</b> och <b>hälsa på</b> är partikelverb. Prepositionen är betonad och ändrar betydelsen (se högen <i>Partikelverb</i>).</p>
+<p><i>lyssna till</i> finns också, men det är lite mer formellt än <i>lyssna på</i>.</p>
+
+<h2>Adjektiv med fast preposition</h2>
+<div class="tabelle"><table>
+<thead><tr><th>Svenska</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>rädd <b>för</b></td><td><i>Angst haben vor</i></td></tr>
+<tr><td>orolig <b>för</b></td><td><i>besorgt um</i></td></tr>
+<tr><td>tacksam <b>för</b>, känd <b>för</b>, ansvarig <b>för</b></td><td><i>dankbar für, bekannt für, verantwortlich für</i></td></tr>
+<tr><td>intresserad <b>av</b></td><td><i>interessiert an</i></td></tr>
+<tr><td>beroende <b>av</b></td><td><i>abhängig von</i></td></tr>
+<tr><td>arg <b>på</b></td><td><i>böse auf</i></td></tr>
+<tr><td>bra <b>på</b></td><td><i>gut in</i></td></tr>
+<tr><td>trött <b>på</b></td><td><i>satt haben</i></td></tr>
+<tr><td>säker <b>på</b></td><td><i>sicher</i></td></tr>
+<tr><td>sugen <b>på</b></td><td><i>Lust haben auf</i></td></tr>
+<tr><td>nöjd <b>med</b>, gift <b>med</b></td><td><i>zufrieden mit, verheiratet mit</i></td></tr>
+<tr><td>van <b>vid</b></td><td><i>gewöhnt an</i></td></tr>
+<tr><td>stolt <b>över</b></td><td><i>stolz auf</i></td></tr>
+<tr><td>kär <b>i</b>, medlem <b>i</b></td><td><i>verliebt in, Mitglied in</i></td></tr>
+<tr><td>överens <b>om</b></td><td><i>einig über</i></td></tr>
+</tbody></table></div>
+<h3>Små skillnader som ändrar betydelsen</h3>
+<ul>
+<li><b>rädd för</b> betyder att man är rädd: <i>rädd för hundar</i>. <b>rädd om</b> betyder att man är försiktig med något: <i>Var rädd om dig!</i></li>
+<li><b>glad över</b> (eller <b>glad för</b>, <b>glad åt</b>) något: <i>glad över nyheten</i>. Men <b>glad för din skull</b> (<i>ich freue mich für dich</i>).</li>
+<li><b>grattis till</b> något: <i>grattis till det nya jobbet</i>. Men <b>grattis på födelsedagen</b>.</li>
+<li><b>bero på</b>, men <b>beroende av</b>.</li>
+<li><b>prata med</b> en person, <b>prata om</b> en sak.</li>
+</ul>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>i i stället för på:</b> <i>i jobbet, i bion</i>. Rätt: <b>på jobbet, på bio</b>.</li>
+<li><b>Ingen preposition, som på tyska:</b> <i>Jag lyssnar musik, jag letar mina nycklar, hon gifter sig Erik</i>. Rätt: <b>lyssnar på, letar efter, gifter sig med</b>.</li>
+<li><b>Översättning av an:</b> <i>tänka an, tro an</i> finns inte. Rätt: <b>tänka på, tro på</b>. Och <i>tänka om</i> betyder något helt annat: att ändra sin åsikt.</li>
+<li><b>Översättning av vor och von:</b> <i>rädd av, drömma av</i>. Rätt: <b>rädd för, drömma om</b>.</li>
+<li><b>till i stället för hos:</b> <i>Vi är till mormor</i>. Rätt: <b>hos mormor</b>.</li>
+<li><b>hem och hemma:</b> <i>Jag är hem</i>. Rätt: <b>Jag är hemma</b>.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>i: inne i något, länder och städer.</li>
+<li>på: ytor, öar, arbetsplatser, institutioner och händelser.</li>
+<li>till = vart, hos = var hos en person, från = varifrån, ur = ut från insidan.</li>
+<li>Verb och adjektiv med fast preposition: lär dig dem som ett paket, till exempel <i>vänta på, rädd för, intresserad av</i>.</li>
+</ul>
+`;

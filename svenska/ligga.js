@@ -125,3 +125,87 @@ D_TIPPEN.forEach(([par,mening,losningar,regel])=>{
   });
 });
 })();
+
+REGELSEITEN.ligga=`
+<h2>Tre verbpar</h2>
+<p>Svenskan har tre verbpar för hur något befinner sig på en plats. I varje par säger det ena verbet var något <b>är</b>, och det andra säger att någon <b>flyttar</b> något dit.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Något är på en plats</th><th>Någon flyttar något dit</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td><b>ligga</b>: Boken ligger på bordet.</td><td><b>lägga</b>: Jag lägger boken på bordet.</td><td><i>liegen / legen</i></td></tr>
+<tr><td><b>sitta</b>: Fågeln sitter på taket.</td><td><b>sätta</b>: Hon sätter nyckeln i låset.</td><td><i>sitzen / setzen</i></td></tr>
+<tr><td><b>stå</b>: Flaskan står på bordet.</td><td><b>ställa</b>: Jag ställer flaskan i kylskåpet.</td><td><i>stehen / stellen</i></td></tr>
+</tbody></table></div>
+<p>Goda nyheter: det fungerar nästan exakt som på tyska. Om du skulle säga <i>legen, setzen, stellen</i> på tyska, välj <b>lägga, sätta, ställa</b>. Om du skulle säga <i>liegen, sitzen, stehen</i>, välj <b>ligga, sitta, stå</b>.</p>
+<h3>Objekt eller inte?</h3>
+<p>Ett säkert test är <b>objektet</b>, alltså den sak som någon flyttar:</p>
+<ul>
+<li><b>ligga, sitta, stå</b> har <b>inget objekt</b>. Subjektet är redan på platsen: <i>Katten ligger i solen.</i></li>
+<li><b>lägga, sätta, ställa</b> har <b>ett objekt</b>. Någon flyttar något: <i>Jag lägger <b>boken</b> på bordet.</i></li>
+</ul>
+<div class="merke"><p>Kan du fråga <b>vad?</b> efter verbet (<i>Jag lägger - vad? - boken</i>)? Då är det <b>lägga, sätta, ställa</b>. Annars <b>ligga, sitta, stå</b>.</p></div>
+
+<h2>Formerna</h2>
+<p>Verben i varje par ser lika ut, men böjs olika. Det är här de flesta fel uppstår.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Supinum</th><th>Imperativ</th></tr></thead>
+<tbody>
+<tr><td>ligga</td><td>ligger</td><td>låg</td><td>legat</td><td>ligg</td></tr>
+<tr><td>lägga</td><td>lägger</td><td>la / lade</td><td>lagt</td><td>lägg</td></tr>
+<tr><td>sitta</td><td>sitter</td><td>satt</td><td>suttit</td><td>sitt</td></tr>
+<tr><td>sätta</td><td>sätter</td><td>satte</td><td>satt</td><td>sätt</td></tr>
+<tr><td>stå</td><td>står</td><td>stod</td><td>stått</td><td>stå</td></tr>
+<tr><td>ställa</td><td>ställer</td><td>ställde</td><td>ställt</td><td>ställ</td></tr>
+</tbody></table></div>
+<h3>Fällor</h3>
+<ul>
+<li><b>la</b> är preteritum av <i>lägga</i>, <b>låg</b> är preteritum av <i>ligga</i>: <i>Hon la telefonen i väskan. Igår låg jag i sängen hela dagen.</i></li>
+<li><b>lagt</b> hör till <i>lägga</i>, <b>legat</b> hör till <i>ligga</i>: <i>Vem har lagt mina papper här? Boken har legat här i flera veckor.</i></li>
+<li><b>satt</b> finns två gånger: som preteritum av <i>sitta</i> (<i>Igår satt vi på en restaurang</i>) och som supinum av <i>sätta</i> (<i>Han har satt sig i soffan</i>). Efter <i>har</i> är <i>satt</i> alltid <i>sätta</i>. Supinum av <i>sitta</i> är <b>suttit</b>: <i>Vi har suttit här i två timmar.</i></li>
+<li><b>satte</b> är preteritum av <i>sätta</i>: <i>Han satte på sig mössan.</i></li>
+</ul>
+
+<h2>Lägga sig, sätta sig, ställa sig</h2>
+<p>Med <b>sig</b> (eller mig, dig, oss ...) beskriver verben en rörelse som man gör med sin egen kropp. Precis som tyskans <i>sich legen, sich setzen, sich stellen</i>.</p>
+<ul>
+<li><b>lägga sig</b>: gå från att stå eller sitta till att ligga. Det betyder också att gå och lägga sig på kvällen: <i>Barnen lägger sig klockan åtta.</i></li>
+<li><b>sätta sig</b>: gå från att stå till att sitta: <i>Han sätter sig vid bordet. Sätt dig här!</i></li>
+<li><b>ställa sig</b>: gå till en plats och börja stå där: <i>Han ställer sig i kön.</i></li>
+</ul>
+<p>Efteråt <b>ligger</b>, <b>sitter</b> eller <b>står</b> man:</p>
+<p class="beispiel">Jag lägger mig i sängen. Nu ligger jag i sängen.<br>Hon satte sig bredvid mig. Hon satt bredvid mig hela resan.</p>
+<p>Imperativ: <i>Lägg dig!</i> (gå och lägg dig) men <i>Ligg still!</i> (rör dig inte). <i>Sätt dig!</i> men <i>Stå still!</i></p>
+
+<h2>Fler betydelser</h2>
+<p>Svenskan använder <i>ligga, sitta, stå</i> för att säga var något finns, ofta där tyskan också gör det:</p>
+<ul>
+<li>Städer, länder och hus <b>ligger</b>: <i>Göteborg ligger på västkusten.</i> (<i>liegt</i>)</li>
+<li>Det som är skrivet <b>står</b> i en text: <i>Det står i tidningen att det blir regn.</i> (<i>steht in der Zeitung</i>)</li>
+<li>Bilar och möbler <b>står</b>: <i>Bilen står utanför huset.</i></li>
+<li>Saker som sitter fast <b>sitter</b>: <i>Nyckeln sitter i låset.</i> Här säger tyskan <i>steckt</i>.</li>
+<li>Kläder <b>sitter</b>: <i>Jackan sitter bra.</i> (<i>passt gut</i>). Och man <b>sätter på sig</b> en mössa (<i>setzt auf</i>).</li>
+<li>Man <b>sitter</b> i fängelse: <i>Han satt i fängelse i fem år.</i></li>
+<li>Man <b>ligger</b> på sjukhus: <i>Hon låg på sjukhus i tre dagar.</i></li>
+</ul>
+
+<h2>Ligga och sova, sitta och läsa</h2>
+<p>Svenskan säger gärna <b>ligga/sitta/stå och</b> + verb för att visa vad någon håller på med just då. Båda verben står i samma tempus. Tyskan säger ofta bara <i>gerade</i>.</p>
+<p class="beispiel">Katten ligger och sover.<br>Han satt och väntade på oss i en timme.<br>Vi stod i regnet och väntade på bussen.</p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>la och låg:</b> <i>Igår la jag i sängen.</i> Rätt: <b>Igår låg jag i sängen.</b></li>
+<li><b>satt efter har:</b> <i>Vi har satt här i två timmar.</i> Rätt: <b>Vi har suttit här.</b></li>
+<li><b>Fel verb för nycklar:</b> tyskan säger <i>steckt</i>, och det verbet finns inte på svenska. Det heter <b>Nyckeln sitter i låset.</b></li>
+<li><b>Glömt sig:</b> <i>Jag ska lägga nu.</i> Rätt: <b>Jag ska lägga mig nu.</b></li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>ligga, sitta, stå: något är på en plats, inget objekt (<i>liegen, sitzen, stehen</i>).</li>
+<li>lägga, sätta, ställa: någon flyttar något, med objekt (<i>legen, setzen, stellen</i>).</li>
+<li>låg/legat (ligga), la/lagt (lägga), satt/suttit (sitta), satte/satt (sätta), stod/stått, ställde/ställt.</li>
+<li>lägga sig, sätta sig, ställa sig: rörelsen. Efteråt ligger, sitter, står man.</li>
+<li>Det står i tidningen. Nyckeln sitter i låset. Staden ligger vid havet.</li>
+</ul>
+`;

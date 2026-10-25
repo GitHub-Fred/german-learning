@@ -87,7 +87,7 @@ const B_SVAR_FORM = [
 ["ett fönster","s",["fönstret"],"ettEr"],
 ["ett nummer","s",["numret"],"ettEr","Dessutom blir <i>mm</i> bara ett <i>m</i>: numret."],
 ["ett exempel","s",["exemplet"],"ettEr"],
-["ett vatten","s",["vattnet"],"ettEr","Dessutom blir <i>t</i> dubbelt: vattnet."],
+["ett vatten","s",["vattnet"],"ettEr","Bara <i>e</i> försvinner, <i>tt</i> fanns redan: vatten, vattnet."],
 ["ett museum","s",["museet"],"um"],
 ["ett kafé","s",["kaféet","caféet"],"betonad"],
 ["en man, män","p",["männen"],"plMan"],
@@ -224,3 +224,112 @@ B_POSS_ADJ.forEach(([mening,grundord,losningar,regel])=>{
 });
 
 })();
+
+REGELSEITEN.bestamd=`
+<h2>Artikeln sitter i slutet</h2>
+<p>På tyska står den bestämda artikeln före substantivet: <i>das Haus</i>. På svenska sitter den i slutet av ordet, som en <b>ändelse</b>: <b>huset</b>. Den formen kallas <b>bestämd form</b>. Formen utan ändelse (<i>ett hus</i>) kallas <b>obestämd form</b>.</p>
+<p>Man använder bestämd form ungefär som tyskans <i>der, die, das</i>: när man talar om något som är känt eller som man redan har nämnt.</p>
+<p class="beispiel">Jag har köpt en bil. Bilen är röd.</p>
+<p>Ändelsen beror på genus (en eller ett), på tal (singular eller plural) och på hur ordet slutar.</p>
+
+<h2>Bestämd form singular</h2>
+<div class="tabelle"><table>
+<thead><tr><th></th><th>Ordet slutar på konsonant</th><th>Ordet slutar på vokal</th></tr></thead>
+<tbody>
+<tr><td>en-ord</td><td><b>-en</b>: en bil, bilen</td><td><b>-n</b>: en flicka, flickan</td></tr>
+<tr><td>ett-ord</td><td><b>-et</b>: ett hus, huset</td><td><b>-t</b>: ett äpple, äpplet</td></tr>
+</tbody></table></div>
+<p class="beispiel">en buss, bussen; en telefon, telefonen<br>en sko, skon; en pojke, pojken; en lärare, läraren<br>ett bord, bordet; ett barn, barnet; ett kök, köket<br>ett frimärke, frimärket; ett hjärta, hjärtat; ett öga, ögat</p>
+<h3>Specialfall</h3>
+<ul>
+<li><b>Betonad vokal i ett-ord.</b> Är sista vokalen betonad, får ett-ord <b>-et</b>: ett kafé, kaféet; ett bi, biet.</li>
+<li><b>En-ord på obetonat -el och -er</b> får bara <b>-n</b>: en fågel, fågeln; en syster, systern; en nyckel, nyckeln.</li>
+<li><b>Ett-ord på obetonat -er, -el och -en</b> tappar <i>e</i> och får <b>-et</b>: ett fönster, fönstret; ett exempel, exemplet; ett vatten, vattnet. Ibland ändras konsonanten också: ett nummer, numret (bara ett <i>m</i>).</li>
+<li><b>Dubbel konsonant.</b> Efter kort vokal skrivs <i>m</i> och <i>n</i> ofta enkelt i slutet av ordet. När en ändelse kommer efter, blir de dubbla: en man, mannen; en vän, vännen; ett rum, rummet.</li>
+<li><b>-eum och -ium.</b> Lånord som ett museum och ett gymnasium tappar <i>-um</i>: museet, gymnasiet. Plural: museer, museerna.</li>
+</ul>
+
+<h2>Bestämd form plural</h2>
+<p>I plural är det pluralformen som bestämmer ändelsen, inte genus. Hur man bildar plural står i högen <i>Plural</i>.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Pluralen slutar på</th><th>Ändelse</th><th>Exempel</th></tr></thead>
+<tbody>
+<tr><td>-r (-or, -ar, -er, -r)</td><td><b>-na</b></td><td>flickorna, bilarna, telefonerna, skorna, böckerna</td></tr>
+<tr><td>-n</td><td><b>-a</b></td><td>äpplena, frimärkena</td></tr>
+<tr><td>ingen ändelse (ett-ord)</td><td><b>-en</b></td><td>husen, barnen, borden, rummen, fönstren</td></tr>
+<tr><td>ingen ändelse (personer på -are)</td><td><b>-na</b>, <i>e</i> försvinner</td><td>lärare, lärarna</td></tr>
+</tbody></table></div>
+<p>Några ord passar inte riktigt i tabellen: <b>ögon, öron</b> blir <b>ögonen, öronen</b>, och <b>män</b> blir <b>männen</b>. Även <i>m</i> blir dubbelt här: rum, rummen. Och <i>fönster</i> tappar <i>e</i>: fönstren.</p>
+
+<h2>Dubbel bestämning</h2>
+<p>När ett adjektiv står framför substantivet i bestämd form, måste du markera bestämd form <b>två gånger</b>. Det kallas <b>dubbel bestämning</b>:</p>
+<ol>
+<li><b>den</b> (en-ord), <b>det</b> (ett-ord) eller <b>de</b> (plural) före adjektivet,</li>
+<li>adjektivet med <b>-a</b>,</li>
+<li>substantivet i bestämd form.</li>
+</ol>
+<div class="tabelle"><table>
+<thead><tr><th></th><th>Artikel</th><th>Adjektiv</th><th>Substantiv</th></tr></thead>
+<tbody>
+<tr><td>en-ord</td><td>den</td><td>nya</td><td>bilen</td></tr>
+<tr><td>ett-ord</td><td>det</td><td>stora</td><td>huset</td></tr>
+<tr><td>plural</td><td>de</td><td>gamla</td><td>böckerna</td></tr>
+</tbody></table></div>
+<p class="beispiel">Kan du stänga det öppna fönstret?<br>De nya skorna är för små.<br>Jag tar den röda tröjan.</p>
+<p><b>liten</b> är oregelbundet: <b>den lilla</b> i singular och <b>de små</b> i plural: det lilla köket, de små barnen.</p>
+<p>På tyska räcker artikeln: <i>das große Haus</i>. Därför glömmer tyskar ofta ändelsen och skriver <i>det stora hus</i>. Det är fel: det heter <b>det stora huset</b>.</p>
+<p>I vissa namn och fasta uttryck försvinner <i>den/det</i>: <i>Vita huset, Gamla stan, Svarta havet</i>. Det är undantag. I vanliga meningar behövs <i>den/det/de</i>.</p>
+<div class="merke"><p>Adjektiv + bestämd form = <b>den/det/de</b> + adjektiv på <b>-a</b> + substantiv på <b>-en/-et/-na</b>. Tre markeringar, inte en.</p></div>
+
+<h2>Den här, det här, de här</h2>
+<p><b>den här, det här, de här</b> betyder <i>dieser, dieses, diese</i>. Efter dem står substantivet i <b>bestämd form</b>: den här boken, det här huset, de här skorna. Samma sak gäller <b>den där, det där, de där</b> (<i>jener</i>).</p>
+<p>I skriven och formell svenska finns också <b>denna, detta, dessa</b>. Efter dem står substantivet i obestämd form: <i>denna bok, detta hus</i>.</p>
+
+<h2>Ord som styr formen</h2>
+<p>Efter vissa ord måste substantivet stå i en viss form. Här är det lätt att göra fel, för tyskan fungerar ofta annorlunda.</p>
+<h3>Bestämd form utan den/det</h3>
+<div class="tabelle"><table>
+<thead><tr><th>Ord</th><th>Exempel</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>förra</td><td>förra veckan, förra året</td><td><i>letzte Woche</i></td></tr>
+<tr><td>hela, halva</td><td>hela dagen, halva natten</td><td><i>den ganzen Tag</i></td></tr>
+<tr><td>första, sista</td><td>första gången, sista dagen</td><td><i>das erste Mal</i></td></tr>
+<tr><td>båda</td><td>båda barnen</td><td><i>beide Kinder</i></td></tr>
+</tbody></table></div>
+<p>Efter <i>första</i>, <i>sista</i> och <i>båda</i> kan man också använda den/det/de: <i>den första gången, de båda barnen</i>.</p>
+<h3>Obestämd form</h3>
+<div class="tabelle"><table>
+<thead><tr><th>Ord</th><th>Exempel</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>nästa</td><td>nästa vecka, nästa år</td><td><i>nächste Woche</i></td></tr>
+<tr><td>samma</td><td>samma dag, samma tröja</td><td><i>derselbe Tag</i></td></tr>
+<tr><td>följande</td><td>följande dag, följande frågor</td><td><i>der folgende Tag</i></td></tr>
+<tr><td>vilken, vilket, vilka</td><td>vilken buss?</td><td><i>welcher Bus?</i></td></tr>
+<tr><td>min, din, vår ... (ägarord)</td><td>min bil, vårt hus</td><td><i>mein Auto</i></td></tr>
+<tr><td>genitiv-s</td><td>Annas hus, Sveriges huvudstad</td><td><i>Annas Haus</i></td></tr>
+</tbody></table></div>
+<p>Lägg märke till skillnaden: <b>förra veckan</b> (bestämd form) men <b>nästa vecka</b> (obestämd form). Och <i>samma</i> ser ut som tyskans <i>derselbe</i>, men substantivet står i obestämd form: <b>samma dag</b>.</p>
+
+<h3>Ägarord och genitiv med adjektiv</h3>
+<p>Ett <b>ägarord</b> (possessivpronomen) är ett ord som <i>min, din, hans, vår</i>. Ett <b>genitiv-s</b> visar vem något tillhör: <i>Annas</i>. Efter dem står substantivet i <b>obestämd</b> form, men adjektivet får ändå <b>-a</b>:</p>
+<p class="beispiel">min nya bil (inte: min nya bilen)<br>Annas gamla hus<br>Vi sålde vårt stora hus.</p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Adjektiv utan bestämd form på substantivet:</b> <i>det stora hus</i>. Rätt: <b>det stora huset</b>.</li>
+<li><b>Fel artikel före adjektivet:</b> <i>den stora huset</i>. <i>hus</i> är ett ett-ord, alltså <b>det</b> stora huset.</li>
+<li><b>Bestämd form efter ägarord:</b> <i>min bilen</i>. Rätt: <b>min bil</b>.</li>
+<li><b>Obestämd form efter den här:</b> <i>den här bok</i>. Rätt: <b>den här boken</b>.</li>
+<li><b>Fel form efter förra och nästa:</b> Det heter <b>förra veckan</b> och <b>nästa vecka</b>.</li>
+<li><b>Ändelse på -et efter vokal:</b> <i>äppleet</i>. Rätt: <b>äpplet</b>.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>Singular: en-ord -en/-n, ett-ord -et/-t.</li>
+<li>Plural: -na efter -r, -a efter -n, -en efter plural utan ändelse.</li>
+<li>Adjektiv + bestämd form: den/det/de + adjektiv på -a + substantiv i bestämd form.</li>
+<li>Bestämd form efter den här, förra, hela, första, sista, båda.</li>
+<li>Obestämd form efter nästa, samma, följande, vilken, ägarord och genitiv.</li>
+</ul>
+`;

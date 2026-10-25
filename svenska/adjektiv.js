@@ -153,3 +153,136 @@ D_TIPPEN.forEach(([satz,grund,loesungen,r,form])=>{
 });
 
 })();
+
+REGELSEITEN.adjektiv=`
+<h2>Vad är ett adjektiv?</h2>
+<p>Ett <b>adjektiv</b> beskriver hur något är: <i>stor, ny, röd, trött</i>. På svenska ändrar adjektivet form efter substantivet det hör till. Det kallas att adjektivet <b>böjs</b>. Formen beror på tre saker:</p>
+<ul>
+<li><b>genus</b>: en-ord eller ett-ord</li>
+<li><b>tal</b>: singular eller plural</li>
+<li><b>form</b>: obestämd form (en bil) eller bestämd form (den bilen)</li>
+</ul>
+<p>Tyskan har dessutom kasus (<i>großer, großen, großem</i>). Det har svenskan inte. Därför är det bara tre former att lära sig: <b>grundform</b>, <b>t-form</b> och <b>a-form</b>.</p>
+
+<h2>De tre formerna</h2>
+<div class="tabelle"><table>
+<thead><tr><th></th><th>en-ord</th><th>ett-ord</th><th>plural</th><th>bestämd form</th></tr></thead>
+<tbody>
+<tr><td>stor</td><td>en stor bil</td><td>ett stor<b>t</b> hus</td><td>stor<b>a</b> bilar</td><td>den stor<b>a</b> bilen</td></tr>
+<tr><td>röd</td><td>en röd tröja</td><td>ett rö<b>tt</b> äpple</td><td>rö<b>da</b> tröjor</td><td>den rö<b>da</b> tröjan</td></tr>
+<tr><td>ny</td><td>en ny bil</td><td>ett ny<b>tt</b> hus</td><td>ny<b>a</b> bilar</td><td>det ny<b>a</b> huset</td></tr>
+</tbody></table></div>
+<ul>
+<li><b>Grundform</b> (ingen ändelse): med en-ord i obestämd form singular.</li>
+<li><b>-t</b>: med ett-ord i obestämd form singular.</li>
+<li><b>-a</b>: i plural och i bestämd form, både med en-ord och ett-ord.</li>
+</ul>
+<h3>a-formen efter ägarord och genitiv</h3>
+<p>Efter ett ägarord (<i>min, din, hans, vår</i>) eller ett genitiv-s (<i>Annas, Sveriges</i>) får adjektivet också <b>-a</b>. Substantivet står ändå i obestämd form.</p>
+<p class="beispiel">min nya bil, Annas gamla hus, vårt stora kök</p>
+<p>I äldre och formell svenska kan adjektivet få <b>-e</b> när det gäller en man i bestämd form: <i>den gamle mannen</i>. I vanlig svenska går <i>den gamla mannen</i> lika bra.</p>
+
+<h2>Efter är och blir</h2>
+<p>Står adjektivet efter <i>är</i>, <i>blir</i> eller <i>verkar</i>, böjs det efter <b>subjektet</b> (den eller det som meningen handlar om).</p>
+<p class="beispiel">Bilen är ny. (en bil)<br>Huset är nytt. (ett hus)<br>Bilarna är nya. (plural)</p>
+<p>Här skiljer sig svenska tydligt från tyskan. På tyska böjs adjektivet inte efter <i>sein</i>: <i>Das Haus ist groß, die Häuser sind groß</i>. På svenska måste du böja: <b>Huset är stort. Husen är stora.</b></p>
+<p>När <b>det</b> är ett formellt subjekt (som tyskans <i>es</i>) får adjektivet <b>-t</b>: <i>Det är kallt ute. Det är inte säkert att hon kommer.</i></p>
+<div class="merke"><p>Fråga alltid: vem eller vad är det som är så? <i>Vattnet är kallt</i>, för det heter <i>ett vatten</i>.</p></div>
+
+<h2>Hur bildas t-formen?</h2>
+<p>Oftast lägger man bara till <b>-t</b>: stor, stort; fin, fint; rolig, roligt. Men ibland ändras ordet.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Adjektivet slutar på</th><th>t-form</th><th>Exempel</th></tr></thead>
+<tbody>
+<tr><td>betonad vokal</td><td><b>-tt</b></td><td>ny, nytt; fri, fritt; blå, blått</td></tr>
+<tr><td>vokal + d (korta ord)</td><td><b>-tt</b></td><td>röd, rött; god, gott; glad, glatt</td></tr>
+<tr><td>lång vokal + t</td><td><b>-tt</b></td><td>vit, vitt; söt, sött</td></tr>
+<tr><td>konsonant + d</td><td>d blir <b>t</b></td><td>känd, känt; hård, hårt</td></tr>
+<tr><td>konsonant + t</td><td>inget nytt t</td><td>svart, svart; intressant, intressant; lätt, lätt</td></tr>
+<tr><td>-en</td><td><b>-et</b></td><td>öppen, öppet; egen, eget; vaken, vaket</td></tr>
+</tbody></table></div>
+
+<h2>Hur bildas a-formen?</h2>
+<p>Oftast lägger man bara till <b>-a</b>: stor, stora; trött, trötta. Specialfall:</p>
+<ul>
+<li>Adjektiv på <b>-en</b> får <b>-na</b>: öppen, öppna; mogen, mogna; egen, egna.</li>
+<li>Adjektiv på <b>-el</b> och <b>-er</b> tappar <i>e</i>: enkel, enkla; vacker, vackra; säker, säkra.</li>
+<li><b>gammal</b> blir <b>gamla</b> (t-form: gammalt).</li>
+<li><b>blå</b> och <b>grå</b> har två former: blå eller blåa, grå eller gråa.</li>
+</ul>
+
+<h2>Liten</h2>
+<p><b>liten</b> är det mest oregelbundna adjektivet. Lär dig alla former:</p>
+<div class="tabelle"><table>
+<thead><tr><th>en-ord</th><th>ett-ord</th><th>plural</th><th>bestämd singular</th><th>bestämd plural</th></tr></thead>
+<tbody>
+<tr><td>en liten bil</td><td>ett litet hus</td><td>små bilar</td><td>den lilla bilen</td><td>de små bilarna</td></tr>
+</tbody></table></div>
+<p class="beispiel">Katten är liten. Rummet är litet. Barnen är små.</p>
+
+<h2>Adjektiv som inte böjs</h2>
+<p>Några adjektiv har alltid samma form: <b>bra, extra, gratis, rosa, lila, kul</b>.</p>
+<p class="beispiel">ett bra förslag, Kaffet är gratis, ett rosa paraply</p>
+
+<h2>Komparation</h2>
+<p><b>Komparation</b> betyder att man jämför. Det finns tre steg: <b>grundform</b> (stor), <b>komparativ</b> (större) och <b>superlativ</b> (störst).</p>
+<h3>Regelbundna adjektiv</h3>
+<p>De flesta adjektiv får <b>-are</b> och <b>-ast</b>: billig, billigare, billigast; snabb, snabbare, snabbast.</p>
+<p>Jämförelseordet är <b>än</b> (tyska <i>als</i>): <i>Tåget är snabbare än bussen.</i> För att säga <i>so ... wie</i> använder man <b>lika ... som</b>: <i>Hon är lika lång som jag.</i></p>
+<h3>Oregelbundna adjektiv</h3>
+<div class="tabelle"><table>
+<thead><tr><th>Grundform</th><th>Komparativ</th><th>Superlativ</th></tr></thead>
+<tbody>
+<tr><td>bra</td><td>bättre</td><td>bäst</td></tr>
+<tr><td>dålig</td><td>sämre (värre)</td><td>sämst (värst)</td></tr>
+<tr><td>gammal</td><td>äldre</td><td>äldst</td></tr>
+<tr><td>ung</td><td>yngre</td><td>yngst</td></tr>
+<tr><td>stor</td><td>större</td><td>störst</td></tr>
+<tr><td>liten</td><td>mindre</td><td>minst</td></tr>
+<tr><td>lång</td><td>längre</td><td>längst</td></tr>
+<tr><td>hög</td><td>högre</td><td>högst</td></tr>
+<tr><td>låg</td><td>lägre</td><td>lägst</td></tr>
+<tr><td>tung</td><td>tyngre</td><td>tyngst</td></tr>
+<tr><td>få</td><td>färre</td><td>färst</td></tr>
+<tr><td>många</td><td>fler (flera)</td><td>flest</td></tr>
+<tr><td>mycket</td><td>mer (mera)</td><td>mest</td></tr>
+</tbody></table></div>
+<p><b>sämre</b> är den vanliga formen av <i>dålig</i>. <b>värre</b> används ofta när något negativt blir ännu mer negativt: <i>Förkylningen blev värre.</i></p>
+<h3>Mer eller fler?</h3>
+<p>Tyskan har bara <i>mehr</i>. Svenskan har två ord:</p>
+<ul>
+<li><b>mer</b> med saker man inte kan räkna: mer pengar, mer tid, mer folk</li>
+<li><b>fler</b> med saker man kan räkna: fler bilar, fler gäster</li>
+</ul>
+<p>Samma sak i superlativ: <b>mest</b> (mest pengar) och <b>flest</b> (flest mål).</p>
+<h3>Mer och mest</h3>
+<p>Långa adjektiv och adjektiv på <b>-ande, -ende</b> och <b>-isk</b> jämförs med <b>mer</b> och <b>mest</b>: <i>mer spännande, mest spännande; mer praktisk</i>. Vissa adjektiv kan jämföras på båda sätten: <i>intressantare</i> eller <i>mer intressant</i>.</p>
+<h3>Böjning av komparativ och superlativ</h3>
+<ul>
+<li><b>Komparativ böjs aldrig</b>: en större bil, ett större hus, större bilar.</li>
+<li><b>Superlativ utan artikel</b> efter <i>är</i> har grundform: <i>Maja är längst. Min syster är yngst.</i></li>
+<li><b>Superlativ i bestämd form</b> (efter den/det/de eller genitiv) får <b>-a</b>. <b>-ast</b> blir <b>-aste</b>: den största sjön, Sveriges största stad, den varmaste månaden, det roligaste jag vet.</li>
+</ul>
+<p>Efter <b>ännu</b> (tyska <i>noch</i>) kommer komparativ: <i>Idag är det ännu sämre.</i></p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Inget -t efter är:</b> <i>Huset är stor</i>. Rätt: <b>Huset är stort</b>.</li>
+<li><b>Inget -a i plural efter är:</b> <i>Barnen är trött</i>. Rätt: <b>Barnen är trötta</b>.</li>
+<li><b>Fel t-form:</b> <i>ett röt äpple, ett nyt hus</i>. Rätt: <b>rött, nytt</b>.</li>
+<li><b>Böjning av bra:</b> <i>ett brat förslag</i>. <i>bra</i> böjs aldrig.</li>
+<li><b>Mer i stället för fler:</b> <i>mer bilar</i>. Rätt: <b>fler bilar</b>.</li>
+<li><b>Som i stället för än:</b> <i>större som</i>. Rätt: <b>större än</b>.</li>
+<li><b>Fel liten-form:</b> <i>de litna barnen</i>. Rätt: <b>de små barnen</b>.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>en-ord: grundform. ett-ord: -t. Plural och bestämd form: -a.</li>
+<li>Efter <i>är</i> böjs adjektivet efter subjektet.</li>
+<li>liten, litet, små, lilla. gammal, gammalt, gamla.</li>
+<li>bra, gratis, rosa, kul böjs inte.</li>
+<li>Komparation: -are, -ast eller mer, mest. Många vanliga adjektiv är oregelbundna.</li>
+<li>Komparativ böjs inte. Superlativ i bestämd form får -a eller -e: största, varmaste.</li>
+</ul>
+`;

@@ -15,6 +15,7 @@ if("serviceWorker" in navigator&&location.protocol.startsWith("http"))
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 const ITEMS=[];
+const REGELSEITEN={};
 function neueKarte(k){
   k.id=k.deck+"-"+hash(k.typ+"|"+(k.rohfrage||"")+"|"+(k.richtig||(k.loesungen&&k.loesungen[0])||""));
   ITEMS.push(k);
@@ -77,7 +78,7 @@ const ABZEICHEN=Object.keys(ABZEICHEN_TESTS).map(k=>({k:k,name:A.abzeichen[k][0]
 
 /* ---------- Oberfläche ---------- */
 const $=id=>document.getElementById(id);
-const sStart=$("s-start"), sRunde=$("s-runde"), sFortschritt=$("s-fortschritt");
+const sStart=$("s-start"), sRunde=$("s-runde"), sFortschritt=$("s-fortschritt"), sRegeln=$("s-regeln");
 const karte=$("karte");
 let lauf=null, bildschirm="start";
 
@@ -86,6 +87,7 @@ function zeige(name){
   sStart.hidden=name!=="start";
   sRunde.hidden=name!=="runde";
   sFortschritt.hidden=name!=="fortschritt";
+  sRegeln.hidden=name!=="regeln";
   $("knopf-zurueck").hidden=name==="start";
   $("knopf-zurueck").textContent=name==="runde"?T.rundeBeenden:T.zumKasten;
   window.scrollTo(0,0);
@@ -151,16 +153,36 @@ function zeigeStart(){
     const badge=z.faellig>0
       ? '<span class="deck-faellig">'+wort+'</span>'
       : '<span class="deck-faellig ruhig">'+wort+'</span>';
-    return '<button class="deck" data-deck="'+d.k+'" style="--reiter:'+d.farbe+'">'+
+    const regeln=REGELSEITEN[d.k];
+    return '<div class="deck-rahmen'+(regeln?' mit-regeln':'')+'" style="--reiter:'+d.farbe+'">'+
+      '<button class="deck" data-deck="'+d.k+'">'+
       '<div class="deck-kopf"><h3>'+esc(d.name)+'</h3>'+badge+'</div>'+
       '<p>'+esc(d.text)+'</p>'+
       '<div class="deck-fuss"><span>'+T.karten(z.gesamt)+'</span>'+
-      '<div class="balken"><i style="width:'+z.quote+'%"></i></div><b>'+z.quote+'%</b></div></button>';
+      '<div class="balken"><i style="width:'+z.quote+'%"></i></div><b>'+z.quote+'%</b></div></button>'+
+      (regeln?'<button class="deck-regeln" data-regeln="'+d.k+'">'+T.regeln+'</button>':'')+
+      '</div>';
   }).join("");
   $("stapel-liste").querySelectorAll(".deck").forEach(b=>{
     b.addEventListener("click",()=>starteRunde(b.dataset.deck));
   });
+  $("stapel-liste").querySelectorAll(".deck-regeln").forEach(b=>{
+    b.addEventListener("click",()=>zeigeRegeln(b.dataset.regeln));
+  });
   kopfleiste();
+}
+
+/* ---------- Regeln ---------- */
+function zeigeRegeln(k){
+  const d=DECK_NACH_K[k];
+  $("regelblatt").style.setProperty("--reiter",d.farbe);
+  $("regelblatt").innerHTML=
+    '<div class="karte-reiter"><span class="punkt"></span><span>'+T.regeln+'</span></div>'+
+    '<h1>'+esc(d.name)+'</h1>'+
+    '<div class="regeltext">'+REGELSEITEN[k]+'</div>'+
+    '<div class="karte-fuss"><button class="knopf hell gross" id="k-regeln-ueben">'+T.stapelUeben+'</button></div>';
+  $("k-regeln-ueben").addEventListener("click",()=>starteRunde(k));
+  zeige("regeln");
 }
 
 /* ---------- Runde ---------- */
@@ -528,7 +550,7 @@ $("knopf-zurueck").addEventListener("click",()=>{zeigeStart();zeige("start");});
 document.addEventListener("keydown",ev=>{
   if(ev.metaKey||ev.ctrlKey||ev.altKey)return;
   if(ev.target.tagName==="TEXTAREA")return;
-  if(bildschirm==="fortschritt"&&ev.key==="Escape"){zeigeStart();zeige("start");return;}
+  if((bildschirm==="fortschritt"||bildschirm==="regeln")&&ev.key==="Escape"){zeigeStart();zeige("start");return;}
   if(bildschirm!=="runde"||!lauf)return;
   if(ev.key==="Escape"&&!lauf.fertig){zeigeStart();zeige("start");return;}
   const k=lauf.liste[lauf.pos];

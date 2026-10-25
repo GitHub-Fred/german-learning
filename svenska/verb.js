@@ -278,3 +278,133 @@ D_IMP_TIPPEN.forEach(([satz,inf,imp,r])=>{
 });
 
 })();
+
+REGELSEITEN.verb=`
+<h2>Verbets former</h2>
+<p>Ett <b>verb</b> är ett ord för något man gör eller något som händer: <i>arbeta, skriva, bo</i>. Svenska verb har fem viktiga former:</p>
+<div class="tabelle"><table>
+<thead><tr><th>Form</th><th>Användning</th><th>Exempel</th></tr></thead>
+<tbody>
+<tr><td><b>Infinitiv</b></td><td>grundformen, efter hjälpverb och <i>att</i></td><td>Jag vill <b>arbeta</b>.</td></tr>
+<tr><td><b>Presens</b></td><td>nu, vanor, framtid</td><td>Jag <b>arbetar</b>.</td></tr>
+<tr><td><b>Preteritum</b></td><td>förfluten tid</td><td>Jag <b>arbetade</b> igår.</td></tr>
+<tr><td><b>Supinum</b></td><td>efter <i>har</i> och <i>hade</i></td><td>Jag har <b>arbetat</b>.</td></tr>
+<tr><td><b>Imperativ</b></td><td>uppmaning, order</td><td><b>Arbeta</b> nu!</td></tr>
+</tbody></table></div>
+<p>En stor lättnad jämfört med tyskan: verbet har <b>samma form för alla personer</b>. <i>Jag arbetar, du arbetar, hon arbetar, vi arbetar, de arbetar.</i> Det finns inga ändelser som <i>-e, -st, -t, -en</i>.</p>
+
+<h2>De fyra verbgrupperna</h2>
+<p>Verben delas in i fyra grupper efter hur de bildar presens, preteritum och supinum.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Grupp</th><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Supinum</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>arbeta</td><td>arbeta<b>r</b></td><td>arbeta<b>de</b></td><td>arbeta<b>t</b></td></tr>
+<tr><td>2a</td><td>stänga</td><td>stäng<b>er</b></td><td>stäng<b>de</b></td><td>stäng<b>t</b></td></tr>
+<tr><td>2b</td><td>köpa</td><td>köp<b>er</b></td><td>köp<b>te</b></td><td>köp<b>t</b></td></tr>
+<tr><td>3</td><td>bo</td><td>bo<b>r</b></td><td>bo<b>dde</b></td><td>bo<b>tt</b></td></tr>
+<tr><td>4</td><td>skriva</td><td>skriv<b>er</b></td><td>skrev</td><td>skriv<b>it</b></td></tr>
+</tbody></table></div>
+<p>Grupp 1-3 är <b>svaga verb</b>: de följer en regel. Grupp 4 är <b>starka och oregelbundna verb</b>: de måste man lära sig utantill.</p>
+<div class="merke"><p>Infinitiven visar inte alltid gruppen: <i>prata</i> (grupp 1) och <i>ringa</i> (grupp 2) ser likadana ut. Lär dig därför <b>presens</b> också: <i>pratar</i> visar grupp 1, <i>ringer</i> visar grupp 2.</p></div>
+
+<h3>Grupp 1: -ar, -ade, -at</h3>
+<p>Den största gruppen. Presens slutar på <b>-ar</b>. Nya ord och lånord hamnar nästan alltid här: <i>mejla, googla, fika</i>.</p>
+<p class="beispiel">arbeta, arbetar, arbetade, arbetat<br>prata, pratar, pratade, pratat<br>öppna, öppnar, öppnade, öppnat</p>
+
+<h3>Grupp 2: -er, -de/-te, -t</h3>
+<p>Presens slutar på <b>-er</b>. I preteritum finns två varianter, som beror på det sista ljudet i <b>stammen</b> (verbet utan <i>-a</i>):</p>
+<ul>
+<li><b>2a</b>: stammen slutar på ett tonande ljud (till exempel g, l, m, n, r, v). Preteritum <b>-de</b>: stänga, stängde; ringa, ringde; höra, hörde.</li>
+<li><b>2b</b>: stammen slutar på <b>k, p, s, t</b> eller <b>x</b>. Preteritum <b>-te</b>: köpa, köpte; läsa, läste; leka, lekte; tänka, tänkte; åka, åkte.</li>
+</ul>
+<p>Supinum slutar alltid på <b>-t</b>: stängt, ringt, köpt, läst.</p>
+<p>Specialfall:</p>
+<ul>
+<li>Slutar stammen på <b>r</b>, får presens ingen extra ändelse: höra, <b>hör</b>; köra, <b>kör</b>.</li>
+<li>Dubbelt <b>m</b> blir enkelt före en annan konsonant: glömma, glömmer, <b>glömde</b>, <b>glömt</b>.</li>
+<li>Stammar på <b>-nd</b> tappar ett <i>d</i>: använda, använde, använt.</li>
+</ul>
+
+<h3>Grupp 3: -r, -dde, -tt</h3>
+<p>Korta verb som <b>inte</b> slutar på <i>-a</i> i infinitiv.</p>
+<p class="beispiel">bo, bor, bodde, bott<br>tro, tror, trodde, trott<br>sy, syr, sydde, sytt</p>
+
+<h3>Grupp 4: starka och oregelbundna verb</h3>
+<p><b>Starka verb</b> byter vokal i preteritum, och supinum slutar ofta på <b>-it</b>. Det känner du igen från tyskan: <i>trinken, trank, getrunken</i> - <b>dricka, drack, druckit</b>. Många svenska starka verb har samma vokalbyte som de tyska.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Supinum</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>skriva</td><td>skriver</td><td>skrev</td><td>skrivit</td><td><i>schrieb, geschrieben</i></td></tr>
+<tr><td>bli</td><td>blir</td><td>blev</td><td>blivit</td><td><i>blieb, geblieben</i></td></tr>
+<tr><td>dricka</td><td>dricker</td><td>drack</td><td>druckit</td><td><i>trank, getrunken</i></td></tr>
+<tr><td>springa</td><td>springer</td><td>sprang</td><td>sprungit</td><td><i>sprang, gesprungen</i></td></tr>
+<tr><td>vinna</td><td>vinner</td><td>vann</td><td>vunnit</td><td><i>gewann, gewonnen</i></td></tr>
+<tr><td>finnas</td><td>finns</td><td>fanns</td><td>funnits</td><td>-</td></tr>
+<tr><td>sitta</td><td>sitter</td><td>satt</td><td>suttit</td><td><i>saß, gesessen</i></td></tr>
+<tr><td>flyga</td><td>flyger</td><td>flög</td><td>flugit</td><td><i>flog, geflogen</i></td></tr>
+<tr><td>ta</td><td>tar</td><td>tog</td><td>tagit</td><td>-</td></tr>
+<tr><td>äta</td><td>äter</td><td>åt</td><td>ätit</td><td><i>aß, gegessen</i></td></tr>
+<tr><td>ge</td><td>ger</td><td>gav</td><td>gett / givit</td><td><i>gab, gegeben</i></td></tr>
+<tr><td>se</td><td>ser</td><td>såg</td><td>sett</td><td><i>sah, gesehen</i></td></tr>
+<tr><td>komma</td><td>kommer</td><td>kom</td><td>kommit</td><td><i>kam, gekommen</i></td></tr>
+<tr><td>sova</td><td>sover</td><td>sov</td><td>sovit</td><td>-</td></tr>
+<tr><td>ligga</td><td>ligger</td><td>låg</td><td>legat</td><td><i>lag, gelegen</i></td></tr>
+<tr><td>gråta</td><td>gråter</td><td>grät</td><td>gråtit</td><td>-</td></tr>
+<tr><td>stå</td><td>står</td><td>stod</td><td>stått</td><td><i>stand, gestanden</i></td></tr>
+<tr><td>förstå</td><td>förstår</td><td>förstod</td><td>förstått</td><td><i>verstand, verstanden</i></td></tr>
+</tbody></table></div>
+<p>Några mycket vanliga verb är helt <b>oregelbundna</b>:</p>
+<div class="tabelle"><table>
+<thead><tr><th>Infinitiv</th><th>Presens</th><th>Preteritum</th><th>Supinum</th></tr></thead>
+<tbody>
+<tr><td>vara</td><td>är</td><td>var</td><td>varit</td></tr>
+<tr><td>ha</td><td>har</td><td>hade</td><td>haft</td></tr>
+<tr><td>göra</td><td>gör</td><td>gjorde</td><td>gjort</td></tr>
+<tr><td>gå</td><td>går</td><td>gick</td><td>gått</td></tr>
+<tr><td>få</td><td>får</td><td>fick</td><td>fått</td></tr>
+<tr><td>veta</td><td>vet</td><td>visste</td><td>vetat</td></tr>
+<tr><td>säga</td><td>säger</td><td>sa / sade</td><td>sagt</td></tr>
+<tr><td>lägga</td><td>lägger</td><td>la / lade</td><td>lagt</td></tr>
+<tr><td>sälja</td><td>säljer</td><td>sålde</td><td>sålt</td></tr>
+<tr><td>välja</td><td>väljer</td><td>valde</td><td>valt</td></tr>
+</tbody></table></div>
+<p><i>sa</i> och <i>la</i> är vanligast i tal, <i>sade</i> och <i>lade</i> är lite mer formella. Båda är rätt.</p>
+
+<h2>Supinum och particip</h2>
+<p>Tyskan har en form, <i>Partizip II</i>, för två saker: <i>ich habe geschrieben</i> och <i>ein geschriebener Brief</i>. Svenskan har två olika former:</p>
+<ul>
+<li><b>Supinum</b> efter <i>har</i> och <i>hade</i>: Jag har <b>skrivit</b> ett brev. Vi har <b>sett</b> filmen.</li>
+<li><b>Particip</b> som adjektiv: ett <b>skrivet</b> brev, filmen är <b>sedd</b>.</li>
+</ul>
+<p>Efter <i>har</i> står alltid supinum: <i>har sett</i>, inte <i>har sedd</i>.</p>
+
+<h2>Imperativ</h2>
+<p><b>Imperativ</b> är formen för uppmaningar och order: <i>Kom hit! Stäng dörren!</i> Den är samma för en eller flera personer (tyskans <i>komm, kommt, kommen Sie</i> blir alltid <b>kom</b>).</p>
+<ul>
+<li>Normalt: infinitiv utan <b>-a</b>. skriva, <b>skriv</b>; köpa, <b>köp</b>; läsa, <b>läs</b>; äta, <b>ät</b>; säga, <b>säg</b>; göra, <b>gör</b>; använda, <b>använd</b>.</li>
+<li><b>vara</b> blir <b>var</b>: <i>Var tyst! Var försiktig!</i></li>
+<li>Grupp 1 behåller <b>-a</b>: öppna, <b>öppna</b>; vänta, <b>vänta</b>; prata, <b>prata</b>.</li>
+<li>Korta verb ändras inte: <b>gå, tro, ge, ta, ha, se</b>.</li>
+<li>Verb på <b>-mma</b> får bara ett <i>m</i>: komma, <b>kom</b>; glömma, <b>glöm</b>.</li>
+</ul>
+<p>Imperativ är aldrig samma som presens: <i>Stänger dörren!</i> är fel.</p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Personändelser:</b> svenskan har inga. <i>du arbetar, hon arbetar, vi arbetar</i>.</li>
+<li><b>Fel grupp:</b> <i>köpade, ringade</i>. Rätt: <b>köpte, ringde</b>. Lär dig presens, då vet du gruppen.</li>
+<li><b>Svag form av starka verb:</b> <i>skrivde, drickade</i>. Rätt: <b>skrev, drack</b>.</li>
+<li><b>Preteritum efter har:</b> <i>Jag har bodde</i>. Rätt: <b>Jag har bott</b>.</li>
+<li><b>Fel supinum:</b> <i>läsit, köpat</i>. Grupp 2 har alltid <b>-t</b>: läst, köpt.</li>
+<li><b>Imperativ med -a:</b> <i>Skriva!</i> Rätt: <b>Skriv!</b> Men grupp 1: <b>Vänta!</b></li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>Fem former: infinitiv, presens, preteritum, supinum, imperativ. Inga personändelser.</li>
+<li>Grupp 1: -ar, -ade, -at. Grupp 2a: -er, -de, -t. Grupp 2b (k, p, s, t, x): -er, -te, -t. Grupp 3: -r, -dde, -tt.</li>
+<li>Grupp 4: vokalbyte och oregelbundna former. Lär dig dem utantill.</li>
+<li>Supinum efter har/hade. Particip som adjektiv.</li>
+<li>Imperativ: infinitiv utan -a (skriv), men grupp 1 och korta verb oförändrade (vänta, gå).</li>
+</ul>
+`;

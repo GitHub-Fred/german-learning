@@ -7,7 +7,7 @@ const REGLER = {
   fraga:"I en fråga med frågeord kommer först frågeordet, sedan det böjda verbet och därefter subjektet.",
   jafraga:"I en ja/nej-fråga står verbet först och subjektet direkt efter. Ett satsadverb som <i>någonsin</i> kommer efter subjektet.",
   adv_hs:"I en huvudsats med rak ordföljd står <i>inte</i>, <i>aldrig</i>, <i>alltid</i> och <i>ofta</i> direkt efter det böjda verbet.",
-  adv_inv:"Vid omvänd ordföljd står <i>inte</i> och <i>aldrig</i> normalt efter ett pronomen som subjekt: verb + subjekt + inte. Bara om subjektet är betonat kan <i>inte</i> stå före det.",
+  adv_inv:"Vid omvänd ordföljd står <i>inte</i> och <i>aldrig</i> normalt efter ett pronomen som subjekt: verb + subjekt + inte. Är subjektet ett substantiv, kan <i>inte</i> stå både före och efter det: Idag kommer inte Erik, Idag kommer Erik inte.",
   biff:"BIFF: i en bisats står <i>inte</i>, <i>aldrig</i> och <i>alltid</i> före det böjda verbet.",
   indirekt:"En indirekt fråga är en bisats. Den har rak ordföljd: frågeord + subjekt + verb.",
   bisats_forst:"En bisats som står först räknas som plats ett. Därför kommer huvudsatsens verb direkt efter, före subjektet.",
@@ -167,3 +167,102 @@ O_BAU.forEach(([loesung,alt,regel,iBisats])=>{
 });
 
 })();
+
+REGELSEITEN.ordfoljd=`
+<h2>Två sorters satser</h2>
+<p>En <b>huvudsats</b> är en sats som kan stå ensam: <i>Jag dricker kaffe.</i> En <b>bisats</b> är en sats som är en del av en annan sats. Den börjar ofta med ett ord som <i>att, om, när, eftersom, som</i> eller ett frågeord: <i>... att jag dricker kaffe.</i></p>
+<p>Huvudsatser och bisatser har olika ordföljd. Två ord är viktiga:</p>
+<ul>
+<li>Det <b>böjda verbet</b> (finita verbet) är verbet som visar tid: <i>dricker, drack, har, kan, ska</i>.</li>
+<li>Ett <b>satsadverb</b> är ett litet ord som säger något om hela satsen: <i>inte, aldrig, alltid, ofta, redan, också, kanske, gärna, någonsin</i>.</li>
+</ul>
+
+<h2>Huvudsatsen: verbet på plats två</h2>
+<p>I en huvudsats står det böjda verbet alltid på <b>plats två</b>. Det är samma regel som på tyska: <i>Heute fahre ich nach Hamburg.</i> Det som står på plats ett kallas <b>fundament</b>.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Fundament</th><th>Böjt verb</th><th>Subjekt</th><th>Satsadverb</th><th>Övriga verb</th><th>Objekt</th><th>Plats, tid</th></tr></thead>
+<tbody>
+<tr><td>Jag</td><td>har</td><td>-</td><td>inte</td><td>sett</td><td>filmen</td><td>-</td></tr>
+<tr><td>Idag</td><td>kan</td><td>jag</td><td>inte</td><td>komma</td><td>-</td><td>-</td></tr>
+<tr><td>Den filmen</td><td>har</td><td>jag</td><td>redan</td><td>sett</td><td>-</td><td>-</td></tr>
+<tr><td>På kvällen</td><td>läser</td><td>hon</td><td>-</td><td>-</td><td>en bok</td><td>-</td></tr>
+<tr><td>Vi</td><td>åker</td><td>-</td><td>-</td><td>-</td><td>-</td><td>till landet i sommar</td></tr>
+</tbody></table></div>
+<h3>Rak och omvänd ordföljd</h3>
+<p>Står subjektet först, kallas det <b>rak ordföljd</b>: <i>Jag åker till Göteborg idag.</i></p>
+<p>Står något annat först (en tid, en plats, ett objekt, ett ord som <i>därför</i> eller <i>sedan</i>), måste subjektet komma <b>efter</b> verbet. Det kallas <b>omvänd ordföljd</b> (inversion).</p>
+<p class="beispiel">Idag åker jag till Göteborg.<br>I Sverige dricker man mycket kaffe.<br>Jag var sjuk. Därför stannade jag hemma.<br>Först åt vi och sedan gick vi hem.<br>Den filmen har jag redan sett.</p>
+<p>Detta fungerar precis som på tyska. Fel som <i>Idag jag åker</i> är typiska för engelsktalande, men tyskar kan använda sin känsla här.</p>
+<div class="merke"><p>Huvudsats: räkna till två. Det böjda verbet står alltid på plats två, oavsett vad som står först.</p></div>
+
+<h2>Satsadverbet i huvudsatsen</h2>
+<p>I en huvudsats med rak ordföljd står satsadverbet <b>direkt efter det böjda verbet</b>:</p>
+<p class="beispiel">Jag dricker inte kaffe.<br>Hon äter aldrig kött.<br>Vi kan inte komma på fredag.<br>Min bror har aldrig varit i Spanien.</p>
+<p>Vid omvänd ordföljd kommer satsadverbet efter subjektet, om subjektet är ett pronomen: verb + subjekt + inte.</p>
+<p class="beispiel">Idag kan jag inte komma.<br>På morgonen dricker han aldrig kaffe.</p>
+<p>Är subjektet ett substantiv, kan satsadverbet stå före eller efter det: <i>Idag kommer Erik inte</i> eller <i>Idag kommer inte Erik</i>.</p>
+<h3>Skillnad mot tyskan</h3>
+<p>På tyska står andra verb (infinitiv och particip) i slutet av satsen, och <i>nicht</i> hamnar ofta långt bak: <i>Ich habe den Film nicht gesehen.</i> På svenska står allt tätt ihop: böjt verb, satsadverb, övriga verb.</p>
+<p class="beispiel">Jag har inte sett filmen. (<i>Ich habe den Film nicht gesehen.</i>)<br>Hon vill inte åka hem. (<i>Sie will nicht nach Hause fahren.</i>)</p>
+<p>Ett litet pronomen som objekt kan ställa sig före <i>inte</i>, när det bara finns ett verb: <i>Jag förstår det inte. Jag känner honom inte.</i> Det är vanligt och korrekt.</p>
+
+<h2>Frågor</h2>
+<h3>Frågor med frågeord</h3>
+<p>Först kommer <b>frågeordet</b> (<i>var, vad, när, hur, varför, vem</i>), sedan det böjda verbet och sedan subjektet. Frågeordet är fundament, så verbet står på plats två.</p>
+<p class="beispiel">Var bor du?<br>När börjar filmen?<br>Hur länge har du bott här?<br>Varför kommer du inte?</p>
+<h3>Ja/nej-frågor</h3>
+<p>En fråga som man svarar <i>ja</i> eller <i>nej</i> på börjar med verbet. Subjektet kommer direkt efter, och satsadverbet efter subjektet.</p>
+<p class="beispiel">Har du någonsin varit i Norge?<br>Kommer du inte i kväll?</p>
+
+<h2>Bisatsen: BIFF</h2>
+<p>I bisatsen är ordföljden en annan. Subjektet kommer direkt efter bisatsinledaren, och satsadverbet står <b>före</b> det böjda verbet. Regeln kallas <b>BIFF</b>: <b>B</b>isats - <b>I</b>nte <b>F</b>öre <b>F</b>inita verbet.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Bisatsinledare</th><th>Subjekt</th><th>Satsadverb</th><th>Böjt verb</th><th>Övriga verb</th><th>Resten</th></tr></thead>
+<tbody>
+<tr><td>att</td><td>du</td><td>inte</td><td>kan</td><td>komma</td><td>-</td></tr>
+<tr><td>när</td><td>jag</td><td>inte</td><td>mår</td><td>-</td><td>bra</td></tr>
+<tr><td>som</td><td>jag</td><td>aldrig</td><td>har</td><td>sett</td><td>-</td></tr>
+<tr><td>varför</td><td>hon</td><td>alltid</td><td>har</td><td>-</td><td>en bok med sig</td></tr>
+</tbody></table></div>
+<p class="beispiel">Det är synd att du inte kan komma.<br>Säg till om du inte har tid.<br>Han är en person som aldrig säger nej.<br>Jag är glad att du alltid hjälper mig.</p>
+<p>Om subjektet är ett substantiv, kan <i>inte</i> också stå före subjektet: <i>om inte tåget går</i>. Men aldrig efter det böjda verbet.</p>
+<div class="merke"><p>BIFF: i bisatsen står <b>inte</b>, <b>aldrig</b>, <b>alltid</b> före det böjda verbet. <i>... att han <b>inte</b> kommer.</i></p></div>
+<h3>Skillnad mot tyskan</h3>
+<p>Tyskan sätter verbet sist i bisatsen: <i>dass er heute nicht kommen kann</i>. Svenskan gör inte det. Verbet kommer direkt efter satsadverbet, och resten följer efter: <b>att han inte kan komma idag</b>. Ordningen subjekt - satsadverb - verb liknar ändå tyskan, och det hjälper.</p>
+
+<h2>Indirekta frågor</h2>
+<p>En <b>indirekt fråga</b> är en fråga inne i en annan mening: <i>Jag undrar var han bor.</i> Den är en bisats och har därför <b>rak ordföljd</b>: frågeord + subjekt + verb.</p>
+<p class="beispiel">Jag undrar var han bor. (inte: var bor han)<br>Vet du när tåget går?<br>Kan du säga hur mycket det kostar?<br>Jag undrar varför hon inte svarar.</p>
+<p>Ja/nej-frågor blir indirekta med <b>om</b> (tyska <i>ob</i>): <i>Jag vet inte om hon kommer.</i></p>
+<p>Är frågeordet själv subjekt, lägger man till <b>som</b>: <i>Vem kommer? - Jag undrar vem som kommer.</i></p>
+
+<h2>Bisatsen först</h2>
+<p>En bisats kan stå först i meningen. Då räknas hela bisatsen som <b>plats ett</b>. Huvudsatsens verb kommer direkt efter, och sedan subjektet. Det är också samma som på tyska: <i>Wenn es regnet, bleiben wir zu Hause.</i></p>
+<p class="beispiel">Om det regnar, stannar vi hemma.<br>När jag kom hem, åt jag middag.<br>Eftersom jag inte har bil, tar jag bussen.<br>Om du inte har tid, kan vi ses på måndag.</p>
+<p>Kommatecknet efter bisatsen kan man sätta eller låta bli. Ordföljden är densamma.</p>
+
+<h2>Och, men, eller, för</h2>
+<p>Orden <b>och, men, eller, för</b> binder ihop två huvudsatser. De räknas <b>inte</b> som plats ett. Kommer subjektet direkt efter dem, blir det rak ordföljd:</p>
+<p class="beispiel">Jag är trött, men jag vill inte sova.<br>Hon stannar hemma, för hon är sjuk.</p>
+<p>Svenskans <i>för</i> fungerar som tyskans <i>denn</i>. Om du vill använda en bisats, säg <b>eftersom</b> (tyska <i>weil</i>): <i>... eftersom hon är sjuk.</i></p>
+<p>Men står något annat än subjektet efter <i>och</i>, blir det omvänd ordföljd igen: <i>Först åt vi och sedan gick vi hem.</i></p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Verbet sist i bisatsen:</b> <i>att han inte idag komma kan</i>. Rätt: <b>att han inte kan komma idag</b>.</li>
+<li><b>Inte efter verbet i bisatsen:</b> <i>att du kan inte komma</i>. Rätt: <b>att du inte kan komma</b>.</li>
+<li><b>Particip och infinitiv sist i huvudsatsen:</b> <i>Jag har filmen inte sett</i>. Rätt: <b>Jag har inte sett filmen</b>.</li>
+<li><b>Omvänd ordföljd i indirekta frågor:</b> <i>Jag undrar var bor han</i>. Rätt: <b>var han bor</b>.</li>
+<li><b>Omvänd ordföljd efter för:</b> <i>för är hon sjuk</i>. Rätt: <b>för hon är sjuk</b>.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>Huvudsats: böjt verb på plats två. Står något annat än subjektet först, kommer subjektet efter verbet.</li>
+<li>Huvudsats: satsadverb efter det böjda verbet (eller efter subjektet vid omvänd ordföljd).</li>
+<li>Frågor: frågeord + verb + subjekt, eller verb + subjekt.</li>
+<li>Bisats: subjekt + satsadverb + böjt verb (BIFF). Inget verb sist som på tyska.</li>
+<li>Indirekt fråga = bisats = rak ordföljd.</li>
+<li>Bisatsen först = plats ett. Och, men, eller, för = ingen plats.</li>
+</ul>
+`;

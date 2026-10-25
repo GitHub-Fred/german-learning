@@ -154,6 +154,15 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .balken{flex:1;height:5px;background:#161B21;border-radius:3px;overflow:hidden}
 .balken i{display:block;height:100%;background:var(--reiter,var(--messing));border-radius:3px;transition:width .4s ease}
 .deck-fuss b{font-variant-numeric:tabular-nums;color:var(--kreide);font-weight:600;min-width:4ch;text-align:right}
+.deck-rahmen{position:relative;display:flex}
+.deck-rahmen>.deck{flex:1}
+.deck-rahmen.mit-regeln>.deck{padding-bottom:60px}
+.deck-regeln{
+  position:absolute;left:22px;bottom:16px;
+  font-size:15px;color:var(--kreide-leise);
+  padding:4px 12px;border:1px solid var(--linie);border-radius:2px;
+}
+.deck-regeln:hover{color:var(--kreide);border-color:var(--kreide-leise)}
 
 /* ---------- Runde: Karte ---------- */
 .runde{max-width:760px;margin:0 auto}
@@ -487,4 +496,51 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   .faecher{gap:6px}
   .stapel{height:74px}
   .fach-schild{font-size:13px;flex-direction:column;align-items:flex-start;gap:0}
+}
+
+/* ---------- Regelseite ---------- */
+.regelblatt{
+  max-width:760px;margin:0 auto;
+  background:linear-gradient(180deg,#F7F3E9,var(--papier) 22%,#EFE9DA);
+  color:var(--tinte);
+  border-radius:3px;
+  padding:30px 32px 30px 40px;
+  box-shadow:0 1px 0 #FCFAF4 inset, 0 14px 34px rgba(8,11,15,.55), 0 3px 8px rgba(8,11,15,.4);
+  position:relative;
+}
+.regelblatt::before{
+  content:"";position:absolute;top:0;bottom:0;left:24px;width:1px;
+  background:var(--rand);opacity:.55;
+}
+.regelblatt h1{font-size:clamp(30px,5vw,42px);line-height:1.08;margin:6px 0 18px}
+.regeltext{font-family:var(--schrift-text);font-size:17px;line-height:1.65;color:#3A342B}
+.regeltext h2{
+  font-family:var(--schrift-ui);font-size:24px;color:var(--tinte);
+  margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--papier-3);
+}
+.regeltext h2:first-child{margin-top:0;padding-top:0;border-top:0}
+.regeltext h3{font-family:var(--schrift-ui);font-size:19px;color:var(--tinte);margin:22px 0 6px}
+.regeltext p{margin:0 0 12px}
+.regeltext ul,.regeltext ol{margin:0 0 14px;padding-left:1.3em}
+.regeltext li{margin-bottom:5px}
+.regeltext b{font-weight:600;color:var(--tinte)}
+.regeltext i,.regeltext em{color:#9A4436}
+.regeltext .beispiel{
+  margin:0 0 12px;padding:6px 0 6px 14px;
+  border-left:2px solid var(--papier-3);font-style:italic;
+}
+.regeltext .merke{
+  margin:14px 0;padding:11px 14px;
+  background:rgba(217,164,65,.14);
+  border-left:3px solid var(--messing);border-radius:0 2px 2px 0;
+}
+.regeltext .merke p:last-child{margin-bottom:0}
+.regeltext .tabelle{overflow-x:auto;margin:0 0 16px}
+.regeltext table{border-collapse:collapse;font-size:15.5px;min-width:100%}
+.regeltext th,.regeltext td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid var(--papier-3);vertical-align:top}
+.regeltext th{font-family:var(--schrift-ui);font-size:15px;font-weight:600;color:var(--tinte-leise)}
+@media (max-width:560px){
+  .regelblatt{padding:24px 18px 24px 30px}
+  .regelblatt::before{left:16px}
+  .regeltext{font-size:16px}
 }

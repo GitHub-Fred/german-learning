@@ -175,3 +175,132 @@ P_MENING.forEach(([sing,pl,forklaring])=>{
 });
 
 })();
+
+REGELSEITEN.plural=`
+<h2>Fem grupper</h2>
+<p><b>Plural</b> betyder flera: en bil, två bilar. På svenska finns det fem vanliga pluraländelser. Därför delar man in substantiven i <b>fem grupper</b>. Vilken grupp ett ord hör till beror mest på två saker: <b>genus</b> (en eller ett) och <b>hur ordet slutar</b>.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Grupp</th><th>Ändelse</th><th>Vilka ord?</th><th>Exempel</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>-or</b></td><td>en-ord på -a</td><td>en flicka, flickor</td></tr>
+<tr><td>2</td><td><b>-ar</b></td><td>många korta en-ord, en-ord på -e, -ing, -dom, -el, -er</td><td>en bil, bilar; en pojke, pojkar</td></tr>
+<tr><td>3</td><td><b>-er, -r</b></td><td>lånord, ord med betoning på slutet, en del korta ord</td><td>en telefon, telefoner; en sko, skor</td></tr>
+<tr><td>4</td><td><b>-n</b></td><td>ett-ord på vokal</td><td>ett äpple, äpplen</td></tr>
+<tr><td>5</td><td><b>ingen ändelse</b></td><td>ett-ord på konsonant, personer på -are</td><td>ett hus, hus; en lärare, lärare</td></tr>
+</tbody></table></div>
+<p>Grupp 1 och 2 är nästan bara en-ord, grupp 3 mest en-ord. Grupp 4 och 5 är mest ett-ord.</p>
+
+<h2>Grupp 1: -or</h2>
+<p>En-ord som slutar på <b>-a</b> byter <i>-a</i> mot <b>-or</b>.</p>
+<p class="beispiel">en flicka, flickor; en klocka, klockor; en gata, gator; en vecka, veckor; en skola, skolor; en kyrka, kyrkor</p>
+<p>Några få ord som inte slutar på -a får också -or, till exempel <b>en ros, rosor</b> och <b>en våg, vågor</b>.</p>
+
+<h2>Grupp 2: -ar</h2>
+<p>Hit hör:</p>
+<ul>
+<li>många korta en-ord: en bil, bilar; en dag, dagar; en hund, hundar; en stol, stolar</li>
+<li>de flesta en-ord på <b>-e</b>. Då försvinner <i>e</i>: en pojke, pojkar</li>
+<li>alla en-ord på <b>-ing/-ning</b> och <b>-dom</b>: en tidning, tidningar; en sjukdom, sjukdomar</li>
+<li>några ord på betonad vokal: en sjö, sjöar; en ö, öar</li>
+</ul>
+<p>Ord på obetonat <b>-el, -er</b> och <b>-ar</b> tappar oftast <i>e</i> eller <i>a</i> före ändelsen:</p>
+<p class="beispiel">en fågel, fåglar; en nyckel, nycklar<br>en syster, systrar; en vinter, vintrar; en semester, semestrar<br>en sommar, somrar</p>
+<p>Ett ovanligt fall: <b>ett finger</b> är ett ett-ord men får ändå -ar: <b>fingrar</b>.</p>
+
+<h2>Grupp 3: -er och -r</h2>
+<p>Hit hör:</p>
+<ul>
+<li><b>lånord</b> (ord från andra språk) och ord som har betoning på sista stavelsen: en telefon, telefoner; en station, stationer; en student, studenter; en idé, idéer</li>
+<li>en del korta en-ord: en film, filmer; en park, parker; en sak, saker; en månad, månader</li>
+<li>några ett-ord: ett parti, partier; ett museum, museer (<i>-um</i> försvinner)</li>
+<li>några ord på -el som tappar <i>e</i>: en regel, regler; en möbel, möbler</li>
+</ul>
+<p>Några en-ord på betonad vokal får bara <b>-r</b>: en sko, skor; en ko, kor; en tå, tår.</p>
+<h3>Omljud</h3>
+<p>I grupp 3 finns många ord med <b>omljud</b>. Det betyder att vokalen ändras i plural: <i>a</i> blir <i>ä</i> och <i>o</i> blir <i>ö</i>. Det känner du igen från tyskan: <i>Buch, Bücher; Hand, Hände</i>.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Singular</th><th>Plural</th><th>Tyska</th></tr></thead>
+<tbody>
+<tr><td>en bok</td><td>böcker</td><td><i>Bücher</i></td></tr>
+<tr><td>en fot</td><td>fötter</td><td><i>Füße</i></td></tr>
+<tr><td>en son</td><td>söner</td><td><i>Söhne</i></td></tr>
+<tr><td>en bonde</td><td>bönder</td><td><i>Bauern</i></td></tr>
+<tr><td>en hand</td><td>händer</td><td><i>Hände</i></td></tr>
+<tr><td>en stad</td><td>städer</td><td><i>Städte</i></td></tr>
+<tr><td>en tand</td><td>tänder</td><td><i>Zähne</i></td></tr>
+<tr><td>en natt</td><td>nätter</td><td><i>Nächte</i></td></tr>
+<tr><td>en strand</td><td>stränder</td><td><i>Strände</i></td></tr>
+<tr><td>ett land</td><td>länder</td><td><i>Länder</i></td></tr>
+</tbody></table></div>
+<p>Lägg märke till att konsonanten ibland blir dubbel: bok, böcker; fot, fötter; natt, nätter.</p>
+
+<h2>Grupp 4: -n</h2>
+<p>Ett-ord som slutar på obetonad vokal får <b>-n</b>.</p>
+<p class="beispiel">ett äpple, äpplen; ett frimärke, frimärken; ett möte, möten; ett meddelande, meddelanden</p>
+<p>Specialfall: <b>ett öga, ögon</b> och <b>ett öra, öron</b> får <b>-on</b>. <b>ett huvud</b> slutar på konsonant men får ändå -en: <b>huvuden</b>.</p>
+
+<h2>Grupp 5: ingen ändelse</h2>
+<p>Här ser plural ut precis som singular. Hit hör:</p>
+<ul>
+<li>de flesta ett-ord som slutar på konsonant: ett hus, två hus; ett barn, två barn; ett bord, ett brev, ett glas, ett rum, ett fönster</li>
+<li>personord på <b>-are</b> och <b>-iker</b>: en lärare, två lärare; en läkare, två läkare; en musiker, två musiker</li>
+</ul>
+<p>Om plural syns eller inte, märker du då på andra ord i meningen: <i>Barnet är trött. Barnen är trötta.</i></p>
+<p>Jämför med tyskan: <i>Lehrer, Lehrer</i> och <i>Fenster, Fenster</i> har också ingen ändelse. Men <i>Haus, Häuser</i> och <i>Kind, Kinder</i> har en ändelse på tyska. På svenska heter det <b>hus</b> och <b>barn</b>, inte <i>huser</i> eller <i>barner</i>.</p>
+
+<h2>Oregelbundna ord</h2>
+<p>Några vanliga ord följer ingen regel. Dem måste du lära dig utantill.</p>
+<div class="tabelle"><table>
+<thead><tr><th>Singular</th><th>Plural</th><th>Bestämd plural</th></tr></thead>
+<tbody>
+<tr><td>en man</td><td>män</td><td>männen</td></tr>
+<tr><td>en mus</td><td>möss</td><td>mössen</td></tr>
+<tr><td>en gås</td><td>gäss</td><td>gässen</td></tr>
+<tr><td>en bror</td><td>bröder</td><td>bröderna</td></tr>
+<tr><td>en far</td><td>fäder</td><td>fäderna</td></tr>
+<tr><td>en mor</td><td>mödrar</td><td>mödrarna</td></tr>
+<tr><td>en dotter</td><td>döttrar</td><td>döttrarna</td></tr>
+</tbody></table></div>
+<p>Även här hjälper tyskan ofta: <i>Mann, Männer; Maus, Mäuse; Gans, Gänse; Bruder, Brüder; Tochter, Töchter</i>.</p>
+
+<h2>Bestämd form plural</h2>
+<p>Bestämd form plural bygger på pluralformen:</p>
+<ul>
+<li>plural på <b>-r</b> får <b>-na</b>: bilarna, flickorna, böckerna, bröderna, länderna</li>
+<li>plural på <b>-n</b> får <b>-a</b>: äpplena, frimärkena</li>
+<li>plural utan ändelse eller med bara vokalbyte får oftast <b>-en</b>: husen, barnen, männen, mössen, gässen</li>
+<li>personer på <b>-are</b> tappar <i>e</i> och får <b>-na</b>: lärarna</li>
+<li><b>ögon</b> och <b>öron</b> blir <b>ögonen</b> och <b>öronen</b></li>
+</ul>
+<p>Mer om bestämd form står i högen <i>Bestämd form</i>.</p>
+
+<h2>Plural i hela meningen</h2>
+<p>När substantivet står i plural, ändras också orden runt omkring:</p>
+<ul>
+<li>ägarord: <b>min</b>/<b>mitt</b> blir <b>mina</b>, <b>vår</b>/<b>vårt</b> blir <b>våra</b></li>
+<li><b>den här</b>/<b>det här</b> blir <b>de här</b></li>
+<li>adjektivet får <b>-a</b>: röd, röda; gammal, gamla. <b>liten</b> blir <b>små</b>.</li>
+</ul>
+<p>Men <b>verbet ändras inte</b>. På tyska säger man <i>ist, sind</i>, på svenska alltid <b>är</b>.</p>
+<p class="beispiel">Min bok är ny. Mina böcker är nya.<br>Mitt rum är litet. Mina rum är små.<br>Hunden skäller. Hundarna skäller.<br>Den här stolen är bekväm. De här stolarna är bekväma.</p>
+<div class="merke"><p>Vid plural: ändra substantivet, ägarordet och adjektivet. Låt verbet vara.</p></div>
+<p>Ord som <b>pengar</b> och <b>glasögon</b> finns bara i plural: <i>Pengarna räcker inte. Mina glasögon är borta.</i></p>
+
+<h2>Typiska fel för tyskar</h2>
+<ul>
+<li><b>Tysk ändelse på ett-ord:</b> <i>huser, barner</i>. Rätt: två <b>hus</b>, två <b>barn</b>.</li>
+<li><b>Fel grupp för ord på -e:</b> <i>pojker</i>. Rätt: <b>pojkar</b>. Men ett-ord på -e får -n: <b>äpplen</b>.</li>
+<li><b>Glömt e-bortfall:</b> <i>fågelar, systerar</i>. Rätt: <b>fåglar, systrar</b>.</li>
+<li><b>Glömt omljud:</b> <i>bokar, fotar</i>. Rätt: <b>böcker, fötter</b>.</li>
+<li><b>Verbet i plural:</b> svenskan har ingen pluralform av verbet. <i>Barnen är trötta.</i></li>
+<li><b>Adjektivet utan -a:</b> <i>Bilarna är röd</i>. Rätt: <b>Bilarna är röda</b>.</li>
+</ul>
+
+<h2>Sammanfattning</h2>
+<ul>
+<li>Grupp 1: -or (flickor). Grupp 2: -ar (bilar, pojkar, fåglar). Grupp 3: -er/-r (telefoner, böcker, skor). Grupp 4: -n (äpplen). Grupp 5: ingen ändelse (hus, lärare).</li>
+<li>Omljud som på tyska: bok, böcker; hand, händer; man, män.</li>
+<li>Bestämd plural: -na, -a eller -en.</li>
+<li>I plural ändras ägarord och adjektiv, men inte verbet.</li>
+</ul>
+`;

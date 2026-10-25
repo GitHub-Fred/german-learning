@@ -108,8 +108,14 @@
   </div>
 </section>
 
+<!-- ============ Regeln ============ -->
+<section id="s-regeln" hidden>
+  <article class="regelblatt" id="regelblatt"></article>
+</section>
+
 </main>
 <script src="karteikasten.js"></script>
+<script src="deutsch/regeln.js"></script>
 <script>
 "use strict";
 
@@ -222,7 +228,7 @@ const REGELN = {
 tag:"Wochentage, Monate und Jahreszeiten sind <b>maskulin</b>: der Montag, der Januar, der Sommer.",
 wetter:"Himmelsrichtungen und Wetterwörter sind <b>maskulin</b>: der Norden, der Regen, der Wind.",
 er:"Nomen auf <b>-er</b>, die eine Person oder ein Gerät bezeichnen, sind maskulin: der Lehrer, der Computer.",
-el:"Viele Geräte und Gegenstände auf <b>-el</b> sind maskulin: der Löffel, der Schlüssel.",
+el:"Viele Geräte und Gegenstände auf <b>-el</b> sind maskulin: der Löffel, der Schlüssel. Aber Vorsicht, es gibt auch viele feminine: die Gabel, die Regel, die Insel.",
 ling:"Nomen auf <b>-ling</b> sind maskulin: der Frühling, der Schmetterling.",
 ismus:"Nomen auf <b>-ismus</b> sind maskulin: der Kapitalismus, der Tourismus.",
 or:"Nomen auf <b>-or</b> sind maskulin: der Motor, der Doktor.",
@@ -254,7 +260,7 @@ o:"Fremdwörter auf <b>-o</b> sind neutrum: das Auto, das Kino, das Büro.",
 ge:"Sammelbegriffe mit der Vorsilbe <b>Ge-</b> sind neutrum: das Gemüse, das Gebäude.",
 verbnomen:"Ein Verb, das als Nomen benutzt wird, ist immer neutrum: das Essen, das Leben, das Lernen.",
 farbe:"Farben und Sprachen als Nomen sind neutrum: das Blau, das Deutsch.",
-metall:"Metalle und Stoffe sind neutrum: das Gold, das Silber, das Holz.",
+metall:"Metalle sind neutrum: das Gold, das Silber, das Eisen. Ausnahmen: der Stahl, die Bronze.",
 jung:"Junge Lebewesen sind neutrum: das Kind, das Baby, das Kalb.",
 nis:"Nomen auf <b>-nis</b> sind meist neutrum: das Ergebnis, das Zeugnis.",
 tum:"Nomen auf <b>-tum</b> sind neutrum: das Eigentum, das Wachstum.",
@@ -281,7 +287,7 @@ plural:"Das Wort gibt es nur im <b>Plural</b>, darum steht immer <b>die</b>: die
 const D_ARTIKEL = [
 ["Montag","r","tag",""],["Januar","r","tag",""],["Sommer","r","tag",""],["Dienstag","r","tag",""],["Winter","r","tag",""],
 ["Norden","r","wetter",""],["Regen","r","wetter",""],["Wind","r","wetter",""],["Schnee","r","wetter",""],["Nebel","r","wetter",""],["Süden","r","wetter",""],
-["Computer","r","er",""],["Fernseher","r","er",""],["Lehrer","r","er",""],["Kühlschrank","r","merk",""],
+["Computer","r","er",""],["Fernseher","r","er",""],["Lehrer","r","er",""],["Kühlschrank","r","zusammen","Kühl + der Schrank."],
 ["Löffel","r","el",""],["Schlüssel","r","el",""],["Apfel","r","el",""],
 ["Frühling","r","ling",""],["Schmetterling","r","ling",""],
 ["Kapitalismus","r","ismus",""],["Motor","r","or",""],["Doktor","r","or",""],
@@ -880,7 +886,7 @@ const D_HILFSVERB = [
 ["Er % den Ball über den Platz gerollt.","h","er","rollen mit Objekt: haben."],
 ["Wie lange % ihr in Wien gewohnt?","h","ihr","wohnen: haben."],
 ["Der Fluss % über die Ufer getreten.","s","er","treten als Bewegung: sein."],
-["Er % mir auf den Fuß getreten.","s","er","mir ist Dativ, kein Akkusativobjekt. treten bleibt eine Bewegung: sein."],
+["Im Park % mir ein alter Freund entgegengekommen.","s","er","mir ist Dativ, kein Akkusativobjekt. entgegenkommen ist eine Bewegung: sein."],
 ["Er % den Ball ins Tor getreten.","h","er","treten mit Objekt (den Ball): haben."],
 ["Das Auto % gegen einen Baum geprallt.","s","er","prallen: sein."],
 ["Die Vase % umgekippt.","s","er","umkippen: sein."],
@@ -1037,7 +1043,7 @@ const D_ENGLISCH = [
    ===================================================================== */
 
 const MEHRZAHL_REGELN = {
- e:     "Viele männliche Nomen mit einer Silbe bekommen <b>-e</b>: der Tisch, die Tische.",
+ e:     "Viele männliche und manche sächliche Nomen mit einer Silbe bekommen <b>-e</b>: der Tisch, die Tische; das Jahr, die Jahre.",
  ue:    "Männliche Nomen mit einer Silbe bekommen oft <b>Umlaut und -e</b>: der Baum, die Bäume.",
  er:    "Viele sächliche Nomen mit einer Silbe bekommen <b>-er</b>, mit Umlaut, wenn es geht: das Kind, die Kinder; das Buch, die Bücher.",
  n:     "Weibliche Nomen bekommen fast immer <b>-n</b> oder <b>-en</b>: die Blume, die Blumen; die Frau, die Frauen.",
@@ -1176,7 +1182,7 @@ const D_MEHRZAHL_VERB = [
 ["Ihr % die Antwort.","wissen","wisst",["wissen","weißt"],"ihr wisst."],
 ["Die Blätter % gelb.","werden","werden",["werdet","wird"],"Mehrzahl von wird: werden."],
 ["Ihr % nass.","werden","werdet",["werden","wirst"],"ihr werdet, mit e vor dem t."],
-["Ihr % Anna und Tom.","heißen","heißt",["heißen","heiß"],"Nach ß oder s kommt bei ihr kein zweites t: ihr heißt. Die Form sieht aus wie du heißt."],
+["Ihr % Anna und Tom.","heißen","heißt",["heißen","heiß"],"Bei ihr kommt nur -t an den Stamm: heiß + t = ihr heißt. Die Form sieht genauso aus wie du heißt."],
 ["Die Gäste % um acht.","essen","essen",["esst","isst"],"Mehrzahl: essen. Nur er isst hat den Vokalwechsel."],
 ["Ihr % zu schnell.","essen","esst",["essen","isst"],"ihr esst. Kein Vokalwechsel bei ihr."],
 ["Die Schüler % die Aufgabe.","verstehen","verstehen",["versteht","verstehst"],"Die Schüler: Mehrzahl."],
@@ -1875,6 +1881,7 @@ starteKarteikasten({
     schwer: ["Harte Nuss",        "25 schwere Karten liegen in Fach 4 oder 5."]
   },
   texte:{
+    regeln:"Regeln", stapelUeben:"Diesen Stapel üben",
     speicherFehler:"Der Fortschritt konnte nicht gespeichert werden. Der Speicher des Browsers ist voll oder gesperrt.",
     rundeBeenden:"Runde beenden", zumKasten:"Zum Kasten",
     tag:"Tag", tage:"Tage",
