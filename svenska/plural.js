@@ -232,7 +232,7 @@ REGELSEITEN.plural=`
 <tr><td>en strand</td><td>stränder</td><td><i>Strände</i></td></tr>
 <tr><td>ett land</td><td>länder</td><td><i>Länder</i></td></tr>
 </tbody></table></div>
-<p>Lägg märke till att konsonanten ibland blir dubbel: bok, böcker; fot, fötter; natt, nätter.</p>
+<p>Lägg märke till att konsonanten ibland blir dubbel: bok, böcker; fot, fötter.</p>
 
 <h2>Grupp 4: -n</h2>
 <p>Ett-ord som slutar på obetonad vokal får <b>-n</b>.</p>

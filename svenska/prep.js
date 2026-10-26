@@ -153,7 +153,7 @@ REGELSEITEN.prep=`
 <h3>i: inne i något</h3>
 <p>Man använder <b>i</b> när något är inne i ett rum eller ett utrymme, ungefär som tyskans <i>in</i>.</p>
 <p class="beispiel">i köket, i bilen, i duschen, i skogen</p>
-<p>Länder, landskap och städer tar alltid <b>i</b>: <i>i Sverige, i Tyskland, i Skåne, i Stockholm, i Malmö</i>.</p>
+<p>Länder, landskap och städer tar nästan alltid <b>i</b>: <i>i Sverige, i Tyskland, i Skåne, i Stockholm, i Malmö</i>. Undantag är några ö-länder (se nedan).</p>
 <h3>på: ovanpå en yta</h3>
 <p>Man använder <b>på</b> när något ligger eller står på en yta, som tyskans <i>auf</i> eller <i>an</i>.</p>
 <p class="beispiel">på bordet, på stolen, på väggen, på gatan, på torget, på balkongen</p>

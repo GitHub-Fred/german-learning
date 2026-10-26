@@ -181,7 +181,7 @@ REGELSEITEN.reflexiv=`
 <ul>
 <li><b>gifta sig</b> (<i>heiraten</i>): <i>Hon gifte sig förra året.</i> Inte: <i>Hon gifte förra året.</i></li>
 <li><b>lära sig</b> (<i>lernen</i>): <i>Jag vill lära mig spela gitarr.</i></li>
-<li><b>ångra sig</b> (<i>es sich anders überlegen, bereuen</i>): <i>Först sa han ja, men sedan ångrade han sig.</i></li>
+<li><b>ångra sig</b> (<i>es sich anders überlegen</i>): <i>Först sa han ja, men sedan ångrade han sig.</i> Men <i>bereuen</i> heter <b>ångra</b> utan <i>sig</i>: <i>Jag ångrar det.</i></li>
 </ul>
 <p><b>lära sig</b> och <b>lära</b> är olika: <i>Jag lär mig svenska</i> (<i>ich lerne</i>). <i>Hon lär mig svenska</i> (<i>sie bringt mir bei</i>).</p>
 

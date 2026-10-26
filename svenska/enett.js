@@ -11,7 +11,7 @@ const REGLER = {
   dom: "Substantiv på <b>-dom</b> är en-ord: en sjukdom, en ungdom.",
   um: "Substantiv på <b>-um</b> är nästan alltid ett-ord: ett museum, ett datum.",
   ment: "Substantiv på <b>-ment</b> är nästan alltid ett-ord: ett dokument, ett experiment.",
-  eri: "Substantiv på <b>-eri</b> och <b>-ori</b> är ett-ord: ett bageri, ett konditori.",
+  eri: "Substantiv på <b>-eri</b> är ett-ord: ett bageri, ett bryggeri. Även <b>ett konditori</b>, men andra ord på -ori är en-ord: en teori, en kategori.",
   ande: "Substantiv på <b>-ande</b> och <b>-ende</b> som inte är personer är ett-ord: ett meddelande, ett leende.",
   e: "Många ord på <b>-e</b> som inte är personer är ett-ord: ett äpple, ett frimärke. Men det finns undantag, till exempel en tanke.",
   sammansatt: "I ett sammansatt ord bestämmer det <b>sista ordet</b> om det är en eller ett.",
@@ -195,7 +195,7 @@ REGELSEITEN.enett=`
 <tbody>
 <tr><td>-um</td><td>ett museum, ett datum, ett gymnasium</td><td>sällsynta</td></tr>
 <tr><td>-ment</td><td>ett dokument, ett experiment, ett argument</td><td>sällsynta</td></tr>
-<tr><td>-eri, -ori</td><td>ett bageri, ett konditori</td><td>-</td></tr>
+<tr><td>-eri</td><td>ett bageri, ett bryggeri, ett batteri, ett konditori</td><td>andra ord på -ori är en-ord: en teori, en kategori</td></tr>
 <tr><td>-ande, -ende (inte personer)</td><td>ett meddelande, ett leende</td><td>personer: en studerande</td></tr>
 <tr><td>-e (inte personer)</td><td>ett äpple, ett frimärke, ett möte, ett ansikte</td><td>en tanke och några till</td></tr>
 </tbody></table></div>

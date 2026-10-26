@@ -6,7 +6,7 @@ const GRUPP = {
   "1":  "Grupp 1: presens på <b>-ar</b>, preteritum på <b>-ade</b>, supinum på <b>-at</b>.",
   "2a": "Grupp 2a: presens på <b>-er</b>, preteritum på <b>-de</b>, supinum på <b>-t</b>.",
   "2b": "Grupp 2b: stammen slutar på k, p, s, t eller x. Därför preteritum på <b>-te</b> och supinum på <b>-t</b>.",
-  "3":  "Grupp 3: korta verb som inte slutar på <b>-a</b>, till exempel bo och tro. Presens på <b>-r</b>, preteritum på <b>-dde</b>, supinum på <b>-tt</b>.",
+  "3":  "Grupp 3: många korta verb på betonad vokal, till exempel bo och tro (men gå, se, ge, ta och få hör till grupp 4). Presens på <b>-r</b>, preteritum på <b>-dde</b>, supinum på <b>-tt</b>.",
   "4":  "Grupp 4: starka och oregelbundna verb. De måste man lära sig utantill."
 };
 
@@ -326,7 +326,7 @@ REGELSEITEN.verb=`
 </ul>
 
 <h3>Grupp 3: -r, -dde, -tt</h3>
-<p>Korta verb som <b>inte</b> slutar på <i>-a</i> i infinitiv.</p>
+<p>Många korta verb som slutar på en betonad vokal (inte <i>-a</i>): bo, tro, sy, må. Men inte alla: gå, få, se, ge, ta, stå och bli är starka och hör till grupp 4.</p>
 <p class="beispiel">bo, bor, bodde, bott<br>tro, tror, trodde, trott<br>sy, syr, sydde, sytt</p>
 
 <h3>Grupp 4: starka och oregelbundna verb</h3>
@@ -387,7 +387,7 @@ REGELSEITEN.verb=`
 <li>Korta verb ändras inte: <b>gå, tro, ge, ta, ha, se</b>.</li>
 <li>Verb på <b>-mma</b> får bara ett <i>m</i>: komma, <b>kom</b>; glömma, <b>glöm</b>.</li>
 </ul>
-<p>Imperativ är aldrig samma som presens: <i>Stänger dörren!</i> är fel.</p>
+<p>Imperativ är normalt inte samma som presens: <i>Stänger dörren!</i> är fel. Undantag är verb vars stam slutar på <b>r</b>: där är formerna lika (hör, kör, gör).</p>
 
 <h2>Typiska fel för tyskar</h2>
 <ul>

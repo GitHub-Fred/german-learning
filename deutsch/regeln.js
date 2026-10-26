@@ -21,7 +21,7 @@ REGELSEITEN.perfekt=`
 <h3>Perfekt oder Präteritum?</h3>
 <p>Es gibt noch eine zweite Vergangenheit, das <b>Präteritum</b>: ich ging, ich sah, ich kaufte. Im Deutschen ist der Unterschied fast nur eine Frage des Stils, nicht der Bedeutung:</p>
 <ul>
-<li><b>Perfekt</b>: beim Sprechen, in Nachrichten und in persönlichen E-Mails.</li>
+<li><b>Perfekt</b>: beim Sprechen, in Chat- und Kurznachrichten und in persönlichen E-Mails.</li>
 <li><b>Präteritum</b>: in Büchern, Zeitungen und Berichten.</li>
 <li>Bei <b>sein</b>, <b>haben</b> und den <b>Modalverben</b> (können, müssen, wollen, dürfen, sollen) nimmt man auch beim Sprechen meist das Präteritum: ich war, ich hatte, ich konnte.</li>
 </ul>
@@ -115,7 +115,7 @@ REGELSEITEN.perfekt=`
 </tbody>
 </table></div>
 <p>Ein <b>Akkusativobjekt</b> ist die Person oder Sache, mit der jemand direkt etwas macht. Du findest es mit der Frage <b>wen oder was?</b>: Er fährt <b>den Wagen</b>.</p>
-<p>Bewegungsverben wie laufen, schwimmen und fahren nehmen sein auch dann, wenn kein Ziel genannt wird: Ich bin jeden Morgen geschwommen. Du bist die ganze Strecke gelaufen.</p>
+<p>Bewegungsverben wie laufen und fahren nehmen sein auch dann, wenn kein Ziel genannt wird: Du bist die ganze Strecke gelaufen. Bei schwimmen ohne Ziel sind beide richtig, sein ist üblicher: Ich bin jeden Morgen geschwommen.</p>
 
 <h3>haben nehmen</h3>
 <ul>
@@ -168,7 +168,7 @@ REGELSEITEN.perfekt=`
 <tr><td>Warum</td><td>bist</td><td>du gestern nicht zur Arbeit</td><td>gekommen?</td></tr>
 </tbody>
 </table></div>
-<p>Steht etwas anderes als das Subjekt auf Position eins, kommt das Subjekt direkt nach dem Hilfsverb: Gestern <b>habe ich</b> ... Das kennst du aus dem Schwedischen: <i>I går har jag sett en film.</i></p>
+<p>Steht etwas anderes als das Subjekt auf Position eins, kommt das Subjekt direkt nach dem Hilfsverb: Gestern <b>habe ich</b> ... Das kennst du aus dem Schwedischen: <i>I går såg jag en film.</i></p>
 <p>In einer Ja-Nein-Frage steht das Hilfsverb ganz vorne: <b>Hast</b> du den Schlüssel schon <b>gefunden</b>?</p>
 
 <h3>In der Mitte: kurze Wörter zuerst</h3>
@@ -285,7 +285,7 @@ REGELSEITEN.artikel=`
 <div class="tabelle"><table>
 <thead><tr><th>Endung</th><th>Beispiele</th><th>Ausnahmen</th></tr></thead>
 <tbody>
-<tr><td>-ung</td><td>die Zeitung, die Wohnung, die Meinung, die Übung</td><td>keine</td></tr>
+<tr><td>-ung</td><td>die Zeitung, die Wohnung, die Meinung, die Übung</td><td>keine. Aber der Sprung, der Schwung: Das sind Verbstämme, keine Endung -ung.</td></tr>
 <tr><td>-heit, -keit</td><td>die Freiheit, die Krankheit, die Möglichkeit</td><td>keine</td></tr>
 <tr><td>-schaft</td><td>die Freundschaft, die Mannschaft, die Wissenschaft</td><td>keine</td></tr>
 <tr><td>-ion</td><td>die Nation, die Information, die Situation</td><td>das Stadion</td></tr>
@@ -556,7 +556,7 @@ REGELSEITEN.praep=`
 <tr><td>sich halten an</td><td>Akk.</td><td><i>hålla sig till</i></td></tr>
 <tr><td>teilnehmen an</td><td>Dat.</td><td><i>delta i</i></td></tr>
 <tr><td>zweifeln an</td><td>Dat.</td><td><i>tvivla på</i></td></tr>
-<tr><td>sprechen über, nachdenken über, diskutieren über</td><td>Akk.</td><td><i>prata om, tänka på, diskutera</i></td></tr>
+<tr><td>sprechen über, nachdenken über, diskutieren über</td><td>Akk.</td><td><i>prata om, fundera på, diskutera</i></td></tr>
 <tr><td>sich ärgern über, sich beschweren über</td><td>Akk.</td><td><i>irritera sig på, klaga på</i></td></tr>
 <tr><td>berichten über / berichten von</td><td>Akk. / Dat.</td><td><i>berätta om</i></td></tr>
 <tr><td>sich interessieren für</td><td>Akk.</td><td><i>intressera sig för</i></td></tr>
@@ -576,7 +576,7 @@ REGELSEITEN.praep=`
 <tr><td>klingeln bei</td><td>Dat.</td><td></td></tr>
 </tbody>
 </table></div>
-<p>Zwei Faustregeln helfen: <b>über</b> steht bei solchen Verben immer mit Akkusativ, <b>auf</b> fast immer. Und die Präpositionen, die immer Dativ haben (aus, bei, mit, nach, von, zu), behalten ihn auch hier. Bei <b>an, in</b> und <b>vor</b> musst du den Fall mitlernen.</p>
+<p>Zwei Faustregeln helfen: <b>über</b> steht bei solchen Verben immer mit Akkusativ, <b>auf</b> fast immer. Und die Präpositionen, die immer Dativ haben (aus, bei, mit, nach, von, zu), behalten ihn auch hier. <b>vor</b> hat bei solchen Verben immer Dativ: Angst haben vor dem Hund. Nur bei <b>an</b> und <b>in</b> musst du den Fall mitlernen.</p>
 <p>Der Unterschied bei <b>sich freuen</b>: Ich freue mich <b>auf</b> den Urlaub (er kommt noch). Ich habe mich <b>über</b> das Geschenk gefreut (es ist schon da).</p>
 
 <h2>darauf, worauf, auf wen</h2>
@@ -608,7 +608,7 @@ REGELSEITEN.praep=`
 <li><b>Den Artikel nicht ändern</b>, weil er sich auf Schwedisch nie ändert. Falsch: mit der Bus. Richtig: mit <b>dem</b> Bus.</li>
 <li><b>Wo und wohin nicht unterscheiden</b>, weil <i>på bordet</i> beides ist. Falsch: Ich lege das Buch auf dem Tisch. Richtig: auf <b>den</b> Tisch.</li>
 <li><b><i>till</i> immer mit zu übersetzen.</b> Falsch: Ich fahre zu Berlin. Richtig: <b>nach</b> Berlin. Aber: <b>zu</b> meiner Oma.</li>
-<li><b>Die schwedische Präposition übernehmen.</b> Falsch: Ich denke auf dich (<i>tänka på</i>). Richtig: Ich denke <b>an</b> dich. Falsch: Er hilft mir mit den Hausaufgaben. Richtig: <b>bei</b> den Hausaufgaben.</li>
+<li><b>Die schwedische Präposition übernehmen.</b> Falsch: Ich denke auf dich (<i>tänka på</i>). Richtig: Ich denke <b>an</b> dich. Besser nicht: Er hilft mir mit den Hausaufgaben. Standard ist: <b>bei</b> den Hausaufgaben.</li>
 <li><b>seit vergessen.</b> Falsch: Ich habe hier drei Jahre gewohnt (wenn du noch hier wohnst). Richtig: Ich wohne <b>seit</b> drei Jahren hier.</li>
 <li><b>Die Präposition ans Ende der Frage stellen.</b> Falsch: Was wartest du auf? Richtig: <b>Worauf</b> wartest du?</li>
 <li><b>von statt aus bei der Herkunft.</b> Falsch: Ich komme von Schweden. Richtig: Ich komme <b>aus</b> Schweden.</li>
@@ -668,7 +668,7 @@ REGELSEITEN.reflexiv=`
 </tbody>
 </table></div>
 <p>Achte auf die letzte Zeile: <b>am Knie</b> ist kein Objekt, sondern eine Ortsangabe mit Präposition. Darum bleibt es bei mich. Überhaupt zählen Teile mit Präposition nie als Akkusativobjekt: Ich habe <b>mich</b> an das Klima gewöhnt. Erinnerst du <b>dich</b> an den Sommer?</p>
-<p>Auch ein ganzer Satzteil mit <b>zu</b> oder <b>dass</b> kann das Objekt sein. Dann steht ebenfalls der Dativ: Ich habe <b>mir</b> vorgenommen, mehr zu lesen.</p>
+<p>Bei Verben mit sich <b>etwas</b> (vornehmen, vorstellen, überlegen) kann auch ein ganzer Satzteil mit zu oder dass das Objekt sein: Ich habe <b>mir</b> vorgenommen, mehr zu lesen. Bei anderen Verben ändert ein dass-Satz nichts: Ich freue <b>mich</b>, dass du kommst.</p>
 <h3>Körperteile: Dativ statt mein</h3>
 <p>Bei Körperteilen sagt man auf Deutsch meist nicht mein, sondern nimmt den Dativ und den bestimmten Artikel: Ich putze <b>mir die</b> Zähne. Sie hat <b>sich die</b> Nase geputzt. Auf Englisch heißt es I brush <b>my</b> teeth, auf Schwedisch <i>jag borstar tänderna</i> oder <i>jag tvättar mig om händerna</i>.</p>
 
@@ -1073,7 +1073,7 @@ REGELSEITEN.mehrzahl=`
 
 <h2>Einzahl oder Mehrzahl? Das Subjekt entscheidet</h2>
 <ul>
-<li><b>Sammelwörter</b> sind Einzahl, auch wenn viele Menschen dazugehören: Die Familie <b>ist</b> im Urlaub. Die Polizei <b>ist</b> schon da. Die Gruppe <b>kommt</b> um neun. Im britischen Englisch hört man the police are. Auf Deutsch nie.</li>
+<li><b>Sammelwörter</b> sind Einzahl, auch wenn viele Menschen dazugehören: Die Familie <b>ist</b> im Urlaub. Die Polizei <b>ist</b> schon da. Die Gruppe <b>kommt</b> um neun. Auf Englisch heißt es the police are, und im britischen Englisch auch the family are. Auf Deutsch nie.</li>
 <li><b>Wörter, die es nur in der Mehrzahl gibt</b>, haben immer ein Mehrzahlverb: Die Eltern <b>bleiben</b> zu Hause. Die Leute <b>sind</b> nett. Die Ferien <b>sind</b> zu Ende. Die Geschwister <b>streiten</b> sich.</li>
 <li><b>jeder, niemand, jemand, man</b> sind Einzahl, wie er: Jeder <b>weiß</b> das. Man <b>darf</b> hier nicht rauchen.</li>
 <li><b>alle, viele, beide, einige</b> sind Mehrzahl: Alle <b>sind</b> da.</li>
